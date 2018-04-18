@@ -10,14 +10,26 @@ import junit.framework.Assert;
 public class testsGenericos {
 	
 	@Test
-	public void CargarJson() {
+	public void CargarJsonUsuario() {
 		JSONObject obj = new JSONObject("{nombre:gonzalo,apellido:vaquero,tipoDni:DNI,numeroDocumento:123,telefono:4444444,domicilio:calle falsa 123, fecha:15-15-2030,categoria:R1}") ;
+		//Habria que ver el tema de la fecha
 		String nombre = obj.getString("nombre");
+		
 		assertEquals("gonzalo", nombre);
 	}
 	
 	@Test
-	public void GenerarJson() {
+	public void CargarJsonDispositivo() {
+		JSONObject obj = new JSONObject("{nombre:dispositivo x,kwPorHora:12,encendido:true}") ;
+		String nombre = obj.getString("nombre");
+		Boolean encendido = obj.getBoolean("encendido");
+		
+		assertEquals("dispositivo x", nombre);
+		assertEquals(true, encendido);
+	}
+	
+	@Test
+	public void GenerarJsonGenerico() {
 	 JSONObject obj = new JSONObject();
 
     obj.put("name", "gonza");
