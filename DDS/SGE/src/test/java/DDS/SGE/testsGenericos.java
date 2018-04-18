@@ -9,13 +9,23 @@ import junit.framework.Assert;
 
 public class testsGenericos {
 	
+	//Hago 3 tests de cargas genericas de JSON para ya tener la estructura de usuario y dispositivos
 	@Test
-	public void CargarJsonUsuario() {
+	public void CargarJsonCliente() {
 		JSONObject obj = new JSONObject("{nombre:gonzalo,apellido:vaquero,tipoDni:DNI,numeroDocumento:123,telefono:4444444,domicilio:calle falsa 123, fecha:15-15-2030,categoria:R1}") ;
 		//Habria que ver el tema de la fecha
 		String nombre = obj.getString("nombre");
 		
 		assertEquals("gonzalo", nombre);
+	}
+	
+	@Test
+	public void CargarJsonAdministrador() {
+		JSONObject obj = new JSONObject("{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20-15-2030,identificador:2}") ;
+		//Habria que ver el tema de la fecha
+		String nombre = obj.getString("nombre");
+		
+		assertEquals("mati", nombre);
 	}
 	
 	@Test
