@@ -1,6 +1,7 @@
 package DDS.SGE;
 
 import static org.junit.Assert.*;
+import com.google.gson.*;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -88,5 +89,15 @@ public class testsGenericos {
 		disp.cargarDesdeJson(jsonDisp);
 		
 		assertEquals("dispositivo x", disp.nombre);
+	}
+	
+	// Esto deberia crear un cliente directamente desde el json - hay que ver como quedarian los constructores y demas
+	// Mientras no ande dejo la carga de json con json.org 
+	@Test
+	public void crearClienteConGson() {
+		Gson gson = new Gson();		
+		Cliente cliente= gson.fromJson(jsonCliente, Cliente.class);
+		
+		assertEquals("gonzalo", cliente.nombre);
 	}
 }
