@@ -1,43 +1,73 @@
 package DDS.SGE;
 
+
+import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.json.*;
 
 public class Cliente implements Usuario {
 	String nombre;
 	String apellido;
-	String dni; // Creo que eran 4 posibilidades asi que puede ser un enum
-	String numeroDni; // numeroDni y telefono deberian ser numericos?
+	TipoDni tipoDni;
+	String numeroDni;
 	String telefono;
 	String domicilio;
-	String fecha; // Despues podria ver de hacerlo fecha
+	Calendar fechaAltaServicio;
 	Categoria categoria;
 	List<Dispositivo> dispositivos;
 
-	/// Creo uno simplificado para los tests
-	public Cliente(List<Dispositivo> dispositivos) {
+
+	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio, Calendar fechaAltaServicio, Categoria categoria, List<Dispositivo> dispositivos) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDni = tipoDni;
+		this.numeroDni = numeroDni;
+		this.telefono = telefono;
+		this.domicilio = domicilio;
+		this.fechaAltaServicio = fechaAltaServicio;
+		this.categoria = categoria;
 		this.dispositivos = dispositivos;
+	}
+	
+	public enum TipoDni{
+		dni,
+		ci,
+		le,
+		lc
+	}
+	
+	public String getTipoDni() {
+		return this.tipoDni.toString();
+	}
+	
+	public void setTipoDni(String string) {
+		tipoDni = TipoDni.valueOf(string);
 	}
 
 	public void setCategoria(Categoria nuevaCategoria) {
-		categoria = nuevaCategoria; /// Agregar variable
+		categoria = nuevaCategoria;
+	}
+	
+	public Stream<Dispositivo> getDispositivos() {
+		return dispositivos.stream();
 	}
 
 	public boolean algunDispositivoEncendido() {
-		return dispositivos.stream().anyMatch(dispositivo -> dispositivo.getEncendido());
+		return getDispositivos().anyMatch(dispositivo -> dispositivo.estaEncendido());
 	}
 
-	public int dispositivosTotales() {
+	public int cantidadDeDispositivos() {
 		return dispositivos.size();
 	}
 
 	public int dispositivosEncendidos() {
-		return 1; // Desarrollar
+		return (int) getDispositivos().filter(dispositivo ->dispositivo.estaEncendido()).count(); //Hago el casteo a Int porque el .count() me devuelve long.
 	}
 
 	public int dispositivosApagados() {
-		return this.dispositivosTotales() - this.dispositivosEncendidos(); // Para no reutilizar logica
+		return this.cantidadDeDispositivos() - this.dispositivosEncendidos();
 	}
 
 	/// PARA QUE DEVUELVA LA SUMA DE LOS CONSUMOS DE TODOS SUS DISPOSITIVOS
@@ -52,11 +82,11 @@ public class Cliente implements Usuario {
 		JSONObject obj = new JSONObject(json);
 		nombre = obj.getString("nombre");
 		apellido = obj.getString("apellido");
-		dni = obj.getString("tipoDni");
+		setTipoDni(obj.getString("tipoDni"));
 		numeroDni = obj.getString("numeroDocumento");
 		telefono = obj.getString("telefono");
 		domicilio = obj.getString("domicilio");
-		fecha = obj.getString("fecha");
+		fechaAltaServicio.set(obj.getInt("anio"), obj.getInt("mes"), obj.getInt("dia"));
 		categoria = (Categoria) obj.get("categoria");
 		// JSONObject obj = new
 		// JSONObject("{nombre:gonzalo,apellido:vaquero,tipoDni:DNI,numeroDocumento:123,telefono:4444444,domicilio:calle

@@ -3,11 +3,14 @@ package DDS.SGE;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.sql.Date;
 import java.util.List;
 
 import org.json.JSONObject;
 import org.junit.Test;
 
+import DDS.SGE.Cliente.TipoDni;
 import junit.framework.Assert;
 
 public class testsGenericos {
@@ -19,8 +22,8 @@ public class testsGenericos {
 	// No estoy muy seguro si conviene usar listas de esta manera
 	List<Dispositivo> dispositivosDeAlejandro = Arrays.asList(televisor, nintendoDS);
 	List<Dispositivo> dispositivosDeLucila = Arrays.asList(televisor, computadora);
-	Cliente alejandro = new Cliente(dispositivosDeAlejandro);
-	Cliente lucila = new Cliente(dispositivosDeLucila);
+	Cliente alejandro = new Cliente("Alejandro","Peralta",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance() , Categoria.R1, dispositivosDeAlejandro);
+	Cliente lucila = new Cliente("Lucila","Salmeron",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance(), Categoria.R1, dispositivosDeAlejandro);
 
 	// Hago 3 tests de cargas genericas de JSON para ya tener la estructura de
 	// usuario y dispositivos

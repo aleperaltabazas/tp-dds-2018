@@ -14,7 +14,7 @@ public class Dispositivo {
 	// Es un getter, pero me parece que sería mas expresivo ponerle estaEncendido()
 	// sobre todo al llamarlo desde los métodos del cliente. Igual creo que debemos
 	// respetar en mayor medida la convención
-	public boolean getEncendido() {
+	public boolean estaEncendido() {
 		return this.encendido;
 	}
 
