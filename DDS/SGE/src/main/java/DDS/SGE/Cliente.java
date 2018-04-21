@@ -79,7 +79,7 @@ public class Cliente implements Usuario {
 	}
 
 	public void CargarDesdeJson(String json) {
-		JSONObject obj = new JSONObject(json);
+		JSONObject obj = new JSONObject(json);		
 		nombre = obj.getString("nombre");
 		apellido = obj.getString("apellido");
 		setTipoDni(obj.getString("tipoDni"));

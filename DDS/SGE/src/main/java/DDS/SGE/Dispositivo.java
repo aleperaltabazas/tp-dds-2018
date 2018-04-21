@@ -1,7 +1,10 @@
 package DDS.SGE;
 
+import org.json.JSONObject;
+
+
 public class Dispositivo {
-	private String nombre;
+	public String nombre;
 	private double consumoKWPorHora;
 	private boolean encendido;
 
@@ -14,6 +17,13 @@ public class Dispositivo {
 	// Es un getter, pero me parece que sería mas expresivo ponerle estaEncendido()
 	// sobre todo al llamarlo desde los métodos del cliente. Igual creo que debemos
 	// respetar en mayor medida la convención
+	public void cargarDesdeJson(String json) {
+		JSONObject obj = new JSONObject(json);	
+		nombre = obj.getString("nombre");
+		consumoKWPorHora = obj.getDouble("consumoKWPorHora");
+		encendido = obj.getBoolean("encendido");
+	}
+	
 	public boolean estaEncendido() {
 		return this.encendido;
 	}

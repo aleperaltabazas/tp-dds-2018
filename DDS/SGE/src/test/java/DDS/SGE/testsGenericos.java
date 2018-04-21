@@ -16,6 +16,9 @@ import junit.framework.Assert;
 public class testsGenericos {
 
 	// Hago algunas instancias para los casos de prueba
+	String jsonDisp = "{nombre:dispositivo x,consumoKWPorHora:12,encendido:true}";
+	String jsonCliente = "{nombre:gonzalo,apellido:vaquero,tipoDni:DNI,numeroDocumento:123,telefono:4444444,domicilio:calle falsa 123, fecha:15-15-2030,categoria:R1}";
+	String jsonAdmin;
 	Dispositivo nintendoDS = new Dispositivo(50, false);
 	Dispositivo televisor = new Dispositivo(70, false);
 	Dispositivo computadora = new Dispositivo(100, true);
@@ -23,7 +26,7 @@ public class testsGenericos {
 	List<Dispositivo> dispositivosDeAlejandro = Arrays.asList(televisor, nintendoDS);
 	List<Dispositivo> dispositivosDeLucila = Arrays.asList(televisor, computadora);
 	Cliente alejandro = new Cliente("Alejandro","Peralta",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance() , Categoria.R1, dispositivosDeAlejandro);
-	Cliente lucila = new Cliente("Lucila","Salmeron",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance(), Categoria.R1, dispositivosDeAlejandro);
+	Cliente lucila = new Cliente("Lucila","Salmeron",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance(), Categoria.R1, dispositivosDeLucila);
 
 	// Hago 3 tests de cargas genericas de JSON para ya tener la estructura de
 	// usuario y dispositivos
@@ -49,7 +52,7 @@ public class testsGenericos {
 
 	@Test
 	public void CargarJsonDispositivo() {
-		JSONObject obj = new JSONObject("{nombre:dispositivo x,kwPorHora:12,encendido:true}");
+		JSONObject obj = new JSONObject("{nombre:dispositivo x,consumoKWPorHora:12,encendido:true}");
 		String nombre = obj.getString("nombre");
 		Boolean encendido = obj.getBoolean("encendido");
 
@@ -77,5 +80,13 @@ public class testsGenericos {
 	@Test
 	public void testLucilaTieneAlgunDispositivoEncendido() {
 		assertTrue(lucila.algunDispositivoEncendido());
+	}
+	
+	@Test
+	public void castearJson() {
+		Dispositivo disp = new Dispositivo(10,true);
+		disp.cargarDesdeJson(jsonDisp);
+		
+		assertEquals("dispositivo x", disp.nombre);
 	}
 }
