@@ -13,10 +13,6 @@ public class Dispositivo {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.encendido = encendido;
 	}
-	
-	public Dispositivo(String json) {
-		
-	}
 
 	// Es un getter, pero me parece que sería mas expresivo ponerle estaEncendido()
 	// sobre todo al llamarlo desde los métodos del cliente. Igual creo que debemos

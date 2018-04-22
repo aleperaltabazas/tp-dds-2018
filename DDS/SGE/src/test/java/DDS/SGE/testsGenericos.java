@@ -95,8 +95,18 @@ public class testsGenericos {
 	// Mientras no ande dejo la carga de json con json.org 
 	@Test
 	public void crearClienteConGson() {
-		Gson gson = new Gson();		
-		Cliente cliente= gson.fromJson(jsonCliente, Cliente.class);
+		Gson gson = new GsonBuilder().create();	
+		String gsonDisp = "{'nombre':'dispositivo x','consumoKWPorHora':'12','encendido':'true'}";
+		Dispositivo disp= gson.fromJson(gsonDisp, Dispositivo.class);
+		
+		assertEquals("dispositivo x", disp.nombre);
+	}
+	
+	@Test
+	public void crearDispositivoConGson() {
+		Gson gson = new GsonBuilder().create();	
+		String gsonCliente = "{'nombre':'gonzalo','apellido':'vaquero','tipoDni':'DNI','numeroDocumento':'123','telefono':'4444444','domicilio':'calle falsa 123', 'fecha':'15-15-2030','categoria':'R1'}";		
+		Cliente cliente= gson.fromJson(gsonCliente, Cliente.class);
 		
 		assertEquals("gonzalo", cliente.nombre);
 	}
