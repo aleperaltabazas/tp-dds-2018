@@ -31,6 +31,11 @@ public class Cliente implements Usuario {
 		this.dispositivos = dispositivos;
 	}
 	
+	//Creo constructor para crear un Cliente a partir de un json.
+	public Cliente(JSONObject json) {
+		this.CargarDesdeJson(json);
+	}
+	
 	public enum TipoDni{
 		dni,
 		ci,
@@ -44,6 +49,10 @@ public class Cliente implements Usuario {
 	
 	public void setTipoDni(String string) {
 		tipoDni = TipoDni.valueOf(string);
+	}
+	
+	public void setFechaAltaServicio(int anio, int mes, int dia) {
+		this.fechaAltaServicio.set(anio,mes,dia);
 	}
 
 	public void setCategoria(Categoria nuevaCategoria) {
@@ -70,13 +79,20 @@ public class Cliente implements Usuario {
 		return this.cantidadDeDispositivos() - this.dispositivosEncendidos();
 	}
 
-	/// PARA QUE DEVUELVA LA SUMA DE LOS CONSUMOS DE TODOS SUS DISPOSITIVOS
-	/// Puede que nos convenga calcular directo el consumo por mes estimado, que
-	/// seria lo mismo *24 * dias del mes pero no sé exactamente
 	public double consumoTotalPorHora() {
-		/// ...
-		return 1; /// Desarrollar
+		return getDispositivos().mapToDouble(dispositivo -> dispositivo.getConsumoKWPorHora()).sum();
 	}
+	
+	//Tengo mis dudas aca, porque estoy asumiendo que un mes tiene 30 dias y no se si es lo correcto.
+	public double consumoTotalPorMes() {
+		return (this.consumoTotalPorHora() * 24) * 30;
+	}
+	//TODO Falta poder recategorizar a los Clientes, según su consumo:
+	/*  Hay algo que no está explícito en el enunciado de esta entrega, sino que está en la presentación, pero queremos
+	 *  que también hagan para esta entrega. Queremos que implementen el mensaje para recategorizar un usuario. Es decir, que a partir
+	 *  del consumo que tiene, elija la categoría a la que debería pertenecer y se la asigne. No es necesario que hagan la parte de que
+	 *  eso ocurra automáticamente cada 3 meses todavía.
+	 */
 
 	public Cliente(String json) {
 		JSONObject obj = new JSONObject(json);		
@@ -88,5 +104,5 @@ public class Cliente implements Usuario {
 		domicilio = obj.getString("domicilio");
 		fechaAltaServicio.set(obj.getInt("anio"), obj.getInt("mes"), obj.getInt("dia"));
 		categoria = (Categoria) obj.get("categoria");
-	};
+	}
 }
