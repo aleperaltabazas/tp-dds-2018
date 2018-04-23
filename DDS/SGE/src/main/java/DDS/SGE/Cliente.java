@@ -78,19 +78,15 @@ public class Cliente implements Usuario {
 		return 1; /// Desarrollar
 	}
 
-	public void CargarDesdeJson(String json) {
+	public Cliente(String json) {
 		JSONObject obj = new JSONObject(json);		
 		nombre = obj.getString("nombre");
 		apellido = obj.getString("apellido");
 		setTipoDni(obj.getString("tipoDni"));
-		numeroDni = obj.getString("numeroDocumento");
+		numeroDni = obj.getString("numeroDni");
 		telefono = obj.getString("telefono");
 		domicilio = obj.getString("domicilio");
 		fechaAltaServicio.set(obj.getInt("anio"), obj.getInt("mes"), obj.getInt("dia"));
 		categoria = (Categoria) obj.get("categoria");
-		// JSONObject obj = new
-		// JSONObject("{nombre:gonzalo,apellido:vaquero,tipoDni:DNI,numeroDocumento:123,telefono:4444444,domicilio:calle
-		// falsa 123, fecha:15-15-2030,categoria:R1}") ;
-
 	};
 }
