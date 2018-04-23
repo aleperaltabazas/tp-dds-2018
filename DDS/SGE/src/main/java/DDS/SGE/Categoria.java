@@ -12,6 +12,10 @@ public enum Categoria {
 		this.normalMensual = tarifaFija;
 	}
 
+	public double getNormalVariable() {
+		return this.normalVariable;
+	}
+
 	public double estimarFacturacionCargoFijo() {
 		return this.normalMensual;
 	}
@@ -19,11 +23,12 @@ public enum Categoria {
 	public double estimarFacturacionCargoVariable(Cliente cliente) {
 		return cliente.consumoTotalPorHora() * normalVariable;
 	}
-	
+
 	public Categoria categoriaCliente(double consumo) {
-		 for(Categoria cat : Categoria.values()) {
-			 	
-			};
-			return R1;
+		for (Categoria cat : Categoria.values()) {
+		}
+		;
+		return R1;
 	}
+
 }

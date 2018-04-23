@@ -2,7 +2,6 @@ package DDS.SGE;
 
 import org.json.JSONObject;
 
-
 public class Dispositivo {
 	public String nombre;
 	private double consumoKWPorHora;
@@ -15,13 +14,13 @@ public class Dispositivo {
 	}
 
 	public void cargarDesdeJson(String json) {
-		JSONObject obj = new JSONObject(json);	
-		
+		JSONObject obj = new JSONObject(json);
+
 		nombre = obj.getString("nombre");
 		consumoKWPorHora = obj.getDouble("consumoKWPorHora");
 		encendido = obj.getBoolean("encendido");
 	}
-	
+
 	public boolean estaEncendido() {
 		return this.encendido;
 	}
@@ -29,5 +28,11 @@ public class Dispositivo {
 	// Idem que el caso anterior
 	public double getConsumoKWPorHora() {
 		return this.consumoKWPorHora;
+	}
+
+	// Se podria pensar que cada vez que un cliente encienda o apague algun
+	// dispositivo se recalcule su categoría
+	public void encender() {
+		this.encendido = true;
 	}
 }

@@ -22,22 +22,14 @@ public class testsGenericos {
 	String jsonAdmin = "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20-15-2030,identificador:2}";
 	Dispositivo nintendoDS = new Dispositivo(50, false);
 	Dispositivo televisor = new Dispositivo(70, false);
-	Dispositivo computadora = new Dispositivo(100, true);
+	Dispositivo plasma = new Dispositivo(40, false);
+	Dispositivo computadora = new Dispositivo(140, true);
+	Dispositivo estufaElectrica = new Dispositivo(200, false);
 	// No estoy muy seguro si conviene usar listas de esta manera
 	List<Dispositivo> dispositivosDeAlejandro = Arrays.asList(televisor, nintendoDS);
 	List<Dispositivo> dispositivosDeLucila = Arrays.asList(televisor, computadora);
 	Cliente alejandro = new Cliente("Alejandro","Peralta",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance() , Categoria.R1, dispositivosDeAlejandro);
 	Cliente lucila = new Cliente("Lucila","Salmeron",TipoDni.dni,"123456789","1144448888","Av siempre viva 123", Calendar.getInstance(), Categoria.R1, dispositivosDeLucila);
-
-	@Test
-	public void testAlejandroNoTieneNingunDispositivoEncendido() {
-		assertFalse(alejandro.algunDispositivoEncendido());
-	}
-
-	@Test
-	public void testLucilaTieneAlgunDispositivoEncendido() {
-		assertTrue(lucila.algunDispositivoEncendido());
-	}
 	
 	@Test
 	public void castearJson() {
@@ -73,4 +65,60 @@ public class testsGenericos {
 		
 		assertEquals("gonzalo", cliente.nombre);
 	}
+	
+	@Test
+	public void testAlejandroNoTieneNingunDispositivoEncendido() {
+		assertFalse(alejandro.algunDispositivoEncendido());
+	}
+
+	@Test
+	public void testLucilaTieneAlgunDispositivoEncendido() {
+		assertTrue(lucila.algunDispositivoEncendido());
+	}
+	
+	@Test
+	public void testElConsumoPorHoraDeAlejandroEs0Kwh() {
+		assertEquals(0, 0, alejandro.consumoTotalPorHora());
+	}
+
+	@Test
+	public void testLucilaTiene1DispositivoEncendido() {
+		assertEquals(1, lucila.dispositivosEncendidos());
+	}
+
+	@Test
+	public void testAlEncenderseLosDispositivosDeAlejandroSuConsumoPorHoraEsLaSumaDelConsumoPorHoraDeAmbosDispositivos() {
+		plasma.encender();
+		nintendoDS.encender();
+		assertEquals(plasma.getConsumoKWPorHora() + nintendoDS.getConsumoKWPorHora(), 0,
+				alejandro.consumoTotalPorHora());
+	}
+
+	@Test
+	public void testLaCategoriaDeLucilaEsR1() {
+		lucila.recategorizar();
+		assertEquals(Categoria.R1, lucila.getCategoria());
+	}
+
+	@Test
+	public void testAlEncenderLaComputadoraLaRecategorizacionDeLucilaEsR2() {
+		televisor.encender();
+		lucila.recategorizar();
+		assertEquals(Categoria.R2, lucila.getCategoria());
+	}
+
+	@Test
+	public void testLaFacturacionEstimadaVariableDeLucilaEsCorrespondienteALaCategoria1() {
+		assertEquals(lucila.consumoTotalPorHora() * Categoria.R1.getNormalVariable(), 0,
+				lucila.getCategoria().estimarFacturacionCargoVariable(lucila));
+	}
+	
+	@Test
+	public void testLaFacturacionEstimadaVariableDeLucilaTrasEncenderLaImpresoraEsCorrespondienteALaCategoria2() {
+		estufaElectrica.encender();
+		lucila.recategorizar();
+		assertEquals(lucila.consumoTotalPorHora() * Categoria.R3.getNormalVariable(), 0,
+				lucila.getCategoria().estimarFacturacionCargoVariable(lucila));
+	}
 }
+

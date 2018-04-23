@@ -14,6 +14,7 @@ public class Cliente implements Usuario {
 	String numeroDni;
 	String telefono;
 	String domicilio;
+	// Según el anuncio que mandaron a dds-jv está "prohibido" utilizar java.Calendar
 	Calendar fechaAltaServicio;
 	Categoria categoria;
 	List<Dispositivo> dispositivos;
@@ -45,6 +46,10 @@ public class Cliente implements Usuario {
 	
 	public String getTipoDni() {
 		return this.tipoDni.toString();
+	}
+	
+	public Categoria getCategoria() {
+		return this.categoria;
 	}
 	
 	public void setTipoDni(String string) {
@@ -104,5 +109,19 @@ public class Cliente implements Usuario {
 		domicilio = obj.getString("domicilio");
 		fechaAltaServicio.set(obj.getInt("anio"), obj.getInt("mes"), obj.getInt("dia"));
 		categoria = (Categoria) obj.get("categoria");
+	}
+	
+	public void recategorizar() {
+	}
+	
+	public void CargarDesdeJson(JSONObject json) {	
+		this.nombre = json.getString("nombre");
+		this.apellido = json.getString("apellido");
+		this.setTipoDni(json.getString("tipoDni"));
+		this.numeroDni = json.getString("numeroDocumento");
+		this.telefono = json.getString("telefono");
+		this.domicilio = json.getString("domicilio");
+		this.setFechaAltaServicio(json.getInt("anio"), json.getInt("mes"), json.getInt("dia"));
+		this.categoria = (Categoria) json.get("categoria");
 	}
 }
