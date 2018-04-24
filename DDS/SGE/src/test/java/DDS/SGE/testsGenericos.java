@@ -76,11 +76,6 @@ public class testsGenericos {
 	}
 	
 	@Test
-	public void testElConsumoPorHoraDeAlejandroEs0Kwh() {
-		assertEquals(0, 0, alejandro.consumoTotalPorHora());
-	}
-
-	@Test
 	public void testLucilaTiene1DispositivoEncendido() {
 		assertEquals(1, lucila.dispositivosEncendidos());
 	}
