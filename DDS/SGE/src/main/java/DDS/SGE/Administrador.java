@@ -1,18 +1,18 @@
 package DDS.SGE;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 import org.json.JSONObject;
 
 public class Administrador implements Usuario {
-	String nombre;
-	String apellido;
-	String domicilio;
-	Calendar fechaAltaSistema;
-	int idAdmin;
+	private String nombre;
+	private String apellido;
+	private String domicilio;
+	private LocalDate fechaAltaSistema;
+	private int idAdmin;
 	
 	
-	public Administrador (String nombre, String apellido, String domicilio, Calendar fechaAltaSistema, int idAdmin){
+	public Administrador (String nombre, String apellido, String domicilio, LocalDate fechaAltaSistema, int idAdmin){
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
@@ -20,22 +20,28 @@ public class Administrador implements Usuario {
 		this.idAdmin = idAdmin;
 	}
 	
-	public Administrador(JSONObject json) {
+	public Administrador(String json) {
 		this.CargarDesdeJson(json);
 	}
 	
-
+	
 	public void setFechaAltaSistema(int anio, int mes, int dia) {
-		this.fechaAltaSistema.set(anio,mes,dia);
+		this.fechaAltaSistema = this.fechaAltaSistema.withDayOfMonth(dia).withMonth(mes).withYear(anio);
+	}
+	
+	public int cantidadDeMesesComoAdmin() {
+		//TODO Falta implementar
+		return 1;
 	}
 
 
-	public void CargarDesdeJson(JSONObject json) {		
-		this.nombre = json.getString("nombre");
-		this.apellido = json.getString("apellido");
-		this.domicilio = json.getString("domicilio");
-		this.setFechaAltaSistema(json.getInt("anio"), json.getInt("mes"), json.getInt("dia"));
-		this.idAdmin = json.getInt("idAdmin");
+	public void CargarDesdeJson(String json) {
+		JSONObject jsonObject = new JSONObject(json);
+		this.nombre = jsonObject.getString("nombre");
+		this.apellido = jsonObject.getString("apellido");
+		this.domicilio = jsonObject.getString("domicilio");
+		this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
+		this.idAdmin = jsonObject.getInt("idAdmin");
 		
 	}
 	

@@ -3,7 +3,7 @@ package DDS.SGE;
 import org.json.JSONObject;
 
 public class Dispositivo {
-	public String nombre;
+	private  String nombre;
 	private double consumoKWPorHora;
 	private boolean encendido;
 
@@ -19,6 +19,10 @@ public class Dispositivo {
 		nombre = obj.getString("nombre");
 		consumoKWPorHora = obj.getDouble("consumoKWPorHora");
 		encendido = obj.getBoolean("encendido");
+	}
+	
+	public String getNombre() {
+		return this.nombre;
 	}
 
 	public boolean estaEncendido() {

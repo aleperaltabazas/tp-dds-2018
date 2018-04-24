@@ -1,26 +1,27 @@
 package DDS.SGE;
 
 
-import java.util.Calendar;
+import java.util.Arrays;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Stream;
 
 import org.json.*;
 
 public class Cliente implements Usuario {
-	String nombre;
-	String apellido;
-	TipoDni tipoDni;
-	String numeroDni;
-	String telefono;
-	String domicilio;
+	private String nombre;
+	private String apellido;
+	private TipoDni tipoDni;
+	private String numeroDni;
+	private String telefono;
+	private String domicilio;
 	// Según el anuncio que mandaron a dds-jv está "prohibido" utilizar java.Calendar
-	Calendar fechaAltaServicio;
-	Categoria categoria;
-	List<Dispositivo> dispositivos;
+	private LocalDate fechaAltaServicio;
+	private Categoria categoria;
+	private List<Dispositivo> dispositivos;
 
 
-	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio, Calendar fechaAltaServicio, Categoria categoria, List<Dispositivo> dispositivos) {
+	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio, LocalDate fechaAltaServicio, List<Dispositivo> dispositivos) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tipoDni = tipoDni;
@@ -28,12 +29,11 @@ public class Cliente implements Usuario {
 		this.telefono = telefono;
 		this.domicilio = domicilio;
 		this.fechaAltaServicio = fechaAltaServicio;
-		this.categoria = categoria;
-		this.dispositivos = dispositivos;
+		this.setDispositivos(dispositivos);
 	}
 	
 	//Creo constructor para crear un Cliente a partir de un json.
-	public Cliente(JSONObject json) {
+	public Cliente(String json) {
 		this.CargarDesdeJson(json);
 	}
 	
@@ -48,6 +48,10 @@ public class Cliente implements Usuario {
 		return this.tipoDni.toString();
 	}
 	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
 	public Categoria getCategoria() {
 		return this.categoria;
 	}
@@ -57,15 +61,16 @@ public class Cliente implements Usuario {
 	}
 	
 	public void setFechaAltaServicio(int anio, int mes, int dia) {
-		this.fechaAltaServicio.set(anio,mes,dia);
-	}
-
-	public void setCategoria(Categoria nuevaCategoria) {
-		categoria = nuevaCategoria;
+		this.fechaAltaServicio = this.fechaAltaServicio.withDayOfMonth(dia).withMonth(mes).withYear(anio);
 	}
 	
 	public Stream<Dispositivo> getDispositivos() {
 		return dispositivos.stream();
+	}
+	
+	public void setDispositivos(List<Dispositivo> dispositivos) {
+		this.dispositivos = dispositivos;
+		this.categorizar();
 	}
 
 	public boolean algunDispositivoEncendido() {
@@ -92,36 +97,19 @@ public class Cliente implements Usuario {
 	public double consumoTotalPorMes() {
 		return (this.consumoTotalPorHora() * 24) * 30;
 	}
-	//TODO Falta poder recategorizar a los Clientes, según su consumo:
-	/*  Hay algo que no está explícito en el enunciado de esta entrega, sino que está en la presentación, pero queremos
-	 *  que también hagan para esta entrega. Queremos que implementen el mensaje para recategorizar un usuario. Es decir, que a partir
-	 *  del consumo que tiene, elija la categoría a la que debería pertenecer y se la asigne. No es necesario que hagan la parte de que
-	 *  eso ocurra automáticamente cada 3 meses todavía.
-	 */
 
-	public Cliente(String json) {
-		JSONObject obj = new JSONObject(json);		
-		nombre = obj.getString("nombre");
-		apellido = obj.getString("apellido");
-		setTipoDni(obj.getString("tipoDni"));
-		numeroDni = obj.getString("numeroDni");
-		telefono = obj.getString("telefono");
-		domicilio = obj.getString("domicilio");
-		fechaAltaServicio.set(obj.getInt("anio"), obj.getInt("mes"), obj.getInt("dia"));
-		categoria = (Categoria) obj.get("categoria");
+	public void categorizar() {
+		categoria = Arrays.stream(Categoria.values()).filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
 	}
 	
-	public void recategorizar() {
-	}
-	
-	public void CargarDesdeJson(JSONObject json) {	
-		this.nombre = json.getString("nombre");
-		this.apellido = json.getString("apellido");
-		this.setTipoDni(json.getString("tipoDni"));
-		this.numeroDni = json.getString("numeroDocumento");
-		this.telefono = json.getString("telefono");
-		this.domicilio = json.getString("domicilio");
-		this.setFechaAltaServicio(json.getInt("anio"), json.getInt("mes"), json.getInt("dia"));
-		this.categoria = (Categoria) json.get("categoria");
+	public void CargarDesdeJson(String json) {	
+		JSONObject jsonObject = new JSONObject(json);
+		this.nombre = jsonObject.getString("nombre");
+		this.apellido = jsonObject.getString("apellido");
+		this.setTipoDni(jsonObject.getString("tipoDni"));
+		this.numeroDni = jsonObject.getString("numeroDni");
+		this.telefono = jsonObject.getString("telefono");
+		this.domicilio = jsonObject.getString("domicilio");
+		this.setFechaAltaServicio(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
 	}
 }
