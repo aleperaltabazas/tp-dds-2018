@@ -1,6 +1,8 @@
 package DDS.SGE;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import org.json.JSONObject;
 
@@ -29,9 +31,9 @@ public class Administrador implements Usuario {
 		this.fechaAltaSistema = this.fechaAltaSistema.withDayOfMonth(dia).withMonth(mes).withYear(anio);
 	}
 	
-	public int cantidadDeMesesComoAdmin() {
-		//TODO Falta implementar
-		return 1;
+	public long cantidadDeMesesComoAdmin() {
+		LocalDate localDate = LocalDate.now();
+		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
 	}
 
 

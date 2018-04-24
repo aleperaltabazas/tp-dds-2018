@@ -3,6 +3,7 @@ package DDS.SGE;
 
 import java.util.Arrays;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -110,6 +111,8 @@ public class Cliente implements Usuario {
 		this.numeroDni = jsonObject.getString("numeroDni");
 		this.telefono = jsonObject.getString("telefono");
 		this.domicilio = jsonObject.getString("domicilio");
-		this.setFechaAltaServicio(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
+		//this.setFechaAltaServicio(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); //Uso un parser 		
+		this.fechaAltaServicio = LocalDate.parse(jsonObject.getString("fechaAltaServicio"), formatter);;
 	}
 }

@@ -18,7 +18,7 @@ public class testsGenericos {
 	// Hago algunas instancias para los casos de prueba
 	String jsonDisp = "{nombre:dispositivo x,consumoKWPorHora:12,encendido:true}";
 	String jsonCliente = "{nombre:gonzalo,apellido:vaquero,tipoDni:dni,numeroDni:\"1254156153\",telefono:\"4444444\",domicilio:calle falsa 123,anio:2030,mes:01,dia:18}";
-	String jsonAdmin = "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20-15-2030,identificador:2}";
+	String jsonAdmin = "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20/15/2030,identificador:2}";
 	Dispositivo nintendoDS = new Dispositivo(0.5, false);
 	Dispositivo televisor = new Dispositivo(1, false);
 	Dispositivo plasma = new Dispositivo(2, false);
