@@ -4,6 +4,7 @@ package DDS.SGE;
 import java.util.Arrays;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -78,16 +79,20 @@ public class Cliente implements Usuario {
 		return getDispositivos().anyMatch(dispositivo -> dispositivo.estaEncendido());
 	}
 
-	public int cantidadDeDispositivos() {
+	public int cantidadDispositivos() {
 		return dispositivos.size();
 	}
 
-	public int dispositivosEncendidos() {
-		return (int) getDispositivos().filter(dispositivo ->dispositivo.estaEncendido()).count(); //Hago el casteo a Int porque el .count() me devuelve long.
+	public int cantidadDispositivosEncendidos() {
+		return (int) this.dispositivosEncendidos().count(); //Hago el casteo a Int porque el .count() me devuelve long.
+	}
+	
+	public Stream<Dispositivo> dispositivosEncendidos() {
+		return getDispositivos().filter(dispositivo ->dispositivo.estaEncendido());
 	}
 
 	public int dispositivosApagados() {
-		return this.cantidadDeDispositivos() - this.dispositivosEncendidos();
+		return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
 	}
 
 	public double consumoTotalPorHora() {

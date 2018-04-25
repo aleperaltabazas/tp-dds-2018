@@ -77,7 +77,7 @@ public class testsGenericos {
 	
 	@Test
 	public void testLucilaTiene1DispositivoEncendido() {
-		assertEquals(1, lucila.dispositivosEncendidos());
+		assertEquals(1, lucila.cantidadDispositivosEncendidos());
 	}
 
 	@Test
