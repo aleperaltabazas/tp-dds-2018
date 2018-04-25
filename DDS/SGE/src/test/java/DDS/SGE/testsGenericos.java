@@ -141,4 +141,13 @@ public class testsGenericos {
 
 		assertEquals(alejandro.consumoTotalPorHora(), nintendoDS.getConsumoKWPorHora() * 3, 0);
 	}
+
+	@Test
+	public void testEnAbrilElConsumoTotalPorMesDeLucilaEsMayorQueEnFebrero() {
+		LocalDate abril = LocalDate.now();
+		LocalDate febrero = LocalDate.of(2018, 2, 27);
+
+		assertTrue(lucila.consumoTotalDeUnMesEspecifico(abril) > lucila.consumoTotalDeUnMesEspecifico(febrero));
+	}
+
 }

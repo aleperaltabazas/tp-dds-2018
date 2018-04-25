@@ -103,7 +103,18 @@ public class Cliente implements Usuario {
 	// Tengo mis dudas aca, porque estoy asumiendo que un mes tiene 30 dias y no se
 	// si es lo correcto.
 	public double consumoTotalPorMes() {
-		return (this.consumoTotalPorHora() * 24) * 30;
+		LocalDate localDate = LocalDate.now();
+		int diasDelMesActual = localDate.lengthOfMonth();
+		return this.consumoFinal(diasDelMesActual);
+	}
+
+	public double consumoTotalDeUnMesEspecifico(LocalDate fecha) {
+		int diasDeTalMes = fecha.lengthOfMonth();
+		return this.consumoFinal(diasDeTalMes);
+	}
+
+	public double consumoFinal(int mes) {
+		return this.consumoTotalPorHora() * 24 * mes;
 	}
 
 	public void categorizar() {
