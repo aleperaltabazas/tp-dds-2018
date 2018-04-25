@@ -12,30 +12,27 @@ public class Administrador implements Usuario {
 	private String domicilio;
 	private LocalDate fechaAltaSistema;
 	private int idAdmin;
-	
-	
-	public Administrador (String nombre, String apellido, String domicilio, LocalDate fechaAltaSistema, int idAdmin){
+
+	public Administrador(String nombre, String apellido, String domicilio, LocalDate fechaAltaSistema, int idAdmin) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
 		this.fechaAltaSistema = fechaAltaSistema;
 		this.idAdmin = idAdmin;
 	}
-	
+
 	public Administrador(String json) {
 		this.CargarDesdeJson(json);
 	}
-	
-	
+
 	public void setFechaAltaSistema(int anio, int mes, int dia) {
 		this.fechaAltaSistema = this.fechaAltaSistema.withDayOfMonth(dia).withMonth(mes).withYear(anio);
 	}
-	
+
 	public long cantidadDeMesesComoAdmin() {
 		LocalDate localDate = LocalDate.now();
 		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
 	}
-
 
 	public void CargarDesdeJson(String json) {
 		JSONObject jsonObject = new JSONObject(json);
@@ -44,7 +41,7 @@ public class Administrador implements Usuario {
 		this.domicilio = jsonObject.getString("domicilio");
 		this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
 		this.idAdmin = jsonObject.getInt("idAdmin");
-		
+
 	}
-	
+
 }
