@@ -21,8 +21,16 @@ public class Administrador implements Usuario {
 		this.idAdmin = idAdmin;
 	}
 
+	public String getNombre() {
+		return this.nombre;
+	}
+
 	public Administrador(String json) {
 		this.CargarDesdeJson(json);
+	}
+	
+	public LocalDate getFechaAltaSistema() {
+		return this.fechaAltaSistema;
 	}
 
 	public void setFechaAltaSistema(int anio, int mes, int dia) {

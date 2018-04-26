@@ -36,6 +36,8 @@ public class testsGenericos {
 			LocalDate.now(), dispositivosDeLucila);
 	Cliente maxi = new Cliente("Maxi", "Paz", TipoDni.dni, "987654321", "1144448888", "Baker St. 221b", LocalDate.now(),
 			dispositivosDeMaxi);
+	LocalDate fechaDeAltaDeMarco = LocalDate.of(2017, 3, 20);
+	Administrador marco = new Administrador("Marco", "Polo", "Rivadavia 1100", fechaDeAltaDeMarco, 42);
 
 	// Al trabajar con el LocalDate.now() se nos genera el problema que dependiendo
 	// del mes que lo probemos puedan correr bien los test y en otros casos no, hay
@@ -78,6 +80,16 @@ public class testsGenericos {
 		assertEquals("gonzalo", cliente.getNombre());
 	}
 
+	/*
+	 * @Test public void crearAdministradorConGson() { Gson gson = new
+	 * GsonBuilder().create(); String gsonAdmin =
+	 * "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20/15/2030,identificador:2}"
+	 * ; Administrador administrador = gson.fromJson(gsonAdmin,
+	 * Administrador.class);
+	 * 
+	 * assertEquals("gonzalo", administrador.getNombre()); }
+	 */
+
 	@Test
 	public void testAlejandroNoTieneNingunDispositivoEncendido() {
 		assertFalse(alejandro.algunDispositivoEncendido());
@@ -91,6 +103,16 @@ public class testsGenericos {
 	@Test
 	public void testLucilaTiene1DispositivoEncendido() {
 		assertEquals(1, lucila.cantidadDeDispositivosEncendidos());
+	}
+
+	@Test
+	public void testLucilaTiene2Dispositivos() {
+		assertEquals(2, lucila.cantidadDeDispositivos());
+	}
+
+	@Test
+	public void testLucilaTiene1DispositivoApagado() {
+		assertEquals(1, lucila.cantidadDeDispositivosApagados());
 	}
 
 	@Test
@@ -108,14 +130,13 @@ public class testsGenericos {
 				lucila.consumoTotalPorMes(), 0);
 	}
 
-	@Test
-	public void testLaCategoriaDeMaxiEnCualquierMesQueNoSeaFebreroEsR2MientrasQueEnFebreroEsR1() {
-		maxi.categorizar();
-		if (diasDelMes > 29) {
-			assertEquals(Categoria.R2, maxi.getCategoria());
-		} else
-			assertEquals(Categoria.R1, maxi.getCategoria());
-	}
+	/*
+	 * @Test public void
+	 * testLaCategoriaDeMaxiEnCualquierMesQueNoSeaFebreroEsR2MientrasQueEnFebreroEsR1
+	 * () { maxi.categorizar(); if (diasDelMes > 29) { assertEquals(Categoria.R2,
+	 * maxi.getCategoria()); } else assertEquals(Categoria.R1, maxi.getCategoria());
+	 * }
+	 */
 
 	@Test
 	public void testLaCategoriaDeLucilaEsR9TrasCategorizarla() {
@@ -177,5 +198,19 @@ public class testsGenericos {
 
 		assertTrue(lucila.consumoTotalDeUnMesEspecifico(abril) > lucila.consumoTotalDeUnMesEspecifico(febrero));
 	}
+
+	// Creo que querían que usemos JodaTime, esto es mucho más simple con esto:
+	// https://www.leveluplunch.com/java/examples/number-of-months-between-two-dates/
+	// -> Segundo ejemplo de la pagina
+	/*
+	 * @Test public void
+	 * testMarcoTieneMesesComoAdminIgualALaDiferenciaEntreLaFechaActualYLaFechaDeAlta
+	 * () { LocalDate fechaActual = LocalDate.now(); LocalDate fechaDeAlta =
+	 * marco.getFechaAltaSistema(); long diferenciaDeMeses = ( fechaActual.getYear()
+	 * - fechaDeAlta.getYear() ) * 12 + fechaActual.getMonthValue() -
+	 * fechaDeAlta.getMonthValue();
+	 * 
+	 * assertEquals(diferenciaDeMeses, marco.cantidadDeMesesComoAdmin()); }
+	 */
 
 }
