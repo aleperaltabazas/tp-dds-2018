@@ -27,7 +27,7 @@ public enum Categoria {
 	}
 
 	public double estimarFacturacionCargoVariable(Cliente cliente) {
-		return cliente.consumoTotalPorHora() * normalVariable;
+		return cliente.consumoTotalEstimadoPorHora() * normalVariable;
 	}
 
 	public Categoria categoriaCliente(double consumo) {

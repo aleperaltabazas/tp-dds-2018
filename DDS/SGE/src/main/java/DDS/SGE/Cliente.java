@@ -84,24 +84,22 @@ public class Cliente implements Usuario {
 		return getDispositivos().filter(dispositivo -> dispositivo.estaEncendido());
 	}
 
-	public int cantidadDispositivosEncendidos() {
+	public int cantidadDeDispositivosEncendidos() {
 		return (int) dispositivosEncendidos().count(); // Hago el casteo a Int porque el .count() me devuelve long.
 	}
 
-	public int cantidadDispositivosApagados() {
-		return this.cantidadDeDispositivos() - this.cantidadDispositivosEncendidos();
+	public int cantidadDeDispositivosApagados() {
+		return this.cantidadDeDispositivos() - this.cantidadDeDispositivosEncendidos();
 	}
 
 	public DoubleStream consumoDispositivosPorHora() {
 		return getDispositivos().mapToDouble(dispositivo -> dispositivo.getConsumoKWPorHora());
 	}
 
-	public double consumoTotalPorHora() {
+	public double consumoTotalEstimadoPorHora() {
 		return this.consumoDispositivosPorHora().sum();
 	}
 
-	// Tengo mis dudas aca, porque estoy asumiendo que un mes tiene 30 dias y no se
-	// si es lo correcto.
 	public double consumoTotalPorMes() {
 		LocalDate localDate = LocalDate.now();
 		int diasDelMesActual = localDate.lengthOfMonth();
@@ -113,8 +111,8 @@ public class Cliente implements Usuario {
 		return this.consumoFinal(diasDeTalMes);
 	}
 
-	public double consumoFinal(int mes) {
-		return this.consumoTotalPorHora() * 24 * mes;
+	public double consumoFinal(int diasDelMes) {
+		return this.consumoTotalEstimadoPorHora() * 24 * diasDelMes;
 	}
 
 	public void categorizar() {
