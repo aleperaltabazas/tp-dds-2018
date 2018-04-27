@@ -19,7 +19,7 @@ public class SGETest {
 	int diasDelMes = LocalDate.now().lengthOfMonth();
 	String jsonDisp = "{nombre:dispositivo x,consumoKWPorHora:12,encendido:true}";
 	String jsonCliente = "{nombre:gonzalo,apellido:vaquero,tipoDni:dni,numeroDni:\"1254156153\",telefono:\"4444444\",domicilio:calle falsa 123,fechaAltaServicio:\"20/05/2017\"}";
-	String jsonAdmin = "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20/15/2030,identificador:2}";
+	String jsonAdmin = "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:\"20/15/2030\",identificador:2}";
 	Dispositivo nintendoDS = new Dispositivo(0.5, false);
 	Dispositivo televisor = new Dispositivo(1, false);
 	Dispositivo plasma = new Dispositivo(2, false);

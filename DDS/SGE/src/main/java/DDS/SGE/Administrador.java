@@ -47,9 +47,10 @@ public class Administrador implements Usuario {
 		this.nombre = jsonObject.getString("nombre");
 		this.apellido = jsonObject.getString("apellido");
 		this.domicilio = jsonObject.getString("domicilio");
-		this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
+		//this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
 		this.idAdmin = jsonObject.getInt("idAdmin");
-
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); // Uso un parser
+		this.fechaAltaSistema = LocalDate.parse(jsonObject.getString("fechaAltaServicio"), formatter);
 	}
 
 }
