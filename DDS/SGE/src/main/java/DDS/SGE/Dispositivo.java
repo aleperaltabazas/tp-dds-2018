@@ -3,7 +3,7 @@ package DDS.SGE;
 import org.json.JSONObject;
 
 public class Dispositivo {
-	private  String nombre;
+	private String nombre;
 	private double consumoKWPorHora;
 	private boolean encendido;
 
@@ -20,7 +20,7 @@ public class Dispositivo {
 		consumoKWPorHora = obj.getDouble("consumoKWPorHora");
 		encendido = obj.getBoolean("encendido");
 	}
-	
+
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -38,5 +38,10 @@ public class Dispositivo {
 	// dispositivo se recalcule su categoría
 	public void encender() {
 		this.encendido = true;
+	}
+
+	public void apagar() {
+		this.encendido = false;
+		// Si hacemos encender, hagamos apagar
 	}
 }
