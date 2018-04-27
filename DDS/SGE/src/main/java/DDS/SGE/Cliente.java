@@ -35,7 +35,7 @@ public class Cliente implements Usuario {
 
 	// Hago un constructor para crear un Cliente a partir de un json.
 	public Cliente(String json) {
-		this.CargarDesdeJson(json);
+		this.cargarDesdeJson(json);
 	}
 
 	public enum TipoDni {
@@ -123,7 +123,7 @@ public class Cliente implements Usuario {
 				.filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
 	}
 
-	public void CargarDesdeJson(String json) {
+	public void cargarDesdeJson(String json) {
 		JSONObject jsonObject = new JSONObject(json);
 		this.nombre = jsonObject.getString("nombre");
 		this.apellido = jsonObject.getString("apellido");
@@ -135,6 +135,5 @@ public class Cliente implements Usuario {
 		// jsonObject.getInt("mes"), jsonObject.getInt("dia"));
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); // Uso un parser
 		this.fechaAltaServicio = LocalDate.parse(jsonObject.getString("fechaAltaServicio"), formatter);
-		;
 	}
 }

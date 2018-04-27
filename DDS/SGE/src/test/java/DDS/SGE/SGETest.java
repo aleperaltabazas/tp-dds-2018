@@ -13,7 +13,7 @@ import org.junit.Test;
 import DDS.SGE.Cliente.TipoDni;
 import junit.framework.Assert;
 
-public class testsGenericos {
+public class SGETest {
 
 	// Hago algunas instancias para los casos de prueba
 	int diasDelMes = LocalDate.now().lengthOfMonth();

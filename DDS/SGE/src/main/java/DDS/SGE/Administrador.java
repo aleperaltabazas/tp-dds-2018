@@ -26,7 +26,7 @@ public class Administrador implements Usuario {
 	}
 
 	public Administrador(String json) {
-		this.CargarDesdeJson(json);
+		this.cargarDesdeJson(json);
 	}
 	
 	public LocalDate getFechaAltaSistema() {
@@ -42,7 +42,7 @@ public class Administrador implements Usuario {
 		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
 	}
 
-	public void CargarDesdeJson(String json) {
+	public void cargarDesdeJson(String json) {
 		JSONObject jsonObject = new JSONObject(json);
 		this.nombre = jsonObject.getString("nombre");
 		this.apellido = jsonObject.getString("apellido");
