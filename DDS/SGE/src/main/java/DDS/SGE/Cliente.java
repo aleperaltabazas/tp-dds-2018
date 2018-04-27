@@ -86,10 +86,6 @@ public class Cliente implements Usuario {
 	public Stream<Dispositivo> dispositivosEncendidos() {
 		return getDispositivos().filter(dispositivo ->dispositivo.estaEncendido());
 	}
-
-	public int dispositivosApagados() {
-		return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
-	}
 	
 	public int cantidadDispositivosApagados() {
 		return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
