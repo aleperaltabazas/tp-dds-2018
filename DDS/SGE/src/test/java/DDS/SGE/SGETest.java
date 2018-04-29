@@ -43,53 +43,6 @@ public class SGETest {
 	// del mes que lo probemos puedan correr bien los test y en otros casos no, hay
 	// que estar atentos a eso
 
-	@Test
-	public void castearJson() {
-		Dispositivo disp = new Dispositivo(10, true);
-		disp.cargarDesdeJson(jsonDisp);
-
-		assertEquals("dispositivo x", disp.getNombre());
-	}
-
-	@Test
-	public void crearCliente() {
-		Cliente unCliente = new Cliente(jsonCliente);
-
-		assertEquals("gonzalo", unCliente.getNombre());
-	}
-
-	// Esto deberia crear un cliente directamente desde el json - hay que ver como
-	// quedarian los constructores y demas
-	// Mientras no ande dejo la carga de json con json.org
-
-	@Test
-	public void crearClienteConGson() {
-		Gson gson = new GsonBuilder().create();
-		String gsonDisp = "{'nombre':'dispositivo x','consumoKWPorHora':'12','encendido':'true'}";
-		Dispositivo disp = gson.fromJson(gsonDisp, Dispositivo.class);
-
-		assertEquals("dispositivo x", disp.getNombre());
-	}
-
-	@Test
-	public void crearDispositivoConGson() {
-		Gson gson = new GsonBuilder().create();
-		String gsonCliente = "{'nombre':'gonzalo','apellido':'vaquero','tipoDni':'dni','numeroDocumento':'123','telefono':'4444444','domicilio':'calle falsa 123', 'fecha':'15-15-2030','categoria':'R1'}";
-		Cliente cliente = gson.fromJson(gsonCliente, Cliente.class);
-
-		assertEquals("gonzalo", cliente.getNombre());
-		assertEquals("dni",cliente.getTipoDni());
-	}
-
-	/*
-	 * @Test public void crearAdministradorConGson() { Gson gson = new
-	 * GsonBuilder().create(); String gsonAdmin =
-	 * "{nombre:mati,apellido:giorda,domicilio:calle falsa 321, fechaAlta:20/15/2030,identificador:2}"
-	 * ; Administrador administrador = gson.fromJson(gsonAdmin,
-	 * Administrador.class);
-	 * 
-	 * assertEquals("gonzalo", administrador.getNombre()); }
-	 */
 
 	@Test
 	public void testAlejandroNoTieneNingunDispositivoEncendido() {
