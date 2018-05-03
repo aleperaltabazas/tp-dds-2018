@@ -30,11 +30,11 @@ public class SGETest {
 	List<Dispositivo> dispositivosDeAlejandro = Arrays.asList(nintendoDS, plasma);
 	List<Dispositivo> dispositivosDeLucila = Arrays.asList(televisor, computadora);
 	List<Dispositivo> dispositivosDeMaxi = Arrays.asList(pcGamer);
-	Cliente alejandro = new Cliente("Alejandro", "Peralta", TipoDni.dni, "123456789", "1144448888",
+	Cliente alejandro = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 			"Av siempre viva 742", LocalDate.now(), dispositivosDeAlejandro);
-	Cliente lucila = new Cliente("Lucila", "Salmeron", TipoDni.dni, "123456789", "1144448888", "Av siempre viva 742",
+	Cliente lucila = new Cliente("Lucila", "Salmeron", TipoDni.DNI, "123456789", "1144448888", "Av siempre viva 742",
 			LocalDate.now(), dispositivosDeLucila);
-	Cliente maxi = new Cliente("Maxi", "Paz", TipoDni.dni, "987654321", "1144448888", "Baker St. 221b", LocalDate.now(),
+	Cliente maxi = new Cliente("Maxi", "Paz", TipoDni.DNI, "987654321", "1144448888", "Baker St. 221b", LocalDate.now(),
 			dispositivosDeMaxi);
 	LocalDate fechaDeAltaDeMarco = LocalDate.of(2017, 3, 20);
 	Administrador marco = new Administrador("Marco", "Polo", "Rivadavia 1100", fechaDeAltaDeMarco, 42);

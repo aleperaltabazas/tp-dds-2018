@@ -39,7 +39,7 @@ public class Cliente implements Usuario {
 	}
 
 	public enum TipoDni {
-		dni, ci, le, lc
+		DNI, CI, LE, LC
 	}
 
 	public String getTipoDni() {
