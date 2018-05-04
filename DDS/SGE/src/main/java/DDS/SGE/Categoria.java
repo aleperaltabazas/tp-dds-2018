@@ -30,13 +30,6 @@ public enum Categoria {
 		return cliente.consumoTotalEstimadoPorHora() * normalVariable;
 	}
 
-	/*public Categoria categoriaCliente(double consumo) {
-		for (Categoria cat : Categoria.values()) {
-		}
-		;
-		return R1;
-	}*/
-
 	public boolean pertenece(double consumo) {
 		return consumo < this.consumoMensualMaximo && consumo > this.consumoMensualMinimo;
 	}

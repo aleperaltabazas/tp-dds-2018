@@ -94,9 +94,9 @@ public class SGETest {
 
 	@Test
 	public void testLaCategoriaDeLucilaEsR9TrasCategorizarla() {
-		// El consumo de lucila minimo en febrero de 28 días es 2.2 * 24 * 28 = 1478 por
-		// lo que es independiente del mes (siempre va a ser categoría 9)
-		lucila.categorizar();
+		// El consumo de lucila minimo en febrero de 28 dias es 2.2 * 24 * 28 = 1478 por
+		// lo que es independiente del mes (siempre va a ser categoria 9)
+		lucila.recategorizar();
 
 		assertEquals(Categoria.R9, lucila.getCategoria());
 	}
@@ -112,8 +112,8 @@ public class SGETest {
 		List<Dispositivo> dispositivosNuevos = Arrays.asList(estufaElectrica);
 		alejandro.setDispositivos(dispositivosNuevos);
 
-		// El rango de consumo de la estufa eléctrica va desde 1.2 * 24 * 28 = 806,4
-		// hasta 1.2 * 24 * 31 = 892,8 por lo que queda en la categoría 8
+		// El rango de consumo de la estufa electrica va desde 1.2 * 24 * 28 = 806,4
+		// hasta 1.2 * 24 * 31 = 892,8 por lo que queda en la categoria 8
 		// independientemente del mes
 		assertEquals(Categoria.R8, alejandro.getCategoria());
 	}
@@ -145,15 +145,15 @@ public class SGETest {
 
 	@Test
 	public void testEnAbrilElConsumoTotalPorMesDeLucilaEsMayorQueEnFebrero() {
-		// El test tiene que ser durable, no debería estarse usando el .now() porque si
-		// lo pruebo en febrero este test fallaría
+		// El test tiene que ser durable, no deberia estarse usando el .now() porque si
+		// lo pruebo en febrero este test fallaria
 		LocalDate abril = LocalDate.of(2018, 4, 22);
 		LocalDate febrero = LocalDate.of(2018, 2, 27);
 
 		assertTrue(lucila.consumoTotalDeUnMesEspecifico(abril) > lucila.consumoTotalDeUnMesEspecifico(febrero));
 	}
 
-	// Creo que querían que usemos JodaTime, esto es mucho más simple con esto:
+	// Creo que querian que usemos JodaTime, esto es mucho mas simple con esto:
 	// https://www.leveluplunch.com/java/examples/number-of-months-between-two-dates/
 	// -> Segundo ejemplo de la pagina
 	/*

@@ -30,6 +30,7 @@ public class Cliente implements Usuario {
 		this.telefono = telefono;
 		this.domicilio = domicilio;
 		this.fechaAltaServicio = fechaAltaServicio;
+		this.categoria = Categoria.R1;
 		this.setDispositivos(dispositivos);
 	}
 
@@ -68,7 +69,6 @@ public class Cliente implements Usuario {
 
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
-		this.categorizar();
 	}
 
 	public boolean algunDispositivoEncendido() {
@@ -114,7 +114,7 @@ public class Cliente implements Usuario {
 		return this.consumoTotalEstimadoPorHora() * 24 * diasDelMes;
 	}
 
-	public void categorizar() {
+	public void recategorizar() {
 		categoria = Arrays.stream(Categoria.values())
 				.filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
 	}
