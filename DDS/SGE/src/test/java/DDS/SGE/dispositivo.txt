@@ -1,1 +1,1 @@
-{nombre:dispositivo x,consumoKWPorHora:12,encendido:true}
+{nombre:dispositivox,consumoKWPorHora:12,encendido:true}

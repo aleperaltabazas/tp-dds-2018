@@ -13,25 +13,31 @@ public class TestCrearObjetos {
 	@Test
 	public void CrearCliente() {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		Cliente unCliente = builder.crearCliente("..\\..\\src\\test\\java\\DDS\\SGE\\cliente.txt");
+		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\cliente.txt";
+		
+		Cliente unCliente = builder.crearCliente(imgUrl);
 		
 		Assert.assertEquals("gonzalo", unCliente.getNombre());
 	}
 	
 	@Test
 	public void CrearAdministrador() {
-		Administrador unAdministrador = builder.crearAdministrador("C:\\Users\\Usuario\\Documents\\UTN\\Diseño de sistemas\\2018-vn-group-11\\DDS\\SGE\\src\\test\\java\\DDS\\SGE\\administrador.txt");
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\admin.txt";
+		
+		Administrador unAdministrador = builder.crearAdministrador(imgUrl);
 		
 		Assert.assertEquals("mati", unAdministrador.getNombre());
 	}
 	
 	@Test
 	public void CrearDispositivo() {
-		//Dispositivo unDispositivo = builder.crearDispositivo("C:\\Users\\Usuario\\Documents\\UTN\\Diseño de sistemas\\2018-vn-group-11\\DDS\\SGE\\src\\test\\java\\DDS\\SGE\\dispositivo.txt");
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\cliente.txt";
-		Assert.assertEquals("algo", imgUrl);
-		//Assert.assertEquals("dispositivo x", unDispositivo.getNombre());
+		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\dispositivo.txt";
+		
+		Dispositivo unDispositivo = builder.crearDispositivo(imgUrl);
+
+		Assert.assertEquals("dispositivox", unDispositivo.getNombre());
 	}
 
 }
