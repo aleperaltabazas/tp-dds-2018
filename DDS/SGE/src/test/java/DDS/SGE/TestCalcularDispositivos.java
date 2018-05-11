@@ -14,7 +14,7 @@ import org.junit.Test;
 import DDS.SGE.Cliente.TipoDni;
 import junit.framework.Assert;
 
-public class TestDispositivos {
+public class TestCalcularDispositivos {
 	
 	Dispositivo dispositivoEncendido = new Dispositivo(1, true);
 	Dispositivo dispositivoApagado = new Dispositivo(1, false);
@@ -35,7 +35,7 @@ public class TestDispositivos {
 	/* No funciona
 	@Test
 	public void testUnClienteSinDispositivosNoTieneDispositivosEncendidos() {
-		assertTrue(clienteDerrochador.algunDispositivoEncendido());
+		assertTrue(clienteSinDispositivos.algunDispositivoEncendido());
 	}*/
 	
 	@Test

@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import DDS.SGE.Cliente.TipoDni;
 
-public class TestCategorias {
+public class TestRecategorizar {
 
 	Dispositivo dispositivoConMedioConsumo = new Dispositivo(0.6, false);
 	Dispositivo dispositivoConAltoConsumo = new Dispositivo(2, true);
@@ -30,7 +30,7 @@ public class TestCategorias {
 		clienteDerrochador.recategorizar();
 		clienteDeCategoriaR8.recategorizar();
 	}
-
+	
 	@Test
 	public void testLaCategoriaDeUnClienteNuevoEsR1() {
 		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDate.now(), Arrays.asList());
@@ -47,9 +47,4 @@ public class TestCategorias {
 		assertEquals(Categoria.R8, clienteDeCategoriaR8.getCategoria());
 	}
 
-	@Test
-	public void testLaFacturacionEstimadaVariableDeLucilaEsCorrespondienteALaCategoriaR9() {
-		assertEquals(clienteDerrochador.consumoTotalEstimadoPorHora() * Categoria.R9.getNormalVariable(),
-				clienteDerrochador.getCategoria().estimarFacturacionCargoVariable(clienteDerrochador), 0);
-	}
 }

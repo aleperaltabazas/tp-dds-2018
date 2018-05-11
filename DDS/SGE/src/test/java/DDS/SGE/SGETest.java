@@ -135,7 +135,8 @@ public class SGETest {
 		assertFalse(alejandro.algunDispositivoEncendido());
 
 	}
-
+	
+	@Test
 	public void testAlejandroTiene3NintendoDSYSuConsumoPorHoraEsElTripleQueUnaDS() {
 		List<Dispositivo> nuevosDispositivos = Arrays.asList(nintendoDS, nintendoDS, nintendoDS);
 		alejandro.setDispositivos(nuevosDispositivos);
