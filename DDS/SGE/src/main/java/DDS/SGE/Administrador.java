@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 import org.json.JSONObject;
 
-public class Administrador implements Usuario {
+public class Administrador {
 	private String nombre;
 	private String apellido;
 	private String domicilio;
@@ -25,10 +25,6 @@ public class Administrador implements Usuario {
 	public String getNombre() {
 		return this.nombre;
 	}
-
-	public Administrador(String json) {
-		this.cargarDesdeJson(json);
-	}
 	
 	public LocalDateTime getFechaAltaSistema() {
 		return this.fechaAltaSistema;
@@ -42,16 +38,4 @@ public class Administrador implements Usuario {
 		LocalDate localDate = LocalDate.now();
 		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
 	}
-
-	public void cargarDesdeJson(String json) {
-		JSONObject jsonObject = new JSONObject(json);
-		this.nombre = jsonObject.getString("nombre");
-		this.apellido = jsonObject.getString("apellido");
-		this.domicilio = jsonObject.getString("domicilio");
-		//this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
-		this.idAdmin = jsonObject.getInt("idAdmin");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); // Uso un parser
-		this.fechaAltaSistema = LocalDateTime.parse(jsonObject.getString("fechaAltaServicio"), formatter);
-	}
-
 }

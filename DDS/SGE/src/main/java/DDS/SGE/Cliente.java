@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-public class Cliente implements Usuario {
+public class Cliente {
 	private String nombre;
 	private String apellido;
 	private TipoDni tipoDni;
@@ -33,11 +33,6 @@ public class Cliente implements Usuario {
 		this.fechaAltaServicio = fechaAltaServicio;
 		this.categoria = Categoria.R1;
 		this.setDispositivos(dispositivos);
-	}
-
-	// Hago un constructor para crear un Cliente a partir de un json.
-	public Cliente(String json) {
-		this.cargarDesdeJson(json);
 	}
 
 	public enum TipoDni {
@@ -118,19 +113,5 @@ public class Cliente implements Usuario {
 	public void recategorizar() {
 		categoria = Arrays.stream(Categoria.values())
 				.filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
-	}
-
-	public void cargarDesdeJson(String json) {
-		JSONObject jsonObject = new JSONObject(json);
-		this.nombre = jsonObject.getString("nombre");
-		this.apellido = jsonObject.getString("apellido");
-		this.setTipoDni(jsonObject.getString("tipoDni"));
-		this.numeroDni = jsonObject.getString("numeroDni");
-		this.telefono = jsonObject.getString("telefono");
-		this.domicilio = jsonObject.getString("domicilio");
-		// this.setFechaAltaServicio(jsonObject.getInt("anio"),
-		// jsonObject.getInt("mes"), jsonObject.getInt("dia"));
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); // Uso un parser
-		this.fechaAltaServicio = LocalDateTime.parse(jsonObject.getString("fechaAltaServicio"), formatter);
 	}
 }
