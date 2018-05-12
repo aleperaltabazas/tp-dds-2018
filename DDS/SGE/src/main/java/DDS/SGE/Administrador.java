@@ -1,6 +1,7 @@
 package DDS.SGE;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -10,10 +11,10 @@ public class Administrador implements Usuario {
 	private String nombre;
 	private String apellido;
 	private String domicilio;
-	private LocalDate fechaAltaSistema;
+	private LocalDateTime fechaAltaSistema;
 	private int idAdmin;
 
-	public Administrador(String nombre, String apellido, String domicilio, LocalDate fechaAltaSistema, int idAdmin) {
+	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema, int idAdmin) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
@@ -29,7 +30,7 @@ public class Administrador implements Usuario {
 		this.cargarDesdeJson(json);
 	}
 	
-	public LocalDate getFechaAltaSistema() {
+	public LocalDateTime getFechaAltaSistema() {
 		return this.fechaAltaSistema;
 	}
 
@@ -50,7 +51,7 @@ public class Administrador implements Usuario {
 		//this.setFechaAltaSistema(jsonObject.getInt("anio"), jsonObject.getInt("mes"), jsonObject.getInt("dia"));
 		this.idAdmin = jsonObject.getInt("idAdmin");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); // Uso un parser
-		this.fechaAltaSistema = LocalDate.parse(jsonObject.getString("fechaAltaServicio"), formatter);
+		this.fechaAltaSistema = LocalDateTime.parse(jsonObject.getString("fechaAltaServicio"), formatter);
 	}
 
 }

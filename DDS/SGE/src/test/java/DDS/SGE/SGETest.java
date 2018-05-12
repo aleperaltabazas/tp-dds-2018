@@ -5,6 +5,7 @@ import com.google.gson.*;
 
 import java.util.Arrays;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -31,12 +32,12 @@ public class SGETest {
 	List<Dispositivo> dispositivosDeLucila = Arrays.asList(televisor, computadora);
 	List<Dispositivo> dispositivosDeMaxi = Arrays.asList(pcGamer);
 	Cliente alejandro = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-			"Av siempre viva 742", LocalDate.now(), dispositivosDeAlejandro);
+			"Av siempre viva 742", LocalDateTime.now(), dispositivosDeAlejandro);
 	Cliente lucila = new Cliente("Lucila", "Salmeron", TipoDni.DNI, "123456789", "1144448888", "Av siempre viva 742",
-			LocalDate.now(), dispositivosDeLucila);
-	Cliente maxi = new Cliente("Maxi", "Paz", TipoDni.DNI, "987654321", "1144448888", "Baker St. 221b", LocalDate.now(),
+			LocalDateTime.now(), dispositivosDeLucila);
+	Cliente maxi = new Cliente("Maxi", "Paz", TipoDni.DNI, "987654321", "1144448888", "Baker St. 221b", LocalDateTime.now(),
 			dispositivosDeMaxi);
-	LocalDate fechaDeAltaDeMarco = LocalDate.of(2017, 3, 20);
+	LocalDateTime fechaDeAltaDeMarco = LocalDateTime.of(2017, 3, 20,15,15);
 	Administrador marco = new Administrador("Marco", "Polo", "Rivadavia 1100", fechaDeAltaDeMarco, 42);
 
 	// Al trabajar con el LocalDate.now() se nos genera el problema que dependiendo

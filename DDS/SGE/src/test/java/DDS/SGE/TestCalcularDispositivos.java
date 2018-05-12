@@ -5,6 +5,7 @@ import com.google.gson.*;
 
 import java.util.Arrays;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -27,9 +28,9 @@ public class TestCalcularDispositivos {
 		 /*clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 					"Av siempre viva 742", LocalDate.now(), sinDispositivos);*/
 		 clienteConVariosDispostivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-					"Av siempre viva 742", LocalDate.now(), Arrays.asList(dispositivoEncendido, dispositivoApagado, dispositivoEncendido, dispositivoEncendido));
+					"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoEncendido, dispositivoApagado, dispositivoEncendido, dispositivoEncendido));
 		 clienteConTodoApagado = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-					"Calle Falsa 123", LocalDate.now(), Arrays.asList(dispositivoApagado, dispositivoApagado));
+					"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoApagado, dispositivoApagado));
 	}
 	
 	/* No funciona

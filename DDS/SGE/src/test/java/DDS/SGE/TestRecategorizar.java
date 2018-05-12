@@ -3,6 +3,7 @@ package DDS.SGE;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class TestRecategorizar {
 	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, false);
 
 	Cliente clienteSinDispositivos = new Cliente("Sherlock", "Holmes", TipoDni.DNI, "123456789", "1144448888",
-			"Baker St. 221b", LocalDate.now(), Arrays.asList());
+			"Baker St. 221b", LocalDateTime.now(), Arrays.asList());
 	Cliente clienteDerrochador = new Cliente("Lucila", "Salmeron", TipoDni.DNI, "123454321", "1155667788",
-			"Calle verdadera 321", LocalDate.now(), Arrays.asList(dispositivoConMedioConsumo, dispositivoConAltoConsumo));
+			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList(dispositivoConMedioConsumo, dispositivoConAltoConsumo));
 	Cliente clienteDeCategoriaR8 = new Cliente("Jorge", "Rodriguez", TipoDni.DNI, "543212345", "1188776655",
-			"Calle verdadera 654", LocalDate.now(), Arrays.asList(dispositivoConConsumoParaCategoriaR8));
+			"Calle verdadera 654", LocalDateTime.now(), Arrays.asList(dispositivoConConsumoParaCategoriaR8));
 
 	@Before
 	public void initialize() {
@@ -33,7 +34,7 @@ public class TestRecategorizar {
 	
 	@Test
 	public void testLaCategoriaDeUnClienteNuevoEsR1() {
-		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDate.now(), Arrays.asList());
+		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDateTime.now(), Arrays.asList());
 		assertEquals(Categoria.R1, unClienteNuevo.getCategoria());
 	}
 
