@@ -5,43 +5,34 @@ import org.json.JSONObject;
 public class Dispositivo {
 	private String nombre;
 	private double consumoKWPorHora;
-	private boolean encendido;
+	private TipoDispositivo tipo;
 
-	// Lo hago simplificado para los tests
-	public Dispositivo(double consumoKWPorHora, boolean encendido) {
+	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo) {
 		this.consumoKWPorHora = consumoKWPorHora;
-		this.encendido = encendido;
-	}
-
-	public void cargarDesdeJson(String json) {
-		JSONObject obj = new JSONObject(json);
-
-		nombre = obj.getString("nombre");
-		consumoKWPorHora = obj.getDouble("consumoKWPorHora");
-		encendido = obj.getBoolean("encendido");
+		this.tipo = tipo;
 	}
 
 	public String getNombre() {
 		return this.nombre;
 	}
-
+	
 	public boolean estaEncendido() {
-		return this.encendido;
+		return tipo.estaEncendido();
 	}
 
-	// Idem que el caso anterior
 	public double getConsumoKWPorHora() {
 		return this.consumoKWPorHora;
 	}
-
-	// Se podria pensar que cada vez que un cliente encienda o apague algun
-	// dispositivo se recalcule su categoría
-	public void encender() {
-		this.encendido = true;
+	
+	public double consumoDiarioEstimado() {
+		return consumoKWPorHora * tipo.usoEstimadoDiario();
 	}
-
-	public void apagar() {
-		this.encendido = false;
-		// Si hacemos encender, hagamos apagar
+	
+	/*
+	public void convertirAInteligente(Adaptador adaptador) {
+		//validar si ya es inteligente o no
+		//this.tipo = new DispositivoInteligente(adaptador., adaptador.);
+		//Agregar 10 puntos al cliente
 	}
+	*/
 }

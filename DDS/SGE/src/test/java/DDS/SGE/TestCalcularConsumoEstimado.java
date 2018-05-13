@@ -16,7 +16,7 @@ import DDS.SGE.Cliente.TipoDni;
 public class TestCalcularConsumoEstimado {
 
 	int diasDelMes = LocalDate.now().lengthOfMonth();
-	Dispositivo unDispositivo = new Dispositivo(0.78, true);
+	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24));
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
 			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));	
 	
@@ -27,16 +27,16 @@ public class TestCalcularConsumoEstimado {
 	
 	@Test
 	public void testElConsumoMensualDeUnClienteEsElCorrespondienteAlConsumoDelDispositivoConvertidoALaDuracionDelMesActual() {
-		assertEquals(unDispositivo.getConsumoKWPorHora() * 24 * diasDelMes,
+		assertEquals(unDispositivo.consumoDiarioEstimado() * diasDelMes,
 				unCliente.consumoTotalPorMes(), 0);
 	}
 	
 	@Test
-	public void testUnClienteTiene3DispositivosIgualesYSuConsumoTotalPorHoraEsElTripleDelConsumoDelDispositivo() {
+	public void testUnClienteTiene3DispositivosIgualesYSuConsumoTotalDiarioEsElTripleDelConsumoDelDispositivo() {
 		List<Dispositivo> tresDispositivosIguales = Arrays.asList(unDispositivo, unDispositivo, unDispositivo);
 		unCliente.setDispositivos(tresDispositivosIguales);
 
-		assertEquals(unDispositivo.getConsumoKWPorHora() * 3, unCliente.consumoTotalEstimadoPorHora(), 0);
+		assertEquals(unDispositivo.consumoDiarioEstimado() * 3, unCliente.consumoTotalEstimadoDiario(), 0);
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class TestCalcularConsumoEstimado {
 	public void testLaFacturacionEstimadaVariableDelClienteEsCorrespondienteASuCategoria() {
 		Categoria categoriaDelCliente = unCliente.getCategoria();
 		
-		assertEquals(unCliente.consumoTotalEstimadoPorHora() * categoriaDelCliente.getNormalVariable(),
+		assertEquals(unCliente.consumoTotalEstimadoDiario() * categoriaDelCliente.getNormalVariable(),
 				categoriaDelCliente.estimarFacturacionCargoVariable(unCliente), 0);
 	}
 }

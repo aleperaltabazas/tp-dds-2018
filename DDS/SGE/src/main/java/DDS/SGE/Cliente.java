@@ -21,6 +21,7 @@ public class Cliente {
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
+	int puntos;
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
 			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
@@ -87,27 +88,27 @@ public class Cliente {
 		return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
 	}
 
-	public DoubleStream consumoDispositivosPorHora() {
-		return getDispositivos().mapToDouble(dispositivo -> dispositivo.getConsumoKWPorHora());
+	public DoubleStream consumoDispositivosDiarioEstimado() {
+		return getDispositivos().mapToDouble(dispositivo -> dispositivo.consumoDiarioEstimado());
 	}
 
-	public double consumoTotalEstimadoPorHora() {
-		return this.consumoDispositivosPorHora().sum();
+	public double consumoTotalEstimadoDiario() {
+		return this.consumoDispositivosDiarioEstimado().sum();
 	}
 
 	public double consumoTotalPorMes() {
 		LocalDate localDate = LocalDate.now();
 		int diasDelMesActual = localDate.lengthOfMonth();
-		return this.consumoFinal(diasDelMesActual);
+		return this.consumoFinalEstimado(diasDelMesActual);
 	}
 
 	public double consumoTotalDeUnMesEspecifico(LocalDate fecha) {
 		int diasDeTalMes = fecha.lengthOfMonth();
-		return this.consumoFinal(diasDeTalMes);
+		return this.consumoFinalEstimado(diasDeTalMes);
 	}
 
-	public double consumoFinal(int diasDelMes) {
-		return this.consumoTotalEstimadoPorHora() * 24 * diasDelMes;
+	public double consumoFinalEstimado(int diasDelMes) {
+		return this.consumoTotalEstimadoDiario() * diasDelMes;
 	}
 
 	public void recategorizar() {

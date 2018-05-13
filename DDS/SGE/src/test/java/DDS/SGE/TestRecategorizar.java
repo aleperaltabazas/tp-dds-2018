@@ -13,10 +13,12 @@ import org.junit.Test;
 import DDS.SGE.Cliente.TipoDni;
 
 public class TestRecategorizar {
+	
+	DispositivoEstandar dispositivoEstandar = new DispositivoEstandar(24);
 
-	Dispositivo dispositivoConMedioConsumo = new Dispositivo(0.6, false);
-	Dispositivo dispositivoConAltoConsumo = new Dispositivo(2, true);
-	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, false);
+	Dispositivo dispositivoConMedioConsumo = new Dispositivo(0.6, dispositivoEstandar);
+	Dispositivo dispositivoConAltoConsumo = new Dispositivo(2, dispositivoEstandar);
+	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, dispositivoEstandar);
 
 	Cliente clienteSinDispositivos = new Cliente("Sherlock", "Holmes", TipoDni.DNI, "123456789", "1144448888",
 			"Baker St. 221b", LocalDateTime.now(), Arrays.asList());
