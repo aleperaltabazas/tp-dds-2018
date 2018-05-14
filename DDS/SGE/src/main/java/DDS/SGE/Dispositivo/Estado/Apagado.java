@@ -1,4 +1,4 @@
-package DDS.SGE;
+package DDS.SGE.Dispositivo.Estado;
 
 public class Apagado implements EstadoDelDispositivo {
 

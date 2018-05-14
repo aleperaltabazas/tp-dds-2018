@@ -1,4 +1,4 @@
-package DDS.SGE;
+package DDS.SGE.Dispositivo;
 
 import org.json.JSONObject;
 

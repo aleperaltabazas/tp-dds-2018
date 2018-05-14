@@ -21,6 +21,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
 
+import DDS.SGE.Dispositivo.Dispositivo;
+
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 

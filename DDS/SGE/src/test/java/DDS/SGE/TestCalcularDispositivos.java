@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import DDS.SGE.Cliente.TipoDni;
+import DDS.SGE.Dispositivo.Dispositivo;
 import junit.framework.Assert;
 
 public class TestCalcularDispositivos {

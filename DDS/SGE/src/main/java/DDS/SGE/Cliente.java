@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+import DDS.SGE.Dispositivo.Dispositivo;
+
 public class Cliente {
 	private String nombre;
 	private String apellido;

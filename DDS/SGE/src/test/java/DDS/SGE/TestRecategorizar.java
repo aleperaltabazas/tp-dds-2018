@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import DDS.SGE.Cliente.TipoDni;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
 
 public class TestRecategorizar {
 	

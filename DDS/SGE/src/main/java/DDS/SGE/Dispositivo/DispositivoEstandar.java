@@ -1,4 +1,4 @@
-package DDS.SGE;
+package DDS.SGE.Dispositivo;
 
 public class DispositivoEstandar implements TipoDispositivo{
 	float usoEstimadoDiario;

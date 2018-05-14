@@ -1,4 +1,6 @@
-package DDS.SGE;
+package DDS.SGE.Dispositivo;
+
+import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 
 public class DispositivoInteligente implements TipoDispositivo{
 	boolean encendido;

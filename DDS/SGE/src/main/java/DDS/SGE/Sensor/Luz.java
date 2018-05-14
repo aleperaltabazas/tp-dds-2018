@@ -5,17 +5,16 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.Timer;
 
-import DDS.SGE.Dispositivo;
+import DDS.SGE.Dispositivo.Dispositivo;
 
 public class Luz implements Sensor {
 
 	Dispositivo dispositivo;
 	
-	Luz(Dispositivo dispositivo){
+	public Luz(Dispositivo dispositivo){
 		this.dispositivo = dispositivo;
 	}	
-	
-	@Override
+
 	public double Medir() {
 		return this.dispositivo.getConsumoKWPorHora();
 	}
@@ -25,5 +24,4 @@ public class Luz implements Sensor {
 		Timer timer = new Timer();
 		timer.schedule(new EjecutorDiferido(this),horaInicial.toEpochSecond(OffsetDateTime.now().getOffset()),periodo);
 	}
-
 }

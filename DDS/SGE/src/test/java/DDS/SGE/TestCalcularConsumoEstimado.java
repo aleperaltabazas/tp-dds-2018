@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.junit.Before;
 
 import DDS.SGE.Cliente.TipoDni;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
 
 public class TestCalcularConsumoEstimado {
 
