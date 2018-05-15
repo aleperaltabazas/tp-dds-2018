@@ -4,9 +4,6 @@ import DDS.SGE.Dispositivo.*;
 
 public class Apagado implements EstadoDelDispositivo {
 
-	public Apagado() {
-	}
-
 	public void apagar(DispositivoInteligente dispositivo) {
 	}
 
@@ -15,7 +12,6 @@ public class Apagado implements EstadoDelDispositivo {
 	}
 
 	public void ahorraEnergia(DispositivoInteligente dispositivo) {
-		dispositivo.setEstado(new AhorroDeEnergia());
 	}
 
 	public boolean estaEncendido() {

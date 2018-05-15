@@ -1,10 +1,13 @@
 package DDS.SGE.Dispositivo;
 
+import java.time.LocalDateTime;
+
 import DDS.SGE.Dispositivo.Estado.*;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 
 public class DispositivoInteligente extends Dispositivo {
 	EstadoDelDispositivo estado;
+	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido();
 
 	public DispositivoInteligente(double consumoKWPorHora, TipoDispositivo tipo, EstadoDelDispositivo estado) {
 		super(consumoKWPorHora, tipo);
@@ -30,10 +33,12 @@ public class DispositivoInteligente extends Dispositivo {
 
 	public void encender() {
 		this.estado.encender(this);
+		repositorio.encender(LocalDateTime.now());
 	}
 
 	public void apagar() {
 		this.estado.apagar(this);
+		repositorio.apagar(LocalDateTime.now());
 	}
 
 	public void ahorraEnergia() {
@@ -50,6 +55,10 @@ public class DispositivoInteligente extends Dispositivo {
 
 	public void setEstado(EstadoDelDispositivo unEstado) {
 		this.estado = unEstado;
+	}
+
+	public double consumoDeNHoras(int horas) {
+		return 42;
 	}
 
 }
