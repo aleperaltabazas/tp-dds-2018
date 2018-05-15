@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import DDS.SGE.Dispositivo.Estado.Encendido;
 
-public abstract class Dispositivo {
+public class Dispositivo {
 	private String nombre;
 	private double consumoKWPorHora;
 	private TipoDispositivo tipo;
@@ -12,6 +12,10 @@ public abstract class Dispositivo {
 	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo) {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.tipo = tipo;
+	}
+	
+	public TipoDispositivo getTipoDispositivo() {
+		return this.tipo;
 	}
 
 	public String getNombre() {
@@ -28,6 +32,12 @@ public abstract class Dispositivo {
 
 	public double consumoDiarioEstimado() {
 		return consumoKWPorHora * tipo.usoEstimadoDiario();
+	}
+	
+	//Implementar, por lo que entendi del encunciado mediante esto el dispositivo se apaga o prende
+	public void recibirActuador(Actuador unActuador) {
+		//Opcion para que no haga nada con los estandar seria lanzar una excepcion
+		//Generar efecto sobre el DI
 	}
 
 }

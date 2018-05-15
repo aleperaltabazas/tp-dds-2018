@@ -5,12 +5,11 @@ import java.time.LocalDateTime;
 import DDS.SGE.Dispositivo.Estado.*;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 
-public class DispositivoInteligente extends Dispositivo {
+public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
 	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido();
 
-	public DispositivoInteligente(double consumoKWPorHora, TipoDispositivo tipo, EstadoDelDispositivo estado) {
-		super(consumoKWPorHora, tipo);
+	public DispositivoInteligente(EstadoDelDispositivo estado) {
 		this.estado = estado;
 	}
 
@@ -24,7 +23,7 @@ public class DispositivoInteligente extends Dispositivo {
 	}
 
 	boolean estaApagado() {
-		return !estado.estaEncendido();
+		return !this.estaEncendido();
 	}
 
 	public EstadoDelDispositivo getEstado() {
