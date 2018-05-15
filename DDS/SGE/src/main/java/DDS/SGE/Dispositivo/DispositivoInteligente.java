@@ -15,12 +15,24 @@ public class DispositivoInteligente implements TipoDispositivo{
 		return estado.estaEncendido();
 	}
 	
+	public EstadoDelDispositivo getEstado() {
+		return estado;
+	}
+	
 	public void encender() {
 		this.encendido = true;
 	}
 
 	public void apagar() {
 		this.encendido = false;
+	}
+	
+	public double getIntensidad() {
+		return this.estado.getIntensidad();
+	}
+	
+	public void setIntensidad(double nuevoValor) {
+		this.estado.setIntensidad(nuevoValor);
 	}
 
 }
