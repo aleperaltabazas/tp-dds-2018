@@ -4,4 +4,10 @@ public interface TipoDispositivo {
 	boolean estaEncendido();
 
 	float usoEstimadoDiario();
+	
+	TipoDispositivo adaptar();
+	
+	void encender();
+	
+	void apagar();
 }
