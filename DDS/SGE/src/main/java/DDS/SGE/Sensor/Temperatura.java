@@ -12,8 +12,8 @@ public class Temperatura implements Sensor {
 		this.dispositivo = dispositivo;
 	}	
 	
+	// Podria cambiar el estado del dispositivo segun la temperatura obtenida
 	public double Medir() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

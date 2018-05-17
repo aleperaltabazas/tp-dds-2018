@@ -8,11 +8,12 @@ import org.mockito.*;
 
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Sensor.Temperatura;
 
 public class TestSensores {
 
-	Dispositivo unDispositivo = new Dispositivo(10,new DispositivoInteligente());
+	Dispositivo unDispositivo = new Dispositivo(10,new DispositivoInteligente(new Encendido()));
 	Temperatura sensorTemperatura = new Temperatura(unDispositivo);
 	
 	@Test
