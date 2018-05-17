@@ -2,6 +2,7 @@ package DDS.SGE.Dispositivo;
 
 import org.json.JSONObject;
 
+import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 
 public class Dispositivo {
@@ -48,6 +49,10 @@ public class Dispositivo {
 	
 	public void apagar() {
 		this.tipo.apagar();
+	}
+	
+	public void agregado (Cliente unCliente){
+		this.tipo.agregado(unCliente);
 	}
 	
 	//Implementar, por lo que entendi del encunciado mediante esto el dispositivo se apaga o prende

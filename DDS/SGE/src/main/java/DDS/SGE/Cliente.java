@@ -25,6 +25,7 @@ public class Cliente {
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
+	private NotificadorNuevoDispositivo nuevoDisp;
 	int puntos;
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
@@ -38,6 +39,7 @@ public class Cliente {
 		this.fechaAltaServicio = fechaAltaServicio;
 		this.categoria = Categoria.R1;
 		this.setDispositivos(dispositivos);
+		this.nuevoDisp = new NotificadorNuevoDispositivo();
 	}
 
 	public enum TipoDni {
@@ -69,7 +71,10 @@ public class Cliente {
 	}
 
 	public void setDispositivos(List<Dispositivo> dispositivos) {
-		this.dispositivos = dispositivos;
+		for (Dispositivo disp : dispositivos){
+			this.dispositivos.add(disp);
+			nuevoDisp.SeAgregoDispositivo(this,disp);
+		}
 	}
 
 	public boolean algunDispositivoEncendido() {
@@ -128,5 +133,10 @@ public class Cliente {
 	
 	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
 		return this.getDispositivos().anyMatch(unDispositivo->unDispositivo.equals(dispositivo));
+	}
+
+	public void sumarPuntos(int puntos) {
+		this.puntos += puntos;
+		
 	}
 }

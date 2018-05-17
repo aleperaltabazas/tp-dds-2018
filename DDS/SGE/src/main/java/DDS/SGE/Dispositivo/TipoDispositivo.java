@@ -1,5 +1,7 @@
 package DDS.SGE.Dispositivo;
 
+import DDS.SGE.Cliente;
+
 public interface TipoDispositivo {
 	boolean estaEncendido();
 
@@ -7,7 +9,7 @@ public interface TipoDispositivo {
 	
 	TipoDispositivo adaptar();
 	
-	void encender();
-	
-	void apagar();
+	void encender();	
+	void apagar();	
+	void agregado(Cliente unCliente);
 }

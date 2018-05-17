@@ -14,7 +14,7 @@ public class Temperatura implements Sensor {
 	
 	// Podria cambiar el estado del dispositivo segun la temperatura obtenida
 	public double Medir() {
-		return 0;
+
 	}
 
 	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos) {
