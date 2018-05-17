@@ -1,11 +1,11 @@
 package DDS.SGE.Sensor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public interface Sensor {
-	void Medir();
+	double medir(DispositivoInteligente unDispositivo);
+	void controlar(DispositivoInteligente unDispositivo);
 	void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos);
 }

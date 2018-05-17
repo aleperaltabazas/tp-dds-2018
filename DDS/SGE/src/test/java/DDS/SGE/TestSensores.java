@@ -10,6 +10,7 @@ import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Dispositivo.Estado.ModoFrio_Calor;
 import DDS.SGE.Sensor.Temperatura;
 
 public class TestSensores {
@@ -18,11 +19,11 @@ public class TestSensores {
 	DispositivoInteligente inteligente = new DispositivoInteligente(new Encendido());
 	
 	@Test
-	public void SiElDispositivoTieneMuchaIntensidadSeBajaLaMisma() {
+	public void SiHaceCalorSeCambiaAFrio() {
 		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
-		Mockito.when(mockInteligente.getIntensidad()).thenReturn(60.0);
-		Temperatura sensorTemperatura = new Temperatura(mockInteligente);
-		sensorTemperatura.Medir();
-		//Mockito.(mockInteligente.setIntensidad(20));
+		Mockito.when(mockInteligente.getTemperaturaAmbiente()).thenReturn(30.0);
+		Temperatura sensorTemperatura = new Temperatura();
+		sensorTemperatura.controlar(mockInteligente);
+		assertTrue(mockInteligente.getEstado().getModo() == ModoFrio_Calor.FRIO);
 	}
 }

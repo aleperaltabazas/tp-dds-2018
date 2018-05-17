@@ -10,6 +10,8 @@ public interface EstadoDelDispositivo {
 	void setIntensidad(double nuevoValor);
 
 	void setModo(ModoFrio_Calor nuevoModo);
+	
+	ModoFrio_Calor getModo();
 
 	void apagar(DispositivoInteligente dispositivo);
 

@@ -21,6 +21,10 @@ public abstract class ConEnergia implements EstadoDelDispositivo {
 	public void setModo(ModoFrio_Calor nuevoModo) {
 		modo = nuevoModo;
 	}
+	
+	public ModoFrio_Calor getModo() {
+		return modo;
+	}
 
 	public void apagar(DispositivoInteligente dispositivo) {
 		dispositivo.setEstado(new Apagado());

@@ -12,16 +12,15 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 public class Luz implements Sensor {
 
 	DispositivoInteligente dispositivo;
-	Bajar_Intensidad actuador;
+	Bajar_Intensidad actuador_Bajar_Int;
 	
-	public Luz(DispositivoInteligente dispositivo){
-		this.dispositivo = dispositivo;
-		this.actuador = new Bajar_Intensidad(20);
+	public void setActuador_Bajar_Int(double intensidadABajar){
+		this.actuador_Bajar_Int = new Bajar_Intensidad(intensidadABajar);
 	}	
 
-	public void Medir() {
-		if (this.dispositivo.getIntensidad()> 50)
-			this.actuador.accionarSobre(this.dispositivo);		
+	public void controlar(DispositivoInteligente unDispositivo) {
+		if (unDispositivo.getIntensidad()> 50)
+			this.actuador_Bajar_Int.accionarSobre(unDispositivo);		
 	}
 
 	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos) {
@@ -29,4 +28,12 @@ public class Luz implements Sensor {
 		Timer timer = new Timer();
 		timer.schedule(new EjecutorDiferido(this),horaInicial.toEpochSecond(OffsetDateTime.now().getOffset()),periodo);
 	}
+
+	@Override
+	public double medir(DispositivoInteligente unDispositivo) {
+		return unDispositivo.getEstado().getIntensidad();
+		
+	}
+
+	
 }
