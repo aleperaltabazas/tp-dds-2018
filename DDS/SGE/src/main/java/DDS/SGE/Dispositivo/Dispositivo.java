@@ -1,5 +1,7 @@
 package DDS.SGE.Dispositivo;
 
+import java.time.LocalDateTime;
+
 import org.json.JSONObject;
 
 import DDS.SGE.Cliente;
@@ -53,6 +55,15 @@ public class Dispositivo {
 	
 	public void agregado (Cliente unCliente){
 		this.tipo.agregado(unCliente);
+	}
+
+	public double consumoTotalHaceNHoras(int horas) {
+		return tipo.tiempoTotalEncendidoHaceNHoras(horas) * consumoKWPorHora;
+	}
+	
+	public double consumoTotalEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
+		return tipo.tiempoTotalEncendidoEnUnPeriodo(principioPeriodo, finPeriodo) * consumoKWPorHora;
+
 	}
 	
 	//Implementar, por lo que entendi del encunciado mediante esto el dispositivo se apaga o prende

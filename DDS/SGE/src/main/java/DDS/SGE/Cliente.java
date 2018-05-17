@@ -132,7 +132,7 @@ public class Cliente {
 	}
 	
 	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
-		return this.getDispositivos().anyMatch(unDispositivo->unDispositivo.equals(dispositivo));
+		return this.dispositivos.contains(dispositivo);
 	}
 
 	public void sumarPuntos(int puntos) {
