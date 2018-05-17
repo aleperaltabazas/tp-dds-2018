@@ -13,25 +13,26 @@ public class Luz implements Sensor {
 
 	DispositivoInteligente dispositivo;
 	Bajar_Intensidad actuador_Bajar_Int;
+	double intensidadLuminicaAmbiente;
 	
 	public void setActuador_Bajar_Int(double intensidadABajar){
 		this.actuador_Bajar_Int = new Bajar_Intensidad(intensidadABajar);
 	}	
 
 	public void controlar(DispositivoInteligente unDispositivo) {
-		if (unDispositivo.getIntensidad()> 50)
+		if (unDispositivo.getIntensidad() > this.intensidadLuminicaAmbiente)
 			this.actuador_Bajar_Int.accionarSobre(unDispositivo);		
 	}
 
-	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos) {
+	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos, DispositivoInteligente unDispositivo) {
 		long periodo = intervaloDeMinutos * 1000 * 60;
 		Timer timer = new Timer();
-		timer.schedule(new EjecutorDiferido(this),horaInicial.toEpochSecond(OffsetDateTime.now().getOffset()),periodo);
+		timer.schedule(new EjecutorDiferido(this, unDispositivo),horaInicial.toEpochSecond(OffsetDateTime.now().getOffset()),periodo);
 	}
 
 	@Override
-	public double medir(DispositivoInteligente unDispositivo) {
-		return unDispositivo.getEstado().getIntensidad();
+	public double medir() {
+		return this.intensidadLuminicaAmbiente;
 		
 	}
 

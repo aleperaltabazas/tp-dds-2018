@@ -11,7 +11,7 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
-	private double temperaturaAmbiente;
+	private double temperatura;
 	
 	//Queda muy feo pero si no tengo un constructor asi no se como testear
 	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido(new ArrayList<IntervaloActivo>());
@@ -20,8 +20,11 @@ public class DispositivoInteligente implements TipoDispositivo {
 		this.estado = estado;
 	}
 	
-	public double getTemperaturaAmbiente() {
-		return temperaturaAmbiente;
+	public double getTemperatura() {
+		return temperatura;
+	}
+	public void setTemperatura(double nuevaTemperatura) {
+		this.temperatura = nuevaTemperatura;
 	}
 
 	// Falta implementacion
