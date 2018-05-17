@@ -4,6 +4,8 @@ import DDS.SGE.Cliente;
 import java.time.LocalDateTime;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public class DispositivoEstandar implements TipoDispositivo {
 	long usoEstimadoDiario;
@@ -39,14 +41,18 @@ public class DispositivoEstandar implements TipoDispositivo {
 		return 0;
 	}
 
-
-	public void agregado(Cliente unCliente) {
-		// No hace nada.
-		
-	}	
-
-	
 	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
 		return 0;
+	}
+
+	@Override
+	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
+		// No hace nada
+		
+	}
+
+	@Override
+	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
+		//No hace nada
 	}
 }

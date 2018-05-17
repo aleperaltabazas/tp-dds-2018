@@ -1,5 +1,6 @@
 package DDS.SGE;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +15,9 @@ import org.json.*;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Notificaciones.Interesado;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public class Cliente {
 	private String nombre;
@@ -24,9 +28,10 @@ public class Cliente {
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
-	private List<Dispositivo> dispositivos;
-	private NotificadorNuevoDispositivo nuevoDisp;
+	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 	int puntos;
+	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
+	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
 			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
@@ -39,7 +44,6 @@ public class Cliente {
 		this.fechaAltaServicio = fechaAltaServicio;
 		this.categoria = Categoria.R1;
 		this.setDispositivos(dispositivos);
-		this.nuevoDisp = new NotificadorNuevoDispositivo();
 	}
 
 	public enum TipoDni {
@@ -72,9 +76,13 @@ public class Cliente {
 
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		for (Dispositivo disp : dispositivos){
-			this.dispositivos.add(disp);
-			nuevoDisp.SeAgregoDispositivo(this,disp);
+			agregarDispositivo(disp);
 		}
+	}
+	
+	public void agregarDispositivo(Dispositivo dispositivo) {
+		this.dispositivos.add(dispositivo);
+		this.interesadoEnNuevosDispositivos.sucedio(this, dispositivo);
 	}
 
 	public boolean algunDispositivoEncendido() {
@@ -128,15 +136,16 @@ public class Cliente {
 	public void agregarModuloAdaptadorA(Dispositivo dispositivo) {
 		if(lePerteneceDispositivo(dispositivo)) {
 			dispositivo.adaptarConModulo();
+			this.interesadoEnAdaptaciones.sucedio(this,dispositivo);
 		}
 	}
 	
 	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
 		return this.dispositivos.contains(dispositivo);
 	}
-
+	
 	public void sumarPuntos(int puntos) {
 		this.puntos += puntos;
-		
 	}
+
 }

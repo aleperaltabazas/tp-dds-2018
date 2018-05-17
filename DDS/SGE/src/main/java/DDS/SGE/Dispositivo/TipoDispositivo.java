@@ -2,6 +2,8 @@ package DDS.SGE.Dispositivo;
 
 
 import DDS.SGE.Cliente;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +20,9 @@ public interface TipoDispositivo {
 	TipoDispositivo adaptar();
 	
 	void encender();	
-	void apagar();	
-	void agregado(Cliente unCliente);
+	void apagar();
+
+	void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos);
+
+	void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones);	
 }

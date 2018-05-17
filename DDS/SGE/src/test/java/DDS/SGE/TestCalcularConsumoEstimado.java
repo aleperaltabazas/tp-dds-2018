@@ -38,7 +38,7 @@ public class TestCalcularConsumoEstimado {
 		List<Dispositivo> tresDispositivosIguales = Arrays.asList(unDispositivo, unDispositivo, unDispositivo);
 		unCliente.setDispositivos(tresDispositivosIguales);
 
-		assertEquals(unDispositivo.consumoDiarioEstimado() * 3, unCliente.consumoTotalEstimadoDiario(), 0);
+		assertEquals(74.88, unCliente.consumoTotalEstimadoDiario(), 0);
 	}
 	
 	@Test

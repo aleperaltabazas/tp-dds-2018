@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.*;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
@@ -74,7 +76,15 @@ public class DispositivoInteligente implements TipoDispositivo {
 		return new DispositivoEstandar(this.usoEstimadoDiario()); 
 	}
 
-	public void agregado(Cliente unCliente) {
-		unCliente.sumarPuntos(15);		
+	@Override
+	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
+		interesadoEnNuevosDispositivos.sumarPuntos();		
 	}
+
+	@Override
+	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
+		interesadoEnAdaptaciones.sumarPuntos();
+		
+	}
+
 }

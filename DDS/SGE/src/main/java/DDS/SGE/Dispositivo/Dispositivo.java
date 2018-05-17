@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public class Dispositivo {
 	private String nombre;
@@ -52,10 +54,6 @@ public class Dispositivo {
 	public void apagar() {
 		this.tipo.apagar();
 	}
-	
-	public void agregado (Cliente unCliente){
-		this.tipo.agregado(unCliente);
-	}
 
 	public double consumoTotalHaceNHoras(int horas) {
 		return tipo.tiempoTotalEncendidoHaceNHoras(horas) * consumoKWPorHora;
@@ -64,6 +62,16 @@ public class Dispositivo {
 	public double consumoTotalEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
 		return tipo.tiempoTotalEncendidoEnUnPeriodo(principioPeriodo, finPeriodo) * consumoKWPorHora;
 
+	}
+
+	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
+		this.tipo.seAgregoNuevoDispositivo(interesadoEnNuevosDispositivos);
+		
+	}
+
+	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
+		this.tipo.seAdaptoUnDispositivo(interesadoEnAdaptaciones);
+		
 	}
 	
 	//Implementar, por lo que entendi del encunciado mediante esto el dispositivo se apaga o prende
