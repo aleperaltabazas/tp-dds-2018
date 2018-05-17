@@ -127,6 +127,6 @@ public class Cliente {
 	}
 	
 	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
-		return this.getDispositivos().anyMatch(unDispositivo->unDispositivo.equals(dispositivo));
+		return this.dispositivos.contains(dispositivo);
 	}
 }

@@ -1,21 +1,24 @@
 package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import DDS.SGE.Dispositivo.Estado.*;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 
 public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
-	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido();
+	//Queda muy feo pero si no tengo un constructor asi no se como testear
+	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido(new ArrayList<IntervaloActivo>());
 
 	public DispositivoInteligente(EstadoDelDispositivo estado) {
 		this.estado = estado;
 	}
 
 	// Falta implementacion
-	public float usoEstimadoDiario() {
-		return 1;
+	// Estaria bien pensarlo asi?
+	public long usoEstimadoDiario() {
+		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(24);
 	}
 
 	public boolean estaEncendido() {
@@ -56,8 +59,12 @@ public class DispositivoInteligente implements TipoDispositivo {
 		this.estado = unEstado;
 	}
 
-	public double consumoDeNHoras(int horas) {
-		return 42;
+	public double tiempoTotalEncendidoHaceNHoras(int horas) {
+		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(horas);
+	}
+	
+	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
+		return repositorio.tiempoTotalEnUnPeriodoEnMinutos(principioPeriodo, finPeriodo);
 	}
 
 	@Override
