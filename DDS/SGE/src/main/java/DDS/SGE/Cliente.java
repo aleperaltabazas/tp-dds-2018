@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 import org.json.*;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.Estado.Encendido;
 
 public class Cliente {
 	private String nombre;
@@ -116,5 +118,15 @@ public class Cliente {
 	public void recategorizar() {
 		categoria = Arrays.stream(Categoria.values())
 				.filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
+	}
+	
+	public void agregarModuloAdaptadorA(Dispositivo dispositivo) {
+		if(lePerteneceDispositivo(dispositivo)) {
+			dispositivo.adaptarConModulo();
+		}
+	}
+	
+	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
+		return this.getDispositivos().anyMatch(unDispositivo->unDispositivo.equals(dispositivo));
 	}
 }

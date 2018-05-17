@@ -35,7 +35,7 @@ public class Administrador {
 	}
 
 	public long cantidadDeMesesComoAdmin() {
-		LocalDate localDate = LocalDate.now();
+		LocalDateTime localDate = LocalDateTime.now();
 		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
 	}
 }

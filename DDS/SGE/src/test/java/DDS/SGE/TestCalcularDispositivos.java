@@ -14,12 +14,15 @@ import org.junit.Test;
 
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.Estado.Apagado;
+import DDS.SGE.Dispositivo.Estado.Encendido;
 import junit.framework.Assert;
 
 public class TestCalcularDispositivos {
 	
-	Dispositivo dispositivoEncendido = new Dispositivo(1, true);
-	Dispositivo dispositivoApagado = new Dispositivo(1, false);
+	Dispositivo dispositivoEncendido = new Dispositivo(1, new DispositivoInteligente(new Encendido()));
+	Dispositivo dispositivoApagado = new Dispositivo(1, new DispositivoInteligente(new Apagado()));
 	Cliente clienteSinDispositivos;
 	Cliente clienteConVariosDispostivos;
 	Cliente clienteConTodoApagado;
@@ -75,7 +78,7 @@ public class TestCalcularDispositivos {
 		dispositivoApagado.encender();
 		dispositivoApagado.apagar();		
 
-		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, false);
+		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, new DispositivoInteligente(new Apagado()));
 		
 		List<Dispositivo> nuevosDispositivos = Arrays.asList(dispositivoApagado, nuevoDispositivoApagado);
 		clienteConTodoApagado.setDispositivos(nuevosDispositivos);
