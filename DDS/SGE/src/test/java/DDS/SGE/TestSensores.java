@@ -15,13 +15,14 @@ import DDS.SGE.Sensor.Temperatura;
 public class TestSensores {
 
 	Dispositivo unDispositivo = new Dispositivo(10,new DispositivoInteligente(new Apagado()));
-	Temperatura sensorTemperatura = new Temperatura(unDispositivo);
+	DispositivoInteligente inteligente = new DispositivoInteligente(new Encendido());
 	
 	@Test
-	public void test() {
-		Temperatura mockSensor = Mockito.spy(sensorTemperatura);
-		Mockito.when(mockSensor.Medir()).thenReturn(20.4);
-		
-		assertEquals(20.4, mockSensor.Medir(),0);
+	public void SiElDispositivoTieneMuchaIntensidadSeBajaLaMisma() {
+		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
+		Mockito.when(mockInteligente.getIntensidad()).thenReturn(60.0);
+		Temperatura sensorTemperatura = new Temperatura(mockInteligente);
+		sensorTemperatura.Medir();
+		//Mockito.(mockInteligente.setIntensidad(20));
 	}
 }

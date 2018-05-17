@@ -5,18 +5,23 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.Timer;
 
+import DDS.SGE.Actuador.Bajar_Intensidad;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Luz implements Sensor {
 
-	Dispositivo dispositivo;
+	DispositivoInteligente dispositivo;
+	Bajar_Intensidad actuador;
 	
-	public Luz(Dispositivo dispositivo){
+	public Luz(DispositivoInteligente dispositivo){
 		this.dispositivo = dispositivo;
+		this.actuador = new Bajar_Intensidad(20);
 	}	
 
-	public double Medir() {
-		return this.dispositivo.getConsumoKWPorHora();
+	public void Medir() {
+		if (this.dispositivo.getIntensidad()> 50)
+			this.actuador.accionarSobre(this.dispositivo);		
 	}
 
 	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos) {

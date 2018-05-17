@@ -6,6 +6,6 @@ import java.time.LocalDateTime;
 import DDS.SGE.Dispositivo.Dispositivo;
 
 public interface Sensor {
-	double Medir();
+	void Medir();
 	void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos);
 }
