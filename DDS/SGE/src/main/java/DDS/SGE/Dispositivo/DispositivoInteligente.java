@@ -81,9 +81,7 @@ public class DispositivoInteligente implements TipoDispositivo {
 	}
 
 	public TipoDispositivo adaptar() {
-		//Aca podemos transformarlo a estandar (como esta hecho), hacer un return this; o tirar una excepcion porque no se puede adaptar un Inteligente
-		//Como el enunciado no lo aclara, decidí que si agregas el modulo adaptador al Inteligente, lo convertis en un Estandar (auqnue no tenga mucho sentido funcionalmente)
-		return new DispositivoEstandar(this.usoEstimadoDiario()); 
+		return this;
 	}
 
 	@Override

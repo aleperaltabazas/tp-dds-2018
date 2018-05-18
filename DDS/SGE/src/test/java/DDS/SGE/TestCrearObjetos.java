@@ -9,14 +9,14 @@ import junit.framework.Assert;
 
 public class TestCrearObjetos {
 
-	Json builder = new Json();
+	Json jsonBuilder = new Json();
 	
 	@Test
 	public void CrearCliente() {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\cliente.txt";
 		
-		Cliente unCliente = builder.crearCliente(imgUrl);
+		Cliente unCliente = jsonBuilder.crearCliente(imgUrl);
 		
 		Assert.assertEquals("gonzalo", unCliente.getNombre());
 	}
@@ -26,7 +26,7 @@ public class TestCrearObjetos {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\admin.txt";
 		
-		Administrador unAdministrador = builder.crearAdministrador(imgUrl);
+		Administrador unAdministrador = jsonBuilder.crearAdministrador(imgUrl);
 		
 		Assert.assertEquals("mati", unAdministrador.getNombre());
 	}
@@ -36,7 +36,7 @@ public class TestCrearObjetos {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\dispositivo.txt";
 		
-		Dispositivo unDispositivo = builder.crearDispositivo(imgUrl);
+		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(imgUrl);
 
 		Assert.assertEquals("dispositivox", unDispositivo.getNombre());
 	}
