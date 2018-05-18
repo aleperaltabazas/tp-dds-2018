@@ -13,7 +13,6 @@ public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
 	private double temperatura;
 	
-	//Queda muy feo pero si no tengo un constructor asi no se como testear
 	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado) {
@@ -31,9 +30,11 @@ public class DispositivoInteligente implements TipoDispositivo {
 	public void setTemperatura(double nuevaTemperatura) {
 		this.temperatura = nuevaTemperatura;
 	}
+	
+	public void setRepositorio(RepositorioDeTiempoEncendido repositorio) {
+		this.repositorio = repositorio;
+	}
 
-	// Falta implementacion
-	// Estaria bien pensarlo asi?
 	public long usoEstimadoDiario() {
 		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(24);
 	}
