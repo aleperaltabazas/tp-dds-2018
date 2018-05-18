@@ -1,6 +1,8 @@
 package DDS.SGE.Sensor;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.Timer;
 
 import DDS.SGE.Actuador.CambiarACalor;
 import DDS.SGE.Actuador.CambiarAFrio;
@@ -19,16 +21,15 @@ public class Temperatura implements Sensor {
 	}
 	
 	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos, DispositivoInteligente unDispositivo) {
-		// TODO Auto-generated method stub
-
+		long periodo = intervaloDeMinutos * 1000 * 60;
+		Timer timer = new Timer();
+		timer.schedule(new EjecutorDiferido(this, unDispositivo),horaInicial.toEpochSecond(OffsetDateTime.now().getOffset()),periodo);
 	}
 
-	@Override
 	public double medir() {
 		return temperaturaAmbiente;
 	}
 
-	@Override
 	public void controlar(DispositivoInteligente unDispositivo) {
 		if(this.temperaturaAmbiente > 27) {
 			actuador_frio.accionarSobre(unDispositivo);
@@ -39,8 +40,10 @@ public class Temperatura implements Sensor {
 				actuador_calor.accionarSobre(unDispositivo);
 				unDispositivo.setTemperatura(22); // Valor arbitrario
 			}
-		}
-		
+		}		
 	}
 
+	public double medir(DispositivoInteligente unDispositivo) {
+		return unDispositivo.getTemperatura();
+	}
 }

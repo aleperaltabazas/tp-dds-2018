@@ -12,7 +12,6 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Luz implements Sensor {
 
-	DispositivoInteligente dispositivo;
 	Bajar_Intensidad actuador_Bajar_Int;
 	Subir_Intensidad actuador_Subir_Int = new Subir_Intensidad(15);
 	double intensidadLuminicaAmbiente;
@@ -51,9 +50,11 @@ public class Luz implements Sensor {
 
 	@Override
 	public double medir() {
-		return this.intensidadLuminicaAmbiente;
-		
+		return this.intensidadLuminicaAmbiente;		
 	}
-
 	
+	@Override
+	public double medir(DispositivoInteligente unDispositivo) {
+		return unDispositivo.getIntensidad();		
+	}	
 }
