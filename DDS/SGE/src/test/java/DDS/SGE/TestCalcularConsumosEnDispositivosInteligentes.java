@@ -36,7 +36,7 @@ public class TestCalcularConsumosEnDispositivosInteligentes {
 	
 	@Test
 	public void testElTiempoDelDispositivoEncendidoEnLasUltimas6HorasEsDe180Minutos() {
-		assertEquals(3 * 60, dispositivoInteligenteEncendido.tiempoTotalEncendidoHaceNHoras(10), 0);
+		assertEquals((2 + 1) * 60, dispositivoInteligenteEncendido.tiempoTotalEncendidoHaceNHoras(10), 0);
 	}
 	
 	@Test
@@ -56,5 +56,4 @@ public class TestCalcularConsumosEnDispositivosInteligentes {
 		assertEquals(2 * (1 + 2) * 60, dispositivoEncendido.consumoDiarioEstimado(), 0);
 	}
 	
-
 }

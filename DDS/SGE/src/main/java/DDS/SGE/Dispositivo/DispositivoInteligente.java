@@ -94,8 +94,7 @@ public class DispositivoInteligente implements TipoDispositivo {
 
 	@Override
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
-		interesadoEnAdaptaciones.sumarPuntos();
-		
+		interesadoEnAdaptaciones.sumarPuntos();		
 	}
 
 }
