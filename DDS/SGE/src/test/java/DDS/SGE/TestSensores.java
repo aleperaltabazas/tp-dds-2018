@@ -23,7 +23,7 @@ public class TestSensores {
 		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
 		Temperatura sensorTemperatura = new Temperatura(29);
 		sensorTemperatura.controlar(mockInteligente);
-		assertTrue(mockInteligente.getEstado().getModo() == ModoFrio_Calor.FRIO);
+		assertEquals(mockInteligente.getEstado().getModo(), ModoFrio_Calor.FRIO);
 	}
 	
 	@Test
@@ -31,7 +31,7 @@ public class TestSensores {
 		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
 		Temperatura sensorTemperatura = new Temperatura(10);
 		sensorTemperatura.controlar(mockInteligente);
-		assertTrue(mockInteligente.getEstado().getModo() == ModoFrio_Calor.CALOR);
+		assertEquals(mockInteligente.getEstado().getModo(), ModoFrio_Calor.CALOR);
 	}
 	
 	@Test
