@@ -2,20 +2,39 @@ package DDS.SGE.Dispositivo.Estado;
 
 import DDS.SGE.Dispositivo.*;
 
-public interface EstadoDelDispositivo {
-	boolean estaEncendido();
-
-	double getIntensidad();
-
-	void setIntensidad(double nuevoValor);
-
-	void setModo(ModoFrio_Calor nuevoModo);
+public abstract class EstadoDelDispositivo {
+	double intensidad;
+	ModoFrio_Calor modo;
 	
-	ModoFrio_Calor getModo();
+	public double getIntensidad() {
+		return intensidad;
+	}
 
-	void apagar(DispositivoInteligente dispositivo);
+	public void setIntensidad(double nuevoValor) {
+		intensidad = nuevoValor;
+	}
 
-	void encender(DispositivoInteligente dispositivo);
+	public void setModo(ModoFrio_Calor nuevoModo) {
+		modo = nuevoModo;
+	}
+	
+	public ModoFrio_Calor getModo() {
+		return modo;
+	}
 
-	void ahorraEnergia(DispositivoInteligente dispositivo);
+	public void apagar(DispositivoInteligente dispositivo) {
+		dispositivo.setEstado(new Apagado());
+	}
+	
+	public void encender(DispositivoInteligente dispositivo) {
+		dispositivo.setEstado(new Encendido());
+	}
+	
+	public void ahorraEnergia(DispositivoInteligente dispositivo) {
+		dispositivo.setEstado(new AhorroDeEnergia());
+	}
+	
+	public boolean estaEncendido() {
+		return true;
+	}
 }

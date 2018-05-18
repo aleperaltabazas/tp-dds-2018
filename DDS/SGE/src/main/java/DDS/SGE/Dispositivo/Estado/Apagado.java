@@ -2,19 +2,22 @@ package DDS.SGE.Dispositivo.Estado;
 
 import DDS.SGE.Dispositivo.*;
 
-public class Apagado extends ConEnergia {
+public class Apagado extends EstadoDelDispositivo {
 
 	@Override
 	public void apagar(DispositivoInteligente dispositivo) {
 	}
-
+	
+	@Override
 	public void ahorraEnergia(DispositivoInteligente dispositivo) {
 	}
 
+	@Override
 	public boolean estaEncendido() {
 		return false;
 	}
-
+	
+	@Override
 	public double getIntensidad() {
 		return 0;
 	}
@@ -23,13 +26,11 @@ public class Apagado extends ConEnergia {
 
 	@Override
 	public void setIntensidad(double nuevoValor) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void setModo(ModoFrio_Calor nuevoModo) {
-		// TODO Auto-generated method stub
 
 	}
 

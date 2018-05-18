@@ -2,7 +2,7 @@ package DDS.SGE.Dispositivo.Estado;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class AhorroDeEnergia extends ConEnergia {
+public class AhorroDeEnergia extends EstadoDelDispositivo {
 	
 	
 	public void encender(DispositivoInteligente dispositivo) {
