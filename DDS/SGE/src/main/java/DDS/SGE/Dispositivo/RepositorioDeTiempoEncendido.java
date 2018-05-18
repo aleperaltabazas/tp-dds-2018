@@ -2,16 +2,18 @@ package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.*;
 
 public class RepositorioDeTiempoEncendido {
 	
-	private LocalDateTime ultimaFechaDeEncendido;
-	private ArrayList<IntervaloActivo> intervalosDeActividad;
+	public LocalDateTime ultimaFechaDeEncendido;
+	public List<IntervaloActivo> intervalosDeActividad;
 	
 	public RepositorioDeTiempoEncendido() {
 		ultimaFechaDeEncendido = LocalDateTime.now();
-		intervalosDeActividad = new ArrayList<IntervaloActivo>();
+		intervalosDeActividad = Arrays.asList();
 	}
 	
 	public Stream<IntervaloActivo> getIntervalosDeActividad(){
