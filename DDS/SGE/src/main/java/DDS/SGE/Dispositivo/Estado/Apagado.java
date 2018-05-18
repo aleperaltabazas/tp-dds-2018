@@ -36,4 +36,10 @@ public class Apagado implements EstadoDelDispositivo {
 
 	}
 
+	@Override
+	public ModoFrio_Calor getModo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

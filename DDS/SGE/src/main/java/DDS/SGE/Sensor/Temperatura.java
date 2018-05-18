@@ -14,6 +14,10 @@ public class Temperatura implements Sensor {
 	       // Esto queda por default. 
 			// Despues vemos si hay función específica dada por la cátedra.
 	
+	public Temperatura(double tempAmbiente) {
+		temperaturaAmbiente = tempAmbiente;
+	}
+	
 	public void ConfigurarTiempoDeEjecucion(LocalDateTime horaInicial, int intervaloDeMinutos, DispositivoInteligente unDispositivo) {
 		// TODO Auto-generated method stub
 
