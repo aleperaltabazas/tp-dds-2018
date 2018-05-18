@@ -2,13 +2,10 @@ package DDS.SGE.Dispositivo.Estado;
 
 import DDS.SGE.Dispositivo.*;
 
-public class Apagado implements EstadoDelDispositivo {
+public class Apagado extends ConEnergia {
 
+	@Override
 	public void apagar(DispositivoInteligente dispositivo) {
-	}
-
-	public void encender(DispositivoInteligente dispositivo) {
-		dispositivo.setEstado(new Encendido());
 	}
 
 	public void ahorraEnergia(DispositivoInteligente dispositivo) {

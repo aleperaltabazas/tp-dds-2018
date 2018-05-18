@@ -1,6 +1,7 @@
 package DDS.SGE;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,8 +34,38 @@ public class TestCambiarEstadosDeDispositivosInteligentes {
 	
 	@Test
 	public void testSeEnciendeUnDispositivoEnModoAhorroDeEnergiaYQuedaEncendido() {
-		unDispositivoEnAhorroDeEnergia.recibirActuador(new ActuadorEncenderse);
-		assertEquals(unDispositivoEnAhorroDeEnergia.estaEncendido(), new Encendido());
+		unDispositivoEnAhorroDeEnergia.encender();
+		assertTrue(dispositivoInteligenteEnAhorroDeEnergia.getEstado() instanceof Encendido);
+	}
+	
+	@Test
+	public void testSeApagaUnDispositivoEnModoAhorroDeEnergiaYQuedaApagado() {
+		unDispositivoEnAhorroDeEnergia.apagar();
+		assertTrue(dispositivoInteligenteEnAhorroDeEnergia.getEstado() instanceof Apagado);
+	}
+	
+	@Test
+	public void testSeEnciendeUnDispositivoEncendidoYNoPasaNada() {
+		unDispositivoEncendido.encender();
+		assertTrue(dispositivoInteligenteEncendido.getEstado() instanceof Encendido);
+	}
+	
+	@Test
+	public void testSeApagaUnDispositivoApagadoYNoPasaNada() {
+		unDispositivoApagado.apagar();
+		assertTrue(dispositivoInteligenteApagado.getEstado() instanceof Apagado);
+	}
+	
+	@Test
+	public void testSeEnciendeUnDispositivoApagadoYQuedaEncendido() {
+		unDispositivoApagado.encender();
+		assertTrue(dispositivoInteligenteApagado.getEstado() instanceof Encendido);
+	}
+	
+	@Test
+	public void testSeApagaUnDispositivoEncendidoYQuedaApagado() {
+		unDispositivoEncendido.apagar();
+		assertTrue(dispositivoInteligenteEncendido.getEstado() instanceof Apagado);
 	}
 	
 }

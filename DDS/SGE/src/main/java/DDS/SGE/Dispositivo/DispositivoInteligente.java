@@ -14,10 +14,15 @@ public class DispositivoInteligente implements TipoDispositivo {
 	private double temperatura;
 	
 	//Queda muy feo pero si no tengo un constructor asi no se como testear
-	RepositorioDeTiempoEncendido repositorio = new RepositorioDeTiempoEncendido(new ArrayList<IntervaloActivo>());
+	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado) {
 		this.estado = estado;
+		repositorio = new RepositorioDeTiempoEncendido();
+	}
+	
+	public EstadoDelDispositivo getEstado() {
+		return estado;
 	}
 	
 	public double getTemperatura() {
@@ -39,10 +44,6 @@ public class DispositivoInteligente implements TipoDispositivo {
 
 	boolean estaApagado() {
 		return !this.estaEncendido();
-	}
-
-	public EstadoDelDispositivo getEstado() {
-		return estado;
 	}
 
 	public void encender() {

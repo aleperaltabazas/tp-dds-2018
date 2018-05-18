@@ -7,10 +7,11 @@ import java.util.stream.*;
 public class RepositorioDeTiempoEncendido {
 	
 	private LocalDateTime ultimaFechaDeEncendido;
-	private ArrayList<IntervaloActivo> intervalosDeActividad = new ArrayList<IntervaloActivo>();
+	private ArrayList<IntervaloActivo> intervalosDeActividad;
 	
-	public RepositorioDeTiempoEncendido(ArrayList<IntervaloActivo> intervalos) {
-		this.intervalosDeActividad = intervalos;
+	public RepositorioDeTiempoEncendido() {
+		ultimaFechaDeEncendido = LocalDateTime.now();
+		intervalosDeActividad = new ArrayList<IntervaloActivo>();
 	}
 	
 	public Stream<IntervaloActivo> getIntervalosDeActividad(){

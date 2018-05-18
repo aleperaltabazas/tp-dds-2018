@@ -29,5 +29,9 @@ public abstract class ConEnergia implements EstadoDelDispositivo {
 	public void apagar(DispositivoInteligente dispositivo) {
 		dispositivo.setEstado(new Apagado());
 	}
+	
+	public void encender(DispositivoInteligente dispositivo) {
+		dispositivo.setEstado(new Encendido());
+	}
 
 }
