@@ -28,11 +28,8 @@ import org.json.simple.parser.ParseException;
 
 public class Json {
 	
-	Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
+	private Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
     ZonedDateTime.parse(json.getAsJsonPrimitive().getAsString()).toLocalDateTime()).create();
-	
-	JSONParser parser = new JSONParser();
-	byte[] encoded;
 	
 	Dispositivo crearDispositivo(String path) {
 		try {

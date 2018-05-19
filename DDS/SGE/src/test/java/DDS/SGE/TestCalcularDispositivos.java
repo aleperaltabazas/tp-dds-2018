@@ -37,11 +37,10 @@ public class TestCalcularDispositivos {
 					"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoApagado, dispositivoApagado));
 	}
 	
-	/* No funciona
 	@Test
 	public void testUnClienteSinDispositivosNoTieneDispositivosEncendidos() {
 		assertTrue(clienteSinDispositivos.algunDispositivoEncendido());
-	}*/
+	}
 	
 	@Test
 	public void testElClienteDerrochadorTieneAlgunDispositivoEncendido() {
