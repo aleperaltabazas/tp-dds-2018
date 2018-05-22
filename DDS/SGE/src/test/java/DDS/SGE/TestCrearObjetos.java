@@ -2,6 +2,8 @@ package DDS.SGE;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.Test;
 
 import DDS.SGE.Dispositivo.Dispositivo;
@@ -13,30 +15,30 @@ public class TestCrearObjetos {
 	
 	@Test
 	public void CrearCliente() {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\cliente.txt";
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("cliente.txt").getFile());
 		
-		Cliente unCliente = jsonBuilder.crearCliente(imgUrl);
+		Cliente unCliente = jsonBuilder.crearCliente(file.getAbsolutePath());
 		
 		Assert.assertEquals("gonzalo", unCliente.getNombre());
 	}
 	
 	@Test
 	public void CrearAdministrador() {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\admin.txt";
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("admin.txt").getFile());
 		
-		Administrador unAdministrador = jsonBuilder.crearAdministrador(imgUrl);
+		Administrador unAdministrador = jsonBuilder.crearAdministrador(file.getAbsolutePath());
 		
 		Assert.assertEquals("mati", unAdministrador.getNombre());
 	}
 	
 	@Test
 	public void CrearDispositivo() {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String imgUrl =classLoader.getResource(".").getPath() + "..\\..\\src\\test\\java\\DDS\\SGE\\dispositivo.txt";
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("dispositivo.txt").getFile());
 		
-		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(imgUrl);
+		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(file.getAbsolutePath());
 
 		Assert.assertEquals("dispositivox", unDispositivo.getNombre());
 	}
