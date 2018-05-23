@@ -36,7 +36,7 @@ public class Json {
 			JsonReader reader = new JsonReader(new FileReader(path));			
 			return gson.fromJson(reader , Dispositivo.class);
 		} catch (IOException e) {
-			return null;
+			throw new RuntimeException("No se pudo crear el Dispositivo", e);
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class Json {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, Cliente.class);
 		} catch (IOException e) {
-			return null;
+			throw new RuntimeException("No se pudo crear el Cliente", e);
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class Json {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, Administrador.class);
 		} catch (IOException e) {
-			return null;
+			throw new RuntimeException("No se pudo crear el Administrador", e);
 		}
 	}
 }
