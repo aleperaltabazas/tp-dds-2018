@@ -28,7 +28,7 @@ public class Cliente {
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
-	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	private List<Dispositivo> dispositivos;
 	int puntos;
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
@@ -43,6 +43,7 @@ public class Cliente {
 		this.domicilio = domicilio;
 		this.fechaAltaServicio = fechaAltaServicio;
 		this.categoria = Categoria.R1;
+		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
 	}
 

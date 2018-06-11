@@ -31,7 +31,7 @@ public enum Categoria {
 	}
 
 	public boolean pertenece(double consumo) {
-		return consumo < this.consumoMensualMaximo && consumo > this.consumoMensualMinimo;
+		return consumo < this.consumoMensualMaximo && consumo >= this.consumoMensualMinimo;
 	}
 
 }

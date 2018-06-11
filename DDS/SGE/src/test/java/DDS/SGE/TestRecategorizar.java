@@ -31,7 +31,7 @@ public class TestRecategorizar {
 
 	@Before
 	public void initialize() {
-		// clienteSinDispositivos.recategorizar();
+		clienteSinDispositivos.recategorizar();
 		clienteDerrochador.recategorizar();
 		clienteDeCategoriaR8.recategorizar();
 	}
@@ -40,6 +40,11 @@ public class TestRecategorizar {
 	public void testLaCategoriaDeUnClienteNuevoEsR1() {
 		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDateTime.now(), Arrays.asList());
 		assertEquals(Categoria.R1, unClienteNuevo.getCategoria());
+	}
+	
+	@Test
+	public void testLaCategoriaDeUnClienteSinDispositivosEsR1() {
+		assertEquals(Categoria.R1, clienteSinDispositivos.getCategoria());
 	}
 
 	@Test
