@@ -8,15 +8,18 @@ import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Fabricante.Fabricante;
 
 public class Dispositivo {
 	private String nombre;
 	private double consumoKWPorHora;
 	private TipoDispositivo tipo;
+	Fabricante fabricante;
 
-	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo) {
+	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo, Fabricante fabricante) {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.tipo = tipo;
+		this.fabricante = fabricante;
 	}
 	
 	public TipoDispositivo getTipoDispositivo() {
