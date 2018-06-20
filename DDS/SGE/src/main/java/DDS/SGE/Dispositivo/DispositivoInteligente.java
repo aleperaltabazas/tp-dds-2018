@@ -8,10 +8,12 @@ import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Fabricante.*;
 
 public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
 	private double temperatura;
+	Fabricante fabricante;
 	
 	RepositorioDeTiempoEncendido repositorio;
 
@@ -95,4 +97,7 @@ public class DispositivoInteligente implements TipoDispositivo {
 		interesadoEnAdaptaciones.sumarPuntos();		
 	}
 
+	public boolean hayQueActuar(double temperatura) {
+		return fabricante.hayQueActuar(temperatura);
+	}
 }

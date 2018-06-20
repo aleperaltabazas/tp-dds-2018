@@ -16,6 +16,5 @@ public class EjecutorDiferido extends TimerTask {
 	
 	@Override
 	public void run() {
-		sensorAEjecutar.controlar(dispositivo);
 	}
 }

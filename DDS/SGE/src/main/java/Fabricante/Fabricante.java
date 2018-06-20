@@ -9,4 +9,6 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 public interface Fabricante {
 	public int Medir();
 	public void Actuar();
+	
+	public boolean hayQueActuar(double temperatura);
 }
