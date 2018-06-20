@@ -5,7 +5,7 @@ public class Lampara implements Fabricante {
 	int usoMensualMinimo = 90;
 	int usoMensualMaximo = 360;
 	int watts;
-	Boolean halogenas
+	Boolean halogenas;
 	
 	public Lampara(int watts, Boolean halogenas) {
 		this.watts = watts;
