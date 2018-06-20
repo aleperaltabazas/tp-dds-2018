@@ -148,5 +148,9 @@ public class Cliente {
 	public void sumarPuntos(int puntos) {
 		this.puntos += puntos;
 	}
+	
+	public void recomendacionHogarEficiente() {
+		// todo: Aqui el cliente podria invocar la funciones del enunciado
+	}
 
 }

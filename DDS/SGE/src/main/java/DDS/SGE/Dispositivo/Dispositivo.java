@@ -76,11 +76,4 @@ public class Dispositivo {
 		this.tipo.seAdaptoUnDispositivo(interesadoEnAdaptaciones);
 		
 	}
-	
-	//Implementar, por lo que entendi del encunciado mediante esto el dispositivo se apaga o prende
-	/*public void recibirActuador(Actuador unActuador) {
-		//Opcion para que no haga nada con los estandar seria lanzar una excepcion
-		//Generar efecto sobre el DI
-	}*/
-
 }
