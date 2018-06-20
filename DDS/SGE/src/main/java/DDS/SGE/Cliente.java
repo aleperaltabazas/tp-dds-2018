@@ -18,6 +18,7 @@ import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.Interesado;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Geoposicionamiento.Zona;
 
 public class Cliente {
 	private String nombre;
@@ -29,12 +30,13 @@ public class Cliente {
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
+	private Zona zona;
 	int puntos;
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
-			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
+			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos, Zona zona) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tipoDni = tipoDni;
@@ -45,6 +47,7 @@ public class Cliente {
 		this.categoria = Categoria.R1;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
+		this.zona = zona;
 	}
 
 	public enum TipoDni {
