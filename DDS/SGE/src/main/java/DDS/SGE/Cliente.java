@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
@@ -18,6 +19,7 @@ import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.Interesado;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 
 public class Cliente {
@@ -31,6 +33,7 @@ public class Cliente {
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
 	private Zona zona;
+	private Transformador transformador = this.conectarATransformador(); //Ya se inicializa con transformador
 	int puntos;
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
@@ -82,6 +85,12 @@ public class Cliente {
 		for (Dispositivo disp : dispositivos){
 			agregarDispositivo(disp);
 		}
+	}
+	private Transformador getTransformador() {
+		return transformador;
+	}
+	private void setTransformador(Transformador nuevoTransformador) {
+		transformador = nuevoTransformador;
 	}
 	
 	public void agregarDispositivo(Dispositivo dispositivo) {
@@ -152,8 +161,19 @@ public class Cliente {
 		this.puntos += puntos;
 	}
 	
+	public Transformador conectarATransformador() { // Selecciona transformador al azar para conectarse
+		Transformador nuevoTransformador = zona.getTransformadores().get(new Random().nextInt(zona.getTransformadores().size()));
+		if (nuevoTransformador != transformador) {
+			nuevoTransformador.agregarCliente(this);
+			return nuevoTransformador;
+		} else {
+			return transformador;
+		}
+		
+	}
+	
+
 	public void recomendacionHogarEficiente() {
 		// todo: Aqui el cliente podria invocar la funciones del enunciado
 	}
 
-}
