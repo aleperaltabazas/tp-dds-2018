@@ -13,15 +13,21 @@ public class Lampara implements Fabricante {
 	}
 	
 	@Override
-	public int Medir() {
+	public int medir() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void Actuar() {
+	public void actuar() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean hayQueActuar(double temperatura) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

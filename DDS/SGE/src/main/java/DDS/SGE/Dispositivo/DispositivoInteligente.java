@@ -33,6 +33,10 @@ public class DispositivoInteligente implements TipoDispositivo {
 		this.temperatura = nuevaTemperatura;
 	}
 	
+	public void setFabricante(Fabricante unFabricante) {
+		this.fabricante = unFabricante;
+	}
+	
 	public void setRepositorio(RepositorioDeTiempoEncendido repositorio) {
 		this.repositorio = repositorio;
 	}
@@ -66,6 +70,10 @@ public class DispositivoInteligente implements TipoDispositivo {
 	public double getIntensidad() {
 		return this.estado.getIntensidad();
 	}
+	
+	public Fabricante getFabricante() {
+		return this.fabricante;
+	}
 
 	public void setIntensidad(double nuevoValor) {
 		this.estado.setIntensidad(nuevoValor);
@@ -83,7 +91,7 @@ public class DispositivoInteligente implements TipoDispositivo {
 		return repositorio.tiempoTotalEnUnPeriodoEnMinutos(principioPeriodo, finPeriodo);
 	}
 
-	public TipoDispositivo adaptar() {
+	public TipoDispositivo adaptar(Fabricante unFabricante) {
 		return this;
 	}
 
@@ -99,5 +107,10 @@ public class DispositivoInteligente implements TipoDispositivo {
 
 	public boolean hayQueActuar(double temperatura) {
 		return fabricante.hayQueActuar(temperatura);
+	}
+
+	@Override
+	public TipoDispositivo adaptar() {
+		return this;
 	}
 }

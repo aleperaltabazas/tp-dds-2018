@@ -6,6 +6,7 @@ import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Fabricante.Fabricante;
 
 public class DispositivoEstandar implements TipoDispositivo {
 	long usoEstimadoDiario;
@@ -23,6 +24,7 @@ public class DispositivoEstandar implements TipoDispositivo {
 	}
 
 	public TipoDispositivo adaptar() {
+		//El estandar no deberia tener fabricante, entonces hay que agregarlo
 		return new DispositivoInteligente(new Apagado()); // No se a que estado lo convierte.
 	}
 

@@ -14,13 +14,17 @@ import org.junit.Before;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
+import Fabricante.Computadora;
+import Geoposicionamiento.Zona;
 
 public class TestCalcularConsumoEstimado {
 
+	Computadora unFabricante = new Computadora(true);
+	
 	int diasDelMes = LocalDate.now().lengthOfMonth();
-	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24));
+	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24), unFabricante);
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));	
+			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), new Zona());	
 	
 	@Before
 	public void initialize() {

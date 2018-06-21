@@ -17,29 +17,34 @@ import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import Fabricante.Computadora;
+import Geoposicionamiento.Zona;
 import junit.framework.Assert;
 
 public class TestCalcularDispositivos {
 	
-	Dispositivo dispositivoEncendido = new Dispositivo(1, new DispositivoInteligente(new Encendido()));
-	Dispositivo dispositivoApagado = new Dispositivo(1, new DispositivoInteligente(new Apagado()));
+	Computadora unFabricante = new Computadora(true);
+	Zona unaZona = new Zona();
+	
+	Dispositivo dispositivoEncendido = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
+	Dispositivo dispositivoApagado = new Dispositivo(1, new DispositivoInteligente(new Apagado()), unFabricante);
 	Cliente clienteSinDispositivos;
 	Cliente clienteConVariosDispostivos;
 	Cliente clienteConTodoApagado;
 	
 	@Before
 	public void initialize() {
-		 /*clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-					"Av siempre viva 742", LocalDate.now(), sinDispositivos);*/
-		 clienteConVariosDispostivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-					"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoEncendido, dispositivoApagado, dispositivoEncendido, dispositivoEncendido));
-		 clienteConTodoApagado = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-					"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoApagado, dispositivoApagado));
+		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(), unaZona);
+		clienteConVariosDispostivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoEncendido, dispositivoApagado, dispositivoEncendido, dispositivoEncendido), unaZona);
+		clienteConTodoApagado = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoApagado, dispositivoApagado), unaZona);
 	}
 	
 	@Test
 	public void testUnClienteSinDispositivosNoTieneDispositivosEncendidos() {
-		assertTrue(clienteSinDispositivos.algunDispositivoEncendido());
+		assertFalse(clienteSinDispositivos.algunDispositivoEncendido());
 	}
 	
 	@Test
@@ -77,7 +82,7 @@ public class TestCalcularDispositivos {
 		dispositivoApagado.encender();
 		dispositivoApagado.apagar();		
 
-		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, new DispositivoInteligente(new Apagado()));
+		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, new DispositivoInteligente(new Apagado()), unFabricante);
 		
 		List<Dispositivo> nuevosDispositivos = Arrays.asList(dispositivoApagado, nuevoDispositivoApagado);
 		clienteConTodoApagado.setDispositivos(nuevosDispositivos);

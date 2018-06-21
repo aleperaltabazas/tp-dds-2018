@@ -19,6 +19,7 @@ import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.Interesado;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Fabricante.Fabricante;
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 
@@ -33,7 +34,7 @@ public class Cliente {
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
 	private Zona zona;
-	private Transformador transformador = this.conectarATransformador(); //Ya se inicializa con transformador
+	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
 	int puntos;
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
@@ -172,8 +173,9 @@ public class Cliente {
 		
 	}
 	
-
 	public void recomendacionHogarEficiente() {
 		// todo: Aqui el cliente podria invocar la funciones del enunciado
 	}
+	
+}
 

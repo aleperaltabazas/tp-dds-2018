@@ -17,6 +17,7 @@ import DDS.SGE.Dispositivo.IntervaloActivo;
 import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import Fabricante.Computadora;
 
 public class TestCalcularConsumosEnDispositivosInteligentes {
 	
@@ -31,7 +32,7 @@ public class TestCalcularConsumosEnDispositivosInteligentes {
 	@Before
 	public void initialize() {
 		dispositivoInteligenteEncendido.setRepositorio(repositorioDePrueba);
-		dispositivoEncendido = new Dispositivo(2, dispositivoInteligenteEncendido);		
+		dispositivoEncendido = new Dispositivo(2, dispositivoInteligenteEncendido, new Computadora(true));		
 	}
 	
 	@Test

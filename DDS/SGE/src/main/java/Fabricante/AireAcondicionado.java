@@ -6,19 +6,34 @@ public class AireAcondicionado implements Fabricante {
 	int usoMensualMaximo = 360;
 	int frigorias;
 	
+	double temperaturaDelDispositivo;
+	double temperaturaRecomendada = 24;
+	
 	public AireAcondicionado(int frigorias) {
 		this.frigorias = frigorias;
 	}
 	
 	@Override
-	public int Medir() {
+	public int medir() {
 		return 0;
 	}
 
 	@Override
-	public void Actuar() {
+	public void actuar() {
 		// TODO Auto-generated method stub
-
+		this.ponerElAireEn(temperaturaRecomendada);
 	}
 
+	@Override
+	public boolean hayQueActuar(double temperatura) {
+		return temperatura < temperaturaRecomendada;
+	}
+	
+	public double getTemperaturaDelDispositivo() {
+		return this.temperaturaDelDispositivo;
+	}
+
+	public void ponerElAireEn(double temperatura) {
+		this.temperaturaDelDispositivo = temperatura;
+	}
 }

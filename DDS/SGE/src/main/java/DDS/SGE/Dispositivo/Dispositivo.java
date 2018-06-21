@@ -16,10 +16,9 @@ public class Dispositivo {
 	private TipoDispositivo tipo;
 	Fabricante fabricante;
 
-	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo, Fabricante fabricante) {
+	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo, Fabricante unFabricante) {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.tipo = tipo;
-		this.fabricante = fabricante;
 	}
 	
 	public TipoDispositivo getTipoDispositivo() {

@@ -17,13 +17,19 @@ public class Televisor implements Fabricante {
 	}
 	
 	@Override
-	public int Medir() {		
+	public int medir() {		
 		return 0;
 	}
 
 	@Override
-	public void Actuar() {
+	public void actuar() {
 
+	}
+
+	@Override
+	public boolean hayQueActuar(double temperatura) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

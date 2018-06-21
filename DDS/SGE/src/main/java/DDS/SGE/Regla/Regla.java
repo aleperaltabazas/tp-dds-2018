@@ -17,7 +17,7 @@ public class Regla {
 	}
 
 	public void actuar() {
-		sensores.forEach(s -> s.medir());
+		sensores.forEach(s -> s.actualizarMediciones());
 
 		if (sensores.stream().allMatch(s -> s.hayQueActuar())) {
 			actuador.accionarSobre(dispositivo);

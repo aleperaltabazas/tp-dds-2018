@@ -7,8 +7,8 @@ import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
 public interface Fabricante {
-	public int Medir();
-	public void Actuar();
+	public int medir();
+	public void actuar();
 	
 	public boolean hayQueActuar(double temperatura);
 }

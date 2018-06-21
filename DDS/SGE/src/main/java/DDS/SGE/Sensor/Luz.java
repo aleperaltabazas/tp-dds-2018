@@ -30,8 +30,11 @@ public class Luz implements Sensor {
 		this.dispositivo = dispositivo;
 	}
 	
-	public double medir() {
+	public void actualizarMediciones() {
 		////De alguna manera sensa el ambiente y hace un setIntensidadLuminica() con la medición
+	}
+	
+	public double medir() {
 		return this.intensidadLuminicaAmbiente;		
 	}
 	

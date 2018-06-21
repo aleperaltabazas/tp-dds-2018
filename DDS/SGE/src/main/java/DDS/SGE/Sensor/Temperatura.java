@@ -33,8 +33,11 @@ public class Temperatura implements Sensor {
 		this.temperaturaAmbiente = temperaturaAmbiente;
 	}
 	
-	public double medir() {
+	public void actualizarMediciones() {
 		//De alguna manera sensa el ambiente y hace un setTemperatura() con la medición
+	}
+	
+	public double medir() {
 		return temperaturaAmbiente;
 	}
 	

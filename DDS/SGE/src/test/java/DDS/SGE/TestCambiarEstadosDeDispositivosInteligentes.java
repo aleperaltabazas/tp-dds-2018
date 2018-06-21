@@ -15,6 +15,7 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.AhorroDeEnergia;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import Fabricante.Computadora;
 
 import org.junit.Before;
 
@@ -24,13 +25,15 @@ public class TestCambiarEstadosDeDispositivosInteligentes {
 	Encendido estadoEncendido = new Encendido();
 	AhorroDeEnergia estadoAhorroDeEnergia = new AhorroDeEnergia();
 	
+	Computadora unFabricante = new Computadora(true);
+	
 	DispositivoInteligente dispositivoInteligenteApagado = new DispositivoInteligente(estadoApagado);
 	DispositivoInteligente dispositivoInteligenteEncendido = new DispositivoInteligente(estadoEncendido);
 	DispositivoInteligente dispositivoInteligenteEnAhorroDeEnergia = new DispositivoInteligente(estadoAhorroDeEnergia);
 	
-	Dispositivo unDispositivoApagado = new Dispositivo(1, dispositivoInteligenteApagado);
-	Dispositivo unDispositivoEncendido = new Dispositivo(1, dispositivoInteligenteEncendido);
-	Dispositivo unDispositivoEnAhorroDeEnergia = new Dispositivo(1, dispositivoInteligenteEnAhorroDeEnergia);
+	Dispositivo unDispositivoApagado = new Dispositivo(1, dispositivoInteligenteApagado, unFabricante);
+	Dispositivo unDispositivoEncendido = new Dispositivo(1, dispositivoInteligenteEncendido, unFabricante);
+	Dispositivo unDispositivoEnAhorroDeEnergia = new Dispositivo(1, dispositivoInteligenteEnAhorroDeEnergia, unFabricante);
 	
 	@Test
 	public void testSeEnciendeUnDispositivoEnModoAhorroDeEnergiaYQuedaEncendido() {
