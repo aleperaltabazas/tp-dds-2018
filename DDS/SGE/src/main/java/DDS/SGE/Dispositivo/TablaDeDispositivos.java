@@ -2,7 +2,9 @@ package DDS.SGE.Dispositivo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import DDS.SGE.Dispositivo.Estado.*;
 import Fabricante.*;
@@ -39,7 +41,43 @@ public class TablaDeDispositivos {
 	Dispositivo pc = new Dispositivo(0.4,new DispositivoInteligente(new Apagado()), new Computadora(false));
 	Dispositivo microondas = new Dispositivo(0.64,new DispositivoEstandar(2), new Microondas());
 
+	Map<String, Dispositivo> map = new HashMap<String, Dispositivo>();
 	
+	public Dispositivo obtenerDispositivo(String dispositivo) {
+		map.put("aireAcondicionadoPoderoso", aireAcondicionadoPoderoso);
+		map.put("aireAcondicionadoDebil", aireAcondicionadoDebil);
+		map.put("televisorTuboChico", televisorTuboChico);
+		map.put("televisorTuboGrande29", televisorTuboGrande29);
+		map.put("televisorTuboGrande30", televisorTuboGrande30);
+		map.put("televisorTuboGrande31", televisorTuboGrande31);
+		map.put("televisorTuboGrande32", televisorTuboGrande32);
+		map.put("televisorTuboGrande33", televisorTuboGrande33);
+		map.put("televisorTuboGrande34", televisorTuboGrande34);
+		map.put("televisorLCD", televisorLCD);
+		map.put("televisorTuboLEDChico", televisorTuboLEDChico);
+		map.put("televisorTuboLEDMediano", televisorTuboLEDMediano);
+		map.put("televisorTuboChico", televisorTuboChico);
+		map.put("televisorTuboLEDGrande", televisorTuboLEDGrande);
+		map.put("heladeraConFreezer", heladeraConFreezer);
+		map.put("heladeraSinFreezer", heladeraSinFreezer);
+		map.put("lavarropasAutomaticoConCalentamiento", lavarropasAutomaticoConCalentamiento);
+		map.put("lavarropasAutomaticoSinCalentamiento", lavarropasAutomaticoSinCalentamiento);
+		map.put("lavarropasSemiAutomatico", lavarropasSemiAutomatico);
+		map.put("ventiladorDePie", ventiladorDePie);
+		map.put("ventiladorDeTecho", ventiladorDeTecho);
+		map.put("lamparaHalogenasPequenia", lamparaHalogenasPequenia);
+		map.put("lamparaHalogenasMediana", lamparaHalogenasMediana);
+		map.put("lamparaHalogenasGrande", lamparaHalogenasGrande);
+		map.put("lamparaPequenia", lamparaPequenia);
+		map.put("lamparaMediana", lamparaMediana);
+		map.put("lamparaGrande", lamparaGrande);
+		map.put("pc", pc);
+		map.put("microondas", microondas);
+		
+		return map.get(dispositivo);
+	}
+	
+	/*
 	public List<Dispositivo> dispositivos = new ArrayList<>(
 			Arrays.asList(aireAcondicionadoPoderoso,
 					aireAcondicionadoDebil,
@@ -69,7 +107,6 @@ public class TablaDeDispositivos {
 					lamparaGrande,
 					pc,
 					microondas
-					));
-
-	
+					));	
+					*/	
 }

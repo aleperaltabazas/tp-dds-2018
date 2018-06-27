@@ -28,4 +28,13 @@ public class Ventilador implements Fabricante {
 		return false;
 	}
 
+	@Override
+	public double usoMensualMinimo() {
+		return usoMensualMinimo;
+	}
+
+	@Override
+	public double usoMensualMaximo() {
+		return usoMensualMaximo;
+	}
 }

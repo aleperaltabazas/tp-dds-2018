@@ -26,4 +26,13 @@ public class Heladera implements Fabricante {
 		return false;
 	}
 
+	@Override
+	public double usoMensualMinimo() {
+		return 0;
+	}
+
+	@Override
+	public double usoMensualMaximo() {
+		return 0;
+	}
 }

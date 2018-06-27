@@ -11,26 +11,36 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import Fabricante.Fabricante;
 
 public class Dispositivo {
-	private String nombre;
+
 	private double consumoKWPorHora;
+	private double tiempoQueSePuedeUtilizar;
 	private TipoDispositivo tipo;
-	Fabricante fabricante;
+	private Fabricante fabricante;
 
 	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo, Fabricante unFabricante) {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.tipo = tipo;
+		this.fabricante = unFabricante;
 	}
 	
 	public TipoDispositivo getTipoDispositivo() {
 		return this.tipo;
 	}
 	
+	public Fabricante getFabricante() {
+		return this.fabricante;
+	}
+	
+	public double getTiempoQueSePuedeUtilizar() {
+		return this.tiempoQueSePuedeUtilizar;
+	}
+	
+	public void setTiempoQueSePuedeUtilizar(double tiempoQueSePuedeUtilizar) {
+		this.tiempoQueSePuedeUtilizar = tiempoQueSePuedeUtilizar;
+	}
+	
 	public void setTipoDispositvo(TipoDispositivo tipo) {
 		this.tipo = tipo;
-	}
-
-	public String getNombre() {
-		return this.nombre;
 	}
 
 	public boolean estaEncendido() {

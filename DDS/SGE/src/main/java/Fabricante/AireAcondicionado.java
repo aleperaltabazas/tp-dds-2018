@@ -36,4 +36,14 @@ public class AireAcondicionado implements Fabricante {
 	public void ponerElAireEn(double temperatura) {
 		this.temperaturaDelDispositivo = temperatura;
 	}
+
+	@Override
+	public double usoMensualMinimo() {
+		return usoMensualMinimo;
+	}
+
+	@Override
+	public double usoMensualMaximo() {
+		return usoMensualMaximo;
+	}
 }

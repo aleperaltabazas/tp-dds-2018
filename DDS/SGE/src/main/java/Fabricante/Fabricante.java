@@ -9,6 +9,7 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 public interface Fabricante {
 	public int medir();
 	public void actuar();
-	
+	public double usoMensualMinimo();
+	public double usoMensualMaximo();
 	public boolean hayQueActuar(double temperatura);
 }
