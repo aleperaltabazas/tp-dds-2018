@@ -18,38 +18,52 @@ import DDS.SGE.Dispositivo.Dispositivo;
 
 public class Optimizador {	
 	
-	int posicion;
 	int consumoMaximoHogar= 612;
 	int dispositivo;
 	
 	double Calcular(Cliente unCliente) {
 		SimplexSolver solver = new SimplexSolver();
-		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();
+		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();			
 		
 		double[] arrayConsumoPorHora = new double[unCliente.cantidadDispositivos()];
-		double[] coeficientes = {0,1}; // TODO
-		posicion = 0;
+		double[] coeficientesRestriccion = new double[unCliente.cantidadDispositivos()];
+		double[] coeficientesFuncion = new double[unCliente.cantidadDispositivos() + 1];
+		dispositivo = 0;
 		
 		unCliente.getDispositivos().forEach(disp -> {
-			arrayConsumoPorHora[posicion] = disp.getConsumoKWPorHora();
-			posicion++;
+			arrayConsumoPorHora[dispositivo] = disp.getConsumoKWPorHora();
+			coeficientesFuncion[dispositivo] = 1;
+			coeficientesRestriccion[dispositivo] = 0;
+			dispositivo++;
 		});
+		
+		coeficientesFuncion[dispositivo] = 0;
 		
 		// Restriccion en base al consumo por hora de cada dispositivo y el consumo maximo para hogar eficiente
 		LinearConstraint unaRestriccion = new LinearConstraint(arrayConsumoPorHora,Relationship.LEQ,consumoMaximoHogar);
 		restricciones.add(unaRestriccion);
 		
+		dispositivo = 0;
 		// Restricciones del problema -- Minimo y Maximo por dispositivo
-		unCliente.getDispositivos().forEach(disp -> {restricciones.
-				add(new LinearConstraint(coeficientes,Relationship.GEQ, disp.getFabricante().usoMensualMinimo()));
+		unCliente.getDispositivos().forEach(disp -> {
+			
+			coeficientesRestriccion[dispositivo] = 1;
+			
 			restricciones.
-				add(new LinearConstraint(coeficientes,Relationship.LEQ, disp.getFabricante().usoMensualMaximo()));
+				add(new LinearConstraint(coeficientesRestriccion,
+						Relationship.GEQ, disp.getFabricante().usoMensualMinimo()));
+			restricciones.
+				add(new LinearConstraint(coeficientesRestriccion,
+						Relationship.LEQ, disp.getFabricante().usoMensualMaximo()));
+			
+			coeficientesRestriccion[dispositivo] = 0;
+			dispositivo++;
 		});
 		
-		// Funcion en base al consumo por mes de cada dispositivo y el consumo maximo para hogar eficiente
-		LinearObjectiveFunction funcion = new LinearObjectiveFunction(coeficientes, 1);
+		// Funcion -- coeficientes de funcion lineal
+		LinearObjectiveFunction funcion = new LinearObjectiveFunction(coeficientesFuncion, 1);
 			
-		// resultado devuelve el co
+		// resultado devuelve el consumo total en el mes y el consumo por dispositivo
 		PointValuePair resultado = solver.optimize(new MaxIter(100),
 				funcion,
 				new LinearConstraintSet(restricciones),
