@@ -18,6 +18,7 @@ import Geoposicionamiento.Zona;
 
 public class TestOptimizador {
 
+	int posicion;
 	Optimizador optimizador = new Optimizador();
 	
 	Computadora unFabricante = new Computadora(true);
@@ -41,7 +42,17 @@ public class TestOptimizador {
 	@Test
 	public void PruebaOptimizar() {
 		double horas = optimizador.Calcular(clienteConVariosDispostivos);
-		assertEquals(441252.0, horas, 0.0);
+		assertEquals(613.0, horas, 0.0);
+		
+		double[] valoresEsperados = {60.0,60.0,60.0,132.0};
+		posicion = 0;
+		
+		clienteConVariosDispostivos.getDispositivos().map(disp -> disp.getTiempoQueSePuedeUtilizar())
+		.sorted()
+		.forEach(tiempo -> {
+			assertEquals(valoresEsperados[posicion], tiempo, 0.0);
+			posicion++;
+		});
 	}
 
 }
