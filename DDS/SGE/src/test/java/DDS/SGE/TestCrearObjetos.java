@@ -40,7 +40,7 @@ public class TestCrearObjetos {
 		
 		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(file.getAbsolutePath());
 
-		Assert.assertEquals("dispositivox", unDispositivo.getNombre());
+		Assert.assertEquals(12.0, unDispositivo.getConsumoKWPorHora(),0.0);
 	}
 
 }
