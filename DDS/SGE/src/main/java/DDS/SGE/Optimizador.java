@@ -25,26 +25,52 @@ public class Optimizador {
 		SimplexSolver solver = new SimplexSolver();
 		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();			
 		
-		double[] arrayConsumoPorHora = new double[unCliente.cantidadDispositivos()];
+		double[] arrayPotencias = new double[unCliente.cantidadDispositivos()];
 		double[] coeficientesRestriccion = new double[unCliente.cantidadDispositivos()];
 		double[] coeficientesFuncion = new double[unCliente.cantidadDispositivos() + 1];
-		dispositivo = 0;
 		
-		unCliente.getDispositivos().forEach(disp -> {
-			arrayConsumoPorHora[dispositivo] = disp.getConsumoKWPorHora();
-			coeficientesFuncion[dispositivo] = 1;
-			coeficientesRestriccion[dispositivo] = 0;
-			dispositivo++;
-		});
-		
-		coeficientesFuncion[dispositivo] = 0;
+		inicializarPotenciasYCoeficientes(unCliente, arrayPotencias, coeficientesRestriccion, coeficientesFuncion);
 		
 		// Restriccion en base al consumo por hora de cada dispositivo y el consumo maximo para hogar eficiente
-		LinearConstraint unaRestriccion = new LinearConstraint(arrayConsumoPorHora,Relationship.LEQ,consumoMaximoHogar);
+		LinearConstraint unaRestriccion = new LinearConstraint(arrayPotencias,Relationship.LEQ,consumoMaximoHogar);
 		restricciones.add(unaRestriccion);
 		
-		dispositivo = 0;
 		// Restricciones del problema -- Minimo y Maximo por dispositivo
+		agregarRestriccionesPorDispositivo(unCliente, restricciones, coeficientesRestriccion);
+		
+		// Funcion -- coeficientes de funcion lineal
+		LinearObjectiveFunction funcion = new LinearObjectiveFunction(coeficientesFuncion, 0);
+			
+		// resultado devuelve el consumo total en el mes y el consumo por dispositivo
+		PointValuePair resultado = solver.optimize(new MaxIter(100),
+				funcion,
+				new LinearConstraintSet(restricciones),
+				GoalType.MAXIMIZE,
+				new NonNegativeConstraint(true)
+				);		
+		
+		double[] resultados = resultado.getPoint();
+		
+		setearTiempoRecomendadoPorDispositivo(unCliente, resultados);
+		
+		double horasConsumidasEnUnMes = resultado.getValue();
+		
+		return horasConsumidasEnUnMes;
+		}
+
+	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
+		dispositivo = 0;
+		
+		unCliente.getDispositivos().forEach(disp -> {			
+			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
+			dispositivo++;
+		});
+	}
+
+	private void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
+			double[] coeficientesRestriccion) {
+		dispositivo = 0;
+		
 		unCliente.getDispositivos().forEach(disp -> {
 			
 			coeficientesRestriccion[dispositivo] = 1;
@@ -59,29 +85,19 @@ public class Optimizador {
 			coeficientesRestriccion[dispositivo] = 0;
 			dispositivo++;
 		});
-		
-		// Funcion -- coeficientes de funcion lineal
-		LinearObjectiveFunction funcion = new LinearObjectiveFunction(coeficientesFuncion, 1);
-			
-		// resultado devuelve el consumo total en el mes y el consumo por dispositivo
-		PointValuePair resultado = solver.optimize(new MaxIter(100),
-				funcion,
-				new LinearConstraintSet(restricciones),
-				GoalType.MAXIMIZE,
-				new NonNegativeConstraint(true)
-				);		
-		
-		double[] resultados = resultado.getPoint();
-		
+	}
+
+	private void inicializarPotenciasYCoeficientes(Cliente unCliente, double[] arrayPotencias,
+			double[] coeficientesRestriccion, double[] coeficientesFuncion) {
 		dispositivo = 0;
 		
-		unCliente.getDispositivos().forEach(disp -> {			
-			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
+		unCliente.getDispositivos().forEach(disp -> {
+			arrayPotencias[dispositivo] = disp.getConsumoKWPorHora();
+			coeficientesFuncion[dispositivo] = 1;
+			coeficientesRestriccion[dispositivo] = 0;
 			dispositivo++;
 		});
 		
-		double horasConsumidasEnUnMes = resultado.getValue();
-		
-		return horasConsumidasEnUnMes;
-		}		
+		coeficientesFuncion[dispositivo] = 0;
+	}		
 }
