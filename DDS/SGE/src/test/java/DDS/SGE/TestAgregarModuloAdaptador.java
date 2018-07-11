@@ -42,12 +42,10 @@ public class TestAgregarModuloAdaptador {
 		assertEquals(DispositivoInteligente.class, dispositivoInteligenteQueNoEsDelCliente.getTipoDispositivo().getClass());
 	}
 	
-	
-	//Este test me genera dudas, ya que no se que hace funcionalmente nuestro sistema si adaptas un Inteligente
 	@Test
-	public void testAdaptarUnInteligenteLoVuelveEstandar() {
+	public void testAdaptarUnInteligenteNoLoVuelveEstandar() {
 		unCliente.agregarModuloAdaptadorA(dispositivoInteligenteQueSiEsDelCliente);
-		assertEquals(DispositivoEstandar.class, dispositivoInteligenteQueSiEsDelCliente.getTipoDispositivo().getClass());
+		assertEquals(DispositivoInteligente.class, dispositivoInteligenteQueSiEsDelCliente.getTipoDispositivo().getClass());
 	}
 		
 	
