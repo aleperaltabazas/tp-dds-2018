@@ -173,8 +173,10 @@ public class Cliente {
 		
 	}
 	
-	public void recomendacionHogarEficiente() {
-		// todo: Aqui el cliente podria invocar la funciones del enunciado
+	public double consultarUsoOptimo() {
+		double consumoOptimoPorMesEnHoras = Optimizador.Calcular(this);
+		System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
+		return consumoOptimoPorMesEnHoras;
 	}
 	
 }

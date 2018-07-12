@@ -20,14 +20,13 @@ public class TestOptimizador {
 
 	private static final double USO_MENSUAL_RECOMENDADO = 612.0;
 	
-	Optimizador optimizador = new Optimizador();
-	
 	Computadora unFabricante = new Computadora(true);
 	
 	Zona unaZona = new Zona();
 	
 	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
 	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Apagado()), unFabricante);
+	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido()), unFabricante);
 	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Apagado()), unFabricante);
 	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Apagado()), unFabricante);
 	
@@ -36,6 +35,7 @@ public class TestOptimizador {
 	Cliente clienteConDispositivoDe2Kw;
 	Cliente clienteConDispositivoDeMuchaPotencia;
 	Cliente clienteCon2DispositivosDe2Kw;
+	Cliente clienteConVariosDispositivos;
 	
 	@Before
 	public void initialize() {
@@ -54,7 +54,10 @@ public class TestOptimizador {
 		
 		clienteCon2DispositivosDe2Kw = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw, otroDispositivoPotencia2Kw), unaZona);
-
+		
+		clienteConVariosDispositivos = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw,dispositivoPotencia1Kw,dispositivoPotencia3Kw), unaZona);
+	
 	}
 	
 	/*
@@ -77,14 +80,14 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras(){
 		
-		assertEquals(USO_MENSUAL_RECOMENDADO / 2, optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
+		assertEquals(USO_MENSUAL_RECOMENDADO / 2, Optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
 	
 	}
 	
 	@Test
 	public void ElUnicoDispositivoDePotencia2KwDelClienteSeRecomiendaUsarloLaMitadDelTiempoRecomendado(){
 		
-		double tiempoTotalDeUso = optimizador.Calcular(clienteConDispositivoDe2Kw);
+		double tiempoTotalDeUso = Optimizador.Calcular(clienteConDispositivoDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
 	
 	}
@@ -93,14 +96,14 @@ public class TestOptimizador {
 	@Test
 	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo(){
 
-		assertEquals(optimizador.Calcular(clienteConDispositivoDe2Kw), optimizador.Calcular(clienteCon2DispositivosDe2Kw) , 0.0);
+		assertEquals(Optimizador.Calcular(clienteConDispositivoDe2Kw), Optimizador.Calcular(clienteCon2DispositivosDe2Kw) , 0.0);
 	
 	}
 	
 	@Test
 	public void laSumaDelTiempoRecomendadoDeCadaDispositivoEsIgualAlTiempoTotalQueElClientePuedeUsarlos(){
 
-		double tiempoTotalDeUso = optimizador.Calcular(clienteCon2DispositivosDe2Kw);
+		double tiempoTotalDeUso = Optimizador.Calcular(clienteCon2DispositivosDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar() + otroDispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar() , 0.0);
 	
 	}
@@ -108,7 +111,7 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible(){
 		
-		assertEquals(dispositivoPotencia1Kw.getFabricante().usoMensualMaximo(), optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
+		assertEquals(dispositivoPotencia1Kw.getFabricante().usoMensualMaximo(), Optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
 	
 	}
 	
@@ -122,7 +125,14 @@ public class TestOptimizador {
 	@Test
 	public void unClienteSinDispositivosSeLeRecomiendaUsarLosDispositivosPor0Horas(){
 		
-		assertEquals(0, optimizador.Calcular(clienteSinDispositivos), 0.0);
+		assertEquals(0, Optimizador.Calcular(clienteSinDispositivos), 0.0);
+	
+	}
+	
+	@Test
+	public void unClientePuedePedirSuUsoRecomendado(){
+		
+		assertEquals(432, clienteConVariosDispositivos.consultarUsoOptimo(), 0.0);
 	
 	}
 	

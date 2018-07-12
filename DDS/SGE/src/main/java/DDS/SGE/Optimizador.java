@@ -18,10 +18,10 @@ import DDS.SGE.Dispositivo.Dispositivo;
 
 public class Optimizador {	
 	
-	int consumoMaximoHogar= 612;
-	int dispositivo;
+	static int consumoMaximoHogar= 612;
+	static int dispositivo;
 	
-	double Calcular(Cliente unCliente) {
+	public static double Calcular(Cliente unCliente) {
 		SimplexSolver solver = new SimplexSolver();
 		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();			
 		
@@ -58,16 +58,17 @@ public class Optimizador {
 		return horasConsumidasEnUnMes;
 		}
 
-	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
+	private static void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
 		dispositivo = 0;
 		
 		unCliente.getDispositivos().forEach(disp -> {			
 			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
+			System.out.format("El dispositivo %s se podrá utilizar %f horas como maximo\n", disp.toString(), resultados[dispositivo]);
 			dispositivo++;
 		});
 	}
 
-	private void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
+	private static void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
 			double[] coeficientesRestriccion) {
 		dispositivo = 0;
 		
@@ -87,7 +88,7 @@ public class Optimizador {
 		});
 	}
 
-	private void inicializarPotenciasYCoeficientes(Cliente unCliente, double[] arrayPotencias,
+	private static void inicializarPotenciasYCoeficientes(Cliente unCliente, double[] arrayPotencias,
 			double[] coeficientesRestriccion, double[] coeficientesFuncion) {
 		dispositivo = 0;
 		
