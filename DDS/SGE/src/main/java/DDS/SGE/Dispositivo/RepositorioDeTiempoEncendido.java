@@ -1,5 +1,6 @@
 package DDS.SGE.Dispositivo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +34,13 @@ public class RepositorioDeTiempoEncendido {
 	
 	public long tiempoTotalEncendidoHaceNHorasEnMinutos(int horas) {		
 		LocalDateTime fechaSolicitada = LocalDateTime.now().minusHours(horas);
-		return this.intervalosQueOcurrenEntre(fechaSolicitada, LocalDateTime.now()).mapToLong(intervalo -> intervalo.getIntervaloEncendidoEnMinutos()).sum();
+		return this.intervalosQueOcurrenEntre(fechaSolicitada, LocalDateTime.now())
+				.mapToLong(intervalo -> intervalo.getIntervaloEncendidoEnMinutos()).sum()
+				+ this.intervaloEncendidoActual().getIntervaloEncendidoEnMinutos();
+	}
+	
+	public IntervaloActivo intervaloEncendidoActual() { 
+		return new IntervaloActivo(ultimaFechaDeEncendido, LocalDateTime.now());
 	}
 	
 	public Stream<IntervaloActivo> intervalosQueOcurrenEntre(LocalDateTime tiempoMinimo, LocalDateTime tiempoMaximo){
