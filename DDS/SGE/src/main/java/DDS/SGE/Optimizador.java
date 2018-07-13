@@ -2,6 +2,7 @@ package DDS.SGE;
 
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import org.apache.commons.math3.*;
 import org.apache.commons.math3.optim.MaxIter;
@@ -25,9 +26,11 @@ public class Optimizador {
 		SimplexSolver solver = new SimplexSolver();
 		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();			
 		
-		double[] arrayPotencias = new double[unCliente.cantidadDispositivos()];
-		double[] coeficientesRestriccion = new double[unCliente.cantidadDispositivos()];
-		double[] coeficientesFuncion = new double[unCliente.cantidadDispositivos() + 1];
+		int cantidadDeDispositivos = unCliente.cantidadDispositivos();
+		
+		double[] arrayPotencias = new double[cantidadDeDispositivos];
+		double[] coeficientesRestriccion = new double[cantidadDeDispositivos];
+		double[] coeficientesFuncion = new double[cantidadDeDispositivos + 1];
 		
 		inicializarPotenciasYCoeficientes(unCliente, arrayPotencias, coeficientesRestriccion, coeficientesFuncion);
 		
@@ -53,10 +56,21 @@ public class Optimizador {
 		
 		setearTiempoRecomendadoPorDispositivo(unCliente, resultados);
 		
+		accionarSobreDispositivosInfractores(unCliente.getDispositivos());
+		
 		double horasConsumidasEnUnMes = resultado.getValue();
 		
 		return horasConsumidasEnUnMes;
 		}
+
+	private static void accionarSobreDispositivosInfractores(Stream<Dispositivo> dispositivos) {
+		obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
+	}
+	
+	public static Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos){
+		int horasDelMes = 24 * 30;
+		return dispositivos.filter(d -> d.consumoTotalHaceNHoras(horasDelMes) > d.getTiempoQueSePuedeUtilizar());
+	}
 
 	private static void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
 		dispositivo = 0;

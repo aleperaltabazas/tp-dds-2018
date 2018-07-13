@@ -17,7 +17,5 @@ public class Zona {
 	public double consumoTotal() {
 		return transformadores.stream().mapToDouble(transformador -> transformador.suministra()).sum();
 	}
-
-	
 	
 }

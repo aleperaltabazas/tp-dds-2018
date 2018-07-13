@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.IntervaloActivo;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import Fabricante.Computadora;
@@ -24,11 +26,14 @@ public class TestOptimizador {
 	
 	Zona unaZona = new Zona();
 	
+	DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido());
+	
 	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Apagado()), unFabricante);
+	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()), unFabricante);
 	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Apagado()), unFabricante);
-	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Apagado()), unFabricante);
+	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Encendido()), unFabricante);
+	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()), unFabricante);
+	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente, unFabricante);	
 	
 	Cliente clienteSinDispositivos;
 	Cliente clienteConDispositivoDe1Kw;
@@ -36,6 +41,12 @@ public class TestOptimizador {
 	Cliente clienteConDispositivoDeMuchaPotencia;
 	Cliente clienteCon2DispositivosDe2Kw;
 	Cliente clienteConVariosDispositivos;
+	Cliente clienteConDispositivoInfractor;
+	
+	LocalDateTime fechaDeReferencia = LocalDateTime.now();
+	IntervaloActivo intervaloDe600Horas = new IntervaloActivo(fechaDeReferencia.minusHours(600), fechaDeReferencia);
+	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe600Horas);
+	RepositorioDeTiempoEncendidoTest repositorioDeMuchoTiempoEncendido = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
 	
 	@Before
 	public void initialize() {
@@ -57,25 +68,13 @@ public class TestOptimizador {
 		
 		clienteConVariosDispositivos = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw,dispositivoPotencia1Kw,dispositivoPotencia3Kw), unaZona);
+		
+		clienteConDispositivoInfractor = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor), unaZona);
+		
+		dispositivoInfractorInteligente.setRepositorio(repositorioDeMuchoTiempoEncendido);
 	
 	}
-	
-	/*
-	@Test
-	public void PruebaOptimizar() {
-		double horas = optimizador.Calcular(clienteConDispositivoDe1Kw);
-		assertEquals(612.0, horas, 0.0);
-		
-		double[] valoresEsperados = {60.0,60.0,60.0,132.0};
-		posicion = 0;
-		
-		clienteConDispositivoDe1Kw.getDispositivos().map(disp -> disp.getTiempoQueSePuedeUtilizar())
-		.sorted()
-		.forEach(tiempo -> {
-			assertEquals(valoresEsperados[posicion], tiempo, 0.0);
-			posicion++;
-		});
-	}*/
 	
 	@Test
 	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras(){
@@ -91,8 +90,7 @@ public class TestOptimizador {
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
 	
 	}
-	
-	
+		
 	@Test
 	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo(){
 
@@ -135,5 +133,24 @@ public class TestOptimizador {
 		assertEquals(432, clienteConVariosDispositivos.consultarUsoOptimo(), 0.0);
 	
 	}
+	
+	@Test
+	public void aUnClienteNoSeLeApagaSuDispositivoPorqueNoTuvoConsumo(){
+		
+		Optimizador.Calcular(clienteConDispositivoDe1Kw);
+		assertTrue(clienteConDispositivoDe1Kw.getDispositivos().findFirst().get().estaEncendido());
+	
+	}
+	
+	@Test
+	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo(){
+		
+		Optimizador.Calcular(clienteConDispositivoInfractor);
+		
+		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());
+	
+	}
+	
+	
 	
 }

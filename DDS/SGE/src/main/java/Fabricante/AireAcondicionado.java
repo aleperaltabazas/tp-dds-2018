@@ -20,7 +20,6 @@ public class AireAcondicionado implements Fabricante {
 
 	@Override
 	public void actuar() {
-		// TODO Auto-generated method stub
 		this.ponerElAireEn(temperaturaRecomendada);
 	}
 
