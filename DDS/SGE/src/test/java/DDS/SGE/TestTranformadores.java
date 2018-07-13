@@ -51,20 +51,17 @@ public class TestTranformadores {
 	@Test
 	public void Transformador_Suministra_Suma_De_Consumo_De_Usuarios_Conectados() {
 		zona_A.agregarTransformadores(Arrays.asList(transformador_1, transformador_3));
-		Transformador random_1 = unCliente.conectarATransformador();
-		Transformador random_2 = otroCliente.conectarATransformador();
-		assertEquals((unCliente.consumoTotalEstimadoDiario() + otroCliente.consumoTotalEstimadoDiario()), random_1.suministra() + random_2.suministra(), 1);
+		unCliente.conectarseAEsteTransformador(transformador_1);
+		otroCliente.conectarseAEsteTransformador(transformador_3);
+		assertEquals(unCliente.consumoTotalEstimadoDiario() + otroCliente.consumoTotalEstimadoDiario(), transformador_1.suministra() + transformador_3.suministra(), 0);
 	}
 	
-	@Test
+	@Test (expected = RuntimeException.class)
 	public void Cliente_No_Puede_Conectarse_A_Transformador_De_Otra_Zona() {
-		zona_A.agregarTransformadores(Arrays.asList(transformador_1));
 		zona_B.agregarTransformadores(Arrays.asList(transformador_2));
-		try {
-			unCliente.conectarseAEsteTransformador(transformador_2);
-		} catch (RuntimeException e) {
-			System.out.println(e.getMessage());
-		}
+		unCliente.conectarseAEsteTransformador(transformador_2);
+		
+		
 	}
 
 }

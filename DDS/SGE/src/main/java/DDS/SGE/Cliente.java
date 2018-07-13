@@ -176,6 +176,7 @@ public class Cliente {
 	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
 		if (nuevoTransformador.perteneceA(this.zona)) {
 			transformador = nuevoTransformador;
+			nuevoTransformador.agregarCliente(this);
 		}
 		else {
 			throw new RuntimeException("El transformador está fuera de tu zona");
