@@ -11,6 +11,8 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 public class Temperatura implements Sensor {
 	DispositivoInteligente dispositivo;
 	double temperaturaAmbiente = 22;
+	// Creados para implementar una interfaz con el ENRE
+	double temperaturaActual;
 
 	public Temperatura(DispositivoInteligente dispositivo, double temperaturaAmbiente) {
 		this.dispositivo = dispositivo;
@@ -33,6 +35,10 @@ public class Temperatura implements Sensor {
 		this.temperaturaAmbiente = temperaturaAmbiente;
 	}
 	
+	public void setTemperaturaActual(int nuevaTemperatura) {
+		temperaturaActual = nuevaTemperatura;		
+	}
+	
 	public void actualizarMediciones() {
 		//De alguna manera sensa el ambiente y hace un setTemperatura() con la medición
 	}
@@ -43,6 +49,11 @@ public class Temperatura implements Sensor {
 	
 	public boolean hayQueActuar() {
 		return dispositivo.hayQueActuar(this.temperaturaAmbiente);
+	}
+
+	public void registrarNuevaTempratura(int nuevaTemperatura) {
+		this.setTemperaturaActual(nuevaTemperatura);
+		
 	}
 
 }

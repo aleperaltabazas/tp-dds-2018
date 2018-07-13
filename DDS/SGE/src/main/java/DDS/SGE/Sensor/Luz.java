@@ -13,6 +13,8 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 public class Luz implements Sensor {
 	DispositivoInteligente dispositivo;
 	double intensidadLuminicaAmbiente;
+	// Creado para implementar una interfaz con el ENRE
+	double luzActual;
 	
 	public Luz(double luzAmbiente) {
 		this.intensidadLuminicaAmbiente = luzAmbiente;
@@ -20,6 +22,10 @@ public class Luz implements Sensor {
 	
 	public double getIntensidadLuminicaDelAmbiente() {
 		return this.intensidadLuminicaAmbiente;
+	}
+	
+	public void setLuzActual(int nuevaIntensidad) {
+		luzActual = nuevaIntensidad;		
 	}
 	
 	public DispositivoInteligente getDispositivo() {
@@ -41,5 +47,10 @@ public class Luz implements Sensor {
 	public boolean hayQueActuar() {
 		return dispositivo.hayQueActuar(this.intensidadLuminicaAmbiente);
 	}
+
+	public void registrarNuevaIntensidad(int nuevaIntensidad) {
+		this.setLuzActual(nuevaIntensidad);		
+	}
+
 
 }
