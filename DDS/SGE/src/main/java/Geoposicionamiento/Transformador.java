@@ -1,7 +1,7 @@
 package Geoposicionamiento;
 
-import java.awt.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import DDS.SGE.Cliente;
 
@@ -10,7 +10,8 @@ public class Transformador {
 	double energia;
 	boolean activo;
 	Zona zona;
-	ArrayList<Cliente> usuarios; 
+	ArrayList<Cliente> usuarios = new ArrayList<Cliente>(); 
+	List<Transformador> tr ;
 	
 	public Transformador(Zona ubicacion) {
 		zona = ubicacion;
@@ -32,5 +33,9 @@ public class Transformador {
 	}
 	public double suministra() {
 		return usuarios.stream().mapToDouble(cliente -> cliente.consumoTotalEstimadoDiario()).sum();
+	}
+
+	public boolean perteneceA(Zona unaZona) {
+		return unaZona == this.getZona();
 	}
 }
