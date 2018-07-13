@@ -87,10 +87,11 @@ public class Cliente {
 			agregarDispositivo(disp);
 		}
 	}
-	private Transformador getTransformador() {
+	public Transformador getTransformador() {
 		return transformador;
 	}
-	private void setTransformador(Transformador nuevoTransformador) {
+	
+	public void setTransformador(Transformador nuevoTransformador) {
 		transformador = nuevoTransformador;
 	}
 	
@@ -169,8 +170,16 @@ public class Cliente {
 			return nuevoTransformador;
 		} else {
 			return transformador;
+		}		
+	}
+	
+	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
+		if (nuevoTransformador.perteneceA(this.zona)) {
+			transformador = nuevoTransformador;
 		}
-		
+		else {
+			throw new RuntimeException("El transformador está fuera de tu zona");
+		}
 	}
 	
 	public double consultarUsoOptimo() {
