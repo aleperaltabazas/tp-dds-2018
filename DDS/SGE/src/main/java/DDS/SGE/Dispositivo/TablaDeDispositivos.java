@@ -76,37 +76,4 @@ public class TablaDeDispositivos {
 		
 		return map.get(dispositivo);
 	}
-	
-	/*
-	public List<Dispositivo> dispositivos = new ArrayList<>(
-			Arrays.asList(aireAcondicionadoPoderoso,
-					aireAcondicionadoDebil,
-					televisorTuboChico,
-					televisorTuboGrande29,
-					televisorTuboGrande30,
-					televisorTuboGrande31,
-					televisorTuboGrande32,
-					televisorTuboGrande33,
-					televisorTuboGrande34,
-					televisorLCD,
-					televisorTuboLEDChico,
-					televisorTuboLEDMediano,
-					televisorTuboLEDGrande,
-					heladeraConFreezer,
-					heladeraSinFreezer,
-					lavarropasAutomaticoConCalentamiento,
-					lavarropasAutomaticoSinCalentamiento,
-					lavarropasSemiAutomatico,
-					ventiladorDePie,
-					ventiladorDeTecho,
-					lamparaHalogenasPequenia,
-					lamparaHalogenasMediana,
-					lamparaHalogenasGrande,
-					lamparaPequenia,
-					lamparaMediana,
-					lamparaGrande,
-					pc,
-					microondas
-					));	
-					*/	
 }

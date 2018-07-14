@@ -24,8 +24,7 @@ public class DispositivoEstandar implements TipoDispositivo {
 	}
 
 	public TipoDispositivo adaptar() {
-		//El estandar no deberia tener fabricante, entonces hay que agregarlo
-		return new DispositivoInteligente(new Apagado()); // No se a que estado lo convierte.
+		return new DispositivoInteligente(new Apagado());
 	}
 
 	public void encender() {
@@ -37,9 +36,6 @@ public class DispositivoEstandar implements TipoDispositivo {
 	}
 
 	public double tiempoTotalEncendidoHaceNHoras(int horas) {
-		// Nos esta trayendo complicaciones el strategy, sera que lo estamos pensando
-		// mal? Diria de tirar excepcion pero imaginense hacer eso para cada cosa que el
-		// dispositivo estandar no sea capaz de hacer
 		return 0;
 	}
 

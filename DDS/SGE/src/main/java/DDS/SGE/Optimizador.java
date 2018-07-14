@@ -22,43 +22,6 @@ public class Optimizador {
 	static int consumoMaximoHogar = 612;
 	static int dispositivo;
 
-	public static double Calcular(Cliente unCliente) {
-		SimplexSolver solver = new SimplexSolver();
-		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();
-
-		int cantidadDeDispositivos = unCliente.cantidadDispositivos();
-
-		double[] arrayPotencias = new double[cantidadDeDispositivos];
-		double[] coeficientesRestriccion = new double[cantidadDeDispositivos];
-		double[] coeficientesFuncion = new double[cantidadDeDispositivos + 1];
-
-		inicializarPotenciasYCoeficientes(unCliente, arrayPotencias, coeficientesRestriccion, coeficientesFuncion);
-
-		// Restriccion en base al consumo por hora de cada dispositivo y el
-		// consumo maximo para hogar eficiente
-		LinearConstraint unaRestriccion = new LinearConstraint(arrayPotencias, Relationship.LEQ, consumoMaximoHogar);
-		restricciones.add(unaRestriccion);
-
-		// Restricciones del problema -- Minimo y Maximo por dispositivo
-		agregarRestriccionesPorDispositivo(unCliente, restricciones, coeficientesRestriccion);
-
-		// Funcion -- coeficientes de funcion lineal
-		LinearObjectiveFunction funcion = new LinearObjectiveFunction(coeficientesFuncion, 0);
-
-		// resultado devuelve el consumo total en el mes y el consumo por
-		// dispositivo
-		PointValuePair resultado = solver.optimize(new MaxIter(100), funcion, new LinearConstraintSet(restricciones),
-				GoalType.MAXIMIZE, new NonNegativeConstraint(true));
-
-		double[] resultados = resultado.getPoint();
-
-		setearTiempoRecomendadoPorDispositivo(unCliente, resultados);
-
-		double horasConsumidasEnUnMes = resultado.getValue();
-
-		return horasConsumidasEnUnMes;
-	}
-
 	public static void accionarSobreDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
 	}
@@ -111,4 +74,43 @@ public class Optimizador {
 		coeficientesFuncion[dispositivo] = 0;
 	}
 
+	public static double Calcular(Cliente unCliente) {
+		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();
+
+		int cantidadDeDispositivos = unCliente.cantidadDispositivos();
+
+		double[] arrayPotencias = new double[cantidadDeDispositivos];
+		double[] coeficientesRestriccion = new double[cantidadDeDispositivos];
+		double[] coeficientesFuncion = new double[cantidadDeDispositivos + 1];
+
+		inicializarPotenciasYCoeficientes(unCliente, arrayPotencias, coeficientesRestriccion, coeficientesFuncion);
+
+		restringir(arrayPotencias, restricciones);
+		LinearObjectiveFunction funcion = dameFuncion(coeficientesFuncion);
+
+		agregarRestriccionesPorDispositivo(unCliente, restricciones, coeficientesRestriccion);
+
+		PointValuePair resultado = optimizar(funcion, restricciones);
+
+		setearTiempoRecomendadoPorDispositivo(unCliente, resultado.getPoint());
+
+		return resultado.getValue();
+	}
+
+	private static PointValuePair optimizar(LinearObjectiveFunction unaFuncion,
+			ArrayList<LinearConstraint> unasRestricciones) {
+		SimplexSolver solver = new SimplexSolver();
+
+		return solver.optimize(new MaxIter(100), unaFuncion, new LinearConstraintSet(unasRestricciones),
+				GoalType.MAXIMIZE, new NonNegativeConstraint(true));
+	}
+
+	private static LinearObjectiveFunction dameFuncion(double[] unosCoeficientesDeFuncion) {
+		return new LinearObjectiveFunction(unosCoeficientesDeFuncion, 0);
+	}
+
+	private static void restringir(double[] unArrayDePotencias, ArrayList<LinearConstraint> unasRestricciones) {
+		LinearConstraint restriccion = new LinearConstraint(unArrayDePotencias, Relationship.LEQ, consumoMaximoHogar);
+		unasRestricciones.add(restriccion);
+	}
 }
