@@ -13,13 +13,11 @@ public class Movimiento implements Sensor {
 	
 	@Override
 	public void actualizarMediciones() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public double medir() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -29,13 +27,11 @@ public class Movimiento implements Sensor {
 
 	@Override
 	public boolean hayQueActuar() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public DispositivoInteligente getDispositivo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

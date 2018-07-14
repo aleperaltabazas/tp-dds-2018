@@ -17,12 +17,11 @@ public class Humedad implements Sensor {
 	
 	@Override
 	public void actualizarMediciones() {
-		// TODO Auto-generated method stub
+	
 	}
 
 	@Override
 	public double medir() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

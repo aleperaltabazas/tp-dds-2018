@@ -50,41 +50,5 @@ public class TestSensores {
 		elAireSiempreEn24.actuar();
 		assertEquals(16, unAireAcondicionado.getTemperaturaDelDispositivo(), 0);
 	}
-	
-	/*
-	@Test
-	public void SiHaceCalorSeCambiaAFrio() {
-		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
-		Temperatura sensorTemperatura = new Temperatura(29);
-		sensorTemperatura.controlar(mockInteligente);
-		assertEquals(mockInteligente.getEstado().getModo(), ModoFrio_Calor.FRIO);
-	}
-	
-	@Test
-	public void SiHaceFrioSeCambiaACalor() {
-		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
-		Temperatura sensorTemperatura = new Temperatura(10);
-		sensorTemperatura.controlar(mockInteligente);
-		assertEquals(mockInteligente.getEstado().getModo(), ModoFrio_Calor.CALOR);
-	}
-	
-	@Test
-	public void SiHayPocaLuzBajaIntensidad() { // Pensando en una pantalla
-		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
-		Luz sensorLuz = new Luz(10);
-		sensorLuz.setActuador_Bajar_Int(15);
-		mockInteligente.setIntensidad(20);
-		sensorLuz.controlar(mockInteligente);
-		assertTrue(mockInteligente.getEstado().getIntensidad() <= sensorLuz.getIntensidadLuminicaDelAmbiente());
-	}
-	
-	@Test
-	public void SiHayMuchaLuzSubeIntensidad() { // Pensando en una pantalla
-		DispositivoInteligente mockInteligente = Mockito.spy(inteligente);
-		Luz sensorLuz = new Luz(50);
-		mockInteligente.setIntensidad(20);
-		sensorLuz.controlar(mockInteligente);
-		assertTrue(mockInteligente.getEstado().getIntensidad() >= sensorLuz.getIntensidadLuminicaDelAmbiente());
-	}
-	*/
+
 }
