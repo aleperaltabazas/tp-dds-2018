@@ -32,11 +32,11 @@ public class TestTranformadores {
 	Dispositivo otroDispositivo = new Dispositivo(0.09, new DispositivoInteligente(new Encendido()), new Heladera(true));
 	
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_A);
+			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	Cliente otroCliente = new Cliente("El", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_A);
+			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	Cliente elCliente = new Cliente("Otro", "Cliente", TipoDni.DNI, "111111112", "1123456780",
-			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_B);
+			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	
 	Transformador transformador_1 = new Transformador(zona_A);
 	Transformador transformador_2 = new Transformador(zona_B);

@@ -55,27 +55,27 @@ public class TestOptimizador {
 	public void initialize() {
 
 		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(), unaZona);
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
 
 		clienteConDispositivoDe1Kw = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoPotencia1Kw), unaZona);
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoPotencia1Kw));
 
 		clienteConDispositivoDe2Kw = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw), unaZona);
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw));
 
 		clienteConDispositivoDeMuchaPotencia = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotenciaMuyAlta), unaZona);
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotenciaMuyAlta));
 
 		clienteCon2DispositivosDe2Kw = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(),
-				Arrays.asList(dispositivoPotencia2Kw, otroDispositivoPotencia2Kw), unaZona);
+				Arrays.asList(dispositivoPotencia2Kw, otroDispositivoPotencia2Kw));
 
 		clienteConVariosDispositivos = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(),
-				Arrays.asList(dispositivoPotencia2Kw, dispositivoPotencia1Kw, dispositivoPotencia3Kw), unaZona);
+				Arrays.asList(dispositivoPotencia2Kw, dispositivoPotencia1Kw, dispositivoPotencia3Kw));
 
 		clienteConDispositivoInfractor = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor), unaZona);
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor));
 
 		dispositivoInfractorInteligente.setRepositorio(repositorioDeMuchoTiempoEncendido);
 

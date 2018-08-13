@@ -33,14 +33,14 @@ public class Cliente {
 	private LocalDateTime fechaAltaServicio;
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
-	private Zona zona;
+	//private Zona zona; --- YA NO VA
 	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
 	int puntos;
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
-			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos, Zona zona) {
+			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.tipoDni = tipoDni;
@@ -51,7 +51,7 @@ public class Cliente {
 		this.categoria = Categoria.R1;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
-		this.zona = zona;
+		//this.zona = zona; --- YA NO VA
 	}
 
 	public enum TipoDni {
@@ -163,7 +163,15 @@ public class Cliente {
 		this.puntos += puntos;
 	}
 	
-	public Transformador conectarATransformador() { // Selecciona transformador al azar para conectarse
+	public Zona zona() {
+		return this.getTransformador().getZona();
+	}
+	
+	public boolean preteneceAZona(Zona unaZona) {
+		return this.zona() == unaZona;
+	}
+	
+	/*public Transformador conectarATransformador() { // Selecciona transformador al azar para conectarse
 		Transformador nuevoTransformador = zona.getTransformadores().get(new Random().nextInt(zona.getTransformadores().size()));
 		if (nuevoTransformador != transformador) {
 			nuevoTransformador.agregarCliente(this);
@@ -171,16 +179,11 @@ public class Cliente {
 		} else {
 			return transformador;
 		}		
-	}
+	}*/ // ESTO YA NO VA
 	
 	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
-		if (nuevoTransformador.perteneceA(this.zona)) {
-			transformador = nuevoTransformador;
-			nuevoTransformador.agregarCliente(this);
-		}
-		else {
-			throw new RuntimeException("El transformador está fuera de tu zona");
-		}
+		transformador = nuevoTransformador;
+		nuevoTransformador.agregarCliente(this);
 	}
 	
 	public double consultarUsoOptimo() {

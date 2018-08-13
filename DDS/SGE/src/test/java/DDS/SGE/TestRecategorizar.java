@@ -29,11 +29,11 @@ public class TestRecategorizar {
 	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, dispositivoEstandar, unFabricante);
 
 	Cliente clienteSinDispositivos = new Cliente("Sherlock", "Holmes", TipoDni.DNI, "123456789", "1144448888",
-			"Baker St. 221b", LocalDateTime.now(), Arrays.asList(), unaZona);
+			"Baker St. 221b", LocalDateTime.now(), Arrays.asList());
 	Cliente clienteDerrochador = new Cliente("Lucila", "Salmeron", TipoDni.DNI, "123454321", "1155667788",
-			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList(dispositivoConMedioConsumo, dispositivoConAltoConsumo), unaZona);
+			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList(dispositivoConMedioConsumo, dispositivoConAltoConsumo));
 	Cliente clienteDeCategoriaR8 = new Cliente("Jorge", "Rodriguez", TipoDni.DNI, "543212345", "1188776655",
-			"Calle verdadera 654", LocalDateTime.now(), Arrays.asList(dispositivoConConsumoParaCategoriaR8), unaZona);
+			"Calle verdadera 654", LocalDateTime.now(), Arrays.asList(dispositivoConConsumoParaCategoriaR8));
 
 
 	@Before
@@ -45,7 +45,7 @@ public class TestRecategorizar {
 	
 	@Test
 	public void testLaCategoriaDeUnClienteNuevoEsR1() {
-		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDateTime.now(), Arrays.asList(), unaZona);
+		Cliente unClienteNuevo = new Cliente("", "", TipoDni.DNI, "", "", "", LocalDateTime.now(), Arrays.asList());
 		assertEquals(Categoria.R1, unClienteNuevo.getCategoria());
 	}
 	

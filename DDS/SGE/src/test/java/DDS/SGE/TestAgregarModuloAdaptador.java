@@ -27,7 +27,7 @@ public class TestAgregarModuloAdaptador {
 	Dispositivo dispositivoInteligenteQueNoEsDelCliente = new Dispositivo(0.50, new DispositivoInteligente(new Encendido()), unFabricante);
 	Dispositivo dispositivoInteligenteQueSiEsDelCliente = new Dispositivo(0.50, new DispositivoInteligente(new Encendido()), unFabricante);
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(dispositivoEstandar,dispositivoInteligenteQueSiEsDelCliente), new Zona());	
+			"Una Calle", LocalDateTime.now(), Arrays.asList(dispositivoEstandar,dispositivoInteligenteQueSiEsDelCliente));	
 	
 	
 	@Test
