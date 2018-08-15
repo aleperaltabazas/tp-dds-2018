@@ -25,9 +25,9 @@ public class TestSensores {
 	
 	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(new Encendido());
 	
-	Temperatura sensorTemperatura = new Temperatura(unDispositivoInteligente, 22);
+	Temperatura sensorTemperatura = new Temperatura(22);
 	
-	CambiarTemperaturaAireAcondicionado actuadorTemperatura = new CambiarTemperaturaAireAcondicionado();
+	CambiarTemperaturaAireAcondicionado actuadorTemperatura = new CambiarTemperaturaAireAcondicionado(unDispositivoInteligente);
 	
 	Regla elAireSiempreEn24 = new Regla(Arrays.asList(sensorTemperatura), actuadorTemperatura);
 	

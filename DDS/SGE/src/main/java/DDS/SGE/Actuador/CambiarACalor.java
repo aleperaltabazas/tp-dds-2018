@@ -5,9 +5,15 @@ import DDS.SGE.Dispositivo.Estado.ModoFrio_Calor;
 
 public class CambiarACalor implements Actuador {
 
+	DispositivoInteligente dispositivo;
+	
 	@Override
-	public void accionarSobre(DispositivoInteligente dispositivo) {
+	public void accionar() {
 		dispositivo.getEstado().setModo(ModoFrio_Calor.CALOR);
+	}
+	
+	public DispositivoInteligente getDispositivo() {
+		return this.dispositivo;
 	}
 
 }

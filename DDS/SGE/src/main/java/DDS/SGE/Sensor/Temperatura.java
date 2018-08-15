@@ -9,22 +9,12 @@ import DDS.SGE.Actuador.CambiarAFrio;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Temperatura implements Sensor {
-	DispositivoInteligente dispositivo;
+
 	double temperaturaAmbiente = 22;
-	// Creados para implementar una interfaz con el ENRE
 	double temperaturaActual;
 
-	public Temperatura(DispositivoInteligente dispositivo, double temperaturaAmbiente) {
-		this.dispositivo = dispositivo;
+	public Temperatura(double temperaturaAmbiente) {
 		this.temperaturaAmbiente = temperaturaAmbiente;
-	}
-
-	public DispositivoInteligente getDispositivo() {
-		return dispositivo;
-	}
-
-	public void setDispositivo(DispositivoInteligente dispositivo) {
-		this.dispositivo = dispositivo;
 	}
 
 	public double getTemperaturaAmbiente() {
@@ -47,7 +37,7 @@ public class Temperatura implements Sensor {
 		return temperaturaAmbiente;
 	}
 	
-	public boolean hayQueActuar() {
+	public boolean hayQueActuar(DispositivoInteligente dispositivo) {
 		return dispositivo.hayQueActuar(this.temperaturaAmbiente);
 	}
 

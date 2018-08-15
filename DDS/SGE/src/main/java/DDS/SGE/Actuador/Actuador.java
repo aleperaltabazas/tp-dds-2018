@@ -4,6 +4,7 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public interface Actuador {
 	
-	public void accionarSobre(DispositivoInteligente dispositivo);
+	public void accionar();
+	public DispositivoInteligente getDispositivo();
 	
 }
