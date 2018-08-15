@@ -17,15 +17,18 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import Fabricante.Computadora;
+import Fabricante.Fabricante;
 import Geoposicionamiento.Zona;
 
 public class TestAgregarModuloAdaptador {
 	
-	Computadora unFabricante = new Computadora(true);
+	Fabricante unFabricante = new Computadora(true);
+	Encendido encendido = new Encendido();
+	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(encendido, unFabricante);
 	
-	Dispositivo dispositivoEstandar = new Dispositivo(0.78, new DispositivoEstandar(24), unFabricante);
-	Dispositivo dispositivoInteligenteQueNoEsDelCliente = new Dispositivo(0.50, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoInteligenteQueSiEsDelCliente = new Dispositivo(0.50, new DispositivoInteligente(new Encendido()), unFabricante);
+	Dispositivo dispositivoEstandar = new Dispositivo(0.78, new DispositivoEstandar(24));
+	Dispositivo dispositivoInteligenteQueNoEsDelCliente = new Dispositivo(0.50, unDispositivoInteligente);
+	Dispositivo dispositivoInteligenteQueSiEsDelCliente = new Dispositivo(0.50, unDispositivoInteligente);
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
 			"Una Calle", LocalDateTime.now(), Arrays.asList(dispositivoEstandar,dispositivoInteligenteQueSiEsDelCliente));	
 	

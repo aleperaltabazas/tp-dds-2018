@@ -51,9 +51,9 @@ public class Optimizador {
 			coeficientesRestriccion[dispositivo] = 1;
 
 			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.GEQ,
-					disp.getFabricante().usoMensualMinimo()));
+					disp.usoMensualMinimo()));
 			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.LEQ,
-					disp.getFabricante().usoMensualMaximo()));
+					disp.usoMensualMaximo()));
 
 			coeficientesRestriccion[dispositivo] = 0;
 			dispositivo++;

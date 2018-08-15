@@ -22,14 +22,13 @@ import Geoposicionamiento.Zona;
 public class TestZona {
 
 	Computadora unFabricante = new Computadora(true);
-	Heladera otroFarbicante = new Heladera(true);
 
 	Zona zona_A = new Zona();
 	Zona zona_B = new Zona();
 
 	int diasDelMes = LocalDate.now().lengthOfMonth();
-	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24), unFabricante);
-	Dispositivo otroDispositivo = new Dispositivo(0.09, new DispositivoInteligente(new Encendido()), new Heladera(true));
+	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24));
+	Dispositivo otroDispositivo = new Dispositivo(0.09, new DispositivoInteligente(new Encendido(), unFabricante));
 
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
 			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));

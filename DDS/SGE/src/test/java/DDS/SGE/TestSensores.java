@@ -23,7 +23,7 @@ public class TestSensores {
 
 	AireAcondicionado unAireAcondicionado = new AireAcondicionado(3500);
 	
-	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(new Encendido());
+	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(new Encendido(), unAireAcondicionado);
 	
 	Temperatura sensorTemperatura = new Temperatura(22);
 	

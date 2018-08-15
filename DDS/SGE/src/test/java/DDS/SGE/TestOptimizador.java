@@ -26,16 +26,16 @@ public class TestOptimizador {
 
 	Zona unaZona = new Zona();
 
-	DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido());
+	DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), unFabricante);
 
-	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Encendido()),
-			unFabricante);
-	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()),
-			unFabricante);
-	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente, unFabricante);
+	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Encendido(),
+			unFabricante));
+	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido(),
+			unFabricante));
+	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente);
 
 	Cliente clienteSinDispositivos;
 	Cliente clienteConDispositivoDe1Kw;
@@ -116,7 +116,7 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible() {
 
-		assertEquals(dispositivoPotencia1Kw.getFabricante().usoMensualMaximo(),
+		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(),
 				Optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
 
 	}

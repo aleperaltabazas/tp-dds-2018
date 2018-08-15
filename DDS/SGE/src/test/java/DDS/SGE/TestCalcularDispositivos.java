@@ -26,8 +26,8 @@ public class TestCalcularDispositivos {
 	Computadora unFabricante = new Computadora(true);
 	Zona unaZona = new Zona();
 	
-	Dispositivo dispositivoEncendido = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoApagado = new Dispositivo(1, new DispositivoInteligente(new Apagado()), unFabricante);
+	Dispositivo dispositivoEncendido = new Dispositivo(1, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoApagado = new Dispositivo(1, new DispositivoInteligente(new Apagado(), unFabricante));
 	Cliente clienteSinDispositivos;
 	Cliente clienteConVariosDispostivos;
 	Cliente clienteConTodoApagado;
@@ -82,7 +82,7 @@ public class TestCalcularDispositivos {
 		dispositivoApagado.encender();
 		dispositivoApagado.apagar();		
 
-		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, new DispositivoInteligente(new Apagado()), unFabricante);
+		Dispositivo nuevoDispositivoApagado = new Dispositivo(10, new DispositivoInteligente(new Apagado(), unFabricante));
 		
 		List<Dispositivo> nuevosDispositivos = Arrays.asList(dispositivoApagado, nuevoDispositivoApagado);
 		clienteConTodoApagado.setDispositivos(nuevosDispositivos);

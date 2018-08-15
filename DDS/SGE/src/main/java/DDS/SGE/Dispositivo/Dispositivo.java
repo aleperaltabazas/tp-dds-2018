@@ -15,20 +15,14 @@ public class Dispositivo {
 	private double consumoKWPorHora;
 	private double tiempoQueSePuedeUtilizar;
 	private TipoDispositivo tipo;
-	private Fabricante fabricante;
 
-	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo, Fabricante unFabricante) {
+	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo) {
 		this.consumoKWPorHora = consumoKWPorHora;
 		this.tipo = tipo;
-		this.fabricante = unFabricante;
 	}
 	
 	public TipoDispositivo getTipoDispositivo() {
 		return this.tipo;
-	}
-	
-	public Fabricante getFabricante() {
-		return this.fabricante;
 	}
 	
 	public double getTiempoQueSePuedeUtilizar() {
@@ -84,5 +78,13 @@ public class Dispositivo {
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
 		this.tipo.seAdaptoUnDispositivo(interesadoEnAdaptaciones);
 		
+	}
+	
+	public double usoMensualMinimo() {
+		return tipo.usoMensualMinimo();
+	}
+	
+	public double usoMensualMaximo() {
+		return tipo.usoMensualMaximo();
 	}
 }

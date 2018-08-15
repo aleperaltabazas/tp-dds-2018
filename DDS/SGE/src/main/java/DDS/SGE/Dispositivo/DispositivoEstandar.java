@@ -6,6 +6,7 @@ import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import Fabricante.Computadora;
 import Fabricante.Fabricante;
 
 public class DispositivoEstandar implements TipoDispositivo {
@@ -24,7 +25,7 @@ public class DispositivoEstandar implements TipoDispositivo {
 	}
 
 	public TipoDispositivo adaptar() {
-		return new DispositivoInteligente(new Apagado());
+		return new DispositivoInteligente(new Apagado(), new Computadora(true));
 	}
 
 	public void encender() {
@@ -40,6 +41,14 @@ public class DispositivoEstandar implements TipoDispositivo {
 	}
 
 	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
+		return 0;
+	}
+	
+	public double usoMensualMinimo() {
+		return 0;
+	}
+	
+	public double usoMensualMaximo() {
 		return 0;
 	}
 

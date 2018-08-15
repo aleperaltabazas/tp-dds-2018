@@ -24,9 +24,9 @@ public class TestRecategorizar {
 	
 	DispositivoEstandar dispositivoEstandar = new DispositivoEstandar(24);
 
-	Dispositivo dispositivoConMedioConsumo = new Dispositivo(0.6, dispositivoEstandar, unFabricante);
-	Dispositivo dispositivoConAltoConsumo = new Dispositivo(2, dispositivoEstandar, unFabricante);
-	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, dispositivoEstandar, unFabricante);
+	Dispositivo dispositivoConMedioConsumo = new Dispositivo(0.6, dispositivoEstandar);
+	Dispositivo dispositivoConAltoConsumo = new Dispositivo(2, dispositivoEstandar);
+	Dispositivo dispositivoConConsumoParaCategoriaR8 = new Dispositivo(1.2, dispositivoEstandar);
 
 	Cliente clienteSinDispositivos = new Cliente("Sherlock", "Holmes", TipoDni.DNI, "123456789", "1144448888",
 			"Baker St. 221b", LocalDateTime.now(), Arrays.asList());

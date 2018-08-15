@@ -18,21 +18,23 @@ import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import Fabricante.Computadora;
+import Fabricante.Fabricante;
 
 public class TestCalcularConsumosEnDispositivosInteligentes {
 	
+	Fabricante unFabricante = new Computadora(true);
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
 	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
 	RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
-	DispositivoInteligente dispositivoInteligenteEncendido = new DispositivoInteligente(new Encendido());
+	DispositivoInteligente dispositivoInteligenteEncendido = new DispositivoInteligente(new Encendido(), unFabricante);
 	Dispositivo dispositivoEncendido;
 	
 	@Before
 	public void initialize() {
 		dispositivoInteligenteEncendido.setRepositorio(repositorioDePrueba);
-		dispositivoEncendido = new Dispositivo(2, dispositivoInteligenteEncendido, new Computadora(true));		
+		dispositivoEncendido = new Dispositivo(2, dispositivoInteligenteEncendido);		
 	}
 	
 	@Test

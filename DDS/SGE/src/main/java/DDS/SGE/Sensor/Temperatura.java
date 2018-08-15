@@ -24,11 +24,7 @@ public class Temperatura implements Sensor {
 	public void setTemperaturaAmbiente(double temperaturaAmbiente) {
 		this.temperaturaAmbiente = temperaturaAmbiente;
 	}
-	
-	public void setTemperaturaActual(int nuevaTemperatura) {
-		temperaturaActual = nuevaTemperatura;		
-	}
-	
+		
 	public void actualizarMediciones() {
 		//De alguna manera sensa el ambiente y hace un setTemperatura() con la medición
 	}
@@ -39,11 +35,6 @@ public class Temperatura implements Sensor {
 	
 	public boolean hayQueActuar(DispositivoInteligente dispositivo) {
 		return dispositivo.hayQueActuar(this.temperaturaAmbiente);
-	}
-
-	public void registrarNuevaTempratura(int nuevaTemperatura) {
-		this.setTemperaturaActual(nuevaTemperatura);
-		
 	}
 
 }
