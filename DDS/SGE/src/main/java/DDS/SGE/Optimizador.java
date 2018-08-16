@@ -26,10 +26,6 @@ public class Optimizador {
 	static int consumoMaximoHogar = 612;
 	int dispositivo;
 
-	public void accionarSobreDispositivosInfractores(Stream<Dispositivo> dispositivos) {
-		this.obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
-	}
-
 	//Queda para test
 	public Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());

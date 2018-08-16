@@ -19,7 +19,7 @@ public class ControladorDeDispositivos {
 				List<Cliente> clientes = RepositorioClientes.instancia.getClientes();
 				clientes.forEach(c -> {
 					optimizador.Calcular(c);
-					optimizador.accionarSobreDispositivosInfractores(
+					optimizador.accionarSobreDispositivos(
 							optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
 				});
 
