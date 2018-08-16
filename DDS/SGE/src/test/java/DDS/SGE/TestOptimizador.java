@@ -50,6 +50,8 @@ public class TestOptimizador {
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe600Horas);
 	RepositorioDeTiempoEncendidoTest repositorioDeMuchoTiempoEncendido = new RepositorioDeTiempoEncendidoTest(
 			intervalosDeActividad);
+	
+	Optimizador optimizador = new Optimizador();
 
 	@Before
 	public void initialize() {
@@ -84,14 +86,14 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras() {
 
-		assertEquals(USO_MENSUAL_RECOMENDADO / 2, Optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
+		assertEquals(USO_MENSUAL_RECOMENDADO / 2, optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
 
 	}
 
 	@Test
 	public void ElUnicoDispositivoDePotencia2KwDelClienteSeRecomiendaUsarloLaMitadDelTiempoRecomendado() {
 
-		double tiempoTotalDeUso = Optimizador.Calcular(clienteConDispositivoDe2Kw);
+		double tiempoTotalDeUso = optimizador.Calcular(clienteConDispositivoDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
 
 	}
@@ -99,15 +101,15 @@ public class TestOptimizador {
 	@Test
 	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo() {
 
-		assertEquals(Optimizador.Calcular(clienteConDispositivoDe2Kw),
-				Optimizador.Calcular(clienteCon2DispositivosDe2Kw), 0.0);
+		assertEquals(optimizador.Calcular(clienteConDispositivoDe2Kw),
+				optimizador.Calcular(clienteCon2DispositivosDe2Kw), 0.0);
 
 	}
 
 	@Test
 	public void laSumaDelTiempoRecomendadoDeCadaDispositivoEsIgualAlTiempoTotalQueElClientePuedeUsarlos() {
 
-		double tiempoTotalDeUso = Optimizador.Calcular(clienteCon2DispositivosDe2Kw);
+		double tiempoTotalDeUso = optimizador.Calcular(clienteCon2DispositivosDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar()
 				+ otroDispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
 
@@ -117,14 +119,14 @@ public class TestOptimizador {
 	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible() {
 
 		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(),
-				Optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
+				optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
 
 	}
 
 	@Test
 	public void unClienteSinDispositivosSeLeRecomiendaUsarLosDispositivosPor0Horas() {
 
-		assertEquals(0, Optimizador.Calcular(clienteSinDispositivos), 0.0);
+		assertEquals(0, optimizador.Calcular(clienteSinDispositivos), 0.0);
 
 	}
 
@@ -138,7 +140,7 @@ public class TestOptimizador {
 	@Test
 	public void aUnClienteNoSeLeApagaSuDispositivoPorqueNoTuvoConsumo() {
 
-		Optimizador.Calcular(clienteConDispositivoDe1Kw);
+		optimizador.Calcular(clienteConDispositivoDe1Kw);
 		assertTrue(clienteConDispositivoDe1Kw.getDispositivos().findFirst().get().estaEncendido());
 
 	}
@@ -146,9 +148,9 @@ public class TestOptimizador {
 	@Test
 	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo() {
 
-		Optimizador.Calcular(clienteConDispositivoInfractor);
-		Optimizador.accionarSobreDispositivos(
-				Optimizador.obtenerDispositivosInfractores(clienteConDispositivoInfractor.getDispositivos()));
+		optimizador.Calcular(clienteConDispositivoInfractor);
+		optimizador.accionarSobreDispositivos(
+				optimizador.obtenerDispositivosInfractores(clienteConDispositivoInfractor.getDispositivos()));
 
 		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());
 

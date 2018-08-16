@@ -8,17 +8,19 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class ControladorDeDispositivos {
 	public static void main(String args[]) {
+		Optimizador optimizador = new Optimizador();
 		Timer timer = new Timer();
 
 		TimerTask tarea = new TimerTask() {
+
 			@Override
 			public void run() {
 				System.out.println("Controlando dispositivos...");
 				List<Cliente> clientes = RepositorioClientes.instancia.getClientes();
 				clientes.forEach(c -> {
-					Optimizador.Calcular(c);
-					Optimizador.accionarSobreDispositivosInfractores(
-							Optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
+					optimizador.Calcular(c);
+					optimizador.accionarSobreDispositivosInfractores(
+							optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
 				});
 
 				System.out.println("Dispositivos controlados.");

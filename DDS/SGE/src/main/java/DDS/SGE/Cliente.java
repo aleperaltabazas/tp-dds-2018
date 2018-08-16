@@ -187,7 +187,8 @@ public class Cliente {
 	}
 	
 	public double consultarUsoOptimo() {
-		double consumoOptimoPorMesEnHoras = Optimizador.Calcular(this);
+		Optimizador optimizador = new Optimizador();
+		double consumoOptimoPorMesEnHoras = optimizador.Calcular(this);
 		System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
 		return consumoOptimoPorMesEnHoras;
 	}

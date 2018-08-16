@@ -24,26 +24,26 @@ import DDS.SGE.Sensor.Consumo;
 public class Optimizador {
 
 	static int consumoMaximoHogar = 612;
-	static int dispositivo;
+	int dispositivo;
 
-	public static void accionarSobreDispositivosInfractores(Stream<Dispositivo> dispositivos) {
-		obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
+	public void accionarSobreDispositivosInfractores(Stream<Dispositivo> dispositivos) {
+		this.obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
 	}
 
 	//Queda para test
-	public static Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
+	public Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());
 	}
 	
-	public static void accionarSobreDispositivos(Stream<Dispositivo> dispositivos) {
+	public void accionarSobreDispositivos(Stream<Dispositivo> dispositivos) {
 		dispositivos.forEach(d -> generarReglaDeConsumoExcesivo(d).actuar());
 	}
 	
-	public static Regla generarReglaDeConsumoExcesivo(Dispositivo unDispositivo) {
+	public Regla generarReglaDeConsumoExcesivo(Dispositivo unDispositivo) {
 		return new Regla(Arrays.asList(new Consumo(unDispositivo)), new Apagar(unDispositivo));
 	}
 
-	private static void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
+	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
 		dispositivo = 0;
 
 		unCliente.getDispositivos().forEach(disp -> {
@@ -54,7 +54,7 @@ public class Optimizador {
 		});
 	}
 
-	private static void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
+	private void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
 			double[] coeficientesRestriccion) {
 		dispositivo = 0;
 
@@ -72,7 +72,7 @@ public class Optimizador {
 		});
 	}
 
-	private static void inicializarPotenciasYCoeficientes(Cliente unCliente, double[] arrayPotencias,
+	private void inicializarPotenciasYCoeficientes(Cliente unCliente, double[] arrayPotencias,
 			double[] coeficientesRestriccion, double[] coeficientesFuncion) {
 		dispositivo = 0;
 
@@ -86,7 +86,7 @@ public class Optimizador {
 		coeficientesFuncion[dispositivo] = 0;
 	}
 
-	public static double Calcular(Cliente unCliente) {
+	public double Calcular(Cliente unCliente) {
 		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();
 
 		int cantidadDeDispositivos = unCliente.cantidadDispositivos();
@@ -109,7 +109,7 @@ public class Optimizador {
 		return resultado.getValue();
 	}
 
-	private static PointValuePair optimizar(LinearObjectiveFunction unaFuncion,
+	private PointValuePair optimizar(LinearObjectiveFunction unaFuncion,
 			ArrayList<LinearConstraint> unasRestricciones) {
 		SimplexSolver solver = new SimplexSolver();
 
@@ -117,11 +117,11 @@ public class Optimizador {
 				GoalType.MAXIMIZE, new NonNegativeConstraint(true));
 	}
 
-	private static LinearObjectiveFunction dameFuncion(double[] unosCoeficientesDeFuncion) {
+	private LinearObjectiveFunction dameFuncion(double[] unosCoeficientesDeFuncion) {
 		return new LinearObjectiveFunction(unosCoeficientesDeFuncion, 0);
 	}
 
-	private static void restringir(double[] unArrayDePotencias, ArrayList<LinearConstraint> unasRestricciones) {
+	private void restringir(double[] unArrayDePotencias, ArrayList<LinearConstraint> unasRestricciones) {
 		LinearConstraint restriccion = new LinearConstraint(unArrayDePotencias, Relationship.LEQ, consumoMaximoHogar);
 		unasRestricciones.add(restriccion);
 	}
