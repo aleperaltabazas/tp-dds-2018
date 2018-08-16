@@ -147,7 +147,7 @@ public class TestOptimizador {
 	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo() {
 
 		Optimizador.Calcular(clienteConDispositivoInfractor);
-		Optimizador.accionarSobreDispositivosInfractores(
+		Optimizador.accionarSobreDispositivos(
 				Optimizador.obtenerDispositivosInfractores(clienteConDispositivoInfractor.getDispositivos()));
 
 		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());

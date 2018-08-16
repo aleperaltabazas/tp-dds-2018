@@ -25,7 +25,7 @@ public class TestSensores {
 	
 	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(new Encendido(), unAireAcondicionado);
 	
-	Temperatura sensorTemperatura = new Temperatura(22);
+	Temperatura sensorTemperatura = new Temperatura(22, unDispositivoInteligente);
 	
 	CambiarTemperaturaAireAcondicionado actuadorTemperatura = new CambiarTemperaturaAireAcondicionado(unDispositivoInteligente);
 	

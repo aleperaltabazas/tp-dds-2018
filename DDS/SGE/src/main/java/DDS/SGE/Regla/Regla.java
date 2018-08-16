@@ -6,20 +6,19 @@ import DDS.SGE.Dispositivo.*;
 import java.util.List;
 
 public class Regla {
+
 	private List<Sensor> sensores;
 	private Actuador actuador;
-	private DispositivoInteligente dispositivo;
 
 	public Regla(List<Sensor> sensores, Actuador actuador) {
 		this.sensores = sensores;
 		this.actuador = actuador;
-		this.dispositivo = actuador.getDispositivo();
 	}
 
 	public void actuar() {
 		sensores.forEach(s -> s.actualizarMediciones());
 
-		if (sensores.stream().allMatch(s -> s.hayQueActuar(dispositivo))) {
+		if (sensores.stream().allMatch(s -> s.hayQueActuar())) {
 			actuador.accionar();
 		}
 

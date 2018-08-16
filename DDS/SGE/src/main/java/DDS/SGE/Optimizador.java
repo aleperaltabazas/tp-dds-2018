@@ -2,6 +2,7 @@ package DDS.SGE;
 
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.apache.commons.math3.*;
@@ -15,7 +16,10 @@ import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.linear.SimplexSolver;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
+import DDS.SGE.Actuador.Apagar;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Regla.Regla;
+import DDS.SGE.Sensor.Consumo;
 
 public class Optimizador {
 
@@ -26,9 +30,17 @@ public class Optimizador {
 		obtenerDispositivosInfractores(dispositivos).forEach(d -> d.apagar());
 	}
 
+	//Queda para test
 	public static Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
-		int horasDelMes = 24 * 30;
-		return dispositivos.filter(d -> d.consumoTotalHaceNHoras(horasDelMes) > d.getTiempoQueSePuedeUtilizar());
+		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());
+	}
+	
+	public static void accionarSobreDispositivos(Stream<Dispositivo> dispositivos) {
+		dispositivos.forEach(d -> generarReglaDeConsumoExcesivo(d).actuar());
+	}
+	
+	public static Regla generarReglaDeConsumoExcesivo(Dispositivo unDispositivo) {
+		return new Regla(Arrays.asList(new Consumo(unDispositivo)), new Apagar(unDispositivo));
 	}
 
 	private static void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {

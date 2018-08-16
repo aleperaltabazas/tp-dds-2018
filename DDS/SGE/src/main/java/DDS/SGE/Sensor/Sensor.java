@@ -7,5 +7,5 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 public interface Sensor {
 	public void actualizarMediciones();
 	double medir();
-	boolean hayQueActuar(DispositivoInteligente dispositivo);
+	boolean hayQueActuar();
 }

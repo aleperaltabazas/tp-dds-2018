@@ -7,14 +7,19 @@ import java.util.Timer;
 import DDS.SGE.Actuador.CambiarACalor;
 import DDS.SGE.Actuador.CambiarAFrio;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
+import Fabricante.AireAcondicionado;
+import Fabricante.Fabricante;
 
 public class Temperatura implements Sensor {
 
+	Fabricante fabricante;
+	
 	double temperaturaAmbiente = 22;
 	double temperaturaActual;
 
-	public Temperatura(double temperaturaAmbiente) {
+	public Temperatura(double temperaturaAmbiente, DispositivoInteligente unDispositivo) {
 		this.temperaturaAmbiente = temperaturaAmbiente;
+		this.fabricante = unDispositivo.getFabricante();
 	}
 
 	public double getTemperaturaAmbiente() {
@@ -33,8 +38,8 @@ public class Temperatura implements Sensor {
 		return temperaturaAmbiente;
 	}
 	
-	public boolean hayQueActuar(DispositivoInteligente dispositivo) {
-		return dispositivo.hayQueActuar(this.temperaturaAmbiente);
+	public boolean hayQueActuar() {
+		return fabricante.hayQueActuar(this.temperaturaAmbiente);
 	}
 
 }
