@@ -22,5 +22,9 @@ public class Movimiento implements Sensor {
 	public void registrarMovimiento() {
 		this.setMovimientoDetectado(true);		
 	}
+	
+	public boolean hayQueActuar() {
+		return true;
+	}
 
 }

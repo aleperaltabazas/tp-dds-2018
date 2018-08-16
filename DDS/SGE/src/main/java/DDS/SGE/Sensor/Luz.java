@@ -37,5 +37,9 @@ public class Luz implements Sensor {
 	public void registrarNuevaIntensidad(int nuevaIntensidad) {
 		this.setLuzActual(nuevaIntensidad);		
 	}
+	
+	public boolean hayQueActuar() {
+		return true;
+	}
 
 }

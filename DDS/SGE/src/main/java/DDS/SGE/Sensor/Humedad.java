@@ -26,5 +26,9 @@ public class Humedad implements Sensor {
 	public void registrarNivelHumedad(int nuevaHumedad) {
 		this.setHumedadActual(nuevaHumedad);
 	}
+	
+	public boolean hayQueActuar() {
+		return true;
+	}
 
 }

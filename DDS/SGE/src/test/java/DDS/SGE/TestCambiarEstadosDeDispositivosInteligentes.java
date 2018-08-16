@@ -1,12 +1,6 @@
 package DDS.SGE;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -16,8 +10,6 @@ import DDS.SGE.Dispositivo.Estado.AhorroDeEnergia;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import Fabricante.Computadora;
-
-import org.junit.Before;
 
 public class TestCambiarEstadosDeDispositivosInteligentes {
 	
