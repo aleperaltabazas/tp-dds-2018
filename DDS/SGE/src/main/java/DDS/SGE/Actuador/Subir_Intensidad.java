@@ -4,6 +4,7 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Subir_Intensidad implements Actuador {
 
+	DispositivoInteligente dispositivo;
 	
 	double intensidadASubir;
 	
@@ -12,9 +13,12 @@ public class Subir_Intensidad implements Actuador {
 	}
 
 	@Override
-	public void accionarSobre(DispositivoInteligente dispositivo) {
+	public void accionar() {
 		dispositivo.setIntensidad(dispositivo.getIntensidad() + intensidadASubir);
-
+	}
+	
+	public DispositivoInteligente getDispositivo() {
+		return this.dispositivo;
 	}
 	
 }

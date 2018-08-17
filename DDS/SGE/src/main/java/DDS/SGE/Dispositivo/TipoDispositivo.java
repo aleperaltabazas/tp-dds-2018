@@ -26,4 +26,7 @@ public interface TipoDispositivo {
 	void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos);
 
 	void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones);	
+	
+	public double usoMensualMinimo();
+	public double usoMensualMaximo();
 }

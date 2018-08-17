@@ -10,8 +10,8 @@ public class Transformador {
 	double energia;
 	boolean activo;
 	Zona zona;
-	ArrayList<Cliente> usuarios = new ArrayList<Cliente>(); 
-	List<Transformador> tr ;
+	List<Cliente> usuarios = new ArrayList<Cliente>(); 
+	//List<Transformador> tr ;  ---- NO SÉ PARA QUÉ ESTÁ
 	
 	public Transformador(Zona ubicacion) {
 		zona = ubicacion;
@@ -21,7 +21,7 @@ public class Transformador {
 	public Zona getZona() {
 		return zona;
 	}
-	public ArrayList<Cliente> getUsuarios(){
+	public List<Cliente> getUsuarios(){
 		return usuarios;
 	}
 	

@@ -17,8 +17,9 @@ public class DispositivoInteligente implements TipoDispositivo {
 	
 	RepositorioDeTiempoEncendido repositorio;
 
-	public DispositivoInteligente(EstadoDelDispositivo estado) {
+	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {
 		this.estado = estado;
+		this.fabricante = fabricante;
 		repositorio = new RepositorioDeTiempoEncendido();
 	}
 	
@@ -29,6 +30,7 @@ public class DispositivoInteligente implements TipoDispositivo {
 	public double getTemperatura() {
 		return temperatura;
 	}
+	
 	public void setTemperatura(double nuevaTemperatura) {
 		this.temperatura = nuevaTemperatura;
 	}
@@ -112,5 +114,13 @@ public class DispositivoInteligente implements TipoDispositivo {
 	@Override
 	public TipoDispositivo adaptar() {
 		return this;
+	}
+	
+	public double usoMensualMinimo() {
+		return fabricante.usoMensualMinimo();
+	}
+	
+	public double usoMensualMaximo() {
+		return fabricante.usoMensualMaximo();
 	}
 }

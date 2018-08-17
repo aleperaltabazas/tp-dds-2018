@@ -22,21 +22,20 @@ import Geoposicionamiento.Zona;
 public class TestZona {
 
 	Computadora unFabricante = new Computadora(true);
-	Heladera otroFarbicante = new Heladera(true);
 
 	Zona zona_A = new Zona();
 	Zona zona_B = new Zona();
 
 	int diasDelMes = LocalDate.now().lengthOfMonth();
-	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24), unFabricante);
-	Dispositivo otroDispositivo = new Dispositivo(0.09, new DispositivoInteligente(new Encendido()), new Heladera(true));
+	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24));
+	Dispositivo otroDispositivo = new Dispositivo(0.09, new DispositivoInteligente(new Encendido(), unFabricante));
 
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_A);
+			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	Cliente elCliente = new Cliente("El", "Cliente", TipoDni.DNI, "111111111", "1123456789",
-			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_A);
+			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	Cliente otroCliente = new Cliente("Otro", "Cliente", TipoDni.DNI, "111111112", "1123456780",
-			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo), zona_B);
+			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 
 	Transformador transformador_1 = new Transformador(zona_A);
 	Transformador transformador_2 = new Transformador(zona_A);
@@ -53,14 +52,8 @@ public class TestZona {
 	
 	@Test
 	public void El_Consumo_De_Zona_Es_Consumo_De_Clientes() {
-		unCliente.conectarATransformador();
-		elCliente.conectarATransformador();
+		unCliente.conectarseAEsteTransformador(transformador_1);
+		elCliente.conectarseAEsteTransformador(transformador_2);
 		assertEquals(unCliente.consumoTotalEstimadoDiario() + otroCliente.consumoTotalEstimadoDiario(), zona_A.consumoTotal(), 0);
 	}
-	
-	@Test
-	public void No_Puede_Agrgarse_Transformador_De_Otra_Zona() {
-		
-	}
-
 }

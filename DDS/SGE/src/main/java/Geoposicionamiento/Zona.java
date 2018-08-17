@@ -19,16 +19,13 @@ public class Zona {
 		return transformadores;
 	}
 	
-	public void agregarTransformadores(List<Transformador> nuevosTransformadores) {
-		this.getTransformadores().addAll(nuevosTransformadores);		
-	}
-	
 	public double consumoTotal() {
 		return this.getTransformadores().stream().mapToDouble(transformador -> transformador.suministra()).sum();
 	}
 	
-	// Para mostrar sus usuarios -> Preguntar Gastón
-	/*public ArrayList<Cliente> getClientesEnLaZona() {
-		return (this.getTransformadores().stream().flatMap(transformador -> transformador.getUsuarios()));
-	}*/
+	// PARA CUANDO RECIBE LISTA DEL ENRE
+	public void agregarTransformadores(List<Transformador> nuevosTransformadores) {
+		this.getTransformadores().addAll(nuevosTransformadores);		
+	}	
+	
 }

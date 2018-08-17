@@ -21,20 +21,22 @@ import Geoposicionamiento.Zona;
 public class TestOptimizador {
 
 	private static final double USO_MENSUAL_RECOMENDADO = 612.0;
-	
+
 	Computadora unFabricante = new Computadora(true);
-	
+
 	Zona unaZona = new Zona();
-	
-	DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido());
-	
-	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido()), unFabricante);
-	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente, unFabricante);	
-	
+
+	DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), unFabricante);
+
+	Dispositivo dispositivoPotencia1Kw = new Dispositivo(1, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotencia3Kw = new Dispositivo(3, new DispositivoInteligente(new Encendido(), unFabricante));
+	Dispositivo dispositivoPotenciaMuyAlta = new Dispositivo(10000, new DispositivoInteligente(new Encendido(),
+			unFabricante));
+	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido(),
+			unFabricante));
+	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente);
+
 	Cliente clienteSinDispositivos;
 	Cliente clienteConDispositivoDe1Kw;
 	Cliente clienteConDispositivoDe2Kw;
@@ -42,115 +44,116 @@ public class TestOptimizador {
 	Cliente clienteCon2DispositivosDe2Kw;
 	Cliente clienteConVariosDispositivos;
 	Cliente clienteConDispositivoInfractor;
-	
+
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe600Horas = new IntervaloActivo(fechaDeReferencia.minusHours(600), fechaDeReferencia);
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe600Horas);
-	RepositorioDeTiempoEncendidoTest repositorioDeMuchoTiempoEncendido = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
+	RepositorioDeTiempoEncendidoTest repositorioDeMuchoTiempoEncendido = new RepositorioDeTiempoEncendidoTest(
+			intervalosDeActividad);
 	
+	Optimizador optimizador = new Optimizador();
+
 	@Before
 	public void initialize() {
-		
+
 		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(), unaZona);
-		
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
+
 		clienteConDispositivoDe1Kw = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoPotencia1Kw), unaZona);
-		
+				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoPotencia1Kw));
+
 		clienteConDispositivoDe2Kw = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw), unaZona);
-		
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw));
+
 		clienteConDispositivoDeMuchaPotencia = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotenciaMuyAlta), unaZona);
-		
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotenciaMuyAlta));
+
 		clienteCon2DispositivosDe2Kw = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw, otroDispositivoPotencia2Kw), unaZona);
-		
+				"Calle Falsa 123", LocalDateTime.now(),
+				Arrays.asList(dispositivoPotencia2Kw, otroDispositivoPotencia2Kw));
+
 		clienteConVariosDispositivos = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoPotencia2Kw,dispositivoPotencia1Kw,dispositivoPotencia3Kw), unaZona);
-		
+				"Calle Falsa 123", LocalDateTime.now(),
+				Arrays.asList(dispositivoPotencia2Kw, dispositivoPotencia1Kw, dispositivoPotencia3Kw));
+
 		clienteConDispositivoInfractor = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor), unaZona);
-		
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor));
+
 		dispositivoInfractorInteligente.setRepositorio(repositorioDeMuchoTiempoEncendido);
-	
+
 	}
-	
+
 	@Test
-	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras(){
-		
-		assertEquals(USO_MENSUAL_RECOMENDADO / 2, Optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
-	
+	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras() {
+
+		assertEquals(USO_MENSUAL_RECOMENDADO / 2, optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
+
 	}
-	
+
 	@Test
-	public void ElUnicoDispositivoDePotencia2KwDelClienteSeRecomiendaUsarloLaMitadDelTiempoRecomendado(){
-		
-		double tiempoTotalDeUso = Optimizador.Calcular(clienteConDispositivoDe2Kw);
+	public void ElUnicoDispositivoDePotencia2KwDelClienteSeRecomiendaUsarloLaMitadDelTiempoRecomendado() {
+
+		double tiempoTotalDeUso = optimizador.Calcular(clienteConDispositivoDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
-	
-	}
-		
-	@Test
-	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo(){
 
-		assertEquals(Optimizador.Calcular(clienteConDispositivoDe2Kw), Optimizador.Calcular(clienteCon2DispositivosDe2Kw) , 0.0);
-	
 	}
-	
-	@Test
-	public void laSumaDelTiempoRecomendadoDeCadaDispositivoEsIgualAlTiempoTotalQueElClientePuedeUsarlos(){
 
-		double tiempoTotalDeUso = Optimizador.Calcular(clienteCon2DispositivosDe2Kw);
-		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar() + otroDispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar() , 0.0);
-	
+	@Test
+	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo() {
+
+		assertEquals(optimizador.Calcular(clienteConDispositivoDe2Kw),
+				optimizador.Calcular(clienteCon2DispositivosDe2Kw), 0.0);
+
 	}
-	
+
 	@Test
-	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible(){
-		
-		assertEquals(dispositivoPotencia1Kw.getFabricante().usoMensualMaximo(), Optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
-	
+	public void laSumaDelTiempoRecomendadoDeCadaDispositivoEsIgualAlTiempoTotalQueElClientePuedeUsarlos() {
+
+		double tiempoTotalDeUso = optimizador.Calcular(clienteCon2DispositivosDe2Kw);
+		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar()
+				+ otroDispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
+
 	}
-	
-	/* Explota porque el Simplex no encuentra solucion posible
+
 	@Test
-	public void unClienteConUnaComputadoraDePotenciaMuyAltaSeRecomiendaUsarLoMinimoPosible(){		
-		assertEquals(dispositivoPotenciaMuyAlta.getFabricante().usoMensualMinimo(), optimizador.Calcular(clienteConDispositivoDeMuchaPotencia), 0.0);
-	}*/
-	
-	
-	@Test
-	public void unClienteSinDispositivosSeLeRecomiendaUsarLosDispositivosPor0Horas(){
-		
-		assertEquals(0, Optimizador.Calcular(clienteSinDispositivos), 0.0);
-	
+	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible() {
+
+		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(),
+				optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
+
 	}
-	
+
 	@Test
-	public void unClientePuedePedirSuUsoRecomendado(){
-		
+	public void unClienteSinDispositivosSeLeRecomiendaUsarLosDispositivosPor0Horas() {
+
+		assertEquals(0, optimizador.Calcular(clienteSinDispositivos), 0.0);
+
+	}
+
+	@Test
+	public void unClientePuedePedirSuUsoRecomendado() {
+
 		assertEquals(432, clienteConVariosDispositivos.consultarUsoOptimo(), 0.0);
-	
+
 	}
-	
+
 	@Test
-	public void aUnClienteNoSeLeApagaSuDispositivoPorqueNoTuvoConsumo(){
-		
-		Optimizador.Calcular(clienteConDispositivoDe1Kw);
+	public void aUnClienteNoSeLeApagaSuDispositivoPorqueNoTuvoConsumo() {
+
+		optimizador.Calcular(clienteConDispositivoDe1Kw);
 		assertTrue(clienteConDispositivoDe1Kw.getDispositivos().findFirst().get().estaEncendido());
-	
+
 	}
-	
+
 	@Test
-	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo(){
-		
-		Optimizador.Calcular(clienteConDispositivoInfractor);
-		
+	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo() {
+
+		optimizador.Calcular(clienteConDispositivoInfractor);
+		optimizador.accionarSobreDispositivos(
+				optimizador.obtenerDispositivosInfractores(clienteConDispositivoInfractor.getDispositivos()));
+
 		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());
-	
+
 	}
-	
-	
-	
+
 }

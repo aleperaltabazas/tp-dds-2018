@@ -21,9 +21,6 @@ public class RepositorioDeTiempoEncendido {
 		return intervalosDeActividad.stream();
 	}
 
-	//Hay que evitar que si esta encendido se encienda y si esta apagado se apague porque sino se generan conflictos
-	//Quizas se pueda solucionar dejando a cargo del EstadoDelDispositivo que se actualice o no el repositorio,
-	//aprovechando que ya hicimos el state para que cuando este apagado y se apaga no haga nada por ejemplo
 	public void encender(LocalDateTime fechaEncendido) {
 		ultimaFechaDeEncendido = fechaEncendido;
 	}

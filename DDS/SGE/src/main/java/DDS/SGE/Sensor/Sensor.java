@@ -8,5 +8,4 @@ public interface Sensor {
 	public void actualizarMediciones();
 	double medir();
 	boolean hayQueActuar();
-	public DispositivoInteligente getDispositivo();
 }
