@@ -22,11 +22,13 @@ import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import Geoposicionamiento.Transformador;
+import Geoposicionamiento.Zona;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Json {
+public class JsonBuilder {
 	
 	private Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) ->
     ZonedDateTime.parse(json.getAsJsonPrimitive().getAsString()).toLocalDateTime()).create();
@@ -55,6 +57,24 @@ public class Json {
 			return gson.fromJson(reader, Administrador.class);
 		} catch (IOException e) {
 			throw new RuntimeException("No se pudo crear el Administrador", e);
+		}
+	}
+	
+	Zona crearZona(String path) {
+		try {
+			JsonReader reader = new JsonReader(new FileReader(path));
+			return gson.fromJson(reader, Zona.class);
+		} catch (IOException e) {
+			throw new RuntimeException("No se pudo crear la Zona", e);
+		}
+	}
+	
+	Transformador crearTransformador(String path) {
+		try {
+			JsonReader reader = new JsonReader(new FileReader(path));
+			return gson.fromJson(reader, Transformador.class);
+		} catch (IOException e) {
+			throw new RuntimeException("No se pudo crear el Transformador", e);
 		}
 	}
 }

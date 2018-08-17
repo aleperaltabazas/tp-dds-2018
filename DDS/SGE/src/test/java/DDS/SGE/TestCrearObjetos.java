@@ -7,14 +7,16 @@ import java.io.File;
 import org.junit.Test;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import Geoposicionamiento.Transformador;
+import Geoposicionamiento.Zona;
 import junit.framework.Assert;
 
 public class TestCrearObjetos {
 
-	Json jsonBuilder = new Json();
+	JsonBuilder jsonBuilder = new JsonBuilder();
 	
 	@Test
-	public void CrearCliente() {
+	public void crearCliente() {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("cliente.txt").getFile());
 		
@@ -24,7 +26,7 @@ public class TestCrearObjetos {
 	}
 	
 	@Test
-	public void CrearAdministrador() {
+	public void crearAdministrador() {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("admin.txt").getFile());
 		
@@ -34,7 +36,7 @@ public class TestCrearObjetos {
 	}
 	
 	@Test
-	public void CrearDispositivo() {
+	public void crearDispositivo() {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("dispositivo.txt").getFile());
 		
@@ -42,5 +44,24 @@ public class TestCrearObjetos {
 
 		Assert.assertEquals(12.0, unDispositivo.getConsumoKWPorHora(),0.0);
 	}
+	
+	@Test
+	public void crearTransformador() {
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("transformador.txt").getFile());
+		
+		Transformador unTransformador = jsonBuilder.crearTransformador(file.getAbsolutePath());
 
+		Assert.assertEquals(10.0, unTransformador.suministra(),0.0);
+	}
+	
+	@Test
+	public void crearZona() {
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("zona.txt").getFile());
+		
+		Zona unaZona = jsonBuilder.crearZona(file.getAbsolutePath());
+
+		Assert.assertEquals(10.0, unaZona.consumoTotal(),0.0);
+	}
 }
