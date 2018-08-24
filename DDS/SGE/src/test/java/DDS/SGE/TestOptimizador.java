@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.IntervaloActivo;
 import DDS.SGE.Dispositivo.Estado.Apagado;
@@ -36,6 +37,7 @@ public class TestOptimizador {
 	Dispositivo otroDispositivoPotencia2Kw = new Dispositivo(2, new DispositivoInteligente(new Encendido(),
 			unFabricante));
 	Dispositivo dispositivoInfractor = new Dispositivo(2, dispositivoInfractorInteligente);
+	Dispositivo dispositivoEstandar = new Dispositivo(2, new DispositivoEstandar(10));
 
 	Cliente clienteSinDispositivos;
 	Cliente clienteConDispositivoDe1Kw;
@@ -43,7 +45,9 @@ public class TestOptimizador {
 	Cliente clienteConDispositivoDeMuchaPotencia;
 	Cliente clienteCon2DispositivosDe2Kw;
 	Cliente clienteConVariosDispositivos;
+	Cliente clienteSoloConDispositivosEstandar;
 	Cliente clienteConDispositivoInfractor;
+	Cliente clienteConDispositivoInfractorYDispositivosAdicionales;
 
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe600Horas = new IntervaloActivo(fechaDeReferencia.minusHours(600), fechaDeReferencia);
@@ -75,9 +79,16 @@ public class TestOptimizador {
 		clienteConVariosDispositivos = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(),
 				Arrays.asList(dispositivoPotencia2Kw, dispositivoPotencia1Kw, dispositivoPotencia3Kw));
+		
+		clienteSoloConDispositivosEstandar = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
+				"Calle Falsa 123", LocalDateTime.now(),
+				Arrays.asList(dispositivoEstandar, dispositivoEstandar, dispositivoEstandar));
 
 		clienteConDispositivoInfractor = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor));
+		
+		clienteConDispositivoInfractorYDispositivosAdicionales = new Cliente("Juan", "Perez", TipoDni.DNI, "987654321", "1188884444",
+				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoInfractor, dispositivoEstandar));
 
 		dispositivoInfractorInteligente.setRepositorio(repositorioDeMuchoTiempoEncendido);
 
@@ -129,6 +140,14 @@ public class TestOptimizador {
 		assertEquals(0, optimizador.Calcular(clienteSinDispositivos), 0.0);
 
 	}
+	
+	@Test
+	public void unClienteSoloConDispositivosEstandarSeLeRecomiendaUsarLosDispositivosPor0Horas() {
+
+		assertEquals(0, optimizador.Calcular(clienteSoloConDispositivosEstandar), 0.0);
+
+	}
+
 
 	@Test
 	public void unClientePuedePedirSuUsoRecomendado() {
@@ -154,6 +173,15 @@ public class TestOptimizador {
 
 		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());
 
+	}
+	
+	@Test
+	public void unClienteConDIsTieneLaMismaRecomendacionQueOtroClienteConLosMismosDIsYVariosDispositivosEstandarAdicionales() {
+
+		double tiempoClienteConSoloDIs = optimizador.Calcular(clienteConDispositivoInfractor);
+		double tiempoClienteConAmbosTiposDeDispositivos = optimizador.Calcular(clienteConDispositivoInfractorYDispositivosAdicionales);
+		
+		assertEquals(tiempoClienteConSoloDIs, tiempoClienteConAmbosTiposDeDispositivos, 0);
 	}
 
 }
