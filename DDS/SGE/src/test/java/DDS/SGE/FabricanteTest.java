@@ -1,13 +1,14 @@
-package Fabricante;
+package DDS.SGE;
 
-public class Computadora implements Fabricante {
+import Fabricante.Fabricante;
 
+public class FabricanteTest implements Fabricante{
 	int usoMensualMinimo = 60;
 	int usoMensualMaximo = 360;
-	Boolean notebook;
+	double consumoKWPorHora;
 	
-	public Computadora(Boolean notebook) {
-		this.notebook = notebook;
+	public FabricanteTest(double consumoKWPorHora) {
+		this.consumoKWPorHora = consumoKWPorHora;
 	}
 	
 	public int medir() {
@@ -30,8 +31,8 @@ public class Computadora implements Fabricante {
 		return usoMensualMaximo;
 	}
 
-	@Override
 	public double getConsumoKWPorHora() {
-		return 0;
+		return this.consumoKWPorHora;
 	}
+
 }

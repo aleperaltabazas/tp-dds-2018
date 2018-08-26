@@ -11,9 +11,11 @@ import Fabricante.Fabricante;
 
 public class DispositivoEstandar implements TipoDispositivo {
 	long usoEstimadoDiario;
+	double consumoKWPorHora;
 
-	public DispositivoEstandar(long usoEstimadoDiario) {
+	public DispositivoEstandar(long usoEstimadoDiario, double consumoKWPorHora) {
 		this.usoEstimadoDiario = usoEstimadoDiario;
+		this.consumoKWPorHora = consumoKWPorHora;
 	}
 
 	public boolean estaEncendido() {
@@ -35,6 +37,10 @@ public class DispositivoEstandar implements TipoDispositivo {
 	public void apagar() {
 		// No hace nada.
 	}
+	
+	public double getConsumoKWPorHora() {
+		return this.consumoKWPorHora;
+	}
 
 	public double tiempoTotalEncendidoHaceNHoras(int horas) {
 		return 0;
@@ -52,13 +58,10 @@ public class DispositivoEstandar implements TipoDispositivo {
 		return 0;
 	}
 
-	@Override
 	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
 		// No hace nada
-		
 	}
 
-	@Override
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
 		//No hace nada
 	}

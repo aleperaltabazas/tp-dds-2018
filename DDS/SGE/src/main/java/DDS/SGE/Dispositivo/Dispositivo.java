@@ -12,12 +12,10 @@ import Fabricante.Fabricante;
 
 public class Dispositivo {
 
-	private double consumoKWPorHora;
 	private double tiempoQueSePuedeUtilizar;
 	private TipoDispositivo tipo;
 
-	public Dispositivo(double consumoKWPorHora, TipoDispositivo tipo) {
-		this.consumoKWPorHora = consumoKWPorHora;
+	public Dispositivo(TipoDispositivo tipo) {
 		this.tipo = tipo;
 	}
 	
@@ -41,14 +39,18 @@ public class Dispositivo {
 		return tipo.estaEncendido();
 	}
 
-	public double getConsumoKWPorHora() {
-		return this.consumoKWPorHora;
+	public double obtenerConsumoKWPorHora() {
+		return this.tipo.getConsumoKWPorHora();
 	}
 
 	public double consumoDiarioEstimado() {
-		return consumoKWPorHora * tipo.usoEstimadoDiario();
+		return this.obtenerConsumoKWPorHora() * this.obtenerUsoEstimadoDiario();
 	}
 	
+	private double obtenerUsoEstimadoDiario() {
+		return tipo.usoEstimadoDiario();
+	}
+
 	public void adaptarConModulo() {
 		this.tipo = tipo.adaptar();
 	}
@@ -62,11 +64,11 @@ public class Dispositivo {
 	}
 
 	public double consumoTotalHaceNHoras(int horas) {
-		return tipo.tiempoTotalEncendidoHaceNHoras(horas) * consumoKWPorHora;
+		return tipo.tiempoTotalEncendidoHaceNHoras(horas) * this.obtenerConsumoKWPorHora();
 	}
 	
 	public double consumoTotalEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
-		return tipo.tiempoTotalEncendidoEnUnPeriodo(principioPeriodo, finPeriodo) * consumoKWPorHora;
+		return tipo.tiempoTotalEncendidoEnUnPeriodo(principioPeriodo, finPeriodo) * this.obtenerConsumoKWPorHora();
 
 	}
 

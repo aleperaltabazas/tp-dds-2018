@@ -45,4 +45,9 @@ public class AireAcondicionado implements Fabricante {
 	public double usoMensualMaximo() {
 		return usoMensualMaximo;
 	}
+
+	@Override
+	public double getConsumoKWPorHora() {
+		return 0;
+	}
 }

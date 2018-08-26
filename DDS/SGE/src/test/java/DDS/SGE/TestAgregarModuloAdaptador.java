@@ -22,13 +22,13 @@ import Geoposicionamiento.Zona;
 
 public class TestAgregarModuloAdaptador {
 	
-	Fabricante unFabricante = new Computadora(true);
+	Fabricante unFabricante = new FabricanteTest(1);
 	Encendido encendido = new Encendido();
 	DispositivoInteligente unDispositivoInteligente = new DispositivoInteligente(encendido, unFabricante);
 	
-	Dispositivo dispositivoEstandar = new Dispositivo(0.78, new DispositivoEstandar(24));
-	Dispositivo dispositivoInteligenteQueNoEsDelCliente = new Dispositivo(0.50, unDispositivoInteligente);
-	Dispositivo dispositivoInteligenteQueSiEsDelCliente = new Dispositivo(0.50, unDispositivoInteligente);
+	Dispositivo dispositivoEstandar = new Dispositivo(new DispositivoEstandar(24, 0.78));
+	Dispositivo dispositivoInteligenteQueNoEsDelCliente = new Dispositivo(unDispositivoInteligente);
+	Dispositivo dispositivoInteligenteQueSiEsDelCliente = new Dispositivo(unDispositivoInteligente);
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
 			"Una Calle", LocalDateTime.now(), Arrays.asList(dispositivoEstandar,dispositivoInteligenteQueSiEsDelCliente));	
 	

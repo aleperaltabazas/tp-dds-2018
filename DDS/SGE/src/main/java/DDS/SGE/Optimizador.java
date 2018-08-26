@@ -26,7 +26,6 @@ public class Optimizador {
 	static int consumoMaximoHogar = 612;
 	int dispositivo;
 
-	//Queda para test
 	public Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());
 	}
@@ -73,7 +72,7 @@ public class Optimizador {
 		dispositivo = 0;
 
 		unCliente.getDispositivos().forEach(disp -> {
-			arrayPotencias[dispositivo] = disp.getConsumoKWPorHora();
+			arrayPotencias[dispositivo] = disp.obtenerConsumoKWPorHora();
 			coeficientesFuncion[dispositivo] = 1;
 			coeficientesRestriccion[dispositivo] = 0;
 			dispositivo++;

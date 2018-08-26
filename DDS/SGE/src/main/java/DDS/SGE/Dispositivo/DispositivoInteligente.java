@@ -31,6 +31,10 @@ public class DispositivoInteligente implements TipoDispositivo {
 		return temperatura;
 	}
 	
+	public double getConsumoKWPorHora() {
+		return this.fabricante.getConsumoKWPorHora();
+	}
+	
 	public void setTemperatura(double nuevaTemperatura) {
 		this.temperatura = nuevaTemperatura;
 	}

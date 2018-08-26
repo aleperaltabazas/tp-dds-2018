@@ -22,7 +22,7 @@ import Fabricante.Fabricante;
 
 public class TestCalcularConsumosEnDispositivosInteligentes {
 	
-	Fabricante unFabricante = new Computadora(true);
+	Fabricante unFabricante = new FabricanteTest(2);
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
 	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
@@ -34,7 +34,7 @@ public class TestCalcularConsumosEnDispositivosInteligentes {
 	@Before
 	public void initialize() {
 		dispositivoInteligenteEncendido.setRepositorio(repositorioDePrueba);
-		dispositivoEncendido = new Dispositivo(2, dispositivoInteligenteEncendido);		
+		dispositivoEncendido = new Dispositivo(dispositivoInteligenteEncendido);		
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class TestCalcularConsumosEnDispositivosInteligentes {
 	}
 	
 	@Test
-	public void testElConsumoDiarioEstimadoDelDispositivoEncendidoEsDe360Kwh() {
+	public void testElConsumoDiarioEstimadoDelDispositivoEncendidoEsDe360KWh() {
 		assertEquals(2 * (1 + 2) * 60, dispositivoEncendido.consumoDiarioEstimado(), 0);
 	}
 	

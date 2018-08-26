@@ -17,15 +17,15 @@ public class TestCambiarEstadosDeDispositivosInteligentes {
 	Encendido estadoEncendido = new Encendido();
 	AhorroDeEnergia estadoAhorroDeEnergia = new AhorroDeEnergia();
 	
-	Computadora unFabricante = new Computadora(true);
+	FabricanteTest unFabricante = new FabricanteTest(1);
 	
 	DispositivoInteligente dispositivoInteligenteApagado = new DispositivoInteligente(estadoApagado, unFabricante);
 	DispositivoInteligente dispositivoInteligenteEncendido = new DispositivoInteligente(estadoEncendido, unFabricante);
 	DispositivoInteligente dispositivoInteligenteEnAhorroDeEnergia = new DispositivoInteligente(estadoAhorroDeEnergia, unFabricante);
 	
-	Dispositivo unDispositivoApagado = new Dispositivo(1, dispositivoInteligenteApagado);
-	Dispositivo unDispositivoEncendido = new Dispositivo(1, dispositivoInteligenteEncendido);
-	Dispositivo unDispositivoEnAhorroDeEnergia = new Dispositivo(1, dispositivoInteligenteEnAhorroDeEnergia);
+	Dispositivo unDispositivoApagado = new Dispositivo(dispositivoInteligenteApagado);
+	Dispositivo unDispositivoEncendido = new Dispositivo(dispositivoInteligenteEncendido);
+	Dispositivo unDispositivoEnAhorroDeEnergia = new Dispositivo(dispositivoInteligenteEnAhorroDeEnergia);
 	
 	@Test
 	public void testSeEnciendeUnDispositivoEnModoAhorroDeEnergiaYQuedaEncendido() {

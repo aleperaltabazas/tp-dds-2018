@@ -37,4 +37,10 @@ public class Ventilador implements Fabricante {
 	public double usoMensualMaximo() {
 		return usoMensualMaximo;
 	}
+
+	@Override
+	public double getConsumoKWPorHora() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

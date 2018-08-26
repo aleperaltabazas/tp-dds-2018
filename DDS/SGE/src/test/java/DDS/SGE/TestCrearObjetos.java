@@ -42,7 +42,9 @@ public class TestCrearObjetos {
 		
 		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(file.getAbsolutePath());
 
-		Assert.assertEquals(12.0, unDispositivo.getConsumoKWPorHora(),0.0);
+		//Habria que ver como hacemos para crearle el tipo desde el archivo, porque el Dispositivo le pregunta
+		//a su tipo cuanto consumoKWPorHora tiene
+		Assert.assertEquals(12.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
 	}
 	
 	@Test

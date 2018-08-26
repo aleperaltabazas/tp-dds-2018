@@ -15,8 +15,8 @@ public interface TipoDispositivo {
 	long usoEstimadoDiario();
 	
 	public double tiempoTotalEncendidoHaceNHoras(int horas);
-	
 	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo);
+	public double getConsumoKWPorHora();
 	
 	TipoDispositivo adaptar();
 	

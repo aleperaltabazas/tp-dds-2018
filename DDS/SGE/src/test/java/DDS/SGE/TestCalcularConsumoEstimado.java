@@ -20,7 +20,7 @@ import Geoposicionamiento.Zona;
 public class TestCalcularConsumoEstimado {
 	
 	int diasDelMes = LocalDate.now().lengthOfMonth();
-	Dispositivo unDispositivo = new Dispositivo(0.78, new DispositivoEstandar(24));
+	Dispositivo unDispositivo = new Dispositivo(new DispositivoEstandar(24, 0.78));
 	Cliente unCliente = new Cliente("Un", "Cliente", TipoDni.DNI, "111111111", "1123456789",
 			"Una Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));	
 	
