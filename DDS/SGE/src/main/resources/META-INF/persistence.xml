@@ -7,7 +7,6 @@
   
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-    	<class>model.Tarea</class>
     	
     	
     	 
