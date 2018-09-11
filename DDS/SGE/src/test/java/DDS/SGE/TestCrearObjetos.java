@@ -47,6 +47,8 @@ public class TestCrearObjetos {
 		Assert.assertEquals(12.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
 	}
 	
+	//El test de transformador y de zona fallan porque no está levantando correctamente los txts
+	
 	@Test
 	public void crearTransformador() {
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -64,6 +66,6 @@ public class TestCrearObjetos {
 		
 		Zona unaZona = jsonBuilder.crearZona(file.getAbsolutePath());
 
-		Assert.assertEquals(10.0, unaZona.consumoTotal(),0.0);
+		Assert.assertEquals(10.0, unaZona.getRadio(),0.0);
 	}
 }
