@@ -18,6 +18,7 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
 import DDS.SGE.Actuador.Apagar;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Regla.Regla;
 import DDS.SGE.Sensor.Consumo;
 
@@ -35,7 +36,9 @@ public class Optimizador {
 	}
 	
 	public Regla generarReglaDeConsumoExcesivo(Dispositivo unDispositivo) {
-		return new Regla(Arrays.asList(new Consumo(unDispositivo)), new Apagar(unDispositivo));
+		//Siempre va a llegar un DispositivoInteligente, no deberia haber conflicto con el casteo
+		//No se me ocurre una forma de evitar el casteo y que quede mejor
+		return new Regla(Arrays.asList(new Consumo(unDispositivo)), new Apagar((DispositivoInteligente) unDispositivo.getTipoDispositivo()));
 	}
 
 	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
@@ -43,8 +46,6 @@ public class Optimizador {
 
 		unCliente.getDispositivos().forEach(disp -> {
 			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
-			System.out.format("El dispositivo %s se podrá utilizar %f horas como maximo\n", disp.toString(),
-					resultados[dispositivo]);
 			dispositivo++;
 		});
 	}

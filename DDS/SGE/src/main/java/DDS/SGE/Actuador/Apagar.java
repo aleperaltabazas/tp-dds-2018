@@ -5,9 +5,9 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Apagar implements Actuador {
 
-	Dispositivo dispositivo;
+	DispositivoInteligente dispositivo;
 	
-	public Apagar(Dispositivo dispositivo) {
+	public Apagar(DispositivoInteligente dispositivo) {
 		this.dispositivo = dispositivo;
 	}
 	
@@ -18,8 +18,7 @@ public class Apagar implements Actuador {
 
 	@Override
 	public DispositivoInteligente getDispositivo() {
-		//Esto queda por ver, quizas pueda pasarse el retorno a ser Dispositivo o TipoDispositivo 
-		return null;
+		return this.dispositivo;
 	}
 
 }
