@@ -1,5 +1,7 @@
 package DDS.SGE.Dispositivo.Estado;
 
+import java.time.LocalDateTime;
+
 import DDS.SGE.Dispositivo.*;
 
 public class Apagado extends EstadoDelDispositivo {
@@ -10,7 +12,14 @@ public class Apagado extends EstadoDelDispositivo {
 	
 	@Override
 	public void ahorraEnergia(DispositivoInteligente dispositivo) {
+	
 	}
+	
+	@Override
+	public void encender(DispositivoInteligente dispositivo) {
+		super.encender(dispositivo);
+		dispositivo.getRepositorioTiempoEncendido().encender(LocalDateTime.now());
+	}	
 
 	@Override
 	public boolean estaEncendido() {
@@ -21,8 +30,6 @@ public class Apagado extends EstadoDelDispositivo {
 	public double getIntensidad() {
 		return 0;
 	}
-
-	// CON ESTOS DOS DEBERIA TIRAR UNA EXCEPCION //
 
 	@Override
 	public void setIntensidad(double nuevoValor) {
@@ -36,7 +43,6 @@ public class Apagado extends EstadoDelDispositivo {
 
 	@Override
 	public ModoFrio_Calor getModo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -12,9 +12,7 @@ import Fabricante.*;
 
 public class DispositivoInteligente implements TipoDispositivo {
 	EstadoDelDispositivo estado;
-	private double temperatura;
-	Fabricante fabricante;
-	
+	Fabricante fabricante;	
 	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {
@@ -27,16 +25,12 @@ public class DispositivoInteligente implements TipoDispositivo {
 		return estado;
 	}
 	
-	public double getTemperatura() {
-		return temperatura;
+	public RepositorioDeTiempoEncendido getRepositorioTiempoEncendido() {
+		return this.repositorio;
 	}
-	
+		
 	public double getConsumoKWPorHora() {
 		return this.fabricante.getConsumoKWPorHora();
-	}
-	
-	public void setTemperatura(double nuevaTemperatura) {
-		this.temperatura = nuevaTemperatura;
 	}
 	
 	public void setFabricante(Fabricante unFabricante) {
@@ -61,12 +55,10 @@ public class DispositivoInteligente implements TipoDispositivo {
 
 	public void encender() {
 		this.estado.encender(this);
-		repositorio.encender(LocalDateTime.now());
 	}
 
 	public void apagar() {
 		this.estado.apagar(this);
-		repositorio.apagar(LocalDateTime.now());
 	}
 
 	public void ahorraEnergia() {

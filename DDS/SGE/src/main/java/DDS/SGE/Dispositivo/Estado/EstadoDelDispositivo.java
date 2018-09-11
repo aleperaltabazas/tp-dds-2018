@@ -3,6 +3,7 @@ package DDS.SGE.Dispositivo.Estado;
 import DDS.SGE.Dispositivo.*;
 
 public abstract class EstadoDelDispositivo {
+	
 	double intensidad;
 	ModoFrio_Calor modo;
 	
