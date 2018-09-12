@@ -12,14 +12,14 @@ import Fabricante.Fabricante;
 
 public class Temperatura implements Sensor {
 
-	Fabricante fabricante;
+	AireAcondicionado fabricante;
 	
 	double temperaturaAmbiente = 22;
 	double temperaturaActual;
 
 	public Temperatura(double temperaturaAmbiente, DispositivoInteligente unDispositivo) {
 		this.temperaturaAmbiente = temperaturaAmbiente;
-		this.fabricante = unDispositivo.getFabricante();
+		this.fabricante = (AireAcondicionado) unDispositivo.getFabricante();
 	}
 
 	public double getTemperaturaAmbiente() {

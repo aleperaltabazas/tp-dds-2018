@@ -6,11 +6,29 @@ import DDS.SGE.Dispositivo.TipoDispositivo;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
-public interface Fabricante {
-	public int medir();
-	public void actuar();
-	public double getConsumoKWPorHora();
-	public double usoMensualMinimo();
-	public double usoMensualMaximo();
-	public boolean hayQueActuar(double temperatura);
+public abstract class Fabricante {
+	
+	double consumoKWPorHora;
+	protected int usoMensualMinimo;
+	protected int usoMensualMaximo;
+		
+	public void actuar() {
+	}
+	
+	public double getConsumoKWPorHora() {
+		return this.consumoKWPorHora;
+	}
+	
+	public double usoMensualMinimo() {
+		return this.usoMensualMinimo;
+	}
+	
+	public double usoMensualMaximo() {
+		return this.usoMensualMaximo;
+	}
+
+	public void inicializarUsoMinimoYMaximo(int usoMensualMinimo, int usoMensualMaximo) {
+		this.usoMensualMinimo = usoMensualMinimo;
+		this.usoMensualMaximo = usoMensualMaximo;
+	}
 }

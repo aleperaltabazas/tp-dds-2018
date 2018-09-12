@@ -1,9 +1,7 @@
 package Fabricante;
 
-public class Lavarropas implements Fabricante {
+public class Lavarropas extends Fabricante {
 
-	int usoMensualMinimo = 6;
-	int usoMensualMaximo = 30;
 	int kilos;
 	Boolean automatico;
 	Boolean calentamiento;
@@ -12,39 +10,8 @@ public class Lavarropas implements Fabricante {
 		this.kilos = kilos;
 		this.automatico = automatico;
 		this.calentamiento = calentamiento;
+		this.consumoKWPorHora = 0.875;
+		inicializarUsoMinimoYMaximo(6, 30);
 	}
 	
-	@Override
-	public int medir() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void actuar() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean hayQueActuar(double temperatura) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public double usoMensualMinimo() {
-		return usoMensualMinimo;
-	}
-
-	@Override
-	public double usoMensualMaximo() {
-		return usoMensualMaximo;
-	}
-
-	@Override
-	public double getConsumoKWPorHora() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

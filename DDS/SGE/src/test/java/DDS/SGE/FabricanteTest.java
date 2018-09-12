@@ -2,25 +2,17 @@ package DDS.SGE;
 
 import Fabricante.Fabricante;
 
-public class FabricanteTest implements Fabricante{
-	int usoMensualMinimo = 60;
-	int usoMensualMaximo = 360;
+public class FabricanteTest extends Fabricante{
+	
 	double consumoKWPorHora;
 	
 	public FabricanteTest(double consumoKWPorHora) {
 		this.consumoKWPorHora = consumoKWPorHora;
+		super.inicializarUsoMinimoYMaximo(60, 360);
 	}
 	
 	public int medir() {
 		return 0;
-	}
-
-	public void actuar() {
-		
-	}
-
-	public boolean hayQueActuar(double temperatura) {
-		return false;
 	}
 
 	public double usoMensualMinimo() {

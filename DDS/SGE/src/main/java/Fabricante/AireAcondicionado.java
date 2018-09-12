@@ -1,9 +1,7 @@
 package Fabricante;
 
-public class AireAcondicionado implements Fabricante {
+public class AireAcondicionado extends Fabricante {
 
-	int usoMensualMinimo = 90;
-	int usoMensualMaximo = 360;
 	int frigorias;
 	
 	double temperaturaDelDispositivo;
@@ -11,19 +9,16 @@ public class AireAcondicionado implements Fabricante {
 	
 	public AireAcondicionado(int frigorias) {
 		this.frigorias = frigorias;
+		this.consumoKWPorHora = 1.013;
+		inicializarUsoMinimoYMaximo(90, 360);
+		this.temperaturaDelDispositivo = 0;
 	}
 	
-	@Override
-	public int medir() {
-		return 0;
-	}
-
 	@Override
 	public void actuar() {
 		this.ponerElAireEn(temperaturaRecomendada);
 	}
 
-	@Override
 	public boolean hayQueActuar(double temperatura) {
 		return temperatura < temperaturaRecomendada;
 	}
@@ -35,19 +30,5 @@ public class AireAcondicionado implements Fabricante {
 	public void ponerElAireEn(double temperatura) {
 		this.temperaturaDelDispositivo = temperatura;
 	}
-
-	@Override
-	public double usoMensualMinimo() {
-		return usoMensualMinimo;
-	}
-
-	@Override
-	public double usoMensualMaximo() {
-		return usoMensualMaximo;
-	}
-
-	@Override
-	public double getConsumoKWPorHora() {
-		return 0;
-	}
+	
 }

@@ -1,6 +1,6 @@
 package Fabricante;
 
-public class Televisor implements Fabricante {
+public class Televisor extends Fabricante {
 
 	public enum TipoTelevisor {
 		LED, LCD, TUBO
@@ -8,43 +8,11 @@ public class Televisor implements Fabricante {
 	
 	TipoTelevisor tipo;
 	int pulgadas;
-	int usoMensualMinimo = 90;
-	int usoMensualMaximo = 360;
-	
+
 	public Televisor(int pulgadas,TipoTelevisor tipo) {
 		this.pulgadas = pulgadas;
 		this.tipo = tipo;
-	}
-	
-	@Override
-	public int medir() {		
-		return 0;
-	}
-
-	@Override
-	public void actuar() {
-
-	}
-
-	@Override
-	public boolean hayQueActuar(double temperatura) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public double usoMensualMinimo() {
-		return usoMensualMinimo;
-	}
-
-	@Override
-	public double usoMensualMaximo() {
-		return usoMensualMaximo;
-	}
-
-	@Override
-	public double getConsumoKWPorHora() {
-		// TODO Auto-generated method stub
-		return 0;
+		this.consumoKWPorHora = 0.075;
+		inicializarUsoMinimoYMaximo(90, 360);
 	}
 }

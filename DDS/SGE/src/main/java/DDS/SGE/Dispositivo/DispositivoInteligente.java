@@ -103,10 +103,6 @@ public class DispositivoInteligente implements TipoDispositivo {
 		interesadoEnAdaptaciones.sumarPuntos();		
 	}
 
-	public boolean hayQueActuar(double temperatura) {
-		return fabricante.hayQueActuar(temperatura);
-	}
-
 	@Override
 	public TipoDispositivo adaptar() {
 		return this;

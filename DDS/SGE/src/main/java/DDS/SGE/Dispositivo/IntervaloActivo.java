@@ -6,16 +6,14 @@ import java.time.temporal.ChronoUnit;
 public class IntervaloActivo {
 	LocalDateTime tiempoInicial;
 	LocalDateTime tiempoFinal;
-	long intervaloEncendidoEnMinutos;
 	
 	public IntervaloActivo(LocalDateTime tiempoInicial, LocalDateTime tiempoFinal) {
 		this.tiempoInicial = tiempoInicial;
 		this.tiempoFinal = tiempoFinal;
-		intervaloEncendidoEnMinutos = ChronoUnit.MINUTES.between(tiempoInicial, tiempoFinal);		
 	}
 	
 	public long getIntervaloEncendidoEnMinutos() {
-		return intervaloEncendidoEnMinutos;
+		return ChronoUnit.MINUTES.between(tiempoInicial, tiempoFinal);
 	}
 	
 	public boolean ocurreDespuesDe(LocalDateTime fecha) {
