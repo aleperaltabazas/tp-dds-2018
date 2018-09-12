@@ -2,13 +2,14 @@ package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Entity;
 import org.json.JSONObject;
 
 import DDS.SGE.Cliente;
@@ -18,6 +19,7 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import Fabricante.Fabricante;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Dispositivo {
 
     @Id

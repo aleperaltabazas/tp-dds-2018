@@ -2,10 +2,9 @@ package Fabricante;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
 
 import DDS.SGE.Dispositivo.TipoDispositivo;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
