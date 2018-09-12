@@ -3,6 +3,11 @@ package DDS.SGE.Dispositivo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Entity;
+
 import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
@@ -10,9 +15,17 @@ import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import Fabricante.*;
 
+@Entity
 public class DispositivoInteligente implements TipoDispositivo {
-	EstadoDelDispositivo estado;
+    
+	@Id
+    @GeneratedValue
+    private Long id;
+	
+	@ManyToOne()
 	Fabricante fabricante;	
+	
+	EstadoDelDispositivo estado;
 	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {

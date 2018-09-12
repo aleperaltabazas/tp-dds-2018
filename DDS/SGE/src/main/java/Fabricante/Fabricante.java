@@ -2,12 +2,22 @@ package Fabricante;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Entity;
+
 import DDS.SGE.Dispositivo.TipoDispositivo;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
+@Entity
 public abstract class Fabricante {
-	
+		
+    @Id
+    @GeneratedValue
+    private Long id;
+    
 	double consumoKWPorHora;
 	protected int usoMensualMinimo;
 	protected int usoMensualMaximo;

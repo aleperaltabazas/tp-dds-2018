@@ -11,6 +11,12 @@ import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 import org.json.*;
 
 import DDS.SGE.Dispositivo.Dispositivo;
@@ -23,7 +29,17 @@ import Fabricante.Fabricante;
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 
+@Entity
 public class Cliente {
+	
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+	@OneToMany()
+	@JoinColumn(name="id")
+	private List<Dispositivo> dispositivos;
+	
 	private String nombre;
 	private String apellido;
 	private TipoDni tipoDni;
@@ -31,8 +47,7 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
-	private Categoria categoria;
-	private List<Dispositivo> dispositivos;
+	private Categoria categoria;	
 	//private Zona zona; --- YA NO VA
 	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
 	int puntos;

@@ -4,12 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 import DDS.SGE.Cliente;
 
+@Entity
 public class Zona {
 
-	double radio;
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+	@OneToMany()
+	@JoinColumn(name="id")
 	List<Transformador> transformadores = new ArrayList<Transformador>();
+	
+	double radio;
 
 	public Zona() {
 		radio = 100;
