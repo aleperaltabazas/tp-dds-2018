@@ -76,6 +76,10 @@ public class Cliente {
 	public String getTipoDni() {
 		return this.tipoDni.toString();
 	}
+	
+	public long getId() {
+		return this.id;
+	}
 
 	public String getNombre() {
 		return this.nombre;
@@ -208,5 +212,12 @@ public class Cliente {
 		return consumoOptimoPorMesEnHoras;
 	}
 	
+	public void setDomicilio(String nuevoDomicilio) {
+		this.domicilio = nuevoDomicilio;
+	}
+
+	public String getDomicilio() {
+		return this.domicilio;
+	}
 }
 
