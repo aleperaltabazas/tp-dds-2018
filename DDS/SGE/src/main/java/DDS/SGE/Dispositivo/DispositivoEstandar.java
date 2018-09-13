@@ -18,10 +18,6 @@ import Fabricante.Fabricante;
 @Entity
 public class DispositivoEstandar extends TipoDispositivo {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
 	long usoEstimadoDiario;
 	double consumoKWPorHora;
 

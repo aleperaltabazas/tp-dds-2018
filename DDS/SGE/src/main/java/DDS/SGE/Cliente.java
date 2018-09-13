@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.json.*;
 
@@ -47,11 +48,20 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
+	
+	@Transient
 	private Categoria categoria;	
 	//private Zona zona; --- YA NO VA
+	
+	@Transient
 	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
+	
 	int puntos;
+	
+	@Transient
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
+	
+	@Transient
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,

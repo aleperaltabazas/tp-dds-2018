@@ -1,5 +1,8 @@
 package Fabricante;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Televisor extends Fabricante {
 
 	public enum TipoTelevisor {

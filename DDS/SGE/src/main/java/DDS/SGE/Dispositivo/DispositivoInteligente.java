@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.persistence.Entity;
 
 import DDS.SGE.Cliente;
@@ -18,14 +20,13 @@ import Fabricante.*;
 @Entity
 public class DispositivoInteligente extends TipoDispositivo {
     
-	@Id
-    @GeneratedValue
-    private Long id;
-	
 	@ManyToOne()
 	Fabricante fabricante;	
 	
+	@OneToOne()
 	EstadoDelDispositivo estado;
+	
+	@Transient
 	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {

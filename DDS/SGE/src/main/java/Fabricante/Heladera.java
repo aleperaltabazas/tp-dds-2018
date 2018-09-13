@@ -1,5 +1,8 @@
 package Fabricante;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Heladera extends Fabricante {
 
 	Boolean freezer;

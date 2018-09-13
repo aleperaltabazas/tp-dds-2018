@@ -1,5 +1,8 @@
 package Fabricante;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Ventilador extends Fabricante {
 
 	Boolean deTecho;

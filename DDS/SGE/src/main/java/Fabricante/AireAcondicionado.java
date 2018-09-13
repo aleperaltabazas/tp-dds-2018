@@ -1,5 +1,8 @@
 package Fabricante;
 
+import javax.persistence.Entity;
+
+@Entity
 public class AireAcondicionado extends Fabricante {
 
 	int frigorias;
