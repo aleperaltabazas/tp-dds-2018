@@ -10,7 +10,7 @@ import DDS.SGE.Actuador.Subir_Intensidad;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class Luz implements Sensor {
+public class Luz extends Sensor {
 	double intensidadLuminicaAmbiente;
 	double luzActual;
 	
@@ -26,10 +26,12 @@ public class Luz implements Sensor {
 		luzActual = nuevaIntensidad;		
 	}
 	
+	@Override
 	public void actualizarMediciones() {
 		////De alguna manera sensa el ambiente y hace un setIntensidadLuminica() con la medición
 	}
 	
+	@Override
 	public double medir() {
 		return this.intensidadLuminicaAmbiente;		
 	}
@@ -38,6 +40,7 @@ public class Luz implements Sensor {
 		this.setLuzActual(nuevaIntensidad);		
 	}
 	
+	@Override
 	public boolean hayQueActuar() {
 		return true;
 	}

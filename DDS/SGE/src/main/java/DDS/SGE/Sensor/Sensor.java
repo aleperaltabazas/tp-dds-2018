@@ -4,8 +4,16 @@ import java.time.LocalDateTime;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public interface Sensor {
-	public void actualizarMediciones();
-	double medir();
-	boolean hayQueActuar();
+public abstract class Sensor {
+	public void actualizarMediciones() {
+
+	}
+
+	public double medir() {
+		return 0;
+	}
+
+	public boolean hayQueActuar() {
+		return false;
+	}
 }

@@ -2,7 +2,7 @@ package DDS.SGE.Actuador;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class Bajar_Intensidad implements Actuador {
+public class Bajar_Intensidad extends Actuador {
 
 	DispositivoInteligente dispositivo;
 	double intensidadABajar;
@@ -16,6 +16,7 @@ public class Bajar_Intensidad implements Actuador {
 		dispositivo.setIntensidad(dispositivo.getIntensidad() - intensidadABajar);
 	}
 	
+	@Override
 	public DispositivoInteligente getDispositivo() {
 		return this.dispositivo;
 	}

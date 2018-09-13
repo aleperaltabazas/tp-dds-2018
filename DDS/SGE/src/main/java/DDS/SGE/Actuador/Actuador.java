@@ -8,9 +8,14 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public interface Actuador {
-	
-	public void accionar();
-	public DispositivoInteligente getDispositivo();
-	
+public abstract class Actuador {
+
+	public void accionar() {
+
+	}
+
+	public DispositivoInteligente getDispositivo() {
+		return null;
+	}
+
 }

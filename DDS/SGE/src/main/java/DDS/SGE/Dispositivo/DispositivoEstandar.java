@@ -16,12 +16,12 @@ import Fabricante.Computadora;
 import Fabricante.Fabricante;
 
 @Entity
-public class DispositivoEstandar implements TipoDispositivo {
-	
-    @Id
-    @GeneratedValue
-    private Long id;
-    
+public class DispositivoEstandar extends TipoDispositivo {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
 	long usoEstimadoDiario;
 	double consumoKWPorHora;
 
@@ -30,51 +30,63 @@ public class DispositivoEstandar implements TipoDispositivo {
 		this.consumoKWPorHora = consumoKWPorHora;
 	}
 
+	@Override
 	public boolean estaEncendido() {
 		return false;
 	}
 
+	@Override
 	public long usoEstimadoDiario() {
 		return usoEstimadoDiario;
 	}
 
+	@Override
 	public TipoDispositivo adaptar() {
 		return new DispositivoInteligente(new Apagado(), new Computadora(true));
 	}
 
+	@Override
 	public void encender() {
 		// No hace nada.
 	}
 
+	@Override
 	public void apagar() {
 		// No hace nada.
 	}
-	
+
+	@Override
 	public double getConsumoKWPorHora() {
 		return this.consumoKWPorHora;
 	}
 
+	@Override
 	public double tiempoTotalEncendidoHaceNHoras(int horas) {
 		return 0;
 	}
 
+	@Override
 	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
 		return 0;
 	}
-	
+
+	@Override
 	public double usoMensualMinimo() {
 		return 0;
 	}
-	
+
+	@Override
 	public double usoMensualMaximo() {
 		return 0;
 	}
 
+	@Override
 	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
 		// No hace nada
 	}
 
+	@Override
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
-		//No hace nada
+		// No hace nada
 	}
 }

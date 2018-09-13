@@ -2,7 +2,7 @@ package DDS.SGE.Actuador;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class CambiarTemperaturaAireAcondicionado implements Actuador{
+public class CambiarTemperaturaAireAcondicionado extends Actuador{
 	
 	DispositivoInteligente dispositivo;
 	
@@ -10,10 +10,12 @@ public class CambiarTemperaturaAireAcondicionado implements Actuador{
 		this.dispositivo = dispositivo;
 	}
 	
+	@Override
 	public void accionar(){
 		dispositivo.getFabricante().actuar();
 	}
 	
+	@Override
 	public DispositivoInteligente getDispositivo() {
 		return this.dispositivo;
 	}

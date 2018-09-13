@@ -2,7 +2,7 @@ package DDS.SGE.Sensor;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class Humedad implements Sensor {
+public class Humedad extends Sensor {
 	double humedadActual;
 	
 	public void setHumedadActual(int nuevaHumedad) {
@@ -27,6 +27,7 @@ public class Humedad implements Sensor {
 		this.setHumedadActual(nuevaHumedad);
 	}
 	
+	@Override
 	public boolean hayQueActuar() {
 		return true;
 	}

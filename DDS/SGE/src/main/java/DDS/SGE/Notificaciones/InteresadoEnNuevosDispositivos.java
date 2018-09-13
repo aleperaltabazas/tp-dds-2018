@@ -6,7 +6,7 @@ import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.TipoDispositivo;
 
-public class InteresadoEnNuevosDispositivos implements Interesado{
+public class InteresadoEnNuevosDispositivos extends Interesado{
 
 	Cliente cliente;
 	@Override

@@ -2,7 +2,7 @@ package DDS.SGE.Sensor;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class Movimiento implements Sensor {
+public class Movimiento extends Sensor {
 	boolean movimientoDetectado = false;
 	
 	public void setMovimientoDetectado(boolean value) {
@@ -23,6 +23,7 @@ public class Movimiento implements Sensor {
 		this.setMovimientoDetectado(true);		
 	}
 	
+	@Override
 	public boolean hayQueActuar() {
 		return true;
 	}

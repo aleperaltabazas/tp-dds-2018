@@ -3,7 +3,7 @@ package DDS.SGE.Sensor;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
-public class Consumo implements Sensor {
+public class Consumo extends Sensor {
 
 	Dispositivo dispositivo;
 	static int HORAS_DEL_MES = 24 * 30;

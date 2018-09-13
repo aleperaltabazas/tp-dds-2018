@@ -10,7 +10,7 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 import Fabricante.AireAcondicionado;
 import Fabricante.Fabricante;
 
-public class Temperatura implements Sensor {
+public class Temperatura extends Sensor {
 
 	AireAcondicionado fabricante;
 	
@@ -30,14 +30,17 @@ public class Temperatura implements Sensor {
 		this.temperaturaAmbiente = temperaturaAmbiente;
 	}
 		
+	@Override
 	public void actualizarMediciones() {
 		//De alguna manera sensa el ambiente y hace un setTemperatura() con la medición
 	}
 	
+	@Override
 	public double medir() {
 		return temperaturaAmbiente;
 	}
 	
+	@Override
 	public boolean hayQueActuar() {
 		return fabricante.hayQueActuar(this.temperaturaAmbiente);
 	}
