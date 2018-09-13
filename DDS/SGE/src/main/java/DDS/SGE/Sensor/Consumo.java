@@ -1,7 +1,6 @@
 package DDS.SGE.Sensor;
 
 import DDS.SGE.Dispositivo.Dispositivo;
-import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Consumo extends Sensor {
 

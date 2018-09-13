@@ -1,10 +1,8 @@
 package DDS.SGE;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,10 +12,7 @@ import org.junit.Test;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.IntervaloActivo;
-import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
-import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
-import Fabricante.Computadora;
 import Fabricante.Fabricante;
 
 public class TestCalcularConsumosEnDispositivosInteligentes {

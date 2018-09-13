@@ -1,7 +1,5 @@
 package DDS.SGE.Sensor;
 
-import DDS.SGE.Dispositivo.DispositivoInteligente;
-
 public class Humedad extends Sensor {
 	double humedadActual;
 	

@@ -9,7 +9,6 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.AhorroDeEnergia;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
-import Fabricante.Computadora;
 
 public class TestCambiarEstadosDeDispositivosInteligentes {
 	

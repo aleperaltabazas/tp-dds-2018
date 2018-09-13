@@ -14,8 +14,6 @@ import org.junit.Before;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
-import Fabricante.Computadora;
-import Geoposicionamiento.Zona;
 
 public class TestCalcularConsumoEstimado {
 	

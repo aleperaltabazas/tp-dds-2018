@@ -6,16 +6,11 @@ import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
 
 import DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado;
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
-import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
-import DDS.SGE.Dispositivo.Estado.ModoFrio_Calor;
 import DDS.SGE.Regla.Regla;
-import DDS.SGE.Sensor.Luz;
 import DDS.SGE.Sensor.Temperatura;
 import Fabricante.AireAcondicionado;
 

@@ -1,14 +1,11 @@
 package DDS.SGE;
 
 import static org.junit.Assert.*;
-import com.google.gson.*;
 
 import java.util.Arrays;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,9 +14,6 @@ import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
-import Fabricante.Computadora;
-import Geoposicionamiento.Zona;
-import junit.framework.Assert;
 
 public class TestCalcularDispositivos {
 	

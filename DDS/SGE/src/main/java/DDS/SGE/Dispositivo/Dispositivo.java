@@ -5,18 +5,10 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.json.JSONObject;
-
-import DDS.SGE.Cliente;
-import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-import Fabricante.Fabricante;
 
 @Entity
 public class Dispositivo {

@@ -1,11 +1,7 @@
 package DDS.SGE;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
-import org.json.JSONObject;
 
 public class Administrador {
 	private String nombre;
@@ -14,7 +10,8 @@ public class Administrador {
 	private LocalDateTime fechaAltaSistema;
 	private int idAdmin;
 
-	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema, int idAdmin) {
+	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema,
+			int idAdmin) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
@@ -25,7 +22,19 @@ public class Administrador {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+
+	public String getApellido() {
+		return this.apellido;
+	}
+
+	public String getDomicilio() {
+		return this.domicilio;
+	}
+
+	public int getIdAdmin() {
+		return this.idAdmin;
+	}
+
 	public LocalDateTime getFechaAltaSistema() {
 		return this.fechaAltaSistema;
 	}

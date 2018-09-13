@@ -1,19 +1,13 @@
 package DDS.SGE.Dispositivo;
 
-import DDS.SGE.Cliente;
 import java.time.LocalDateTime;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
 import javax.persistence.Entity;
 
 import DDS.SGE.Dispositivo.Estado.Apagado;
-import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import Fabricante.Computadora;
-import Fabricante.Fabricante;
 
 @Entity
 public class DispositivoEstandar extends TipoDispositivo {

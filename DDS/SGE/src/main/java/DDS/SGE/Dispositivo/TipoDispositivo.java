@@ -1,9 +1,7 @@
 package DDS.SGE.Dispositivo;
 
-import DDS.SGE.Cliente;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-import Fabricante.Fabricante;
 
 import java.time.LocalDateTime;
 

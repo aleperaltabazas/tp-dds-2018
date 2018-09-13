@@ -4,43 +4,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-
-import org.json.*;
+import javax.persistence.*;
 
 import DDS.SGE.Dispositivo.Dispositivo;
-import DDS.SGE.Dispositivo.DispositivoInteligente;
-import DDS.SGE.Dispositivo.Estado.Encendido;
-import DDS.SGE.Notificaciones.Interesado;
+
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-import Fabricante.Fabricante;
+
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 
 @Entity
 public class Cliente {
-	
-    @Id
-    @GeneratedValue
-    private Long id;
-    
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
 	@OneToMany()
-	@JoinColumn(name="id")
+	@JoinColumn(name = "id")
 	private List<Dispositivo> dispositivos;
-	
+
 	private String nombre;
 	private String apellido;
 	private TipoDni tipoDni;
@@ -48,19 +36,19 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
-	
+
 	@Transient
-	private Categoria categoria;	
-	//private Zona zona; --- YA NO VA
-	
+	private Categoria categoria;
+	// private Zona zona; --- YA NO VA
+
 	@Transient
 	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
-	
+
 	int puntos;
-	
+
 	@Transient
 	private InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos = new InteresadoEnNuevosDispositivos();
-	
+
 	@Transient
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
@@ -76,7 +64,7 @@ public class Cliente {
 		this.categoria = Categoria.R1;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
-		//this.zona = zona; --- YA NO VA
+		// this.zona = zona; --- YA NO VA
 	}
 
 	public enum TipoDni {
@@ -86,7 +74,7 @@ public class Cliente {
 	public String getTipoDni() {
 		return this.tipoDni.toString();
 	}
-	
+
 	public long getId() {
 		return this.id;
 	}
@@ -112,18 +100,19 @@ public class Cliente {
 	}
 
 	public void setDispositivos(List<Dispositivo> dispositivos) {
-		for (Dispositivo disp : dispositivos){
+		for (Dispositivo disp : dispositivos) {
 			agregarDispositivo(disp);
 		}
 	}
+
 	public Transformador getTransformador() {
 		return transformador;
 	}
-	
+
 	public void setTransformador(Transformador nuevoTransformador) {
 		transformador = nuevoTransformador;
 	}
-	
+
 	public void agregarDispositivo(Dispositivo dispositivo) {
 		this.dispositivos.add(dispositivo);
 		this.interesadoEnNuevosDispositivos.sucedio(this, dispositivo);
@@ -138,13 +127,13 @@ public class Cliente {
 	}
 
 	public int cantidadDispositivosEncendidos() {
-		return (int) this.dispositivosEncendidos().count(); //Hago el casteo a Int porque el .count() me devuelve long.
+		return (int) this.dispositivosEncendidos().count(); // Hago el casteo a Int porque el .count() me devuelve long.
 	}
-	
+
 	public Stream<Dispositivo> dispositivosEncendidos() {
-		return getDispositivos().filter(dispositivo ->dispositivo.estaEncendido());
+		return getDispositivos().filter(dispositivo -> dispositivo.estaEncendido());
 	}
-	
+
 	public int cantidadDispositivosApagados() {
 		return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
 	}
@@ -176,52 +165,51 @@ public class Cliente {
 		categoria = Arrays.stream(Categoria.values())
 				.filter(categorias -> categorias.pertenece(this.consumoTotalPorMes())).findFirst().get();
 	}
-	
+
 	public void agregarModuloAdaptadorA(Dispositivo dispositivo) {
-		if(lePerteneceDispositivo(dispositivo)) {
+		if (lePerteneceDispositivo(dispositivo)) {
 			dispositivo.adaptarConModulo();
-			this.interesadoEnAdaptaciones.sucedio(this,dispositivo);
+			this.interesadoEnAdaptaciones.sucedio(this, dispositivo);
 		}
 	}
-	
+
 	public boolean lePerteneceDispositivo(Dispositivo dispositivo) {
 		return this.dispositivos.contains(dispositivo);
 	}
-	
+
 	public void sumarPuntos(int puntos) {
 		this.puntos += puntos;
 	}
-	
+
 	public Zona zona() {
 		return this.getTransformador().getZona();
 	}
-	
+
 	public boolean preteneceAZona(Zona unaZona) {
 		return this.zona() == unaZona;
 	}
-	
-	/*public Transformador conectarATransformador() { // Selecciona transformador al azar para conectarse
-		Transformador nuevoTransformador = zona.getTransformadores().get(new Random().nextInt(zona.getTransformadores().size()));
-		if (nuevoTransformador != transformador) {
-			nuevoTransformador.agregarCliente(this);
-			return nuevoTransformador;
-		} else {
-			return transformador;
-		}		
-	}*/ // ESTO YA NO VA
-	
+
+	/*
+	 * public Transformador conectarATransformador() { // Selecciona transformador
+	 * al azar para conectarse Transformador nuevoTransformador =
+	 * zona.getTransformadores().get(new
+	 * Random().nextInt(zona.getTransformadores().size())); if (nuevoTransformador
+	 * != transformador) { nuevoTransformador.agregarCliente(this); return
+	 * nuevoTransformador; } else { return transformador; } }
+	 */ // ESTO YA NO VA
+
 	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
 		transformador = nuevoTransformador;
 		nuevoTransformador.agregarCliente(this);
 	}
-	
+
 	public double consultarUsoOptimo() {
 		Optimizador optimizador = new Optimizador();
 		double consumoOptimoPorMesEnHoras = optimizador.Calcular(this);
 		System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
 		return consumoOptimoPorMesEnHoras;
 	}
-	
+
 	public void setDomicilio(String nuevoDomicilio) {
 		this.domicilio = nuevoDomicilio;
 	}
@@ -229,5 +217,17 @@ public class Cliente {
 	public String getDomicilio() {
 		return this.domicilio;
 	}
-}
 
+	public String getApellido() {
+		return apellido;
+	}
+
+	public String getNumeroDni() {
+		return numeroDni;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+}

@@ -1,10 +1,6 @@
 package DDS.SGE.Sensor;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.*;
-
-import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public abstract class Sensor {
 

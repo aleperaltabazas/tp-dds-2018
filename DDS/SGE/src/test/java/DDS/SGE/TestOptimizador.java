@@ -14,9 +14,7 @@ import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.IntervaloActivo;
-import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
-import Fabricante.Computadora;
 import Geoposicionamiento.Zona;
 
 public class TestOptimizador {

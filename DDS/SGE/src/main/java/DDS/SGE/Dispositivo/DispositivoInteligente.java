@@ -1,16 +1,12 @@
 package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.persistence.Entity;
 
-import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
@@ -19,13 +15,13 @@ import Fabricante.*;
 
 @Entity
 public class DispositivoInteligente extends TipoDispositivo {
-    
+
 	@ManyToOne()
-	Fabricante fabricante;	
-	
+	Fabricante fabricante;
+
 	@OneToOne()
 	EstadoDelDispositivo estado;
-	
+
 	@Transient
 	RepositorioDeTiempoEncendido repositorio;
 
@@ -34,24 +30,24 @@ public class DispositivoInteligente extends TipoDispositivo {
 		this.fabricante = fabricante;
 		repositorio = new RepositorioDeTiempoEncendido();
 	}
-	
+
 	public EstadoDelDispositivo getEstado() {
 		return estado;
 	}
-	
+
 	public RepositorioDeTiempoEncendido getRepositorioTiempoEncendido() {
 		return this.repositorio;
 	}
-		
+
 	@Override
 	public double getConsumoKWPorHora() {
 		return this.fabricante.getConsumoKWPorHora();
 	}
-	
+
 	public void setFabricante(Fabricante unFabricante) {
 		this.fabricante = unFabricante;
 	}
-	
+
 	public void setRepositorio(RepositorioDeTiempoEncendido repositorio) {
 		this.repositorio = repositorio;
 	}
@@ -87,7 +83,7 @@ public class DispositivoInteligente extends TipoDispositivo {
 	public double getIntensidad() {
 		return this.estado.getIntensidad();
 	}
-	
+
 	public Fabricante getFabricante() {
 		return this.fabricante;
 	}
@@ -104,7 +100,7 @@ public class DispositivoInteligente extends TipoDispositivo {
 	public double tiempoTotalEncendidoHaceNHoras(int horas) {
 		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(horas);
 	}
-	
+
 	@Override
 	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
 		return repositorio.tiempoTotalEnUnPeriodoEnMinutos(principioPeriodo, finPeriodo);
@@ -116,24 +112,24 @@ public class DispositivoInteligente extends TipoDispositivo {
 
 	@Override
 	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
-		interesadoEnNuevosDispositivos.sumarPuntos();		
+		interesadoEnNuevosDispositivos.sumarPuntos();
 	}
 
 	@Override
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
-		interesadoEnAdaptaciones.sumarPuntos();		
+		interesadoEnAdaptaciones.sumarPuntos();
 	}
 
 	@Override
 	public TipoDispositivo adaptar() {
 		return this;
 	}
-	
+
 	@Override
 	public double usoMensualMinimo() {
 		return fabricante.usoMensualMinimo();
 	}
-	
+
 	@Override
 	public double usoMensualMaximo() {
 		return fabricante.usoMensualMaximo();

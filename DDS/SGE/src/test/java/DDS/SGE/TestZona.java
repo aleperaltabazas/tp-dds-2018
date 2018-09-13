@@ -2,7 +2,6 @@ package DDS.SGE;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -15,7 +14,6 @@ import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import Fabricante.Computadora;
-import Fabricante.Heladera;
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 

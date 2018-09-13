@@ -1,7 +1,5 @@
 package DDS.SGE.Sensor;
 
-import DDS.SGE.Dispositivo.DispositivoInteligente;
-
 public class Movimiento extends Sensor {
 	boolean movimientoDetectado = false;
 	

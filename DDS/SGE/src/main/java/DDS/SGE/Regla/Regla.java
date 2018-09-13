@@ -2,7 +2,6 @@ package DDS.SGE.Regla;
 
 import DDS.SGE.Sensor.*;
 import DDS.SGE.Actuador.*;
-import DDS.SGE.Dispositivo.*;
 import java.util.List;
 
 import javax.persistence.*;

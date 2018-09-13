@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import DDS.SGE.Dispositivo.DispositivoInteligente;
-
 public class ControladorDeDispositivos {
 	public static void main(String args[]) {
 		Optimizador optimizador = new Optimizador();

@@ -1,11 +1,9 @@
 package DDS.SGE;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import org.apache.commons.math3.*;
 import org.apache.commons.math3.optim.MaxIter;
 import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.LinearConstraint;
@@ -30,15 +28,17 @@ public class Optimizador {
 	public Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());
 	}
-	
+
 	public void accionarSobreDispositivos(Stream<Dispositivo> dispositivos) {
 		dispositivos.forEach(d -> generarReglaDeConsumoExcesivo(d).actuar());
 	}
-	
+
 	public Regla generarReglaDeConsumoExcesivo(Dispositivo unDispositivo) {
-		//Siempre va a llegar un DispositivoInteligente, no deberia haber conflicto con el casteo
-		//No se me ocurre una forma de evitar el casteo y que quede mejor
-		return new Regla(Arrays.asList(new Consumo(unDispositivo)), new Apagar((DispositivoInteligente) unDispositivo.getTipoDispositivo()));
+		// Siempre va a llegar un DispositivoInteligente, no deberia haber conflicto con
+		// el casteo
+		// No se me ocurre una forma de evitar el casteo y que quede mejor
+		return new Regla(Arrays.asList(new Consumo(unDispositivo)),
+				new Apagar((DispositivoInteligente) unDispositivo.getTipoDispositivo()));
 	}
 
 	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
@@ -58,10 +58,8 @@ public class Optimizador {
 
 			coeficientesRestriccion[dispositivo] = 1;
 
-			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.GEQ,
-					disp.usoMensualMinimo()));
-			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.LEQ,
-					disp.usoMensualMaximo()));
+			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.GEQ, disp.usoMensualMinimo()));
+			restricciones.add(new LinearConstraint(coeficientesRestriccion, Relationship.LEQ, disp.usoMensualMaximo()));
 
 			coeficientesRestriccion[dispositivo] = 0;
 			dispositivo++;

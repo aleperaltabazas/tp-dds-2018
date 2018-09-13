@@ -1,6 +1,5 @@
 package DDS.SGE.Actuador;
 
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
 public class Apagar extends Actuador {
