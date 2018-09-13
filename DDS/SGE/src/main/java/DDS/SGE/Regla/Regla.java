@@ -5,9 +5,21 @@ import DDS.SGE.Actuador.*;
 import DDS.SGE.Dispositivo.*;
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
 public class Regla {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	// Many to many
+	@Transient
 	private List<Sensor> sensores;
+
+	// Many to one, creo
+	@Transient
 	private Actuador actuador;
 
 	public Regla(List<Sensor> sensores, Actuador actuador) {
@@ -38,6 +50,14 @@ public class Regla {
 
 	public void setActuador(Actuador actuador) {
 		this.actuador = actuador;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

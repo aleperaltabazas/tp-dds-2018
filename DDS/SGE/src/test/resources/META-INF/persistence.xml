@@ -10,22 +10,42 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>DDS.SGE.Cliente</class>
+
 		<class>DDS.SGE.Dispositivo.Dispositivo</class>
 		<class>DDS.SGE.Dispositivo.TipoDispositivo</class>
 		<class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
 		<class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
+
 		<class>Fabricante.Fabricante</class>
+
 		<class>DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo</class>
 		<class>DDS.SGE.Dispositivo.Estado.Apagado</class>
 		<class>DDS.SGE.Dispositivo.Estado.AhorroDeEnergia</class>
 		<class>DDS.SGE.Dispositivo.Estado.Encendido</class>
+		<class>DDS.SGE.Dispositivo.IntervaloActivo</class>
+
+		<class>DDS.SGE.Regla.Regla</class>
+		<class>DDS.SGE.Sensor.Consumo</class>
+		<class>DDS.SGE.Sensor.Humedad</class>
+		<class>DDS.SGE.Sensor.Luz</class>
+		<class>DDS.SGE.Sensor.Movimiento</class>
+		<class>DDS.SGE.Sensor.Sensor</class>
+		<class>DDS.SGE.Sensor.Temperatura</class>
+
+		<class>DDS.SGE.Actuador.Actuador</class>
+		<class>DDS.SGE.Actuador.Apagar</class>
+		<class>DDS.SGE.Actuador.Bajar_Intensidad</class>
+		<class>DDS.SGE.Actuador.CambiarACalor</class>
+		<class>DDS.SGE.Actuador.CambiarAFrio</class>
+		<class>DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado</class>
+		<class>DDS.SGE.Actuador.Subir_Intensidad</class>
 
 		<properties>
 			<property name="hibernate.archive.autodetection"
 				value="class" />
 
 			<!--property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" 
-				/> <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/prueba" 
+				/> <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/SGE" 
 				/> <property name="hibernate.connection.username" value="root" /> <property 
 				name="hibernate.connection.password" value="mysql" / -->
 

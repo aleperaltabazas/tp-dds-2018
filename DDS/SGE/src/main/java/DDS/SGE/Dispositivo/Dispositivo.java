@@ -19,34 +19,34 @@ import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import Fabricante.Fabricante;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Dispositivo {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-	
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	private String nombre;
 	private double tiempoQueSePuedeUtilizar;
-	
-	@OneToOne()
+
+	@OneToOne
 	private TipoDispositivo tipo;
 
 	public Dispositivo(TipoDispositivo tipo) {
 		this.tipo = tipo;
 	}
-	
+
 	public TipoDispositivo getTipoDispositivo() {
 		return this.tipo;
 	}
-	
+
 	public double getTiempoQueSePuedeUtilizar() {
 		return this.tiempoQueSePuedeUtilizar;
 	}
-	
+
 	public void setTiempoQueSePuedeUtilizar(double tiempoQueSePuedeUtilizar) {
 		this.tiempoQueSePuedeUtilizar = tiempoQueSePuedeUtilizar;
 	}
-	
+
 	public void setTipoDispositvo(TipoDispositivo tipo) {
 		this.tipo = tipo;
 	}
@@ -62,7 +62,7 @@ public class Dispositivo {
 	public double consumoDiarioEstimado() {
 		return this.obtenerConsumoKWPorHora() * this.obtenerUsoEstimadoDiario();
 	}
-	
+
 	private double obtenerUsoEstimadoDiario() {
 		return tipo.usoEstimadoDiario();
 	}
@@ -70,11 +70,11 @@ public class Dispositivo {
 	public void adaptarConModulo() {
 		this.tipo = tipo.adaptar();
 	}
-	
+
 	public void encender() {
 		this.tipo.encender();
 	}
-	
+
 	public void apagar() {
 		this.tipo.apagar();
 	}
@@ -82,7 +82,7 @@ public class Dispositivo {
 	public double consumoTotalHaceNHoras(int horas) {
 		return tipo.tiempoTotalEncendidoHaceNHoras(horas) * this.obtenerConsumoKWPorHora();
 	}
-	
+
 	public double consumoTotalEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
 		return tipo.tiempoTotalEncendidoEnUnPeriodo(principioPeriodo, finPeriodo) * this.obtenerConsumoKWPorHora();
 
@@ -90,19 +90,36 @@ public class Dispositivo {
 
 	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
 		this.tipo.seAgregoNuevoDispositivo(interesadoEnNuevosDispositivos);
-		
+
 	}
 
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
 		this.tipo.seAdaptoUnDispositivo(interesadoEnAdaptaciones);
-		
+
 	}
-	
+
 	public double usoMensualMinimo() {
 		return tipo.usoMensualMinimo();
 	}
-	
+
 	public double usoMensualMaximo() {
 		return tipo.usoMensualMaximo();
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }

@@ -10,14 +10,17 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class TipoDispositivo {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	boolean estaEncendido() {
 		return false;
 	}

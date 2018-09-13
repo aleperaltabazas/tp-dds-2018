@@ -85,4 +85,5 @@ public class DispositivoEstandar extends TipoDispositivo {
 	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
 		// No hace nada
 	}
+
 }
