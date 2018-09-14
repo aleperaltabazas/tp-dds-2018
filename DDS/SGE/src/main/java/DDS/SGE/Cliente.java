@@ -164,6 +164,10 @@ public class Cliente {
 	public double consumoFinalEstimado(int diasDelMes) {
 		return this.consumoTotalEstimadoDiario() * diasDelMes;
 	}
+	
+	public double consumoPromedioPorDispositivo() {
+		return this.consumoTotalEstimadoDiario() / this.cantidadDispositivos(); //El enunciado no está del todo claro, asumo que esta cuenta es la correcta pues no aclara mucho.
+	}
 
 	public void recategorizar() {
 		categoria = Arrays.stream(Categoria.values())
