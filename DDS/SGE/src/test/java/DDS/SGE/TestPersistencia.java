@@ -80,17 +80,17 @@ public class TestPersistencia {
 
 	@Test
 	public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
-		EntityManagerHelper.entityManager().persist(clienteSinDispositivos);
+		EntityManager em = EntityManagerHelper.entityManager();
+		
+		em.persist(clienteSinDispositivos);
 
-		Cliente clientePersistido = EntityManagerHelper.entityManager().find(Cliente.class,
-				clienteSinDispositivos.getId());
+		Cliente clientePersistido = em.find(Cliente.class, clienteSinDispositivos.getId());
 
 		clientePersistido.setDomicilio("calle x");
 
-		EntityManagerHelper.entityManager().persist(clientePersistido);
+		em.persist(clientePersistido);
 
-		Cliente clienteActualizado = EntityManagerHelper.entityManager().find(Cliente.class,
-				clienteSinDispositivos.getId());
+		Cliente clienteActualizado = em.find(Cliente.class, clienteSinDispositivos.getId());
 
 		assertEquals("calle x", clienteActualizado.getDomicilio());
 	}
@@ -123,9 +123,8 @@ public class TestPersistencia {
 		dispositivoPersistido.setNombre("Sencillamente actualizado");
 		em.persist(dispositivoPersistido);
 
-		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoInteligente.getId());
+		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoPersistido.getId());
 		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
-
 	}
 
 	@Test
@@ -142,25 +141,19 @@ public class TestPersistencia {
 		DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido
 				.getTipoDispositivo();
 
-		dispositivoInteligentePersistido.getRepositorioTiempoEncendido().getIntervalosDeActividad()
-				.forEach(intervalo -> System.out.println(intervalo.getTiempoInicial()));
-
 		assertEquals(0, dispositivoPersistido.consumoTotalHaceNHoras(100), 0);
 
 		dispositivoInteligentePersistido.setRepositorio(repositorioDePrueba);
-
-		em.persist(dispositivoInteligentePersistido);
-		em.persist(dispositivoPersistido);
-
-		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoInteligente.getId());
-
-		DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistido
+		
+		Dispositivo dispositivoPersistidoActual = em.find(Dispositivo.class, dispositivoPersistido.getId());
+		
+		DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistidoActual
 				.getTipoDispositivo();
 
 		dispositivoInteligentePersistidoActual.getRepositorioTiempoEncendido().getIntervalosDeActividad()
-				.forEach(intervalo -> System.out.println(intervalo.getTiempoInicial()));
+				.forEach(intervalo -> System.out.println(intervalo.getIntervaloEncendidoEnMinutos()));
 
-		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoActualizado.consumoTotalHaceNHoras(100), 0);
+		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100), 0);
 	}
 
 	@Test
@@ -233,18 +226,17 @@ public class TestPersistencia {
 		em.persist(transformador_3);
 
 		TypedQuery<Long> query1 =
-		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); Long
-		cantidadDeTransformadoresPersistidosVersion1 = query1.getSingleResult();
+		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); 
+		Long cantidadDeTransformadoresPersistidosVersion1 = query1.getSingleResult();
 		 
 		em.persist(transformador_4); TypedQuery<Long> query2 =
-		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); Long
-		cantidadDeTransformadoresPersistidosVersion2 = query2.getSingleResult();
+		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); 
+		Long cantidadDeTransformadoresPersistidosVersion2 = query2.getSingleResult();
 		 
 		int a = cantidadDeTransformadoresPersistidosVersion1.intValue(); 
 		int b = cantidadDeTransformadoresPersistidosVersion2.intValue();
 		 
-		assertEquals(a + 1, b);
-				 
+		assertEquals(a + 1, b);				 
 	}
 
 }

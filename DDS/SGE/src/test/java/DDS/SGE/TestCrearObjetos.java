@@ -40,14 +40,8 @@ public class TestCrearObjetos {
 
 		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(file.getAbsolutePath());
 
-		// Habria que ver como hacemos para crearle el tipo desde el archivo, porque el
-		// Dispositivo le pregunta
-		// a su tipo cuanto consumoKWPorHora tiene
 		assertEquals(20.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
 	}
-
-	// El test de transformador y de zona fallan porque no está levantando
-	// correctamente los txts
 
 	/*
 	@Test

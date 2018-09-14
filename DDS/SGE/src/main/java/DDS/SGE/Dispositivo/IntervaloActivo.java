@@ -33,4 +33,8 @@ public class IntervaloActivo {
 	public LocalDateTime getTiempoInicial() {
 		return this.tiempoInicial;
 	}
+	
+	public LocalDateTime getTiempoFinal() {
+		return this.tiempoFinal;
+	}
 }
