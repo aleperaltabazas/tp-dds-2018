@@ -23,4 +23,8 @@ public class IntervaloActivo {
 	public boolean ocurreAntesDe(LocalDateTime fecha) {
 		return !ocurreDespuesDe(fecha);
 	}
+
+	public LocalDateTime getTiempoInicial() {
+		return this.tiempoInicial;
+	}
 }

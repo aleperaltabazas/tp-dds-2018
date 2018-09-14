@@ -1,9 +1,14 @@
 package DDS.SGE.Actuador;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
+@Entity
 public class Apagar extends Actuador {
 
+	@OneToOne
 	DispositivoInteligente dispositivo;
 	
 	public Apagar(DispositivoInteligente dispositivo) {

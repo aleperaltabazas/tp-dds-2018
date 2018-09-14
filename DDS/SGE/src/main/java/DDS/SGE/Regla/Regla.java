@@ -13,12 +13,10 @@ public class Regla {
 	@GeneratedValue
 	private Long id;
 
-	// Many to many
-	@Transient
+	@ManyToMany()
 	private List<Sensor> sensores;
 
-	// Many to one, creo
-	@Transient
+	@ManyToOne()
 	private Actuador actuador;
 
 	public Regla(List<Sensor> sensores, Actuador actuador) {
