@@ -36,16 +36,16 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
-	
-	//@OneToOne //DESNORMALIZAMOS LA ZONA
+
+	// @OneToOne //DESNORMALIZAMOS LA ZONA
 	@Transient
-	private Zona zona; 
+	private Zona zona;
 
 	@Transient
 	private Categoria categoria;
 
-	@Transient 
-	private Transformador transformador; 
+	@Transient
+	private Transformador transformador;
 	// = this.conectarATransformador(); Ya se inicializa con transformador
 
 	int puntos;
@@ -164,9 +164,11 @@ public class Cliente {
 	public double consumoFinalEstimado(int diasDelMes) {
 		return this.consumoTotalEstimadoDiario() * diasDelMes;
 	}
-	
+
 	public double consumoPromedioPorDispositivo() {
-		return this.consumoTotalEstimadoDiario() / this.cantidadDispositivos(); //El enunciado no está del todo claro, asumo que esta cuenta es la correcta pues no aclara mucho.
+		return this.consumoTotalEstimadoDiario() / this.cantidadDispositivos(); // El enunciado no está del todo claro,
+																				// asumo que esta cuenta es la correcta
+																				// pues no aclara mucho.
 	}
 
 	public void recategorizar() {
@@ -189,9 +191,9 @@ public class Cliente {
 		this.puntos += puntos;
 	}
 
-	/*public Zona zona() {
-		return this.getTransformador().getZona();
-	}*/
+	/*
+	 * public Zona zona() { return this.getTransformador().getZona(); }
+	 */
 
 	public boolean preteneceAZona(Zona unaZona) {
 		return this.zona == unaZona;

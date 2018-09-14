@@ -12,6 +12,7 @@ public class Zona {
 	@GeneratedValue
 	private Long id;
 	
+	@Transient
 	private ActualizadorDeTransformadores actualizador = new ActualizadorDeTransformadores();
 
 	@OneToMany()

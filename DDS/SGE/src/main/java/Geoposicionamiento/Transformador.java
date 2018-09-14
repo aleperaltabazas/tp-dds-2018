@@ -12,13 +12,15 @@ public class Transformador {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private int codigo;
 
 	@OneToMany()
 	@JoinColumn(name = "id")
+	@Transient
 	List<Cliente> usuarios = new ArrayList<Cliente>();
 
+	@Column(nullable = true)
 	double energia;
 	boolean activo;
 
@@ -26,11 +28,11 @@ public class Transformador {
 		codigo = i;
 		activo = true;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -44,16 +46,16 @@ public class Transformador {
 	}
 
 	public void agregarCliente(Cliente nuevoUsuario) {
-		this.getUsuarios().add(nuevoUsuario);
+		this.usuarios.add(nuevoUsuario);
 	}
 
 	public double suministra() {
 		return usuarios.stream().mapToDouble(cliente -> cliente.consumoTotalEstimadoDiario()).sum();
 	}
 
-	/*public boolean perteneceA(Zona unaZona) {
-		return unaZona == this.getZona();
-	}*/
+	/*
+	 * public boolean perteneceA(Zona unaZona) { return unaZona == this.getZona(); }
+	 */
 
 	public double getEnergia() {
 		return this.energia;
@@ -70,6 +72,5 @@ public class Transformador {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-	
-	
+
 }
