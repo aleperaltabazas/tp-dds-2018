@@ -1,0 +1,1 @@
+{'tipo':{'usoEstimadoDiario':'10','consumoKWPorHora':'20'}}
