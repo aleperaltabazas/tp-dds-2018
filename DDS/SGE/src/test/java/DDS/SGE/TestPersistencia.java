@@ -6,6 +6,7 @@ import DDS.SGE.Regla.Regla;
 import DDS.SGE.Sensor.Consumo;
 import DDS.SGE.Sensor.Temperatura;
 import Fabricante.AireAcondicionado;
+import Geoposicionamiento.Transformador;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.junit.After;
 import org.junit.Before;
@@ -37,6 +39,11 @@ public class TestPersistencia {
 	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
 	RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
+	
+	Transformador transformador_1 = new Transformador(1);
+	Transformador transformador_2 = new Transformador(2);
+	Transformador transformador_3 = new Transformador(3);
+	Transformador transformador_4 = new Transformador(4);
 
 	@Before
 	public void Inicializar() {
@@ -157,4 +164,27 @@ public class TestPersistencia {
 		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
 
 	}*/
+	
+	@Test
+	public void PersistirCorrectamenteLosTransformadores() {
+		EntityManager em = EntityManagerHelper.entityManager();
+		
+		em.persist(transformador_1);
+		em.persist(transformador_2);
+		em.persist(transformador_3);
+		
+		TypedQuery<Transformador> query1 = 
+				em.createQuery("SELECT t FROM Transformador t", Transformador.class);
+		List<Transformador> transformadoresPersistidosVersion1 = query1.getResultList();
+		int cantidadDeTransformadoresPersistidosVersion1 = transformadoresPersistidosVersion1.size();
+		
+		em.persist(transformador_4);
+		TypedQuery<Transformador> query2 = 
+				em.createQuery("SELECT t FROM Transformador t", Transformador.class);
+		List<Transformador> transformadoresPersistidosVersion2 = query2.getResultList();
+		int cantidadDeTransformadoresPersistidosVersion2 = transformadoresPersistidosVersion2.size();
+		
+		assertEquals(cantidadDeTransformadoresPersistidosVersion1 + 1 , cantidadDeTransformadoresPersistidosVersion2);
+
+	}
 }
