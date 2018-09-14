@@ -15,8 +15,10 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.junit.After;
 import org.junit.Before;
@@ -42,6 +44,11 @@ public class TestPersistencia {
 	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
 	RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
+	
+	Transformador transformador_1 = new Transformador(1);
+	Transformador transformador_2 = new Transformador(2);
+	Transformador transformador_3 = new Transformador(3);
+	Transformador transformador_4 = new Transformador(4);
 
 	@Before
 	public void Inicializar() {
@@ -61,7 +68,7 @@ public class TestPersistencia {
 				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoInteligente));
 		
 		unTransformador.agregarCliente(clienteConUnDispositivoInteligente);
-		
+
 		EntityManagerHelper.beginTransaction();
 	}
 
@@ -173,7 +180,6 @@ public class TestPersistencia {
 		Sensor otraCondicion = new Temperatura(22, inteligente);
 
 		List<Sensor> nuevasCondiciones = Arrays.asList(consumo, otraCondicion);
-
 		reglaPersistida.setSensores(nuevasCondiciones);
 		
 		em.persist(reglaPersistida);
@@ -191,10 +197,43 @@ public class TestPersistencia {
 		em.persist(dispositivoInteligente);
 		em.persist(inteligente);
 		em.persist(unTransformador);
+		
+		assertEquals(10, unTransformador.suministra(),0.0);
+		
 		Transformador t = em.find(Transformador.class, unTransformador.getId());
 		List<Cliente> usuarios = t.getUsuarios();
-		Cliente unCliente = usuarios.get(1);
-		//Optional<Dispositivo> disp = unCliente.getDispositivos().findFirst()
-		//Cliente c = em.find(Cliente.class);
+		Cliente unCliente = usuarios.get(0);
+		List<Dispositivo> dispositivos = (List<Dispositivo>) unCliente.getDispositivos();
+		Dispositivo unDisp = dispositivos.get(0);
+
+		Dispositivo dispPersistido = em.find(Dispositivo.class,unDisp.getId());
+		//TODO Aca habria que aumentar el consumo
+		
+		em.persist(dispPersistido);	
+		
+		//TODO: Habria que ver si se modifica el consumo?
+		assertEquals(20, unTransformador.suministra(),0.0);
+	}
+
+	@Test
+	public void PersistirCorrectamenteLosTransformadores() {
+		EntityManager em = EntityManagerHelper.entityManager();
+		
+		em.persist(transformador_1);
+		em.persist(transformador_2);
+		em.persist(transformador_3);
+		
+		TypedQuery<Transformador> query1 = 
+				em.createQuery("SELECT t FROM Transformador t", Transformador.class);
+		List<Transformador> transformadoresPersistidosVersion1 = query1.getResultList();
+		int cantidadDeTransformadoresPersistidosVersion1 = transformadoresPersistidosVersion1.size();
+		
+		em.persist(transformador_4);
+		TypedQuery<Transformador> query2 = 
+				em.createQuery("SELECT t FROM Transformador t", Transformador.class);
+		List<Transformador> transformadoresPersistidosVersion2 = query2.getResultList();
+		int cantidadDeTransformadoresPersistidosVersion2 = transformadoresPersistidosVersion2.size();
+		
+		assertEquals(cantidadDeTransformadoresPersistidosVersion1 + 1 , cantidadDeTransformadoresPersistidosVersion2);
 	}
 }

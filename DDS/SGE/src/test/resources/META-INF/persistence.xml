@@ -9,6 +9,10 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+				
+		<class>DDS.SGE.Geoposicionamiento.Transformador</class>
+		<class>DDS.SGE.Geoposicionamiento.Zona</class>
+			
 		<class>DDS.SGE.Cliente</class>
 
 		<class>DDS.SGE.Dispositivo.Dispositivo</class>

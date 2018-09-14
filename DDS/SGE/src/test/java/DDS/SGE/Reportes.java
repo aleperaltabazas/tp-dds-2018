@@ -28,6 +28,7 @@ public class Reportes {
 	Dispositivo dispositivoSencillo;
 	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
 	EntityManager em = EntityManagerHelper.entityManager();
+	Transformador unTransformador = new Transformador(1);
 
 	@Before
 	public void Inicializar() {
@@ -40,11 +41,16 @@ public class Reportes {
 		
 		clienteConUnDispositivo = new Cliente("Maxi", "Paz", TipoDni.DNI, "98765431", "1188884444",
 				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
+		
+		unTransformador.agregarCliente(clienteConUnDispositivo);
+		unTransformador.agregarCliente(clienteSinDispositivos);
+		
 		EntityManagerHelper.beginTransaction();
 		em.persist(clienteConUnDispositivo);
 		em.persist(clienteSinDispositivos);	
 		em.persist(estandar);
 		em.persist(dispositivoSencillo);
+		em.persist(unTransformador);
 	}
 
 	@After
@@ -76,11 +82,9 @@ public class Reportes {
 	
 	@Test
 	public void esPosibleObtenerElConsumoPorTransformadorPorPeriodo() {
-		Transformador unTransformador = new Transformador(1);
-		unTransformador.agregarCliente(clienteConUnDispositivo);
-		unTransformador.agregarCliente(clienteSinDispositivos);
-		
-		double consumoPorPeriodo = unTransformador.suministra();
+		Transformador transformador = em.find(Transformador.class, unTransformador.getId());
+
+		double consumoPorPeriodo = transformador.suministra();
 		
 		assertEquals(200, consumoPorPeriodo, 0.0);
 		 	
