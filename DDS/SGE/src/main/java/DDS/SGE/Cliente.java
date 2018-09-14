@@ -135,7 +135,11 @@ public class Cliente {
 	}
 
 	public double consumoTotalEstimadoDiario() {
+		if(!this.dispositivos.isEmpty()) {
 		return this.consumoDispositivosDiarioEstimado().sum();
+		} else {
+			return 0;
+		}
 	}
 
 	public double consumoTotalPorMes() {
