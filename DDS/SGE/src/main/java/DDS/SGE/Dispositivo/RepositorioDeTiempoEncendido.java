@@ -6,9 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.*;
 
+import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
+
+@Embeddable
 public class RepositorioDeTiempoEncendido {
 	
 	public LocalDateTime ultimaFechaDeEncendido;
+	@OneToMany()
 	public List<IntervaloActivo> intervalosDeActividad;
 	
 	public RepositorioDeTiempoEncendido() {

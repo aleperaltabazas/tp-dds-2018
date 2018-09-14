@@ -80,7 +80,6 @@ public class TestPersistencia {
 
 	@Test
 	public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
-		// TODO: Ahora se estaria cambiando el domicilio, la idea es cambiarle la geo
 		EntityManagerHelper.entityManager().persist(clienteSinDispositivos);
 
 		Cliente clientePersistido = EntityManagerHelper.entityManager().find(Cliente.class,
@@ -110,7 +109,6 @@ public class TestPersistencia {
 
 		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoSencillo.getId());
 		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
-
 	}
 
 	@Test
@@ -192,6 +190,7 @@ public class TestPersistencia {
 		Regla reglaActualizada = em.find(Regla.class, reglaPersistida.getId());
 
 		assertEquals(nuevasCondiciones, reglaActualizada.getSensores());
+		
 	}
 
 	@Test
@@ -218,27 +217,34 @@ public class TestPersistencia {
 
 		// TODO: Habria que ver si se modifica el consumo?
 		assertEquals(20, unTransformador.suministra(), 0.0);
+		
+		EntityManagerHelper.rollback();
 	}
 
 	@Test
 	public void PersistirCorrectamenteLosTransformadores() {
 		EntityManager em = EntityManagerHelper.entityManager();
+		transformador_1.agregarCliente(clienteSinDispositivos);
+
+		em.persist(clienteSinDispositivos);
 
 		em.persist(transformador_1);
 		em.persist(transformador_2);
 		em.persist(transformador_3);
 
-		TypedQuery<Transformador> query1 = em.createQuery("SELECT t FROM Transformador t", Transformador.class);
-		
-		List<Transformador> transformadoresPersistidosVersion1 = query1.getResultList();
-		int cantidadDeTransformadoresPersistidosVersion1 = transformadoresPersistidosVersion1.size();
-
-		em.persist(transformador_4);
-		TypedQuery<Transformador> query2 = em.createQuery("SELECT t FROM Transformador t", Transformador.class);
-		List<Transformador> transformadoresPersistidosVersion2 = query2.getResultList();
-		int cantidadDeTransformadoresPersistidosVersion2 = transformadoresPersistidosVersion2.size();
-
-		assertEquals(cantidadDeTransformadoresPersistidosVersion1 + 1, cantidadDeTransformadoresPersistidosVersion2);
+		TypedQuery<Long> query1 =
+		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); Long
+		cantidadDeTransformadoresPersistidosVersion1 = query1.getSingleResult();
+		 
+		em.persist(transformador_4); TypedQuery<Long> query2 =
+		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); Long
+		cantidadDeTransformadoresPersistidosVersion2 = query2.getSingleResult();
+		 
+		int a = cantidadDeTransformadoresPersistidosVersion1.intValue(); 
+		int b = cantidadDeTransformadoresPersistidosVersion2.intValue();
+		 
+		assertEquals(a + 1, b);
+				 
 	}
 
 }

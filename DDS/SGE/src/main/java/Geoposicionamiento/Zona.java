@@ -11,12 +11,13 @@ public class Zona {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Transient
 	private ActualizadorDeTransformadores actualizador = new ActualizadorDeTransformadores();
 
 	@OneToMany()
-	@JoinColumn(name = "id")
+	@JoinColumn(nullable = true, name = "id")
+	@Transient
 	List<Transformador> transformadores = new ArrayList<Transformador>();
 
 	Long latitudCentro;
@@ -38,11 +39,12 @@ public class Zona {
 	public void agregarTransformadores(List<Transformador> nuevosTransformadores) {
 		this.transformadores.addAll(nuevosTransformadores);
 	}
-	
-	/* PARA CUANDO RECIBE LISTA DEL ENRE
-	public void agregarListaEnre(List<Transformador> nuevosTransformadores) {
-		this.actualizador.RecibirMensajeDelENRE(nuevosTransformadores);
-	}*/
+
+	/*
+	 * PARA CUANDO RECIBE LISTA DEL ENRE public void
+	 * agregarListaEnre(List<Transformador> nuevosTransformadores) {
+	 * this.actualizador.RecibirMensajeDelENRE(nuevosTransformadores); }
+	 */
 
 	public double getRadio() {
 		return radio;

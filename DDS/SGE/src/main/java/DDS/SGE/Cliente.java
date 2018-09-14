@@ -44,10 +44,6 @@ public class Cliente {
 	@Transient
 	private Categoria categoria;
 
-	@Transient
-	private Transformador transformador;
-	// = this.conectarATransformador(); Ya se inicializa con transformador
-
 	int puntos;
 
 	@Transient
@@ -107,14 +103,6 @@ public class Cliente {
 		for (Dispositivo disp : dispositivos) {
 			agregarDispositivo(disp);
 		}
-	}
-
-	public Transformador getTransformador() {
-		return transformador;
-	}
-
-	public void setTransformador(Transformador nuevoTransformador) {
-		transformador = nuevoTransformador;
 	}
 
 	public void agregarDispositivo(Dispositivo dispositivo) {
@@ -209,7 +197,7 @@ public class Cliente {
 	 */ // ESTO YA NO VA
 
 	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
-		transformador = nuevoTransformador;
+
 		nuevoTransformador.agregarCliente(this);
 	}
 

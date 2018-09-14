@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
 import DDS.SGE.Dispositivo.Estado.*;
@@ -22,7 +23,7 @@ public class DispositivoInteligente extends TipoDispositivo {
 	@OneToOne()
 	EstadoDelDispositivo estado;
 
-	@Transient
+	@Embedded
 	RepositorioDeTiempoEncendido repositorio;
 
 	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {

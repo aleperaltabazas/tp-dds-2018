@@ -20,7 +20,6 @@ public class Transformador {
 	@Transient
 	List<Cliente> usuarios = new ArrayList<Cliente>();
 
-	@Column(nullable = true)
 	double energia;
 	boolean activo;
 

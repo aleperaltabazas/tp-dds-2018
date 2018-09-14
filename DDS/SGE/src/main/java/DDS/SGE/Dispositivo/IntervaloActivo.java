@@ -3,7 +3,13 @@ package DDS.SGE.Dispositivo;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class IntervaloActivo {
+	@Id
+	private Long id;
 	LocalDateTime tiempoInicial;
 	LocalDateTime tiempoFinal;
 	
