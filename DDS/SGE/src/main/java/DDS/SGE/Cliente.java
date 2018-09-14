@@ -37,7 +37,8 @@ public class Cliente {
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
 	
-	@OneToOne //DESNORMALIZAMOS LA ZONA
+	//@OneToOne //DESNORMALIZAMOS LA ZONA
+	@Transient
 	private Zona zona; 
 
 	@Transient
