@@ -29,7 +29,9 @@ public class RepositorioDeTiempoEncendido {
 	}
 	
 	public long tiempoTotalEncendidoHaceNHorasEnMinutos(int horas) {		
+		
 		LocalDateTime fechaSolicitada = LocalDateTime.now().minusHours(horas);
+
 		return this.intervalosQueOcurrenEntre(fechaSolicitada, LocalDateTime.now())
 				.mapToLong(intervalo -> intervalo.getIntervaloEncendidoEnMinutos()).sum()
 				+ this.intervaloEncendidoActual().getIntervaloEncendidoEnMinutos();

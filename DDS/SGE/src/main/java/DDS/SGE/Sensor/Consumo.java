@@ -1,9 +1,12 @@
 package DDS.SGE.Sensor;
 
+import javax.persistence.OneToOne;
+
 import DDS.SGE.Dispositivo.Dispositivo;
 
 public class Consumo extends Sensor {
 
+	@OneToOne
 	Dispositivo dispositivo;
 	static int HORAS_DEL_MES = 24 * 30;
 	

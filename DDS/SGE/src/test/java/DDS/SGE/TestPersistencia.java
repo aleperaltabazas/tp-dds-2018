@@ -4,6 +4,7 @@ import DDS.SGE.Dispositivo.*;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Regla.Regla;
 import DDS.SGE.Sensor.Consumo;
+import DDS.SGE.Sensor.Sensor;
 import DDS.SGE.Sensor.Temperatura;
 import Fabricante.AireAcondicionado;
 
@@ -19,6 +20,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import DDS.SGE.Actuador.Actuador;
 import DDS.SGE.Actuador.Apagar;
 import DDS.SGE.Cliente.TipoDni;
 
@@ -46,8 +48,6 @@ public class TestPersistencia {
 		
 		dispositivoInteligente = new Dispositivo(inteligente);
 		
-		inteligente.setRepositorio(repositorioDePrueba);
-
 		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
 		
@@ -117,9 +117,8 @@ public class TestPersistencia {
 
 	}
 	
-	/*
 	@Test
-	public void PersistirUnDispositivoInteligenteYLuegoLevantarloConSuRepositorioDeIntervalos() {
+	public void PersistirUnDispositivoInteligenteYLuegoLevantarloConSuRepositorioDeIntervalosActualizado() {
 		
 		EntityManager em = EntityManagerHelper.entityManager();
 				
@@ -132,29 +131,50 @@ public class TestPersistencia {
 		DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido.getTipoDispositivo();
 				
 		dispositivoInteligentePersistido.getRepositorioTiempoEncendido().getIntervalosDeActividad().forEach(intervalo -> System.out.println(intervalo.getTiempoInicial()));
-
+		
 		assertEquals(0, dispositivoPersistido.consumoTotalHaceNHoras(100), 0);
 
-	}*/
+		dispositivoInteligentePersistido.setRepositorio(repositorioDePrueba);
+		
+		em.persist(dispositivoInteligentePersistido);
+		em.persist(dispositivoPersistido);
+		
+		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoInteligente.getId());
+		
+		DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistido.getTipoDispositivo();
 
-	/*
+		dispositivoInteligentePersistidoActual.getRepositorioTiempoEncendido().getIntervalosDeActividad().forEach(intervalo -> System.out.println(intervalo.getTiempoInicial()));
+		
+		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoActualizado.consumoTotalHaceNHoras(100), 0);
+	}
+	
 	@Test
 	public void PersistirUnaReglaModificarlaYLuegoLevantarla() {
+		
 		EntityManager em = EntityManagerHelper.entityManager();
 		
-		new Regla(Arrays.asList(new Consumo(dispositivoInteligente)),
-				new Apagar((DispositivoInteligente) dispositivoInteligente.getTipoDispositivo());
+		Actuador apagar = new Apagar(inteligente);
+		Sensor consumo = new Consumo(dispositivoInteligente);
 		
-		em.persist(unClienteConElDispositivoInteligente);
-		em.persist(dispositivoSencillo);
-		em.persist(estandar);
+		Regla reglaDelSimplex = new Regla(Arrays.asList(consumo), apagar);
+		
+		em.persist(reglaDelSimplex);
+		
+		Regla reglaPersistida = em.find(Regla.class, reglaDelSimplex.getId());
 
-		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoSencillo.getId());
-		dispositivoPersistido.setNombre("Sencillamente actualizado");
-		em.persist(dispositivoPersistido);
+		assertEquals(apagar, reglaPersistida.getActuador());
+		assertEquals(consumo, reglaPersistida.getSensores().get(0));
+		
+		Sensor otraCondicion = new Temperatura(22, inteligente);
 
-		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoSencillo.getId());
-		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
+		List<Sensor> nuevasCondiciones = Arrays.asList(consumo, otraCondicion);
 
-	}*/
+		reglaPersistida.setSensores(nuevasCondiciones);
+		
+		em.persist(reglaPersistida);
+		
+		Regla reglaActualizada = em.find(Regla.class, reglaPersistida.getId());
+		
+		assertEquals(nuevasCondiciones, reglaActualizada.getSensores());
+	}
 }
