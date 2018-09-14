@@ -43,7 +43,7 @@ public class TestCrearObjetos {
 		// Habria que ver como hacemos para crearle el tipo desde el archivo, porque el
 		// Dispositivo le pregunta
 		// a su tipo cuanto consumoKWPorHora tiene
-		assertEquals(12.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
+		assertEquals(20.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
 	}
 
 	// El test de transformador y de zona fallan porque no está levantando
@@ -56,7 +56,7 @@ public class TestCrearObjetos {
 
 		Transformador unTransformador = jsonBuilder.crearTransformador(file.getAbsolutePath());
 
-		assertEquals(10.0, unTransformador.suministra(), 0.0);
+		assertEquals(10.0, unTransformador.getZona().getRadio(), 0.0);
 	}
 
 	@Test
