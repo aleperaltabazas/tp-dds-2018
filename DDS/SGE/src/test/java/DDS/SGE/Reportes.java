@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,22 +31,21 @@ public class Reportes {
 
 	@Before
 	public void Inicializar() {
-
 		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
-		
+
 		dispositivoSencillo = new Dispositivo(estandar);
 		dispositivoSencillo.setNombre("Sencillo");
-		
-		clienteConUnDispositivo = new Cliente("Maxi", "Paz", TipoDni.DNI, "98765431", "1188884444",
-				"Calle Falsa 123", LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
-		
+
+		clienteConUnDispositivo = new Cliente("Maxi", "Paz", TipoDni.DNI, "98765431", "1188884444", "Calle Falsa 123",
+				LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
+
 		unTransformador.agregarCliente(clienteConUnDispositivo);
 		unTransformador.agregarCliente(clienteSinDispositivos);
-		
+
 		EntityManagerHelper.beginTransaction();
 		em.persist(clienteConUnDispositivo);
-		em.persist(clienteSinDispositivos);	
+		em.persist(clienteSinDispositivos);
 		em.persist(estandar);
 		em.persist(dispositivoSencillo);
 		em.persist(unTransformador);
@@ -55,38 +53,37 @@ public class Reportes {
 
 	@After
 	public void after() {
-		EntityManagerHelper.rollback();
+		EntityManagerHelper.rollback();		
 	}
-	
+
 	@Test
 	public void esPosibleObtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo() {
 		int periodoEnDias = 50;
-		TypedQuery<Cliente> query = 
-				em.createQuery("SELECT c FROM Cliente c", Cliente.class);
+		TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
 		List<Cliente> clientes = query.getResultList();
-	
-		double consumoTotalDeTodosLosClientesEnUnPeriodo = 
-				clientes.stream().mapToDouble(x -> x.consumoFinalEstimado(periodoEnDias)).sum();
-		
-		assertEquals(10000, consumoTotalDeTodosLosClientesEnUnPeriodo,0.0);
+
+		double consumoTotalDeTodosLosClientesEnUnPeriodo = clientes.stream()
+				.mapToDouble(x -> x.consumoFinalEstimado(periodoEnDias)).sum();
+
+		assertEquals(10000, consumoTotalDeTodosLosClientesEnUnPeriodo, 0.0);
 	}
-	
+
 	@Test
 	public void esPosibleObtenerElConsumoPromedioPorDispositivoDeUnCliente() {
-		Cliente maxi = em.find(Cliente.class , clienteConUnDispositivo.getId());
-		
+		Cliente maxi = em.find(Cliente.class, clienteConUnDispositivo.getId());
+
 		double consumoPromedioPorDispositivoDeMaxi = maxi.consumoPromedioPorDispositivo();
-		
+
 		assertEquals(200, consumoPromedioPorDispositivoDeMaxi, 0.0);
 	}
-	
+
 	@Test
 	public void esPosibleObtenerElConsumoPorTransformadorPorPeriodo() {
 		Transformador transformador = em.find(Transformador.class, unTransformador.getId());
 
 		double consumoPorPeriodo = transformador.suministra();
-		
+
 		assertEquals(200, consumoPorPeriodo, 0.0);
-		 	
+
 	}
 }

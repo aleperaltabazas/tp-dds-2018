@@ -81,7 +81,7 @@ public class TestPersistencia {
 	@Test
 	public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
 		EntityManager em = EntityManagerHelper.entityManager();
-		
+
 		em.persist(clienteSinDispositivos);
 
 		Cliente clientePersistido = em.find(Cliente.class, clienteSinDispositivos.getId());
@@ -113,6 +113,7 @@ public class TestPersistencia {
 
 	@Test
 	public void PersistirUnDispositivoInteligenteYLuegoLevantarlo() {
+
 		EntityManager em = EntityManagerHelper.entityManager();
 
 		em.persist(clienteConUnDispositivoInteligente);
@@ -144,16 +145,17 @@ public class TestPersistencia {
 		assertEquals(0, dispositivoPersistido.consumoTotalHaceNHoras(100), 0);
 
 		dispositivoInteligentePersistido.setRepositorio(repositorioDePrueba);
-		
+
 		Dispositivo dispositivoPersistidoActual = em.find(Dispositivo.class, dispositivoPersistido.getId());
-		
+
 		DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistidoActual
 				.getTipoDispositivo();
 
 		dispositivoInteligentePersistidoActual.getRepositorioTiempoEncendido().getIntervalosDeActividad()
 				.forEach(intervalo -> System.out.println(intervalo.getIntervaloEncendidoEnMinutos()));
 
-		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100), 0);
+		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100),
+				0);
 	}
 
 	@Test
@@ -183,7 +185,7 @@ public class TestPersistencia {
 		Regla reglaActualizada = em.find(Regla.class, reglaPersistida.getId());
 
 		assertEquals(nuevasCondiciones, reglaActualizada.getSensores());
-		
+
 	}
 
 	@Test
@@ -210,7 +212,7 @@ public class TestPersistencia {
 
 		// TODO: Habria que ver si se modifica el consumo?
 		assertEquals(20, unTransformador.suministra(), 0.0);
-		
+
 		EntityManagerHelper.rollback();
 	}
 
@@ -225,18 +227,17 @@ public class TestPersistencia {
 		em.persist(transformador_2);
 		em.persist(transformador_3);
 
-		TypedQuery<Long> query1 =
-		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); 
+		TypedQuery<Long> query1 = em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class);
 		Long cantidadDeTransformadoresPersistidosVersion1 = query1.getSingleResult();
-		 
-		em.persist(transformador_4); TypedQuery<Long> query2 =
-		em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class); 
+
+		em.persist(transformador_4);
+		TypedQuery<Long> query2 = em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class);
 		Long cantidadDeTransformadoresPersistidosVersion2 = query2.getSingleResult();
-		 
-		int a = cantidadDeTransformadoresPersistidosVersion1.intValue(); 
+
+		int a = cantidadDeTransformadoresPersistidosVersion1.intValue();
 		int b = cantidadDeTransformadoresPersistidosVersion2.intValue();
-		 
-		assertEquals(a + 1, b);				 
+
+		assertEquals(a + 1, b);
 	}
 
 }

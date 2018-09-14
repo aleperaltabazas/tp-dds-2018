@@ -20,7 +20,7 @@
 		<class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
 		<class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
 		<class>DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido</class>
-		
+
 
 		<class>Fabricante.Fabricante</class>
 
@@ -69,6 +69,7 @@
 			<property name="hibernate.format_sql" value="true" />
 			<property name="use_sql_comments" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+
 		</properties>
 
 	</persistence-unit>
