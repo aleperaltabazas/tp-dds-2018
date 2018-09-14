@@ -7,12 +7,14 @@ import DDS.SGE.Sensor.Consumo;
 import DDS.SGE.Sensor.Sensor;
 import DDS.SGE.Sensor.Temperatura;
 import Fabricante.AireAcondicionado;
+import Geoposicionamiento.Transformador;
 
 import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -33,6 +35,7 @@ public class TestPersistencia {
 	Dispositivo dispositivoInteligente;
 	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
 	DispositivoInteligente inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(3800));
+	Transformador unTransformador = new Transformador(200);
 	
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
@@ -56,6 +59,8 @@ public class TestPersistencia {
 		
 		clienteConUnDispositivoInteligente = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoInteligente));
+		
+		unTransformador.agregarCliente(clienteConUnDispositivoInteligente);
 		
 		EntityManagerHelper.beginTransaction();
 	}
@@ -176,5 +181,20 @@ public class TestPersistencia {
 		Regla reglaActualizada = em.find(Regla.class, reglaPersistida.getId());
 		
 		assertEquals(nuevasCondiciones, reglaActualizada.getSensores());
+	}
+	
+	@Test
+	public void RecuperarDispositivoAsociadoAUnHogarEIncrementarConsumo() {
+		EntityManager em = EntityManagerHelper.entityManager();
+		
+		em.persist(clienteConUnDispositivoInteligente);
+		em.persist(dispositivoInteligente);
+		em.persist(inteligente);
+		em.persist(unTransformador);
+		Transformador t = em.find(Transformador.class, unTransformador.getId());
+		List<Cliente> usuarios = t.getUsuarios();
+		Cliente unCliente = usuarios.get(1);
+		//Optional<Dispositivo> disp = unCliente.getDispositivos().findFirst()
+		//Cliente c = em.find(Cliente.class);
 	}
 }
