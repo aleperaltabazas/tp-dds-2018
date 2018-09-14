@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +19,8 @@ import org.junit.Test;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
+import Geoposicionamiento.Transformador;
+import Geoposicionamiento.Zona;
 
 public class Reportes {
 	Cliente clienteSinDispositivos;
@@ -71,5 +74,15 @@ public class Reportes {
 		assertEquals(200, consumoPromedioPorDispositivoDeMaxi, 0.0);
 	}
 	
-	
+	@Test
+	public void esPosibleObtenerElConsumoPorTransformadorPorPeriodo() {
+		Transformador unTransformador = new Transformador(1);
+		unTransformador.agregarCliente(clienteConUnDispositivo);
+		unTransformador.agregarCliente(clienteSinDispositivos);
+		
+		double consumoPorPeriodo = unTransformador.suministra();
+		
+		assertEquals(200, consumoPorPeriodo, 0.0);
+		 	
+	}
 }
