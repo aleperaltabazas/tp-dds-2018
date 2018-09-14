@@ -34,11 +34,17 @@ public class TestZona {
 	Cliente otroCliente = new Cliente("Otro", "Cliente", TipoDni.DNI, "111111112", "1123456780",
 			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 
-	Transformador transformador_1 = new Transformador(zona_A);
+	/*Transformador transformador_1 = new Transformador(zona_A);
 	Transformador transformador_2 = new Transformador(zona_A);
 	Transformador transformador_3 = new Transformador(zona_A);
 	Transformador transformador_4 = new Transformador(zona_A);
-	Transformador transformador_5 = new Transformador(zona_B);
+	Transformador transformador_5 = new Transformador(zona_B);*/
+	
+	Transformador transformador_1 = new Transformador(1);
+	Transformador transformador_2 = new Transformador(2);
+	Transformador transformador_3 = new Transformador(3);
+	Transformador transformador_4 = new Transformador(4);
+	Transformador transformador_5 = new Transformador(5);
 
 	@Before
 	public void initialize() {

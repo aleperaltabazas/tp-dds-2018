@@ -38,9 +38,13 @@ public class TestTranformadores {
 	Cliente elCliente = new Cliente("Otro", "Cliente", TipoDni.DNI, "111111112", "1123456780",
 			"Otra Calle", LocalDateTime.now(), Arrays.asList(unDispositivo));
 	
-	Transformador transformador_1 = new Transformador(zona_A);
+	/*Transformador transformador_1 = new Transformador(zona_A);
 	Transformador transformador_2 = new Transformador(zona_B);
-	Transformador transformador_3 = new Transformador(zona_A);
+	Transformador transformador_3 = new Transformador(zona_A);*/
+	
+	Transformador transformador_1 = new Transformador(1);
+	Transformador transformador_2 = new Transformador(2);
+	Transformador transformador_3 = new Transformador(3);
 	
 	@Before
 	public void initialize() {
@@ -56,10 +60,10 @@ public class TestTranformadores {
 		assertEquals(unCliente.consumoTotalEstimadoDiario() + otroCliente.consumoTotalEstimadoDiario(), transformador_1.suministra() + transformador_3.suministra(), 0);
 	}
 	
-	@Test (expected = RuntimeException.class)
+	/*@Test (expected = RuntimeException.class)
 	public void Cliente_No_Puede_Conectarse_A_Transformador_De_Otra_Zona() {
 		zona_B.agregarTransformadores(Arrays.asList(transformador_2));
 		unCliente.conectarseAEsteTransformador(transformador_2);		
-	}
+	}*/
 
 }

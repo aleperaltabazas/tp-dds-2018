@@ -12,6 +12,8 @@ public class Transformador {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	private int codigo;
 
 	@OneToMany()
 	@JoinColumn(name = "id")
@@ -19,16 +21,18 @@ public class Transformador {
 
 	double energia;
 	boolean activo;
-	Zona zona;
-	// List<Transformador> tr ; ---- NO SÉ PARA QUÉ ESTÁ
 
-	public Transformador(Zona ubicacion) {
-		zona = ubicacion;
+	public Transformador(int i) {
+		codigo = i;
 		activo = true;
 	}
-
-	public Zona getZona() {
-		return zona;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public int getCodigo() {
+		return codigo;
 	}
 
 	public List<Cliente> getUsuarios() {
@@ -47,9 +51,9 @@ public class Transformador {
 		return usuarios.stream().mapToDouble(cliente -> cliente.consumoTotalEstimadoDiario()).sum();
 	}
 
-	public boolean perteneceA(Zona unaZona) {
+	/*public boolean perteneceA(Zona unaZona) {
 		return unaZona == this.getZona();
-	}
+	}*/
 
 	public double getEnergia() {
 		return this.energia;
@@ -66,4 +70,6 @@ public class Transformador {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+	
+	
 }

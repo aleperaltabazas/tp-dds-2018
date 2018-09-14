@@ -36,13 +36,16 @@ public class Cliente {
 	private String telefono;
 	private String domicilio;
 	private LocalDateTime fechaAltaServicio;
+	
+	@OneToOne //DESNORMALIZAMOS LA ZONA
+	private Zona zona; 
 
 	@Transient
 	private Categoria categoria;
-	// private Zona zona; --- YA NO VA
 
-	@Transient
-	private Transformador transformador; // = this.conectarATransformador(); Ya se inicializa con transformador
+	@Transient 
+	private Transformador transformador; 
+	// = this.conectarATransformador(); Ya se inicializa con transformador
 
 	int puntos;
 
@@ -181,12 +184,12 @@ public class Cliente {
 		this.puntos += puntos;
 	}
 
-	public Zona zona() {
+	/*public Zona zona() {
 		return this.getTransformador().getZona();
-	}
+	}*/
 
 	public boolean preteneceAZona(Zona unaZona) {
-		return this.zona() == unaZona;
+		return this.zona == unaZona;
 	}
 
 	/*

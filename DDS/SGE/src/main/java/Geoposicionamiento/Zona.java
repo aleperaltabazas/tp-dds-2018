@@ -11,11 +11,15 @@ public class Zona {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	private ActualizadorDeTransformadores actualizador = new ActualizadorDeTransformadores();
 
 	@OneToMany()
 	@JoinColumn(name = "id")
 	List<Transformador> transformadores = new ArrayList<Transformador>();
 
+	Long latitudCentro;
+	Long longitudCentro;
 	double radio;
 
 	public Zona() {
@@ -30,10 +34,14 @@ public class Zona {
 		return this.getTransformadores().stream().mapToDouble(transformador -> transformador.suministra()).sum();
 	}
 
-	// PARA CUANDO RECIBE LISTA DEL ENRE
 	public void agregarTransformadores(List<Transformador> nuevosTransformadores) {
-		this.getTransformadores().addAll(nuevosTransformadores);
+		this.transformadores.addAll(nuevosTransformadores);
 	}
+	
+	/* PARA CUANDO RECIBE LISTA DEL ENRE
+	public void agregarListaEnre(List<Transformador> nuevosTransformadores) {
+		this.actualizador.RecibirMensajeDelENRE(nuevosTransformadores);
+	}*/
 
 	public double getRadio() {
 		return radio;
