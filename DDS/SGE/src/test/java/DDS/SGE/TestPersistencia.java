@@ -36,7 +36,7 @@ public class TestPersistencia {
 	Dispositivo dispositivoSencillo;
 	Dispositivo dispositivoInteligente;
 	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
-	DispositivoInteligente inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(3800));
+	DispositivoInteligente inteligente;
 	Transformador unTransformador = new Transformador(200);
 
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
@@ -54,6 +54,7 @@ public class TestPersistencia {
 	@Before
 	public void Inicializar() {
 
+		inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(3800));
 		dispositivoSencillo = new Dispositivo(estandar);
 		dispositivoSencillo.setNombre("Sencillo");
 
@@ -134,9 +135,13 @@ public class TestPersistencia {
 		EntityManager em = EntityManagerHelper.entityManager();
 
 		em.persist(clienteConUnDispositivoInteligente);
-		em.persist(dispositivoInteligente);
 		em.persist(inteligente);
+		em.flush();
+		em.persist(dispositivoInteligente);
 
+		em.flush();
+		
+		
 		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
 
 		DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido

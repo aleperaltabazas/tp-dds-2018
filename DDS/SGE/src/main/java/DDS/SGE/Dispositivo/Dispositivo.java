@@ -2,6 +2,7 @@ package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Dispositivo {
 	private String nombre;
 	private double tiempoQueSePuedeUtilizar;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private TipoDispositivo tipo;
 
 	public Dispositivo(TipoDispositivo tipo) {

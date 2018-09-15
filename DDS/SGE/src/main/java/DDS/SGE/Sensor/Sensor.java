@@ -10,10 +10,8 @@ public abstract class Sensor {
 	@GeneratedValue
 	private Long id;
 
-	public void actualizarMediciones() {
-
-	}
-
+	public abstract void actualizarMediciones();
+	
 	public double medir() {
 		return 0;
 	}
