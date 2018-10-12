@@ -19,7 +19,6 @@ import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
 import Geoposicionamiento.Transformador;
-import Geoposicionamiento.Zona;
 
 public class Reportes {
 	Cliente clienteSinDispositivos;

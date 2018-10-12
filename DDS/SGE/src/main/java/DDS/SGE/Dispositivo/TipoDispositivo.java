@@ -19,51 +19,21 @@ public abstract class TipoDispositivo {
 	@GeneratedValue
 	private Long id;
 
-	boolean estaEncendido() {
-		return false;
-	}
+	public abstract boolean estaEncendido();
+	public abstract long usoEstimadoDiario();
 
-	long usoEstimadoDiario() {
-		return 0;
-	}
+	public abstract double tiempoTotalEncendidoHaceNHoras(int horas);
+	public abstract double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo);
 
-	public double tiempoTotalEncendidoHaceNHoras(int horas) {
-		return 0;
-	}
+	public abstract double getConsumoKWPorHora();
+	public abstract TipoDispositivo adaptar();
 
-	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
-		return 0;
-	}
+	public abstract void encender();
+	public abstract void apagar();
+	
+	public abstract void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos);
+	public abstract void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones);
 
-	public double getConsumoKWPorHora() {
-		return 0;
-	}
-
-	TipoDispositivo adaptar() {
-		return null;
-	}
-
-	void encender() {
-
-	}
-
-	void apagar() {
-
-	}
-
-	void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
-
-	}
-
-	void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
-
-	}
-
-	public double usoMensualMinimo() {
-		return 0;
-	}
-
-	public double usoMensualMaximo() {
-		return 0;
-	}
+	public abstract double usoMensualMinimo();
+	public abstract double usoMensualMaximo();
 }

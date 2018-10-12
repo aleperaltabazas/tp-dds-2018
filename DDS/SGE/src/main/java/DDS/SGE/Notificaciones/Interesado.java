@@ -5,8 +5,6 @@ import DDS.SGE.Dispositivo.Dispositivo;
 
 public abstract class Interesado {
 
-	void sucedio(Cliente unCliente,Dispositivo dispositivo) {
-		
-	}
-
+	public abstract void sucedio(Cliente unCliente,Dispositivo dispositivo);
+	
 }

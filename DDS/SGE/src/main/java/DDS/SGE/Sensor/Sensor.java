@@ -12,11 +12,7 @@ public abstract class Sensor {
 
 	public abstract void actualizarMediciones();
 	
-	public double medir() {
-		return 0;
-	}
+	public abstract double medir();
 
-	public boolean hayQueActuar() {
-		return false;
-	}
+	public abstract boolean hayQueActuar();
 }

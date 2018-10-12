@@ -12,20 +12,12 @@ public abstract class Actuador {
 	@GeneratedValue
 	private Long id;
 
-	public void accionar() {
-
-	}
-
-	public DispositivoInteligente getDispositivo() {
-		return null;
-	}
-
+	public abstract void accionar();
+	public abstract DispositivoInteligente getDispositivo();
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 }
