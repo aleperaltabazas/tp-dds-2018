@@ -28,6 +28,22 @@ public class Optimizador {
 	public Stream<Dispositivo> obtenerDispositivosInfractores(Stream<Dispositivo> dispositivos) {
 		return dispositivos.filter(d -> new Consumo(d).hayQueActuar());
 	}
+	
+	public void accionarSobreCliente(Cliente unCliente) {
+		PointValuePair resultadoSimplex = simplex(unCliente);
+		double[] resultados = resultadoSimplex.getFirst();
+		setearTiempoRecomendado(unCliente, resultados);
+		accionarSobreDispositivos(unCliente.getDispositivos());	
+	}
+
+	private void setearTiempoRecomendado(Cliente unCliente, double[] resultados) {
+		dispositivo = 0;
+
+		unCliente.getDispositivos().forEach(disp -> {
+			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
+			dispositivo++;
+		});
+	}
 
 	public void accionarSobreDispositivos(Stream<Dispositivo> dispositivos) {
 		dispositivos.forEach(d -> generarReglaDeConsumoExcesivo(d).actuar());
@@ -41,13 +57,12 @@ public class Optimizador {
 				new Apagar((DispositivoInteligente) unDispositivo.getTipoDispositivo()));
 	}
 
-	private void setearTiempoRecomendadoPorDispositivo(Cliente unCliente, double[] resultados) {
-		dispositivo = 0;
-
-		unCliente.getDispositivos().forEach(disp -> {
-			disp.setTiempoQueSePuedeUtilizar(resultados[dispositivo]);
-			dispositivo++;
-		});
+	public double[] tiempoRecomendadoPorDispositivo(Cliente unCliente) {
+		return simplex(unCliente).getPoint();
+	}
+	
+	public double usoMensualRecomendado(Cliente unCliente) {
+		return simplex(unCliente).getValue();
 	}
 
 	private void agregarRestriccionesPorDispositivo(Cliente unCliente, ArrayList<LinearConstraint> restricciones,
@@ -80,7 +95,7 @@ public class Optimizador {
 		coeficientesFuncion[dispositivo] = 0;
 	}
 
-	public double Calcular(Cliente unCliente) {
+	public PointValuePair simplex(Cliente unCliente) {
 		ArrayList<LinearConstraint> restricciones = new ArrayList<LinearConstraint>();
 
 		int cantidadDeDispositivos = unCliente.cantidadDispositivos();
@@ -98,9 +113,7 @@ public class Optimizador {
 
 		PointValuePair resultado = optimizar(funcion, restricciones);
 
-		setearTiempoRecomendadoPorDispositivo(unCliente, resultado.getPoint());
-
-		return resultado.getValue();
+		return resultado;
 	}
 
 	private PointValuePair optimizar(LinearObjectiveFunction unaFuncion,

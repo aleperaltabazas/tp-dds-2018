@@ -16,7 +16,7 @@ public class ControladorDeDispositivos {
 				System.out.println("Controlando dispositivos...");
 				List<Cliente> clientes = RepositorioClientes.instancia.getClientes();
 				clientes.forEach(c -> {
-					optimizador.Calcular(c);
+					optimizador.simplex(c);
 					optimizador.accionarSobreDispositivos(
 							optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
 				});

@@ -97,53 +97,52 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConDispositivoDePotencia2KwSeRecomiendaUsarloLaMitadDelUsoRecomendadoHoras() {
 
-		assertEquals(USO_MENSUAL_RECOMENDADO / 2, optimizador.Calcular(clienteConDispositivoDe2Kw), 0.0);
+		assertEquals(USO_MENSUAL_RECOMENDADO / 2, optimizador.usoMensualRecomendado(clienteConDispositivoDe2Kw), 0.0);
 
 	}
 
 	@Test
 	public void ElUnicoDispositivoDePotencia2KwDelClienteSeRecomiendaUsarloLaMitadDelTiempoRecomendado() {
 
-		double tiempoTotalDeUso = optimizador.Calcular(clienteConDispositivoDe2Kw);
+		double tiempoTotalDeUso = optimizador.usoMensualRecomendado(clienteCon2DispositivosDe2Kw);
+		optimizador.accionarSobreCliente(clienteConDispositivoDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
-
 	}
 
 	@Test
 	public void unClienteCon2DispositivosDePotencia2KwSeRecomiendaUsarLaMismaCantidadDeHorasTotalesQueSiFueraUnoSolo() {
 
-		assertEquals(optimizador.Calcular(clienteConDispositivoDe2Kw),
-				optimizador.Calcular(clienteCon2DispositivosDe2Kw), 0.0);
-
+		assertEquals(optimizador.usoMensualRecomendado(clienteConDispositivoDe2Kw),
+				optimizador.usoMensualRecomendado(clienteCon2DispositivosDe2Kw), 0.0);
 	}
 
 	@Test
 	public void laSumaDelTiempoRecomendadoDeCadaDispositivoEsIgualAlTiempoTotalQueElClientePuedeUsarlos() {
 
-		double tiempoTotalDeUso = optimizador.Calcular(clienteCon2DispositivosDe2Kw);
+		double tiempoTotalDeUso = optimizador.usoMensualRecomendado(clienteCon2DispositivosDe2Kw);
+		optimizador.accionarSobreCliente(clienteCon2DispositivosDe2Kw);
 		assertEquals(tiempoTotalDeUso, dispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar()
 				+ otroDispositivoPotencia2Kw.getTiempoQueSePuedeUtilizar(), 0.0);
-
 	}
 
 	@Test
 	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible() {
 
-		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(), optimizador.Calcular(clienteConDispositivoDe1Kw), 0.0);
+		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(), optimizador.usoMensualRecomendado(clienteConDispositivoDe1Kw), 0.0);
 
 	}
 
 	@Test
 	public void unClienteSinDispositivosSeLeRecomiendaUsarLosDispositivosPor0Horas() {
 
-		assertEquals(0, optimizador.Calcular(clienteSinDispositivos), 0.0);
+		assertEquals(0, optimizador.usoMensualRecomendado(clienteSinDispositivos), 0.0);
 
 	}
 
 	@Test
 	public void unClienteSoloConDispositivosEstandarSeLeRecomiendaUsarLosDispositivosPor0Horas() {
 
-		assertEquals(0, optimizador.Calcular(clienteSoloConDispositivosEstandar), 0.0);
+		assertEquals(0, optimizador.usoMensualRecomendado(clienteSoloConDispositivosEstandar), 0.0);
 
 	}
 
@@ -157,7 +156,7 @@ public class TestOptimizador {
 	@Test
 	public void aUnClienteNoSeLeApagaSuDispositivoPorqueNoTuvoConsumo() {
 
-		optimizador.Calcular(clienteConDispositivoDe1Kw);
+		optimizador.accionarSobreCliente(clienteConDispositivoDe1Kw);
 		assertTrue(clienteConDispositivoDe1Kw.getDispositivos().findFirst().get().estaEncendido());
 
 	}
@@ -165,9 +164,7 @@ public class TestOptimizador {
 	@Test
 	public void aUnClienteSeLeApagaSuDispositivoPorqueTuvoConsumoExcesivo() {
 
-		optimizador.Calcular(clienteConDispositivoInfractor);
-		optimizador.accionarSobreDispositivos(
-				optimizador.obtenerDispositivosInfractores(clienteConDispositivoInfractor.getDispositivos()));
+		optimizador.accionarSobreCliente(clienteConDispositivoInfractor);
 
 		assertFalse(clienteConDispositivoInfractor.getDispositivos().findFirst().get().estaEncendido());
 
@@ -176,9 +173,9 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConDIsTieneLaMismaRecomendacionQueOtroClienteConLosMismosDIsYVariosDispositivosEstandarAdicionales() {
 
-		double tiempoClienteConSoloDIs = optimizador.Calcular(clienteConDispositivoInfractor);
+		double tiempoClienteConSoloDIs = optimizador.usoMensualRecomendado(clienteConDispositivoInfractor);
 		double tiempoClienteConAmbosTiposDeDispositivos = optimizador
-				.Calcular(clienteConDispositivoInfractorYDispositivosAdicionales);
+				.usoMensualRecomendado(clienteConDispositivoInfractorYDispositivosAdicionales);
 
 		assertEquals(tiempoClienteConSoloDIs, tiempoClienteConAmbosTiposDeDispositivos, 0);
 	}
