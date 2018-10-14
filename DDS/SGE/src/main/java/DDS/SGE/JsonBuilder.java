@@ -11,6 +11,8 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.stream.JsonReader;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.TipoDispositivo;
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 
@@ -23,6 +25,10 @@ public class JsonBuilder {
 
 	Dispositivo crearDispositivo(String path) {
 		try {
+			TipoDispositivo tipo = new DispositivoEstandar(100,10);
+			Dispositivo dis = new Dispositivo(tipo);
+			String json = gson.toJson(dis);
+			Dispositivo otroDisp = gson.fromJson(json, Dispositivo.class);
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, Dispositivo.class);
 		} catch (IOException e) {

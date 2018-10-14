@@ -52,7 +52,8 @@ public class TestCrearObjetos {
 		Transformador unTransformador = jsonBuilder.crearTransformador(file.getAbsolutePath());
 
 		assertEquals(10.0, unTransformador.getZona().getRadio(), 0.0);
-	}*/
+	}
+	*/
 
 	@Test
 	public void crearZona() {
@@ -61,6 +62,6 @@ public class TestCrearObjetos {
 
 		Zona unaZona = jsonBuilder.crearZona(file.getAbsolutePath());
 
-		assertEquals(10.0, unaZona.getRadio(), 0.0);
+		assertEquals(100.0, unaZona.getRadio(), 0.0);
 	}
 }
