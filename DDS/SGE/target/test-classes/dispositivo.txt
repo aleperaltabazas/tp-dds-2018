@@ -1,1 +1,1 @@
-{'tiempoQueSePuedeUtilizar':0.0,'tipo':{'usoEstimadoDiario':100,'consumoKWPorHora':10.0}}
+{'usoEstimadoDiario':100,'consumoKWPorHora':10.0}

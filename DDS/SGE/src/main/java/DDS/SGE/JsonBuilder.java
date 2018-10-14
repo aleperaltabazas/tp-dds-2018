@@ -23,14 +23,10 @@ public class JsonBuilder {
 					.parse(json.getAsJsonPrimitive().getAsString()).toLocalDateTime())
 			.create();
 
-	Dispositivo crearDispositivo(String path) {
+	DispositivoEstandar crearDispositivoEstandar(String path) {
 		try {
-			TipoDispositivo tipo = new DispositivoEstandar(100,10);
-			Dispositivo dis = new Dispositivo(tipo);
-			String json = gson.toJson(dis);
-			Dispositivo otroDisp = gson.fromJson(json, Dispositivo.class);
 			JsonReader reader = new JsonReader(new FileReader(path));
-			return gson.fromJson(reader, Dispositivo.class);
+			return gson.fromJson(reader, DispositivoEstandar.class);
 		} catch (IOException e) {
 			throw new RuntimeException("No se pudo crear el Dispositivo", e);
 		}

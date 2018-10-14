@@ -5,6 +5,7 @@ import java.io.File;
 import org.junit.Test;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
 import Geoposicionamiento.Transformador;
 import Geoposicionamiento.Zona;
 import static org.junit.Assert.*;
@@ -38,9 +39,10 @@ public class TestCrearObjetos {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("dispositivo.txt").getFile());
 
-		Dispositivo unDispositivo = jsonBuilder.crearDispositivo(file.getAbsolutePath());
-
-		assertEquals(20.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
+		DispositivoEstandar unDispositivoEstandar = jsonBuilder.crearDispositivoEstandar(file.getAbsolutePath());
+		Dispositivo unDispositivo = new Dispositivo(unDispositivoEstandar);
+		
+		assertEquals(10.0, unDispositivo.obtenerConsumoKWPorHora(), 0.0);
 	}
 
 	/*
