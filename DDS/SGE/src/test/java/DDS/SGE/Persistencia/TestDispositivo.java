@@ -1,34 +1,30 @@
-package DDS.SGE;
-
-import DDS.SGE.Dispositivo.*;
-import DDS.SGE.Dispositivo.Estado.Apagado;
-import DDS.SGE.Regla.Regla;
-import DDS.SGE.Sensor.Consumo;
-import DDS.SGE.Sensor.Sensor;
-import DDS.SGE.Sensor.Temperatura;
-import Fabricante.AireAcondicionado;
-import Geoposicionamiento.Transformador;
+package DDS.SGE.Persistencia;
 
 import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import DDS.SGE.Actuador.Actuador;
-import DDS.SGE.Actuador.Apagar;
+import DDS.SGE.Cliente;
+import DDS.SGE.EntityManagerHelper;
+import DDS.SGE.RepositorioDeTiempoEncendidoTest;
 import DDS.SGE.Cliente.TipoDni;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.IntervaloActivo;
+import DDS.SGE.Dispositivo.Estado.Apagado;
+import Fabricante.AireAcondicionado;
+import Geoposicionamiento.Transformador;
 
-public class TestPersistencia {
+public class TestDispositivo {
 
 	Cliente clienteSinDispositivos;
 	Cliente clienteConUnDispositivoEstandar;
@@ -38,19 +34,14 @@ public class TestPersistencia {
 	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
 	DispositivoInteligente inteligente;
 	Transformador unTransformador = new Transformador(200);
-
+	
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
 	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5),
 			fechaDeReferencia.minusHours(3));
 	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
 	RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
-
-	Transformador transformador_1 = new Transformador(1);
-	Transformador transformador_2 = new Transformador(2);
-	Transformador transformador_3 = new Transformador(3);
-	Transformador transformador_4 = new Transformador(4);
-
+	
 	@Before
 	public void Inicializar() {
 
@@ -68,12 +59,12 @@ public class TestPersistencia {
 
 		clienteConUnDispositivoInteligente = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
 				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoInteligente));
-
+		
 		unTransformador.agregarCliente(clienteConUnDispositivoInteligente);
 
 		EntityManagerHelper.beginTransaction();
 	}
-
+	
 	@After
 	public void after() {
 		EntityManagerHelper.rollback();
@@ -162,37 +153,7 @@ public class TestPersistencia {
 		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100),
 				0);
 	}
-
-	@Test
-	public void PersistirUnaReglaModificarlaYLuegoLevantarla() {
-
-		EntityManager em = EntityManagerHelper.entityManager();
-
-		Actuador apagar = new Apagar(inteligente);
-		Sensor consumo = new Consumo(dispositivoInteligente);
-
-		Regla reglaDelSimplex = new Regla(Arrays.asList(consumo), apagar);
-
-		em.persist(reglaDelSimplex);
-
-		Regla reglaPersistida = em.find(Regla.class, reglaDelSimplex.getId());
-
-		assertEquals(apagar, reglaPersistida.getActuador());
-		assertEquals(consumo, reglaPersistida.getSensores().get(0));
-
-		Sensor otraCondicion = new Temperatura(22, inteligente);
-
-		List<Sensor> nuevasCondiciones = Arrays.asList(consumo, otraCondicion);
-		reglaPersistida.setSensores(nuevasCondiciones);
-
-		em.persist(reglaPersistida);
-
-		Regla reglaActualizada = em.find(Regla.class, reglaPersistida.getId());
-
-		assertEquals(nuevasCondiciones, reglaActualizada.getSensores());
-
-	}
-
+	
 	@Test
 	public void RecuperarDispositivoAsociadoAUnHogarEIncrementarConsumo() {
 		EntityManager em = EntityManagerHelper.entityManager();
@@ -219,30 +180,6 @@ public class TestPersistencia {
 		assertEquals(20, unTransformador.suministra(), 0.0);
 
 		EntityManagerHelper.rollback();
-	}
-
-	@Test
-	public void PersistirCorrectamenteLosTransformadores() {
-		EntityManager em = EntityManagerHelper.entityManager();
-		transformador_1.agregarCliente(clienteSinDispositivos);
-
-		em.persist(clienteSinDispositivos);
-
-		em.persist(transformador_1);
-		em.persist(transformador_2);
-		em.persist(transformador_3);
-
-		TypedQuery<Long> query1 = em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class);
-		Long cantidadDeTransformadoresPersistidosVersion1 = query1.getSingleResult();
-
-		em.persist(transformador_4);
-		TypedQuery<Long> query2 = em.createQuery("SELECT COUNT(t.id) FROM Transformador t", Long.class);
-		Long cantidadDeTransformadoresPersistidosVersion2 = query2.getSingleResult();
-
-		int a = cantidadDeTransformadoresPersistidosVersion1.intValue();
-		int b = cantidadDeTransformadoresPersistidosVersion2.intValue();
-
-		assertEquals(a + 1, b);
 	}
 
 }
