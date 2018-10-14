@@ -27,6 +27,7 @@ public class Reportes {
 	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
 	EntityManager em = EntityManagerHelper.entityManager();
 	Transformador unTransformador = new Transformador(1);
+	EspecialistaEnReportes especialistaEnReportes;
 
 	@Before
 	public void Inicializar() {
@@ -48,6 +49,8 @@ public class Reportes {
 		em.persist(estandar);
 		em.persist(dispositivoSencillo);
 		em.persist(unTransformador);
+		
+		especialistaEnReportes  = new EspecialistaEnReportes();
 	}
 
 	@After
@@ -58,31 +61,19 @@ public class Reportes {
 	@Test
 	public void esPosibleObtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo() {
 		int periodoEnDias = 50;
-		TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
-		List<Cliente> clientes = query.getResultList();
-
-		double consumoTotalDeTodosLosClientesEnUnPeriodo = clientes.stream()
-				.mapToDouble(x -> x.consumoFinalEstimado(periodoEnDias)).sum();
-
-		assertEquals(10000, consumoTotalDeTodosLosClientesEnUnPeriodo, 0.0);
+		assertEquals(10000, especialistaEnReportes.obtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo(periodoEnDias), 0.0);
 	}
 
 	@Test
 	public void esPosibleObtenerElConsumoPromedioPorDispositivoDeUnCliente() {
-		Cliente maxi = em.find(Cliente.class, clienteConUnDispositivo.getId());
 
-		double consumoPromedioPorDispositivoDeMaxi = maxi.consumoPromedioPorDispositivo();
-
-		assertEquals(200, consumoPromedioPorDispositivoDeMaxi, 0.0);
+		assertEquals(200,especialistaEnReportes.obtenerElConsumoPromedioPorDispositivoDeUnCliente(clienteConUnDispositivo.getId()) , 0.0);
 	}
 
 	@Test
 	public void esPosibleObtenerElConsumoPorTransformadorPorPeriodo() {
-		Transformador transformador = em.find(Transformador.class, unTransformador.getId());
 
-		double consumoPorPeriodo = transformador.suministra();
-
-		assertEquals(200, consumoPorPeriodo, 0.0);
+		assertEquals(200, especialistaEnReportes.obtenerElConsumoPorTransformadorPorPeriodo(unTransformador.getId()), 0.0);
 
 	}
 }
