@@ -27,3 +27,12 @@
 .tool-button{
 	border-radius: 12px;
 }
+
+.calendar-resize{
+	padding-top: 15px;
+	display: block;
+	max-width: 35%;
+	max-height: 35%;
+	margin-left: auto;
+	margin-right: auto;
+}
