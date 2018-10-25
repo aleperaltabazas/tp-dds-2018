@@ -12,6 +12,10 @@ import DDS.SGE.*;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Regla.*;
 import DDS.SGE.Web.*;
+import DDS.SGE.Web.Controllers.ConsumoPorPeriodoController;
+import DDS.SGE.Web.Controllers.HomeController;
+import DDS.SGE.Web.Controllers.LoginController;
+import DDS.SGE.Web.Controllers.UserController;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -36,5 +40,7 @@ public class Service {
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::loggear, engine);
 		get("/user/:id", UserController::mostrar, engine);
+		get("/consumo-por-servicio/:id",ConsumoPorPeriodoController::obtener, engine);
+		get("/consumo-por-servicio/",ConsumoPorPeriodoController::mostrar, engine);
 	}
 }

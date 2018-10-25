@@ -1,4 +1,4 @@
-package DDS.SGE.Web;
+package DDS.SGE.Web.Controllers;
 
 import spark.ModelAndView;
 import spark.Request;
