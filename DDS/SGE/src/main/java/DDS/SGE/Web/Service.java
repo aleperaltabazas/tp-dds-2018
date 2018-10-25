@@ -20,8 +20,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
 	public static void main(String[] args) {
 		Spark.port(9000);
-		//System.getProperty("user.dir") = C:\Users\Usuario\Desktop\DDS-TP\Repo\2018-vn-group-11\DDS\SGE
-		Spark.staticFiles.externalLocation(System.getProperty("user.dir")); //external porque jetty no me updatea las static files al hacer cambios
+		Spark.staticFiles.location("/public");
 		DebugScreen.enableDebugScreen();
 
 		HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
