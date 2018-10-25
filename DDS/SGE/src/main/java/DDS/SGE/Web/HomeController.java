@@ -10,4 +10,5 @@ public class HomeController {
 		//Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
 		return new ModelAndView(null, "home.hbs");
 	}
+	
 }

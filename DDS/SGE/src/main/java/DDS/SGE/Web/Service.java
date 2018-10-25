@@ -4,10 +4,12 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import DDS.SGE.*;
+import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Regla.*;
 import DDS.SGE.Web.*;
 import spark.ModelAndView;
@@ -25,7 +27,14 @@ public class Service {
 
 		HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
 		HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
+		
+		Usuario usuarioPrueba = new Usuario("matigiorda", "123", 
+				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
+			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
 
 		get("/", HomeController::mostrar, engine);	
+		get("/login", LoginController::mostrar, engine);
+		post("/login", LoginController::loggear, engine);
+		get("/user/:id", UserController::mostrar, engine);
 	}
 }
