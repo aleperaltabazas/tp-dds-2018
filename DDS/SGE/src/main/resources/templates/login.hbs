@@ -28,7 +28,6 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -102,23 +101,26 @@ body {
   -moz-osx-font-smoothing: grayscale;      
 }
 </style>
-<body>
-	<div class="login-page">
-	  <div class="form">
-		<form class="register-form">
-		  <input type="text" placeholder="name"/>
-		  <input type="password" placeholder="password"/>
-		  <input type="text" placeholder="email address"/>
-		  <button>create</button>
-		  <p class="message">Ya estas registrado? <a href="#">Ingresar</a></p>
-		</form>
-		<form class="login-form">
-		  <input type="text" placeholder="username"/>
-		  <input type="password" placeholder="password"/>
-		  <button>login</button>
-		  <p class="message">No estas registrado? <a href="#">Crea una cuenta</a></p>
-		</form>
-	  </div>
-	</div>
+
+<head><title>Iniciar sesión</title>
+  <link rel="icon" href="../resources/imgs/ditto.png"></head>
+  <body>
+   <div class="login-page">
+     <div class="form">
+      <form class="register-form">
+        <input type="text" placeholder="name"/>
+        <input type="password" placeholder="password"/>
+        <input type="text" placeholder="email address"/>
+        <button>create</button>
+        <p class="message">Ya estar registrado? <a href="https://www.google.com.ar/search?q=the+answer+to+life+the+universe+and+everything&oq=the&aqs=chrome.0.69i59j69i61l2j69i59j69i65l2.966j0j7&sourceid=chrome&ie=UTF-8">Ingresar</a></p>
+      </form>
+      <form class="login-form" action="/principal" method="GET">
+        <input type="text" placeholder="username"/>
+        <input type="password" placeholder="password"/>
+        <button type="submit">login</button>
+        <p class="message">No estas registrado? <a href="#">Crea una cuenta</a></p>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

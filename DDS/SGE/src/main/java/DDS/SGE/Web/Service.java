@@ -22,7 +22,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
 	public static void main(String[] args) {
 		Spark.port(9000);
-		Spark.staticFiles.location("/public");
+		Spark.staticFiles.location("/templates");
 		DebugScreen.enableDebugScreen();
 
 		HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
@@ -35,6 +35,8 @@ public class Service {
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::loggear, engine);
+		get("/principal", PrincipalController::mostrar,engine);
 		get("/user/:id", UserController::mostrar, engine);
+		get("/panelAdministrador", PanelAdministradorController::verTodosLosHogares, engine);
 	}
 }

@@ -10,6 +10,9 @@
   <!-- Bootstrap core CSS -->
   <link href="../resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
 
+  <!--  Favicon -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
   <!-- Custom styles for this template -->
   <link href="../resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" rel="stylesheet">
   <title>Sistema de Gestión Energética</title>
@@ -42,20 +45,29 @@
   <div class="card-deck mb-2 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Optimizador</h4>
+        <h4 class="my-0 font-weight-normal">Hogares   <i class="fas fa-home"></i></h4>
       </div>
       <div class="card-body">
-        <p>Obtené la mejor combinación posible para el uso de tus dispositivos, así podés aprovecharlos al máximo, ¡y consumir lo menos posible!</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Optimizar</button>
+        <button type="button" action="/panelAdministrador" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Visualizador de consumo</h4>
+        <h4 class="my-0 font-weight-normal">Reportes   <i class="fas fa-clipboard-list"></i></h4>
       </div>
       <div class="card-body">
-        <p>¿Querés saber cuánto consumiste el mes pasado? Con el visualizador de consumo podés chequear tu consumo en un período determinado.</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Ver consumo</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary">De Hogar</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary">De Usuario</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary">De Transformador</button>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Dispositivos   <i class="fas fa-tv"></i></h4>
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-lg btn-block btn-primary">Nuevo Dispositivo</button>   
+                   
       </div>
     </div>
   </div>
