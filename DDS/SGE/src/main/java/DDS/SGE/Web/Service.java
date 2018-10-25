@@ -15,6 +15,7 @@ import DDS.SGE.Web.*;
 import DDS.SGE.Web.Controllers.ConsumoPorPeriodoController;
 import DDS.SGE.Web.Controllers.HomeController;
 import DDS.SGE.Web.Controllers.LoginController;
+import DDS.SGE.Web.Controllers.TransformadorController;
 import DDS.SGE.Web.Controllers.UserController;
 import spark.ModelAndView;
 import spark.Request;
@@ -42,5 +43,6 @@ public class Service {
 		get("/user/:id", UserController::mostrar, engine);
 		get("/consumo-por-servicio/:id",ConsumoPorPeriodoController::obtener, engine);
 		get("/consumo-por-servicio/",ConsumoPorPeriodoController::mostrar, engine);
+		get("/transformador",TransformadorController::mostrar, engine);
 	}
 }
