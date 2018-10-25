@@ -1,11 +1,11 @@
-package DDS.SGE.Web;
+package DDS.SGE.Web.Controllers;
 
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-public class UserController {
+public class TransformadorController {
 	public static ModelAndView mostrar(Request req, Response res) {
-		return new ModelAndView(null, "principal.hbs");
+		return new ModelAndView(null, "transformador.hbs");
 	}
 }
