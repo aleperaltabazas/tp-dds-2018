@@ -5,8 +5,8 @@
 .sge-logo{
   padding-top: 30px;
   display: block;
-  max-width: 25%;
-  max-height: 25%;
+  max-width: 35%;
+  max-height: 35%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -58,4 +58,9 @@
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
   color: white;
   background-color:cadetblue;
+}
+
+.register-link{
+  color: lightblue;
+  text-decoration: underline;
 }
