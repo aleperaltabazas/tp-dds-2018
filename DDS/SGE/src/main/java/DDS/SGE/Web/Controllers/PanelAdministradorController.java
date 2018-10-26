@@ -17,4 +17,9 @@ public class PanelAdministradorController {
 		
 		return new ModelAndView(null, "listado.hbs");
 	}
+	
+	public static ModelAndView nuevoDispositivo(Request req, Response res) {
+		
+		return new ModelAndView(null, "catalogo.hbs");
+	}
 }

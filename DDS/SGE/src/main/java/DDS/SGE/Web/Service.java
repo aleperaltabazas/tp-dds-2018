@@ -45,6 +45,7 @@ public class Service {
 		//get("/hogar/:username", HogarController::mostrar, engine);
 		get("/optimizador", OptimizadorController::mostrar, engine);
 		get("/administrador", PanelAdministradorController::mostrar, engine);
+		get("/administrador/new", PanelAdministradorController::nuevoDispositivo, engine);
 		get("/administrador/hogares", PanelAdministradorController::verTodosLosHogares, engine);
 		get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
 		//get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
