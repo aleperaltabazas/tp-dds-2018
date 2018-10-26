@@ -3,20 +3,25 @@ package DDS.SGE;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Administrador {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Administrador{
 	private String nombre;
 	private String apellido;
 	private String domicilio;
 	private LocalDateTime fechaAltaSistema;
-	private int idAdmin;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema,
-			int idAdmin) {
+	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
 		this.fechaAltaSistema = fechaAltaSistema;
-		this.idAdmin = idAdmin;
 	}
 
 	public String getNombre() {
@@ -30,11 +35,11 @@ public class Administrador {
 	public String getDomicilio() {
 		return this.domicilio;
 	}
-
-	public int getIdAdmin() {
-		return this.idAdmin;
+	
+	public Long getId() {
+		return this.id;
 	}
-
+	
 	public LocalDateTime getFechaAltaSistema() {
 		return this.fechaAltaSistema;
 	}

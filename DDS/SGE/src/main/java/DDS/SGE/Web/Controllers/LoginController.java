@@ -17,7 +17,13 @@ public class LoginController {
 	}
 	
 	public static ModelAndView login(Request req, Response res) {
-		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(req.queryParams("username"));
+		String username = req.queryParams("username");
+		
+		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(username);
+		
+		if(username.equals("admin")) {
+			res.redirect("/administrador");
+		}
 		
 		req.session().attribute(SESSION_NAME);
 		

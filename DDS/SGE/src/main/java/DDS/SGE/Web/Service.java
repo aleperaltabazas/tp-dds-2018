@@ -33,11 +33,6 @@ public class Service {
 				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
 			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
 		
-		Usuario usuarioPrueba2 = new Usuario("matigiorda", "123", 
-				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
-			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
-
-
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::login, engine);

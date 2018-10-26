@@ -3,6 +3,8 @@ package DDS.SGE;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -33,9 +35,5 @@ public class Usuario {
 
 	public String getUsername() {
 		return this.username;
-	}
-	
-	public Cliente getCliente() {
-		return this.cliente;
 	}
 }

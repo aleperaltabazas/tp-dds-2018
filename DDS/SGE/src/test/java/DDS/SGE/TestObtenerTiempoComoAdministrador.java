@@ -9,7 +9,7 @@ import org.junit.Test;
 public class TestObtenerTiempoComoAdministrador {
 
 	LocalDateTime fechaDeAltaDeMarco = LocalDateTime.of(2017, 3, 1, 1, 1);
-	Administrador unAdministrador = new Administrador("Marco", "Polo", "Rivadavia 1100", fechaDeAltaDeMarco, 42);
+	Administrador unAdministrador = new Administrador("Marco", "Polo", "Rivadavia 1100", fechaDeAltaDeMarco);
 
 	@Test
 	public void testUnAdministradorTieneMesesComoAdminIgualALaDiferenciaEntreLaFechaActualYLaFechaDeAlta() {
