@@ -17,4 +17,9 @@ public class PanelAdministradorController {
 		
 		return new ModelAndView(null, "listado.hbs");
 	}
+	
+	public static ModelAndView catalogo(Request req, Response res) {
+		res.redirect("/administrador/catalogo");
+		return new ModelAndView(null, "catalogo.hbs");
+	}
 }
