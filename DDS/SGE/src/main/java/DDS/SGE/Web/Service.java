@@ -12,11 +12,7 @@ import DDS.SGE.*;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Regla.*;
 import DDS.SGE.Web.*;
-import DDS.SGE.Web.Controllers.ConsumoPorPeriodoController;
-import DDS.SGE.Web.Controllers.HomeController;
-import DDS.SGE.Web.Controllers.LoginController;
-import DDS.SGE.Web.Controllers.TransformadorController;
-import DDS.SGE.Web.Controllers.UserController;
+import DDS.SGE.Web.Controllers.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -41,10 +37,11 @@ public class Service {
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::loggear, engine);
 		get("/principal", PrincipalController::mostrar,engine);
-		get("/user/:id", UserController::mostrar, engine);
+		get("/user", UserController::mostrar, engine);
+		get("/user/:username", UserController::mostrar, engine);
 		get("/panelAdministrador", PanelAdministradorController::verTodosLosHogares, engine);
+		get("/consumo-por-servicio",ConsumoPorPeriodoController::mostrar, engine);
 		get("/consumo-por-servicio/:id",ConsumoPorPeriodoController::obtener, engine);
-		get("/consumo-por-servicio/",ConsumoPorPeriodoController::mostrar, engine);
 		get("/transformador",TransformadorController::mostrar, engine);
 	}
 }

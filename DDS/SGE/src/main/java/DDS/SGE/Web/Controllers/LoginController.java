@@ -8,20 +8,27 @@ import spark.Response;
 
 public class LoginController {
 	
+	private static final String SESSION_NAME = "username";
+	
 	public static ModelAndView mostrar(Request req, Response res) {
+		
 		//Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
 		return new ModelAndView(null, "login.hbs");
 	}
 	
 	public static ModelAndView loggear(Request req, Response res) {
-		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(req.params("usuario"));
-		if(usuario.getPassword().equals(req.params("password"))) {
-			res.redirect("/");
+		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(req.queryParams("username"));
+		
+		req.session().attribute(SESSION_NAME);
+		
+		if(usuario.getPassword().equals(req.queryParams("password"))) {
+			res.redirect("/user" + usuario.getUsername());
+			req.session().attribute(SESSION_NAME, usuario.getUsername());
 		}
 		else {
-			res.redirect("login");
+			res.redirect("/login");
 		}
-		req.session().attribute("usuarioId", usuario.getId());
+	
 		return new ModelAndView(null, "login.hbs");
 	}
 }
