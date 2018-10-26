@@ -48,7 +48,9 @@
         <h4 class="my-0 font-weight-normal">Hogares   <i class="fas fa-home"></i></h4>
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
+      <form action="/administrador/hogares" method="GET">
+        <button type="submit" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
+      </form>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -56,9 +58,15 @@
         <h4 class="my-0 font-weight-normal">Reportes   <i class="fas fa-clipboard-list"></i></h4>
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Hogar</button>
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Usuario</button>
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Transformador</button>
+      <form action="/hogar" method="GET">     
+        <button type="submit" class="btn btn-lg btn-block btn-primary">De Hogar</button>
+      </form>
+      <form action="/" method="GET">     
+        <button type="submit" class="btn btn-lg btn-block btn-primary">De Usuario</button>
+      </form>
+      <form action="/transformador" method="GET">     
+        <button type="submit" class="btn btn-lg btn-block btn-primary">De Transformador</button>
+      </form>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">

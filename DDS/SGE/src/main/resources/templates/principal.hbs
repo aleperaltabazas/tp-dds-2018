@@ -46,7 +46,9 @@
       </div>
       <div class="card-body">
         <p>Obtené la mejor combinación posible para el uso de tus dispositivos, así podés aprovecharlos al máximo, ¡y consumir lo menos posible!</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Optimizar</button>
+        <form action="/optimizador" method="GET">
+        <button type="submit" class="btn btn-lg btn-block btn-primary">Optimizar</button>
+        </form>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -55,7 +57,9 @@
       </div>
       <div class="card-body">
         <p>¿Querés saber cuánto consumiste el mes pasado? Con el visualizador de consumo podés chequear tu consumo en un período determinado.</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Ver consumo</button>
+        <form action="/consumo" method="GET">
+        	<button type="submit" class="btn btn-lg btn-block btn-primary">Ver consumo</button>
+        </form>
       </div>
     </div>
   </div>
