@@ -127,12 +127,8 @@ public class TestDispositivo {
 
 		em.persist(clienteConUnDispositivoInteligente);
 		em.persist(inteligente);
-		em.flush();
 		em.persist(dispositivoInteligente);
-
-		em.flush();
-		
-		
+				
 		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
 
 		DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido

@@ -6,6 +6,6 @@ import spark.Response;
 
 public class UserController {
 	public static ModelAndView mostrar(Request req, Response res) {
-		return new ModelAndView(null, "mi hogar.hbs");
+		return new ModelAndView(null, "principal.hbs");
 	}
 }

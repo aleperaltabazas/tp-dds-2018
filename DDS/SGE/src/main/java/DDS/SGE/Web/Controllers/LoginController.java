@@ -22,10 +22,12 @@ public class LoginController {
 		req.session().attribute(SESSION_NAME);
 		
 		if(usuario.getPassword().equals(req.queryParams("password"))) {
-			res.redirect("/user" + usuario.getUsername());
+			//Se deberia hacer con el Id
+			res.redirect("/user/" + usuario.getUsername());
 			req.session().attribute(SESSION_NAME, usuario.getUsername());
 		}
 		else {
+			//Se podria mostrar un "error en el login"
 			res.redirect("/login");
 		}
 	
