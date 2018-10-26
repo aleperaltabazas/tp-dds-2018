@@ -16,7 +16,7 @@ public class LoginController {
 		return new ModelAndView(null, "login.hbs");
 	}
 	
-	public static ModelAndView loggear(Request req, Response res) {
+	public static ModelAndView login(Request req, Response res) {
 		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(req.queryParams("username"));
 		
 		req.session().attribute(SESSION_NAME);
@@ -25,12 +25,14 @@ public class LoginController {
 			//Se deberia hacer con el Id
 			res.redirect("/user/" + usuario.getUsername());
 			req.session().attribute(SESSION_NAME, usuario.getUsername());
+			
 		}
 		else {
 			//Se podria mostrar un "error en el login"
-			res.redirect("/login");
+			return new ModelAndView(null, "loginError.hbs");
 		}
 	
 		return new ModelAndView(null, "login.hbs");
 	}
+	
 }

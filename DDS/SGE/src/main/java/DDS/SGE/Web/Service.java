@@ -40,7 +40,7 @@ public class Service {
 
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);
-		post("/login", LoginController::loggear, engine);
+		post("/login", LoginController::login, engine);
 		get("/principal", PrincipalController::mostrar,engine);
 		get("/user", UserController::mostrar, engine);
 		//La idea es que sea el id en lugar del username
