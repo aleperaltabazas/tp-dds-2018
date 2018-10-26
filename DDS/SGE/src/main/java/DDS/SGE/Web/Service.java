@@ -32,16 +32,27 @@ public class Service {
 		Usuario usuarioPrueba = new Usuario("matigiorda", "123", 
 				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
 			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
+		
+		Usuario usuarioPrueba2 = new Usuario("matigiorda", "123", 
+				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
+			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
+
 
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::loggear, engine);
 		get("/principal", PrincipalController::mostrar,engine);
 		get("/user", UserController::mostrar, engine);
+		//La idea es que sea el id en lugar del username
 		get("/user/:username", UserController::mostrar, engine);
-		get("/panelAdministrador", PanelAdministradorController::verTodosLosHogares, engine);
-		get("/consumo-por-servicio",ConsumoPorPeriodoController::mostrar, engine);
-		get("/consumo-por-servicio/:id",ConsumoPorPeriodoController::obtener, engine);
+		//Tanto el hogar como el optimizador deberian saber de que usuario sacar la informacion
+		get("/hogar", HogarController::mostrar, engine);
+		//get("/hogar/:username", HogarController::mostrar, engine);
+		get("/optimizador", OptimizadorController::mostrar, engine);
+		get("/administrador", PanelAdministradorController::mostrar, engine);
+		get("/administrador/hogares", PanelAdministradorController::verTodosLosHogares, engine);
+		get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
+		//get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
 		get("/transformador",TransformadorController::mostrar, engine);
 	}
 }

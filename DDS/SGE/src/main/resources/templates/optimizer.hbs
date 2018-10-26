@@ -14,7 +14,6 @@
   <link href="../resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" rel="stylesheet">
   <title>Sistema de Gestión Energética</title>
   <link rel="icon" href="../resources/imgs/ditto.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -25,13 +24,13 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <div class="row">
         <a class="p-2 text-dark" href="https://google.com"><h1 style="color:#717171;"><img style="padding:15px; width:100px; height:100px;"
-          src="../resources/imgs/casa.png"
+          src="http://tanatos.cl/wp-content/uploads/2015/10/hogares.png"
           alt="SGE" /> Mi Hogar 
         </h1> 
       </a>
       <a class="p-2 text-dark" href="https://google.com">
         <h1 style="color:#717171;"><img style="padding:15px; width:100px; height:100px;" 
-          src="../resources/imgs/user.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIoeXqhg2tMzdJ_FOKG93m4EG6sRcpw3Wga1EGVJSl5VdQ0Zxe"
           alt="SGE" />Usuario
         </h1> 
       </a>
@@ -41,22 +40,15 @@
 
 <div class="container tools-padding">
   <div class="card-deck mb-2 text-center">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Optimizador</h4>
+    <div class="mb-4">
+      <div>
+        <h3 class="my-0 font-weight-normal">Resultado del optimizador</h3>
+        <h2> {{resultado}} </h2>
       </div>
       <div class="card-body">
-        <p>Obtené la mejor combinación posible para el uso de tus dispositivos, así podés aprovecharlos al máximo, ¡y consumir lo menos posible!</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-bolt"></i> Optimizar</button>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal"> Visualizador de consumo</h4>
-      </div>
-      <div class="card-body">
-        <p>¿Querés saber cuánto consumiste el mes pasado? Con el visualizador de consumo podés chequear tu consumo en un período determinado.</p>
-        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-calendar"></i> Ver consumo</button>
+        <p>Nuestro optimizador emplea el método símplex, un algoritmo de resolución de problemas de programación lineal que busca optimizar una función objetivo, de forma que esta función está sujeta a ciertas condiciones.</p>
+        <p>En nuestro caso, nuestro objetivo es que puedas maximizar el uso de tus dispositivos en base a los límites de uso puestos para los mismos.</p>
+        <p>Para más información respecto al mismo, podés ver una explicación más detallada<a href="https://www.google.com.ar/search?ei=JIfSW8CuN8acwATqvJiwAg&q=the+answer+to+life+the+universe+and+everything&oq=the+answer+&gs_l=psy-ab.3.0.0l10.99664.101658.0.102329.11.8.0.3.3.0.153.991.2j6.8.0....0...1c.1.64.psy-ab..0.11.1003...0i131k1j0i67k1.0.GXFjNuHpQHE"> acá!</a></p>
       </div>
     </div>
   </div>
