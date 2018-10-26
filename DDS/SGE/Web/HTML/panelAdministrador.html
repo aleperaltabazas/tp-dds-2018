@@ -17,6 +17,8 @@
   <link href="../resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" rel="stylesheet">
   <title>Sistema de Gestión Energética</title>
   <link rel="icon" href="../resources/imgs/ditto.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/admin.css">
 </head>
 
 <body>
@@ -27,13 +29,13 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <div class="row">
         <a class="p-2 text-dark" href="https://google.com"><h1 style="color:#717171;"><img style="padding:15px; width:100px; height:100px;"
-          src="http://tanatos.cl/wp-content/uploads/2015/10/hogares.png"
+          src="../resources/imgs/casa.png"
           alt="SGE" /> Mi Hogar 
         </h1> 
       </a>
       <a class="p-2 text-dark" href="https://google.com">
         <h1 style="color:#717171;"><img style="padding:15px; width:100px; height:100px;" 
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIoeXqhg2tMzdJ_FOKG93m4EG6sRcpw3Wga1EGVJSl5VdQ0Zxe"
+          src="../resources/imgs/user.png"
           alt="SGE" />Usuario
         </h1> 
       </a>
@@ -42,13 +44,18 @@
 </div>
 
 <div class="container tools-padding">
+  <div class="container">
+    <div class="row">
+      <h1 class="admin-panel">Panel de administrador</h1>
+    </div>
+  </div>
   <div class="card-deck mb-2 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
         <h4 class="my-0 font-weight-normal">Hogares   <i class="fas fa-home"></i></h4>
       </div>
       <div class="card-body">
-        <button type="button" action="/panelAdministrador" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
+        <button type="button" action="/panelAdministrador" class="btn btn-lg btn-block btn-primary"> <i class="fa fa-users"></i> Ver Todos</button>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -56,9 +63,9 @@
         <h4 class="my-0 font-weight-normal">Reportes   <i class="fas fa-clipboard-list"></i></h4>
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Hogar</button>
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Usuario</button>
-        <button type="button" class="btn btn-lg btn-block btn-primary">De Transformador</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-home"></i> De Hogar</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-user"></i> De Usuario</button>
+        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-plug"></i> De Transformador</button>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -66,7 +73,7 @@
         <h4 class="my-0 font-weight-normal">Dispositivos   <i class="fas fa-tv"></i></h4>
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-lg btn-block btn-primary">Nuevo Dispositivo</button>   
+        <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fa fa-plus"></i>   Nuevo Dispositivo</button>   
                    
       </div>
     </div>
