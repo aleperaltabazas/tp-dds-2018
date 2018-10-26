@@ -13,7 +13,7 @@ public class Lavarropas extends Fabricante {
 		this.kilos = kilos;
 		this.automatico = automatico;
 		this.calentamiento = calentamiento;
-		this.consumoKWPorHora = 0.875;
+		this.consumoKWPorHora = 0.175;
 		inicializarUsoMinimoYMaximo(6, 30);
 	}
 	

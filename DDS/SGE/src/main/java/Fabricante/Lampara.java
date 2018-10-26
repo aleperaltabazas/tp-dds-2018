@@ -11,7 +11,7 @@ public class Lampara extends Fabricante {
 	public Lampara(int watts, Boolean halogenas) {
 		this.watts = watts;
 		this.halogenas = halogenas;
-		this.consumoKWPorHora = 0.04;
+		this.consumoKWPorHora = watts/100;
 		inicializarUsoMinimoYMaximo(90, 360);
 	}
 	

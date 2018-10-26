@@ -12,4 +12,10 @@ public class Heladera extends Fabricante {
 		this.consumoKWPorHora = 0.09;
 		inicializarUsoMinimoYMaximo(90, 360);
 	}
+	
+	public Heladera(double consumo, Boolean freezer) {
+		this.freezer = freezer;
+		this.consumoKWPorHora = consumo;
+		inicializarUsoMinimoYMaximo(90, 360);
+	}
 }

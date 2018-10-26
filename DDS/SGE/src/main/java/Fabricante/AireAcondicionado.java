@@ -17,6 +17,12 @@ public class AireAcondicionado extends Fabricante {
 		this.temperaturaDelDispositivo = 0;
 	}
 	
+	public AireAcondicionado(int frigorias, double consumo) {
+		this.frigorias = frigorias;
+		inicializarUsoMinimoYMaximo(90, 360);
+		this.temperaturaDelDispositivo = 0;
+	}
+	
 	@Override
 	public void actuar() {
 		this.ponerElAireEn(temperaturaRecomendada);

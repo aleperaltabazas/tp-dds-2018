@@ -18,4 +18,11 @@ public class Televisor extends Fabricante {
 		this.consumoKWPorHora = 0.075;
 		inicializarUsoMinimoYMaximo(90, 360);
 	}
+	
+	public Televisor(int pulgadas,TipoTelevisor tipo, double consumo) {
+		this.pulgadas = pulgadas;
+		this.tipo = tipo;
+		this.consumoKWPorHora = consumo;
+		inicializarUsoMinimoYMaximo(90, 360);
+	}
 }
