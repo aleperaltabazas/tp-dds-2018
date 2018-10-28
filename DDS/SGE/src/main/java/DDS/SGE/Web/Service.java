@@ -38,8 +38,7 @@ public class Service {
 		post("/login", LoginController::login, engine);
 		get("/principal", PrincipalController::mostrar,engine);
 		get("/user", UserController::mostrar, engine);
-		//La idea es que sea el id en lugar del username
-		get("/user/:username", UserController::mostrar, engine);
+		get("/user/:id", UserController::mostrar, engine);
 		//Tanto el hogar como el optimizador deberian saber de que usuario sacar la informacion
 		get("/hogar", HogarController::mostrar, engine);
 		//get("/hogar/:username", HogarController::mostrar, engine);

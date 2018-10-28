@@ -11,7 +11,7 @@ import spark.Response;
 
 public class LoginController {
 	
-	private static final String SESSION_NAME = "username";
+	private static final String SESSION_NAME = "id";
 	
 	public static ModelAndView mostrar(Request req, Response res) {
 		
@@ -20,31 +20,27 @@ public class LoginController {
 	}
 	
 	public static ModelAndView login(Request req, Response res) {
+
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 		
 		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(username);
-
-		if(username.equals("admin")) {
-			res.redirect("/administrador");
-		}
 		
 		req.session().attribute(SESSION_NAME);
 		
 		if(usuario.getPassword().equals(password)) {
-			//Se deberia hacer con el Id
-			res.redirect("/user/" + usuario.getUsername());
-			req.session().attribute(SESSION_NAME, usuario.getUsername());
-			
-		} else {
-			//Se podria mostrar un "error en el login"
-			Map<String, Object> viewmodel = new HashMap();
+			String id = Long.toString(usuario.getId());
+			res.redirect("/user/" + id);
+			req.session().attribute(SESSION_NAME, id);			
+		} 
+		
+		else {
+			Map<String, Object> viewmodel = new HashMap<String, Object>();
 			viewmodel.put("username", username);
 			viewmodel.put("password", password);
 			return new ModelAndView(viewmodel, "loginError.hbs");
 		}
 	
 		return new ModelAndView(null, "login.hbs");
-	}
-	
+	}	
 }

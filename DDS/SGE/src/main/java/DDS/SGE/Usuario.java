@@ -36,4 +36,8 @@ public class Usuario {
 	public String getUsername() {
 		return this.username;
 	}
+	
+	public Cliente getCliente() {
+		return this.cliente;
+	}
 }
