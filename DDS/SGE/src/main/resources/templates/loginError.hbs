@@ -117,9 +117,9 @@ body {
         <p class="message">Ya estar registrado? <a href="https://www.google.com.ar/search?q=the+answer+to+life+the+universe+and+everything&oq=the&aqs=chrome.0.69i59j69i61l2j69i59j69i65l2.966j0j7&sourceid=chrome&ie=UTF-8">Ingresar</a></p>
       </form>
       <form class="login-form" action="/login" method="POST">
-        <p class="error">No se encontró esa combinación de usuario y contraseña</p>
-        <input type="text" placeholder="username" name="username"/>
-        <input type="password" placeholder="password" name="password"/>
+        <p class="error">No se encontró el usuario</p>
+        <input type="text" placeholder="username" name="username" value="{{ username }}"/>
+        <input type="password" placeholder="password" name="password" value="{{ password }}"/>
         <button type="submit">login</button>
         <p class="message">No estas registrado? <a href="#">Crea una cuenta</a></p>
       </form>
