@@ -11,6 +11,8 @@ public class Apagar extends Actuador {
 	@OneToOne
 	DispositivoInteligente dispositivo;
 	
+	protected Apagar() {};
+	
 	public Apagar(DispositivoInteligente dispositivo) {
 		this.dispositivo = dispositivo;
 	}

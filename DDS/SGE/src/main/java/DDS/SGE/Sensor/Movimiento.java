@@ -1,7 +1,12 @@
 package DDS.SGE.Sensor;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Movimiento extends Sensor {
 	boolean movimientoDetectado = false;
+	
+	protected Movimiento() {}
 	
 	public void setMovimientoDetectado(boolean value) {
 		movimientoDetectado = value;

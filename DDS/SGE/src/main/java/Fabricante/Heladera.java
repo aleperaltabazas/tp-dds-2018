@@ -7,6 +7,8 @@ public class Heladera extends Fabricante {
 
 	Boolean freezer;
 	
+	protected Heladera() {}
+	
 	public Heladera(Boolean freezer) {
 		this.freezer = freezer;
 		this.consumoKWPorHora = 0.09;

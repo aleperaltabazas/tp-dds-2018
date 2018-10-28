@@ -25,6 +25,8 @@ public class DispositivoInteligente extends TipoDispositivo {
 
 	@Embedded
 	RepositorioDeTiempoEncendido repositorio;
+	
+	protected DispositivoInteligente() {}
 
 	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {
 		this.estado = estado;

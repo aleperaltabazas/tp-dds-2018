@@ -1,7 +1,12 @@
 package DDS.SGE.Sensor;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Humedad extends Sensor {
 	double humedadActual;
+	
+	protected Humedad() {}
 	
 	public void setHumedadActual(int nuevaHumedad) {
 		humedadActual = nuevaHumedad;		

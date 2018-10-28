@@ -15,6 +15,8 @@ public class Temperatura extends Sensor {
 
 	double temperaturaAmbiente = 22;
 	double temperaturaActual;
+	
+	protected Temperatura() {}
 
 	public Temperatura(double temperaturaAmbiente, DispositivoInteligente unDispositivo) {
 		this.temperaturaAmbiente = temperaturaAmbiente;

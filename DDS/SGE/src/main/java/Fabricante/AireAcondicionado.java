@@ -10,6 +10,8 @@ public class AireAcondicionado extends Fabricante {
 	double temperaturaDelDispositivo;
 	double temperaturaRecomendada = 24;
 	
+	protected AireAcondicionado() {}
+	
 	public AireAcondicionado(int frigorias) {
 		this.frigorias = frigorias;
 		this.consumoKWPorHora = 1.013;

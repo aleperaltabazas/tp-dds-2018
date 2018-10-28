@@ -29,9 +29,10 @@ public class Service {
 		HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
 		HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
 		
-		Usuario usuarioPrueba = new Usuario("matigiorda", "123", 
-				new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
-			"Calle verdadera 321", LocalDateTime.now(), Arrays.asList()));
+		Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
+				"Calle verdadera 321", LocalDateTime.now(), Arrays.asList());
+		Usuario usuarioPrueba = new Usuario("matigiorda", "123", cliente);
+		RepositorioClientes.instancia.agregarCliente(cliente);
 		
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);

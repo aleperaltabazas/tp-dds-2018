@@ -23,6 +23,8 @@ public class Dispositivo {
 
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private TipoDispositivo tipo;
+	
+	protected Dispositivo() {}
 
 	public Dispositivo(TipoDispositivo tipo) {
 		this.tipo = tipo;

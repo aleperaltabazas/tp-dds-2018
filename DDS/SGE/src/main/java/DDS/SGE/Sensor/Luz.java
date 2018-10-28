@@ -1,8 +1,13 @@
 package DDS.SGE.Sensor;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Luz extends Sensor {
 	double intensidadLuminicaAmbiente;
 	double luzActual;
+	
+	protected Luz() {}
 	
 	public Luz(double luzAmbiente) {
 		this.intensidadLuminicaAmbiente = luzAmbiente;

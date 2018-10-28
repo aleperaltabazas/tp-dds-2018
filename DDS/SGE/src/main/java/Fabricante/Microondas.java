@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 @Entity
 public class Microondas extends Fabricante {
 
-	int usoMensualMinimo = 3;
-	int usoMensualMaximo = 15;
+	protected Microondas() {}
+	
+	/*public Microondas() {
+		this.usoMensualMinimo = 3;
+		this.usoMensualMaximo = 15;
+	}*/
 	
 }

@@ -9,6 +9,8 @@ public class Lavarropas extends Fabricante {
 	Boolean automatico;
 	Boolean calentamiento;
 	
+	protected Lavarropas() {}
+	
 	public Lavarropas(int kilos, Boolean automatico, Boolean calentamiento) {
 		this.kilos = kilos;
 		this.automatico = automatico;

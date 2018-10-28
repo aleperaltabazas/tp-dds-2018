@@ -52,6 +52,10 @@ public class Cliente {
 	@Transient
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
+	protected Cliente() {
+		
+	}
+	
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
 			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
 		this.nombre = nombre;
@@ -64,7 +68,6 @@ public class Cliente {
 		this.categoria = Categoria.R1;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
-		// this.zona = zona; --- YA NO VA
 	}
 
 	public enum TipoDni {

@@ -1,14 +1,18 @@
 package DDS.SGE.Sensor;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 import DDS.SGE.Dispositivo.Dispositivo;
 
+@Entity
 public class Consumo extends Sensor {
 
 	@OneToOne
 	Dispositivo dispositivo;
 	static int HORAS_DEL_MES = 24 * 30;
+	
+	protected Consumo() {}
 	
 	public Consumo(Dispositivo dispositivo) {
 		this.dispositivo = dispositivo;

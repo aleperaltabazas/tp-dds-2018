@@ -1,10 +1,17 @@
 package DDS.SGE.Actuador;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
 import DDS.SGE.Dispositivo.DispositivoInteligente;
 
+@Entity
 public class CambiarTemperaturaAireAcondicionado extends Actuador{
 	
+	@OneToOne
 	DispositivoInteligente dispositivo;
+	
+	protected CambiarTemperaturaAireAcondicionado() {}
 	
 	public CambiarTemperaturaAireAcondicionado(DispositivoInteligente dispositivo) {
 		this.dispositivo = dispositivo;

@@ -7,31 +7,23 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-public class RepositorioClientes {
-	List<Cliente> clientes = new ArrayList<Cliente>(Arrays.asList());
-	EntityManager em = EntityManagerHelper.entityManager();
-	
-	private RepositorioClientes() {
-		TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
-		clientes = query.getResultList();
-	}
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+public class RepositorioClientes implements WithGlobalEntityManager{
+	
 	public static RepositorioClientes instancia = new RepositorioClientes();
 
-	public List<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
-	}
-
 	public void agregarCliente(Cliente cliente) {
-		clientes.add(cliente);
+		entityManager().persist(cliente);
 	}
 	
-	public Cliente getCliente (Long idCliente) {
-		return clientes.stream().filter(cliente -> cliente.getId() == idCliente).findFirst().orElse(null);
+	public List<Cliente> getClientes() {
+		return entityManager().createQuery("from Cliente", Cliente.class)
+		.getResultList();
 	}
 	
+	public Cliente getCliente (Long id) {
+		return entityManager().find(Cliente.class, id);
+	}
 }
+

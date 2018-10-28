@@ -18,6 +18,8 @@ public class Regla {
 
 	@ManyToOne()
 	private Actuador actuador;
+	
+	protected Regla() {}
 
 	public Regla(List<Sensor> sensores, Actuador actuador) {
 		this.sensores = sensores;

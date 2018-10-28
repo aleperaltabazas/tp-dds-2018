@@ -11,7 +11,9 @@ public class Televisor extends Fabricante {
 	
 	TipoTelevisor tipo;
 	int pulgadas;
-
+	
+	protected Televisor() {}
+	
 	public Televisor(int pulgadas,TipoTelevisor tipo) {
 		this.pulgadas = pulgadas;
 		this.tipo = tipo;

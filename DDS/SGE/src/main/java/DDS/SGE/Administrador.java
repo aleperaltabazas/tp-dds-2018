@@ -17,6 +17,10 @@ public class Administrador{
 	@GeneratedValue
 	private Long id;
 
+	protected Administrador() {
+		
+	}
+	
 	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema) {
 		this.nombre = nombre;
 		this.apellido = apellido;

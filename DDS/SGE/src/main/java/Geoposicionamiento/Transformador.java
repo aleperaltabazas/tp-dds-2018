@@ -22,6 +22,8 @@ public class Transformador {
 
 	double energia;
 	boolean activo;
+	
+	protected Transformador() {}
 
 	public Transformador(int i) {
 		codigo = i;

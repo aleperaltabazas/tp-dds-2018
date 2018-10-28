@@ -13,6 +13,8 @@ public class IntervaloActivo {
 	LocalDateTime tiempoInicial;
 	LocalDateTime tiempoFinal;
 	
+	protected IntervaloActivo() {}
+	
 	public IntervaloActivo(LocalDateTime tiempoInicial, LocalDateTime tiempoFinal) {
 		this.tiempoInicial = tiempoInicial;
 		this.tiempoFinal = tiempoFinal;

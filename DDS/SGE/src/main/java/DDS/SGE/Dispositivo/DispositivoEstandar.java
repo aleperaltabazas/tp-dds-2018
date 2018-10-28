@@ -14,6 +14,8 @@ public class DispositivoEstandar extends TipoDispositivo {
 
 	long usoEstimadoDiario;
 	double consumoKWPorHora;
+	
+	protected DispositivoEstandar() {}
 
 	public DispositivoEstandar(long usoEstimadoDiario, double consumoKWPorHora) {
 		this.usoEstimadoDiario = usoEstimadoDiario;

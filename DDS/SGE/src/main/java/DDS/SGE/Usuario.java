@@ -18,6 +18,8 @@ public class Usuario {
 	@OneToOne
 	Cliente cliente;
 	
+	protected Usuario() {}
+	
 	public Usuario(String username, String password, Cliente cliente) {
 		this.username = username;
 		this.password = password;
@@ -30,7 +32,7 @@ public class Usuario {
 	}
 	
 	public Long getId() {
-		return this.id;
+		return this.getCliente().getId();
 	}
 
 	public String getUsername() {

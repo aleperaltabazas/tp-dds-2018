@@ -8,6 +8,8 @@ public class Lampara extends Fabricante {
 	int watts;
 	Boolean halogenas;
 	
+	protected Lampara() {}
+	
 	public Lampara(int watts, Boolean halogenas) {
 		this.watts = watts;
 		this.halogenas = halogenas;
