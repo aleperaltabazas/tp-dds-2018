@@ -51,5 +51,20 @@ public class LoginController {
 		String password = req.queryParams("password");
 		
 		Administrador admin = RepositorioAdministradores.instancia.findByUsername(username);
+		
+		req.session().attribute(SESSION_NAME);
+		
+		if(admin.getPassword()!= password) {
+			Map<String, Object> viewmodel = new HashMap<String, Object>();
+			viewmodel.put("username", username);
+			viewmodel.put("password", password);
+			return new ModelAndView(viewmodel, "loginError.hbs");
+		} else {
+			String id = Long.toString(admin.getId());
+			res.redirect("/administrador/" + id);
+			req.session().attribute(SESSION_NAME, id);
+		}
+		
+		return new ModelAndView(null, "login.hbs");
 	}
 }
