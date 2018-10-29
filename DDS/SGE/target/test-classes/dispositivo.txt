@@ -1,1 +1,0 @@
-{nombre:dispositivox,consumoKWPorHora:12,encendido:true}

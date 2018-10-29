@@ -37,6 +37,7 @@ public class Service {
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginController::mostrar, engine);
 		post("/login", LoginController::login, engine);
+		get("/administrador/login", LoginController::loginAdmin, engine);
 		get("/principal", PrincipalController::mostrar,engine);
 		get("/user", UserController::mostrar, engine);
 		get("/user/:id", UserController::mostrar, engine);
@@ -50,5 +51,6 @@ public class Service {
 		get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
 		//get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
 		get("/transformador",TransformadorController::mostrar, engine);
+		
 	}
 }

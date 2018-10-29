@@ -3,6 +3,8 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import DDS.SGE.Administrador;
+import DDS.SGE.RepositorioAdministradores;
 import DDS.SGE.RepositorioUsuarios;
 import DDS.SGE.Usuario;
 import spark.ModelAndView;
@@ -43,4 +45,11 @@ public class LoginController {
 	
 		return new ModelAndView(null, "login.hbs");
 	}	
+	
+	public static ModelAndView loginAdmin(Request req, Response res) {
+		String username = req.queryParams("username");
+		String password = req.queryParams("password");
+		
+		Administrador admin = RepositorioAdministradores.instancia.findByUsername(username);
+	}
 }

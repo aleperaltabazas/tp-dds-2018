@@ -13,6 +13,7 @@ public class Administrador{
 	private String apellido;
 	private String domicilio;
 	private LocalDateTime fechaAltaSistema;
+	private String password;
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -55,5 +56,9 @@ public class Administrador{
 	public long cantidadDeMesesComoAdmin() {
 		LocalDateTime localDate = LocalDateTime.now();
 		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
+	}
+
+	public String getPassword() {
+		return this.password;
 	}
 }

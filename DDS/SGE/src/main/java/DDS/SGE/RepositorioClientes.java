@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+import com.mysql.cj.Query;
+
 public class RepositorioClientes implements WithGlobalEntityManager{
 	
 	public static RepositorioClientes instancia = new RepositorioClientes();
@@ -25,5 +27,13 @@ public class RepositorioClientes implements WithGlobalEntityManager{
 	public Cliente getCliente (Long id) {
 		return entityManager().find(Cliente.class, id);
 	}
+	
+	public Cliente findByUsername(String username) {
+		EntityManager em = EntityManagerHelper.entityManager();
+		
+		TypedQuery<Cliente> query = em.createQuery("SELECT c.nombre FROM Cliente c where c.nombre = " + username, Cliente.class);
+		return query.getSingleResult();
+	}
+	
 }
 
