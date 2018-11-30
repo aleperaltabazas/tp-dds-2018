@@ -24,8 +24,9 @@ public class RepositorioClientes implements WithGlobalEntityManager {
 		EntityManager em = EntityManagerHelper.entityManager();
 
 		List<Cliente> clientes = em
-				.createQuery("SELECT u.username FROM Usuario u where u.username LIKE :_username ", Cliente.class)
-				.setParameter("_username", username).setMaxResults(1).getResultList();
+				.createQuery("from Cliente c where c.username LIKE :username", Cliente.class)
+				.setParameter("username", username)
+				.getResultList();
 
 		return clientes.get(0);
 	}
