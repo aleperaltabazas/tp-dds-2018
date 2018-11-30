@@ -31,13 +31,12 @@ public class Service {
 		
 		Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
 				"Calle verdadera 321", LocalDateTime.now(), Arrays.asList());
-		Usuario usuarioPrueba = new Usuario("matigiorda", "123", cliente);
 		RepositorioClientes.instancia.agregarCliente(cliente);
 		
 		get("/", HomeController::mostrar, engine);	
-		get("/login", LoginController::mostrar, engine);
-		post("/login", LoginController::login, engine);
-		get("/administrador/login", LoginController::loginAdmin, engine);
+		get("/login", LoginClienteController::mostrar, engine);
+		post("/login", LoginClienteController::login, engine);
+		get("/administrador/login", LoginClienteController::loginAdmin, engine);
 		get("/principal", PrincipalController::mostrar,engine);
 		get("/user", UserController::mostrar, engine);
 		get("/user/:id", UserController::mostrar, engine);

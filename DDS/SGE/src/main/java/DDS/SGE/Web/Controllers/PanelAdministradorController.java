@@ -1,7 +1,5 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.RepositorioUsuarios;
-import DDS.SGE.Usuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

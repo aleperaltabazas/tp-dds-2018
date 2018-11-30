@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import DDS.SGE.Administrador;
+import DDS.SGE.Cliente;
 import DDS.SGE.RepositorioAdministradores;
-import DDS.SGE.RepositorioUsuarios;
-import DDS.SGE.Usuario;
+import DDS.SGE.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-public class LoginController {
+public class LoginClienteController {
 	
 	private static final String SESSION_NAME = "id";
 	
@@ -26,7 +26,7 @@ public class LoginController {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 		
-		Usuario usuario = RepositorioUsuarios.instancia.buscarSegunNombre(username);
+		Cliente usuario = RepositorioClientes.instancia.findByUsername(username);
 		
 		req.session().attribute(SESSION_NAME);
 		

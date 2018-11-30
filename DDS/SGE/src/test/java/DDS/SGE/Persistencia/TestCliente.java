@@ -15,7 +15,7 @@ public class TestCliente {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		RepositorioClientes.instancia.agregarCliente(cliente);
 	}
 
 }
