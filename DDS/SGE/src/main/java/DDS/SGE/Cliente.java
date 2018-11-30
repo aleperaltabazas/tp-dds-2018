@@ -20,6 +20,8 @@ import Geoposicionamiento.Zona;
 
 @Entity
 public class Cliente {
+	private String username;
+	private String password;
 
 	@Id
 	@GeneratedValue
@@ -53,9 +55,9 @@ public class Cliente {
 	private InteresadoEnAdaptaciones interesadoEnAdaptaciones = new InteresadoEnAdaptaciones();
 
 	protected Cliente() {
-		
+
 	}
-	
+
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
 			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
 		this.nombre = nombre;
@@ -138,8 +140,8 @@ public class Cliente {
 	}
 
 	public double consumoTotalEstimadoDiario() {
-		if(!this.dispositivos.isEmpty()) {
-		return this.consumoDispositivosDiarioEstimado().sum();
+		if (!this.dispositivos.isEmpty()) {
+			return this.consumoDispositivosDiarioEstimado().sum();
 		} else {
 			return 0;
 		}
@@ -186,22 +188,9 @@ public class Cliente {
 		this.puntos += puntos;
 	}
 
-	/*
-	 * public Zona zona() { return this.getTransformador().getZona(); }
-	 */
-
 	public boolean preteneceAZona(Zona unaZona) {
 		return this.zona == unaZona;
 	}
-
-	/*
-	 * public Transformador conectarATransformador() { // Selecciona transformador
-	 * al azar para conectarse Transformador nuevoTransformador =
-	 * zona.getTransformadores().get(new
-	 * Random().nextInt(zona.getTransformadores().size())); if (nuevoTransformador
-	 * != transformador) { nuevoTransformador.agregarCliente(this); return
-	 * nuevoTransformador; } else { return transformador; } }
-	 */ // ESTO YA NO VA
 
 	public void conectarseAEsteTransformador(Transformador nuevoTransformador) {
 
@@ -233,6 +222,14 @@ public class Cliente {
 
 	public String getTelefono() {
 		return telefono;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 }
