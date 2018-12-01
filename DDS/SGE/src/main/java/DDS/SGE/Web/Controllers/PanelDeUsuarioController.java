@@ -13,6 +13,7 @@ public class PanelDeUsuarioController {
 
 	public static ModelAndView mostrar(Request req, Response res) {
 		if (req.session().attribute(SESSION_NAME) == null) {
+			res.redirect("/");
 			return HomeController.mostrar(req, res);
 		}
 
@@ -20,12 +21,27 @@ public class PanelDeUsuarioController {
 
 		Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
 
-		HashMap<String, Object> viewModel = new HashMap<>();
+		HashMap<String, Object> viewModel = rellenarCliente(cliente);
 		viewModel.put("nombre", cliente.getNombre());
 		viewModel.put("apellido", cliente.getApellido());
 		viewModel.put("telefono", cliente.getTelefono());
 		viewModel.put("numeroDni", cliente.getNumeroDni());
-		
+
 		return new ModelAndView(viewModel, "panelDeUsuario.hbs");
+	}
+
+	private static HashMap<String, Object> rellenarCliente(Cliente cliente) {
+		HashMap<String, Object> viewModel = new HashMap<>();
+
+		viewModel.put("nombre", cliente.getNombre());
+		viewModel.put("apellido", cliente.getApellido());
+		viewModel.put("telefono", cliente.getTelefono());
+		viewModel.put("numeroDni", cliente.getNumeroDni());
+		viewModel.put("tipoDni", cliente.getTipoDni());
+		viewModel.put("domicilio", cliente.getDomicilio());
+		viewModel.put("categoria", cliente.getCategoria().toString());
+		viewModel.put("username", cliente.getUsername());
+
+		return viewModel;
 	}
 }
