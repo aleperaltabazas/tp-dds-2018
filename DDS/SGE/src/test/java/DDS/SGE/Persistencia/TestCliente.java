@@ -31,7 +31,7 @@ public class TestCliente {
 	
 	@Test
 	public void testPersistirAUnClienteDesdeElRepositorioYDespuesTraerlo() {
-		RepositorioClientes.instancia.agregarCliente(cliente);
+		RepositorioClientes.persistir(cliente);
 		Cliente persistido = em.find(Cliente.class, cliente.getId());
 		
 		assertEquals(persistido, cliente);
@@ -40,7 +40,7 @@ public class TestCliente {
 	@Test
 	public void testPersistirUnClienteYTraerloPorUsername() {
 		Cliente otroCliente = new Cliente("Usuario", "pass");
-		RepositorioClientes.instancia.agregarCliente(otroCliente);
+		RepositorioClientes.persistir(otroCliente);
 		Cliente persistido = RepositorioClientes.instancia.findByUsername(otroCliente.getUsername());
 		
 		assertEquals(persistido, otroCliente);

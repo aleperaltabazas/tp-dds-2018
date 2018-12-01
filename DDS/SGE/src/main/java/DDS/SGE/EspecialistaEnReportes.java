@@ -12,7 +12,7 @@ public class EspecialistaEnReportes {
 	private List<Transformador> transformadores = new ArrayList<Transformador>(Arrays.asList());
 	
 	public EspecialistaEnReportes(){
-		clientes = RepositorioClientes.instancia.getClientes();
+		clientes = RepositorioClientes.instancia.getAllClients();
 		transformadores = RepositorioTransformadores.instancia.getTransformadores();
 	}
 	
@@ -21,7 +21,7 @@ public class EspecialistaEnReportes {
 	}
 	
 	public double obtenerElConsumoPromedioPorDispositivoDeUnCliente(long idCliente) {
-		Cliente unCliente = RepositorioClientes.instancia.getCliente(idCliente);
+		Cliente unCliente = RepositorioClientes.instancia.findByID(idCliente);
 		if (unCliente == null) 
 			return 0;
 		return unCliente.consumoPromedioPorDispositivo();

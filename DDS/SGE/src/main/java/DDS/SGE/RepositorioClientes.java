@@ -5,31 +5,35 @@ import javax.persistence.EntityManager;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 public class RepositorioClientes implements WithGlobalEntityManager {
-	EntityManager em = EntityManagerHelper.entityManager();
+	private static EntityManager em = EntityManagerHelper.entityManager();
 	
 	public static RepositorioClientes instancia = new RepositorioClientes();
 
-	public void agregarCliente(Cliente cliente) {
+	private void agregarCliente(Cliente cliente) {
 		EntityManagerHelper.beginTransaction();
 		em.persist(cliente);
 		EntityManagerHelper.commit();
 	}
 
-	public List<Cliente> getClientes() {
+	public static List<Cliente> getAllClients() {
 		return em.createQuery("from Cliente", Cliente.class).getResultList();
 	}
 
-	public Cliente getCliente(Long id) {
+	public static Cliente findByID(Long id) {
 		return em.find(Cliente.class, id);
 	}
 
-	public Cliente findByUsername(String username) {
+	public static Cliente findByUsername(String username) {
 		List<Cliente> clientes = em
 				.createQuery("from Cliente c where c.username LIKE :username", Cliente.class)
 				.setParameter("username", username)
 				.getResultList();
 
 		return clientes.get(0);
+	}
+	
+	public static void persistir(Cliente cliente) {
+		instancia.agregarCliente(cliente);
 	}
 
 }
