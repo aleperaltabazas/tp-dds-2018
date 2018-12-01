@@ -7,9 +7,8 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import DDS.SGE.Cliente;
 import DDS.SGE.EntityManagerHelper;
 
-public class RepositorioClientes implements WithGlobalEntityManager {
-	private static EntityManager em = EntityManagerHelper.entityManager();
-	
+public class RepositorioClientes extends Repositorio implements WithGlobalEntityManager {
+
 	public static RepositorioClientes instancia = new RepositorioClientes();
 
 	private void agregarCliente(Cliente cliente) {
@@ -23,18 +22,16 @@ public class RepositorioClientes implements WithGlobalEntityManager {
 	}
 
 	public static Cliente findByID(Long id) {
-		return em.find(Cliente.class, id);
+		return findByID(Cliente.class, id);
 	}
 
 	public static Cliente findByUsername(String username) {
-		List<Cliente> clientes = em
-				.createQuery("from Cliente c where c.username LIKE :username", Cliente.class)
-				.setParameter("username", username)
-				.getResultList();
+		List<Cliente> clientes = em.createQuery("from Cliente c where c.username LIKE :username", Cliente.class)
+				.setParameter("username", username).getResultList();
 
 		return clientes.get(0);
 	}
-	
+
 	public static void persistir(Cliente cliente) {
 		instancia.agregarCliente(cliente);
 	}
