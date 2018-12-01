@@ -71,6 +71,11 @@ public class Cliente {
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
 	}
+	
+	public Cliente(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	public enum TipoDni {
 		DNI, CI, LE, LC
