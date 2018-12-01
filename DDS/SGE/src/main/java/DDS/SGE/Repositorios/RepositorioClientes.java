@@ -1,7 +1,8 @@
 package DDS.SGE.Repositorios;
 
 import java.util.List;
-import DDS.SGE.Exceptions.*;
+import java.util.NoSuchElementException;
+
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import DDS.SGE.Cliente;
@@ -24,6 +25,15 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
 
 	public static void agregarCliente(Cliente cliente) {
 		persistir(cliente);
+	}
+
+	public static void registrarCliente(Cliente cliente) throws Exception {
+		try {
+			findByUsername(cliente.getUsername());
+			throw new Exception("Ese nombre de usuario no se encuentra disponible");
+		} catch (NoSuchElementException e) {
+			agregarCliente(cliente);
+		}
 	}
 
 }

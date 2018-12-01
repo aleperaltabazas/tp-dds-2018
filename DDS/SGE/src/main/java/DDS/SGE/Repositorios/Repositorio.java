@@ -23,13 +23,18 @@ public class Repositorio {
 						entityClass)
 				.setParameter("username", username).getResultList();
 
-		return Optional.ofNullable(objects.get(0));
+		try {
+			return Optional.ofNullable(objects.get(0));
+		} catch (IndexOutOfBoundsException e) {
+			return Optional.empty();
+		}
 
 	}
 
 	protected static void persistir(Object o) {
 		EntityManagerHelper.beginTransaction();
 		em.persist(o);
-		EntityManagerHelper.commit();
+		em.flush();
+		em.getTransaction().commit();
 	}
 }
