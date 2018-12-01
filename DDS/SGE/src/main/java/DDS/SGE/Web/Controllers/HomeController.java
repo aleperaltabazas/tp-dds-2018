@@ -5,10 +5,14 @@ import spark.Request;
 import spark.Response;
 
 public class HomeController {
-	
+	protected static final String SESSION_NAME = "id";
+
 	public static ModelAndView mostrar(Request req, Response res) {
-		//Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
-		return new ModelAndView(null, "home.hbs");
+		if (req.session().attribute(SESSION_NAME) == null) {
+			return new ModelAndView(null, "home.hbs");
+		}
+
+		return new ModelAndView(null, "principal.hbs");
 	}
-	
+
 }
