@@ -27,8 +27,17 @@ public class Service {
 				LocalDateTime.now(), Arrays.asList());
 		RepositorioClientes.agregarCliente(cliente);
 
-		Cliente c1 = new Cliente("Alesaurio", HashProvider.hash("pass"));
-		RepositorioClientes.agregarCliente(c1);
+		ClienteBuilder cb = new ClienteBuilder();
+
+		Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
+		Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
+
+		try {
+			RepositorioClientes.registrarCliente(c1);
+			RepositorioClientes.registrarCliente(c2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		get("/", HomeController::mostrar, engine);
 		get("/login", LoginClienteController::mostrar, engine);

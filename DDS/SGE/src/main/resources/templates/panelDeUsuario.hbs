@@ -1,7 +1,18 @@
 {{#partial "contenido"}}
 
 <div class="container tools-padding">
-	<p>Panel de usuario</p>
+	<div class="card-deck mb-2 text-left">
+    <div class="mb-4">
+      <div>
+        <h3 class="my-0 font-weight-normal">Panel de usuario</h3>
+        <h2> {{resultado}} </h2>
+      </div>
+      <div class="card-body">
+        <p>Nombre: {{ nombre }}</p>
+        <p>Apellido: {{ apellido }}</p>
+        </div>
+    </div>
+  </div>
 </div>
 
 {{/partial}}
