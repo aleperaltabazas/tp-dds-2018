@@ -2,6 +2,7 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Administrador;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -22,7 +23,7 @@ public class LoginAdminController extends LoginController {
 
 			req.session().attribute(SESSION_NAME);
 
-			if (admin.getPassword() != password) {
+			if (admin.getPassword() != HashProvider.hash(password)) {
 				return error(req, res);
 			} else {
 				String id = Long.toString(admin.getId());

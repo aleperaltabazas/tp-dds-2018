@@ -2,6 +2,7 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -13,7 +14,7 @@ public class LoginClienteController extends LoginController {
 		return new ModelAndView(null, "login.hbs");
 	}
 
-	public static ModelAndView login(Request req, Response res) {
+	public static ModelAndView loginCliente(Request req, Response res) {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 
@@ -22,7 +23,7 @@ public class LoginClienteController extends LoginController {
 
 			req.session().attribute(SESSION_NAME);
 
-			if (usuario.getPassword() != password) {
+			if (usuario.getPassword() != HashProvider.hash(password)) {
 				return error(req, res);
 			} else {
 				String id = Long.toString(usuario.getId());

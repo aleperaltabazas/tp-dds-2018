@@ -3,6 +3,7 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import DDS.SGE.Cliente;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -19,4 +20,5 @@ public class LoginController {
 		viewmodel.put("password", password);
 		return new ModelAndView(viewmodel, "loginError.hbs");
 	}
+
 }
