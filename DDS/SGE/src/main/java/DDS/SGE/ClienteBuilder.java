@@ -27,6 +27,7 @@ public class ClienteBuilder {
 
 	public Cliente crearCliente(String nombre, String apellido, String numeroDni, String telefono, String username,
 			String password) {
+		// TODO: Chequear por null
 		return new Cliente(nombre, apellido, documentoDefault, numeroDni, telefono, direccionDefault,
 				LocalDateTime.now(), dispositivosDefault, username, HashProvider.hash(password));
 	}
