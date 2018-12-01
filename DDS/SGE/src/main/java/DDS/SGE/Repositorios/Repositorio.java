@@ -32,6 +32,8 @@ public class Repositorio {
 	}
 
 	protected static void persistir(Object o) {
+		EntityManager em = EntityManagerHelper.entityManager();
+		
 		EntityManagerHelper.beginTransaction();
 		em.persist(o);
 		em.flush();
