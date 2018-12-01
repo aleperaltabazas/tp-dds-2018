@@ -1,6 +1,7 @@
 package DDS.SGE.Repositorios;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -32,11 +33,18 @@ public class Repositorio {
 	}
 
 	protected static void persistir(Object o) {
-		EntityManager em = EntityManagerHelper.entityManager();
-		
 		EntityManagerHelper.beginTransaction();
 		em.persist(o);
-		em.flush();
-		em.getTransaction().commit();
+		EntityManagerHelper.commit();
+	}
+
+	protected static void registrar(Object o, String username) throws Exception {
+		try {
+			findByUsername(o.getClass(), username).get();
+			throw new Exception("Ese nombre de usuario no se encuentra disponible");
+			// TODO: implementar una excepción propia
+		} catch (NoSuchElementException e) {
+			persistir(o);
+		}
 	}
 }

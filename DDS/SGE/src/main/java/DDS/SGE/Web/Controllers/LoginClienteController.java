@@ -19,7 +19,9 @@ public class LoginClienteController extends LoginController {
 		String password = req.queryParams("password");
 
 		try {
-			Cliente usuario = RepositorioClientes.findByUsername(username);
+			// No sé que les parezca mejor, dejar el get en el try catch o envolver el
+			// optional con un if isEmpty()
+			Cliente usuario = RepositorioClientes.findByUsername(username).get();
 
 			req.session().attribute(SESSION_NAME);
 

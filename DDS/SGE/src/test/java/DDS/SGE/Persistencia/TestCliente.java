@@ -45,7 +45,7 @@ public class TestCliente {
 		Cliente otroCliente = new Cliente("Usuario", "pass");
 		RepositorioClientes.agregarCliente(otroCliente);
 
-		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername());
+		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername()).get();
 		assertEquals(persistido, otroCliente);
 
 	}

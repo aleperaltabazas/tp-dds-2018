@@ -19,7 +19,9 @@ public class LoginAdminController extends LoginController {
 		String password = req.queryParams("password");
 
 		try {
-			Administrador admin = RepositorioAdministradores.findByUsername(username);
+			// No sé que les parezca mejor, dejar el get en el try catch o envolver el
+			// optional con un if isEmpty()
+			Administrador admin = RepositorioAdministradores.findByUsername(username).get();
 
 			req.session().attribute(SESSION_NAME);
 

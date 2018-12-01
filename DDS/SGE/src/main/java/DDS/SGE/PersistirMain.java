@@ -18,7 +18,7 @@ public class PersistirMain {
 			e.printStackTrace();
 		}
 
-		Cliente p = RepositorioClientes.findByUsername(c1.getUsername());
+		Cliente p = RepositorioClientes.findByUsername(c1.getUsername()).get();
 		System.out.println(p.getUsername());
 		System.out.println(p.getNombre());
 		System.exit(0);
