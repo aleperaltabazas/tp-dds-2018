@@ -27,6 +27,9 @@ public class Service {
 				LocalDateTime.now(), Arrays.asList());
 		RepositorioClientes.agregarCliente(cliente);
 
+		Cliente c1 = new Cliente("Alesaurio", HashProvider.hash("pass"));
+		RepositorioClientes.agregarCliente(c1);
+
 		get("/", HomeController::mostrar, engine);
 		get("/login", LoginClienteController::mostrar, engine);
 		post("/login", LoginClienteController::loginCliente, engine);

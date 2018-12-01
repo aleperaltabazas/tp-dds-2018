@@ -23,7 +23,7 @@ public class LoginAdminController extends LoginController {
 
 			req.session().attribute(SESSION_NAME);
 
-			if (admin.getPassword() != HashProvider.hash(password)) {
+			if (!admin.getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
 				return error(req, res);
 			} else {
 				String id = Long.toString(admin.getId());
