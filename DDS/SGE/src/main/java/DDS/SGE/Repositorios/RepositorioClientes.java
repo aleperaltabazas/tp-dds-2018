@@ -1,21 +1,13 @@
 package DDS.SGE.Repositorios;
 
 import java.util.List;
-import javax.persistence.EntityManager;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import DDS.SGE.Cliente;
-import DDS.SGE.EntityManagerHelper;
 
 public class RepositorioClientes extends Repositorio implements WithGlobalEntityManager {
 
-	public static RepositorioClientes instancia = new RepositorioClientes();
-
-	private void agregarCliente(Cliente cliente) {
-		EntityManagerHelper.beginTransaction();
-		em.persist(cliente);
-		EntityManagerHelper.commit();
-	}
+	// private static RepositorioClientes instancia = new RepositorioClientes();
 
 	public static List<Cliente> getAllClients() {
 		return em.createQuery("from Cliente", Cliente.class).getResultList();
@@ -29,8 +21,8 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
 		return findByUsername(Cliente.class, username);
 	}
 
-	public static void persistir(Cliente cliente) {
-		instancia.agregarCliente(cliente);
+	public static void agregarCliente(Cliente cliente) {
+		persistir(cliente);
 	}
 
 }

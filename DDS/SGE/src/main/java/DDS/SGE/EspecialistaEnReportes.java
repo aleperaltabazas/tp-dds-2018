@@ -11,28 +11,28 @@ import Geoposicionamiento.Transformador;
 public class EspecialistaEnReportes {
 	private List<Cliente> clientes = new ArrayList<Cliente>(Arrays.asList());
 	private List<Transformador> transformadores = new ArrayList<Transformador>(Arrays.asList());
-	
-	public EspecialistaEnReportes(){
-		clientes = RepositorioClientes.instancia.getAllClients();
+
+	public EspecialistaEnReportes() {
+		clientes = RepositorioClientes.getAllClients();
 		transformadores = RepositorioTransformadores.instancia.getTransformadores();
 	}
-	
+
 	public double obtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo(int periodoEnDias) {
 		return clientes.stream().mapToDouble(x -> x.consumoFinalEstimado(periodoEnDias)).sum();
 	}
-	
+
 	public double obtenerElConsumoPromedioPorDispositivoDeUnCliente(long idCliente) {
-		Cliente unCliente = RepositorioClientes.instancia.findByID(idCliente);
-		if (unCliente == null) 
+		Cliente unCliente = RepositorioClientes.findByID(idCliente);
+		if (unCliente == null)
 			return 0;
 		return unCliente.consumoPromedioPorDispositivo();
 	}
-	
+
 	public double obtenerElConsumoPorTransformadorPorPeriodo(long idTransformador) {
 		Transformador unTransformador = RepositorioTransformadores.instancia.getTransformador(idTransformador);
-		if(unTransformador == null)
+		if (unTransformador == null)
 			return 0;
 		return unTransformador.suministra();
 	}
-	
+
 }

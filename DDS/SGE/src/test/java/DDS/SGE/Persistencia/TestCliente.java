@@ -22,44 +22,40 @@ public class TestCliente {
 
 	@Before
 	public void initialize() {
-		cliente = new Cliente("Un nombre", "Un apellido", Cliente.TipoDni.DNI, "1111", "4444", "Un domicilio", LocalDateTime.now(), new ArrayList<Dispositivo>());
+		cliente = new Cliente("Un nombre", "Un apellido", Cliente.TipoDni.DNI, "1111", "4444", "Un domicilio",
+				LocalDateTime.now(), new ArrayList<Dispositivo>());
 		em = EntityManagerHelper.entityManager();
 	}
-	
+
 	@After
 	public void after() {
 		EntityManagerHelper.rollback();
 	}
-	
+
 	@Test
 	public void testPersistirAUnClienteDesdeElRepositorioYDespuesTraerlo() {
-		RepositorioClientes.persistir(cliente);
+		RepositorioClientes.agregarCliente(cliente);
 		Cliente persistido = em.find(Cliente.class, cliente.getId());
-		
+
 		assertEquals(persistido, cliente);
 	}
-	
+
 	@Test
 	public void testPersistirUnClienteYTraerloPorUsername() {
 		Cliente otroCliente = new Cliente("Usuario", "pass");
-		RepositorioClientes.persistir(otroCliente);
+		RepositorioClientes.agregarCliente(otroCliente);
 		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername());
-		
+
 		assertEquals(persistido, otroCliente);
 	}
-	
+
 	@Test
 	public void testPersistirUnAdministrador() {
 		Administrador administrador = new Administrador("Admin", "admin");
-		RepositorioAdministradores.persistir(administrador);
+		RepositorioAdministradores.agregarAdministrador(administrador);
 		Administrador persistido = RepositorioAdministradores.findByID(administrador.getId());
-		
+
 		assertEquals(administrador, persistido);
-	}
-	
-	@Test 
-	public void test() {
-		assertEquals(Administrador.class.getSimpleName(), "Administrador");
 	}
 
 }

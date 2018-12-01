@@ -32,7 +32,7 @@ public class Service {
 		
 		Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788",
 				"Calle verdadera 321", LocalDateTime.now(), Arrays.asList());
-		RepositorioClientes.persistir(cliente);
+		RepositorioClientes.agregarCliente(cliente);
 		
 		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginClienteController::mostrar, engine);

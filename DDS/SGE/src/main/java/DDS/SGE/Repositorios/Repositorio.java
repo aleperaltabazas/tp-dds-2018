@@ -24,4 +24,10 @@ public class Repositorio {
 
 		return objects.get(0);
 	}
+
+	protected static void persistir(Object o) {
+		EntityManagerHelper.beginTransaction();
+		em.persist(o);
+		EntityManagerHelper.commit();
+	}
 }
