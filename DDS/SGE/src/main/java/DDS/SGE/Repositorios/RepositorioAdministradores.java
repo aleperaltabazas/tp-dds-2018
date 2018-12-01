@@ -1,4 +1,6 @@
-package DDS.SGE;
+package DDS.SGE.Repositorios;
+
+import DDS.SGE.Administrador;
 
 public class RepositorioAdministradores {
 

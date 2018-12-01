@@ -2,6 +2,7 @@ package DDS.SGE.Persistencia;
 
 import DDS.SGE.*;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Repositorios.RepositorioClientes;
 
 import static org.junit.Assert.*;
 

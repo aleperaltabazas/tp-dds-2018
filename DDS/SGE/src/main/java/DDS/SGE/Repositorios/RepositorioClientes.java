@@ -1,8 +1,11 @@
-package DDS.SGE;
+package DDS.SGE.Repositorios;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
+import DDS.SGE.Cliente;
+import DDS.SGE.EntityManagerHelper;
 
 public class RepositorioClientes implements WithGlobalEntityManager {
 	private static EntityManager em = EntityManagerHelper.entityManager();

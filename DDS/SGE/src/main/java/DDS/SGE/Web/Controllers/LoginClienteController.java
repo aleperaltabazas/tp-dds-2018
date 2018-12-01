@@ -5,8 +5,8 @@ import java.util.Map;
 
 import DDS.SGE.Administrador;
 import DDS.SGE.Cliente;
-import DDS.SGE.RepositorioAdministradores;
-import DDS.SGE.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
