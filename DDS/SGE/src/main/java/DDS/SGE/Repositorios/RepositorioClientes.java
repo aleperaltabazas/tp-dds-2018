@@ -1,6 +1,7 @@
 package DDS.SGE.Repositorios;
 
 import java.util.List;
+import DDS.SGE.Exceptions.*;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import DDS.SGE.Cliente;
@@ -18,7 +19,7 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
 	}
 
 	public static Cliente findByUsername(String username) {
-		return findByUsername(Cliente.class, username);
+		return findByUsername(Cliente.class, username).get();
 	}
 
 	public static void agregarCliente(Cliente cliente) {

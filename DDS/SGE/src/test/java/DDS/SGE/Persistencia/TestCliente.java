@@ -44,9 +44,10 @@ public class TestCliente {
 	public void testPersistirUnClienteYTraerloPorUsername() {
 		Cliente otroCliente = new Cliente("Usuario", "pass");
 		RepositorioClientes.agregarCliente(otroCliente);
-		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername());
 
+		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername());
 		assertEquals(persistido, otroCliente);
+
 	}
 
 	@Test

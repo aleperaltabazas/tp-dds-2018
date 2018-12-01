@@ -1,6 +1,7 @@
 package DDS.SGE.Repositorios;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -13,7 +14,7 @@ public class Repositorio {
 		return em.find(entityClass, id);
 	}
 
-	protected static <T> T findByUsername(Class<T> entityClass, String username) {
+	protected static <T> Optional<T> findByUsername(Class<T> entityClass, String username) {
 		String table = entityClass.getSimpleName();
 		String letter = "" + table.charAt(0);
 
@@ -22,7 +23,8 @@ public class Repositorio {
 						entityClass)
 				.setParameter("username", username).getResultList();
 
-		return objects.get(0);
+		return Optional.ofNullable(objects.get(0));
+
 	}
 
 	protected static void persistir(Object o) {
