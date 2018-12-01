@@ -26,7 +26,7 @@ public class LoginClienteController {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 		
-		Cliente usuario = RepositorioClientes.instancia.findByUsername(username);
+		Cliente usuario = RepositorioClientes.findByUsername(username);
 		
 		req.session().attribute(SESSION_NAME);
 		
@@ -50,7 +50,7 @@ public class LoginClienteController {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 		
-		Administrador admin = RepositorioAdministradores.instancia.findByUsername(username);
+		Administrador admin = RepositorioAdministradores.findByUsername(username);
 		
 		req.session().attribute(SESSION_NAME);
 		

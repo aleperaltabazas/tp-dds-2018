@@ -14,9 +14,9 @@ public class RepositorioAdministradores extends Repositorio implements WithGloba
 		EntityManagerHelper.commit();
 	}
 
-	public Administrador findByUsername(String username) {
+	public static Administrador findByUsername(String username) {
 		List<Administrador> administradores = em
-				.createQuery("from Cliente c where c.username LIKE :username", Administrador.class)
+				.createQuery("from Administrador a where a.username LIKE :username", Administrador.class)
 				.setParameter("username", username).getResultList();
 
 		return administradores.get(0);

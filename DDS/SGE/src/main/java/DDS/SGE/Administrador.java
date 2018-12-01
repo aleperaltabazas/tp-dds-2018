@@ -31,6 +31,11 @@ public class Administrador {
 		this.domicilio = domicilio;
 		this.fechaAltaSistema = fechaAltaSistema;
 	}
+	
+	public Administrador(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	public String getNombre() {
 		return this.nombre;

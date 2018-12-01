@@ -2,6 +2,7 @@ package DDS.SGE.Persistencia;
 
 import DDS.SGE.*;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 
 import static org.junit.Assert.*;
@@ -42,9 +43,23 @@ public class TestCliente {
 	public void testPersistirUnClienteYTraerloPorUsername() {
 		Cliente otroCliente = new Cliente("Usuario", "pass");
 		RepositorioClientes.persistir(otroCliente);
-		Cliente persistido = RepositorioClientes.instancia.findByUsername(otroCliente.getUsername());
+		Cliente persistido = RepositorioClientes.findByUsername(otroCliente.getUsername());
 		
 		assertEquals(persistido, otroCliente);
+	}
+	
+	@Test
+	public void testPersistirUnAdministrador() {
+		Administrador administrador = new Administrador("Admin", "admin");
+		RepositorioAdministradores.persistir(administrador);
+		Administrador persistido = RepositorioAdministradores.findByID(administrador.getId());
+		
+		assertEquals(administrador, persistido);
+	}
+	
+	@Test 
+	public void test() {
+		assertEquals(Administrador.class.getSimpleName(), "Administrador");
 	}
 
 }

@@ -26,10 +26,7 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
 	}
 
 	public static Cliente findByUsername(String username) {
-		List<Cliente> clientes = em.createQuery("from Cliente c where c.username LIKE :username", Cliente.class)
-				.setParameter("username", username).getResultList();
-
-		return clientes.get(0);
+		return findByUsername(Cliente.class, username);
 	}
 
 	public static void persistir(Cliente cliente) {
