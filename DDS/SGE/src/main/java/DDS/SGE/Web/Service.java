@@ -48,6 +48,7 @@ public class Service {
 		get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
 		// get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
 		get("/transformador", TransformadorController::mostrar, engine);
+		get("/me", PanelDeUsuarioController::mostrar, engine);
 
 	}
 }
