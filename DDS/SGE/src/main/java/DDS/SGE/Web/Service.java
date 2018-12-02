@@ -2,6 +2,7 @@ package DDS.SGE.Web;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 import static spark.Spark.get;
+import static spark.Spark.port;
 import static spark.Spark.post;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,8 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Service {
     public static void main(String[] args) {
-        Spark.port(9000);
+        //Spark.port(9000);
+        port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
@@ -79,5 +81,13 @@ public class Service {
         get(SIGNUP, RegistrarController::mostrar, engine);
         post(SIGNUP, RegistrarController::registrar, engine);
 
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
