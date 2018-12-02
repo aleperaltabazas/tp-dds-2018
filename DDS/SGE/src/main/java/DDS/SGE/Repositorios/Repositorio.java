@@ -33,9 +33,10 @@ public class Repositorio {
 	}
 
 	protected static void persistir(Object o) {
-		EntityManagerHelper.beginTransaction();
+		em.getTransaction().begin();
 		em.persist(o);
-		EntityManagerHelper.commit();
+		em.flush();
+		em.getTransaction().commit();
 	}
 
 	protected static void registrar(Object o, String username) throws Exception {
