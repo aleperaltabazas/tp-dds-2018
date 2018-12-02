@@ -30,12 +30,13 @@ public class HogarController extends Controller {
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 
         List<Dispositivo> dispositivosInteligentes = cliente.getDispositivosInteligente();
-        List<Dispositivo> dispositivosEstandar = cliente.getDispositivosInteligente();
+        List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();
+
+        dispositivosInteligentes.forEach(d -> System.out.println(d.getNombre()));
+        dispositivosEstandar.forEach(d -> System.out.println(d.getNombre()));
 
         viewModel.put("dispositivosInteligente", dispositivosInteligentes);
         viewModel.put("dispositivosEstandar", dispositivosEstandar);
-
-        //TODO: si al levantar el cliente levanta consigo sus dispositivos, lenvatarlos desde el repo no hace falta
 
         return new ModelAndView(viewModel, ruta);
     }

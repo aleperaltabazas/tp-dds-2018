@@ -31,7 +31,7 @@ public class Cliente {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     @OrderColumn
     private List<Dispositivo> dispositivos;
