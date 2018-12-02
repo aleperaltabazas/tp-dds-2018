@@ -1,5 +1,5 @@
 {{#partial "contenido"}}
-
+  
 <div class="container tools-padding">
 	<div class="card-deck mb-2 text-left">
 		<div class="card">
@@ -9,11 +9,23 @@
 			<div class="card-body">
 				<ul>
 					{{#each dispositivosEstandar}}
-					<li>{{this.nombre}}</li>
+					<li>
+						<h5>{{this.nombre}}</h5>
+						<p class="small-letter">	
+							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
+							Uso mensual máximo: {{this.usoMensualMaximo}}
+						</p>
+					</li>
 					{{/each}}
-					
+
 					{{#each dispositivosInteligente}}
-					<li>{{this.nombre}}</li>
+					<li>
+						<p>	
+							{{this.nombre}} <br>
+							{{this.usoMensualMinimo}} <br>
+							{{this.usoMensualMaximo}}
+						</p>
+					</li>
 					{{/each}}
 				</ul>
 			</div>

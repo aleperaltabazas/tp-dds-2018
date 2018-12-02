@@ -128,7 +128,7 @@ public class TestOptimizador {
 	@Test
 	public void unClienteConUnaComputadoraDePotencia1KwSeRecomiendaUsarLoMaximoPosible() {
 
-		assertEquals(dispositivoPotencia1Kw.usoMensualMaximo(), optimizador.usoMensualRecomendado(clienteConDispositivoDe1Kw), 0.0);
+		assertEquals(dispositivoPotencia1Kw.getUsoMensualMaximo(), optimizador.usoMensualRecomendado(clienteConDispositivoDe1Kw), 0.0);
 
 	}
 

@@ -8,8 +8,8 @@ public class Microondas extends Fabricante {
 	protected Microondas() {}
 	
 	/*public Microondas() {
-		this.usoMensualMinimo = 3;
-		this.usoMensualMaximo = 15;
+		this.getUsoMensualMinimo = 3;
+		this.getUsoMensualMaximo = 15;
 	}*/
 	
 }
