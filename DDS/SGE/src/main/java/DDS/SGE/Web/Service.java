@@ -37,6 +37,9 @@ public class Service {
         Dispositivo d = new Dispositivo(new DispositivoEstandar(20, 40));
         d.setNombre("Dispositivo cualunca");
 
+        Dispositivo d2 = new Dispositivo(new DispositivoEstandar(50, 100));
+        d2.setNombre("Otro dispositivo");
+
         c1.agregarDispositivo(d);
 
         try {
