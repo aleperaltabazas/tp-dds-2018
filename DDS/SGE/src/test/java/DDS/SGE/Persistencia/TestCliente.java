@@ -85,4 +85,13 @@ public class TestCliente {
         assertEquals(Arrays.asList(dispositivoSencillo, noSencillo), dispositivos);
     }
 
+    @Test
+    public void testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos() {
+        Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
+        RepositorioClientes.agregarCliente(otroCliente);
+
+        Cliente persistido = RepositorioClientes.findByID(otroCliente.getId());
+        assertEquals(persistido.getDispositivos().collect(Collectors.toList()), otroCliente.getDispositivos().collect(Collectors.toList()));
+    }
+
 }
