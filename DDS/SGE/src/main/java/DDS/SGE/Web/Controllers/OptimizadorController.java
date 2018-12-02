@@ -29,6 +29,7 @@ public class OptimizadorController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("resultado", resultadoEnLista);
+        viewModel.put("mensual", optimizador.usoMensualRecomendado(cliente));
 
         return new ModelAndView(viewModel, "optimizer.hbs");
     }

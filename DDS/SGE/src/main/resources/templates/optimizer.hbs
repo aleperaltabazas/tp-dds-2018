@@ -5,11 +5,13 @@
     <div class="mb-4">
       <div>
         <h3 class="my-0 font-weight-normal">Resultado del optimizador</h3>
-        <p> 
+        <p>
+          <h5>Tiempo recomendado por dispositivo</h5> 
           {{#resultado}}
-            {{this}} <br>
+          {{this}} <br>
           {{/resultado}}
         </p>
+        <h5>Uso mensual recomendado: {{mensual}}</h5>
       </div>
       <div class="card-body">
         <p>Nuestro optimizador emplea el método símplex, un algoritmo de resolución de problemas de programación lineal que busca optimizar una función objetivo, de forma que esta función está sujeta a ciertas condiciones.</p>
