@@ -68,7 +68,7 @@ public class Service {
         get(DISPOSITIVOS_NEW, CatalogoController::mostrar, engine);
 
         get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
-        // get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
+        get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
 
         get(TRANSFORMADOR, TransformadorController::mostrar, engine);
 

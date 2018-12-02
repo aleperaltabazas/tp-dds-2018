@@ -100,6 +100,12 @@ public class Cliente {
         this.password = password;
     }
 
+    public double consumoTotalEnUnPeriodo(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+
+
+        return 0;
+    }
+
     public enum TipoDni {
         DNI, CI, LE, LC
     }

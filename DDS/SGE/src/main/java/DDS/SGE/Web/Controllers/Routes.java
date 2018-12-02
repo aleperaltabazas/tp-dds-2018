@@ -24,4 +24,5 @@ public class Routes {
     public static final String SIGNUP = "/signup";
 
     public static final String CONSUMO = "/consumo";
+    public static final String CONSUMO_OBTENER = CONSUMO + "/obtener";
 }
