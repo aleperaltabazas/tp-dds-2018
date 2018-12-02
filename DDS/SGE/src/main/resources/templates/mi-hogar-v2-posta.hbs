@@ -1,0 +1,25 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="mb-4">
+			<div>
+			</div>
+			<div class="card-body">
+				<h2>Dispositivos</h1>
+				<ul>
+					{{#each dispositivos}}
+					<li>{{this.nombre}}</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="card-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}

@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 import DDS.SGE.*;
 import DDS.SGE.Cliente.TipoDni;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Web.Controllers.*;
 import spark.Spark;
@@ -31,6 +33,11 @@ public class Service {
 
         Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
         Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
+
+        Dispositivo d = new Dispositivo(new DispositivoEstandar(20, 40));
+        d.setNombre("Dispositivo cualunca");
+
+        c1.agregarDispositivo(d);
 
         try {
             RepositorioClientes.registrarCliente(c1);
