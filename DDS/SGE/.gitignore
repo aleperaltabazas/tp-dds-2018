@@ -2,6 +2,7 @@
 /target/maven-status/
 /target/test-classes/DDS/
 /target/
+/target/*.jar
 
 .idea/compiler.xml
 .idea/vcs.xml
