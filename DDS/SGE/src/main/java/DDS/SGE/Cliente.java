@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
@@ -12,6 +13,8 @@ import javax.persistence.*;
 
 import DDS.SGE.Dispositivo.Dispositivo;
 
+import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
@@ -270,6 +273,14 @@ public class Cliente {
 
     public void setNumeroDni(String numeroDni) {
         this.numeroDni = numeroDni;
+    }
+
+    public List<Dispositivo> getDispositivosEstandar() {
+        return this.getDispositivos().filter(d -> d.getTipoDispositivo() instanceof DispositivoEstandar).collect(Collectors.toList());
+    }
+
+    public List<Dispositivo> getDispositivosInteligente() {
+        return this.getDispositivos().filter(d -> d.getTipoDispositivo() instanceof DispositivoInteligente).collect(Collectors.toList());
     }
 
 }

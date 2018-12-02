@@ -29,9 +29,8 @@ public class HogarController extends Controller {
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 
-        List<Dispositivo> dispositivos = RepositorioDispositivos.dispositivosDe(cliente);
-        List<Dispositivo> dispositivosInteligentes = dispositivos.stream().filter(d -> d.getTipoDispositivo() instanceof DispositivoInteligente).collect(Collectors.toList());
-        List<Dispositivo> dispositivosEstandar = dispositivos.stream().filter(d -> d.getTipoDispositivo() instanceof DispositivoEstandar).collect(Collectors.toList());
+        List<Dispositivo> dispositivosInteligentes = cliente.getDispositivosInteligente();
+        List<Dispositivo> dispositivosEstandar = cliente.getDispositivosInteligente();
 
         viewModel.put("dispositivosInteligente", dispositivosInteligentes);
         viewModel.put("dispositivosEstandar", dispositivosEstandar);

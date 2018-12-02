@@ -41,6 +41,7 @@ public class Service {
         d2.setNombre("Otro dispositivo");
 
         c1.agregarDispositivo(d);
+        c1.agregarDispositivo(d2);
 
         try {
             RepositorioClientes.registrarCliente(c1);
