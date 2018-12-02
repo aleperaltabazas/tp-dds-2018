@@ -2,3 +2,12 @@
 /target/maven-status/
 /target/test-classes/DDS/
 /target/
+
+.idea/compiler.xml
+.idea/vcs.xml
+SGE.iml
+
+.idea/encodings.xml
+.idea/misc.xml
+.idea/sbt.xml
+.idea/workspace.xml
