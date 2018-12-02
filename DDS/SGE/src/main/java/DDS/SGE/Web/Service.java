@@ -58,6 +58,9 @@ public class Service {
 		// get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
 		get("/transformador", TransformadorController::mostrar, engine);
 		get("/me", PanelDeUsuarioController::mostrar, engine);
-
+		get("/signup", RegistrarController::mostrar, engine);
+		post("/signup", RegistrarController::registrar, engine);
+		get("/me/edit", PanelDeUsuarioController::editar, engine);
+		post("/me/edit", PanelDeUsuarioController::actualizar);
 	}
 }

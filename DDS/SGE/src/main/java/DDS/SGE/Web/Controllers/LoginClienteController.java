@@ -18,6 +18,9 @@ public class LoginClienteController extends LoginController {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
 
+		System.out.println(username);
+		System.out.println(password);
+
 		try {
 			// No sé que les parezca mejor, dejar el get en el try catch o envolver el
 			// optional con un if isEmpty()

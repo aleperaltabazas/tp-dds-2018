@@ -1,0 +1,31 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="mb-4">
+			<div>
+				<h3 class="my-0 font-weight-normal">Panel de usuario</h3>
+				<h2> {{resultado}} </h2>
+			</div>
+			<form action="/me/edit" method="POST">
+					<label for="nombre">Nombre</label>
+					<input type="text" placeholder="nombre" name="nombre" value="{{ nombre }}" required/>
+					<label for="apellido">Apellido</label>
+					<input type="text" placeholder="apellido" name="apellido" value="{{ apellido }}" required/>
+					<label for="telefono">Telefono</label>
+					<input type="text" placeholder="telefono" name="telefono" value="{{ telefono }}" required/>
+					<label for="direccion">Direccion</label>
+					<input type="text" placeholder="direccion" name="direccion" value="{{ domicilio }}" required/>
+					<label for="numeroDni">Numero de documento</label>
+					<input type="text" placeholder="numeroDni" name="numeroDni" value="{{ numeroDni }}" required/>
+					<p class="error">Por favor, complete todos los campos</p>
+					<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}

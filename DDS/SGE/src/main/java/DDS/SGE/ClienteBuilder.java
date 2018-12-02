@@ -39,4 +39,12 @@ public class ClienteBuilder {
 				username, HashProvider.hash(password));
 	}
 
+	public Cliente crearCliente(String username, String password) throws Exception {
+		if (username == null || password == null) {
+			throw new Exception("Complete todos los campos");
+		}
+
+		return new Cliente(username, HashProvider.hash(password));
+	}
+
 }

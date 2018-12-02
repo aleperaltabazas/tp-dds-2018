@@ -110,6 +110,10 @@ public class Cliente {
 		return this.nombre;
 	}
 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public Categoria getCategoria() {
 		return this.categoria;
 	}
@@ -238,6 +242,10 @@ public class Cliente {
 		return apellido;
 	}
 
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 	public String getNumeroDni() {
 		return numeroDni;
 	}
@@ -252,6 +260,14 @@ public class Cliente {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setNumeroDni(String numeroDni) {
+		this.numeroDni = numeroDni;
 	}
 
 }

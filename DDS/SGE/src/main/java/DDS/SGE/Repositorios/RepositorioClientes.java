@@ -30,5 +30,9 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
 	public static void registrarCliente(Cliente cliente) throws Exception {
 		registrar(cliente, cliente.getUsername());
 	}
+	
+	public static void actualizarCliente(Cliente cliente) {
+		persistir(cliente);
+	}
 
 }
