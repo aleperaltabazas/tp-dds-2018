@@ -284,17 +284,18 @@ public class Cliente {
         return this.getDispositivos().filter(d -> d.getTipoDispositivo() instanceof DispositivoInteligente).collect(Collectors.toList());
     }
 
-    public double consumoDelUltimoMes() {
+    public double getConsumoUltimoMes() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime mesPasado = now.withMonth(now.getMonthValue() - 1);
         int ultimoDiaDelMesPasado = mesPasado.getMonth().length(true);
+
         LocalDateTime primerDiaMesPasado = LocalDateTime.of(now.getYear(), now.getMonthValue() - 1, 1, 0, 0);
         LocalDateTime ultimoDiaMesPasado = LocalDateTime.of(now.getYear(), now.getMonthValue() - 1, ultimoDiaDelMesPasado, 23, 59);
 
         return this.getDispositivos().mapToDouble(d -> d.consumoTotalEnUnPeriodo(primerDiaMesPasado, ultimoDiaMesPasado)).sum();
     }
 
-    public double consumoDelMesActual() {
+    public double getConsumoMesActual() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime primerDiaDelMes = LocalDateTime.of(now.getYear(), now.getMonthValue(), 1, 0, 0);
 

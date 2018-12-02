@@ -8,7 +8,7 @@
 			</div>
 			<div class="card-body">
 				<ul>
-					{{#each dispositivosEstandar}}
+					{{#dispositivosEstandar}}
 					<li>
 						<h5>{{this.nombre}}</h5>
 						<p class="small-letter">	
@@ -16,9 +16,9 @@
 							Uso mensual máximo: {{this.usoMensualMaximo}}
 						</p>
 					</li>
-					{{/each}}
+					{{/dispositivosEstandar}}
 
-					{{#each dispositivosInteligente}}
+					{{#dispositivosInteligente}}
 					<li>
 						<p>	
 							{{this.nombre}} <br>
@@ -26,7 +26,7 @@
 							{{this.usoMensualMaximo}}
 						</p>
 					</li>
-					{{/each}}
+					{{/dispositivosInteligente}}
 				</ul>
 			</div>
 		</div>
@@ -36,8 +36,8 @@
 					<h4 class="my-0 font-weight-normal">Consumo</h4>
 				</div>
 				<div class="card-body">
-					<p>Total del último mes: </p>
-					<p>Total del mes actual: </p>
+					<p>Total del último mes: {{consumoUltimoMes}} </p>
+					<p>Total del mes actual: {{consumoMesActual}} </p>
 				</div>
 			</div>
 			<div>

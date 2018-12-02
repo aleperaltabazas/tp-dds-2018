@@ -2,10 +2,7 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Dispositivo;
-import DDS.SGE.Dispositivo.DispositivoEstandar;
-import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Repositorios.RepositorioClientes;
-import DDS.SGE.Repositorios.RepositorioDispositivos;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -13,7 +10,6 @@ import spark.Response;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HogarController extends Controller {
     //TODO: cambiar las rutas con nombres finales
@@ -36,17 +32,10 @@ public class HogarController extends Controller {
         dispositivosInteligentes.forEach(d -> System.out.println(d.getNombre()));
         dispositivosEstandar.forEach(d -> System.out.println(d.getNombre()));
 
-        try {
-            viewModel.put("dispositivosInteligente", dispositivosInteligentes);
-            viewModel.put("dispositivosEstandar", dispositivosEstandar);
-            viewModel.put("consumoMesActual", cliente.consumoDelMesActual());
-            viewModel.put("consumoTotalUltimoMes", cliente.consumoDelUltimoMes());
-        } catch (NullPointerException e) {
-            viewModel.put("dispositivosInteligente", Arrays.asList());
-            viewModel.put("dispositivosEstandar", Arrays.asList());
-            viewModel.put("consumoMesActual", 0);
-            viewModel.put("consumoTotalUltimoMes", 0);
-        }
+        viewModel.put("dispositivosInteligente", dispositivosInteligentes);
+        viewModel.put("dispositivosEstandar", dispositivosEstandar);
+        viewModel.put("consumoUltimoMes", cliente.getConsumoUltimoMes());
+        viewModel.put("consumoMesActual", cliente.getConsumoMesActual());
 
         return new ModelAndView(viewModel, ruta);
     }
