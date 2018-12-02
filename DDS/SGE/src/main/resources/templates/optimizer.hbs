@@ -5,7 +5,11 @@
     <div class="mb-4">
       <div>
         <h3 class="my-0 font-weight-normal">Resultado del optimizador</h3>
-        <h2> {{resultado}} </h2>
+        <p> 
+          {{#resultado}}
+            {{this}} <br>
+          {{/resultado}}
+        </p>
       </div>
       <div class="card-body">
         <p>Nuestro optimizador emplea el método símplex, un algoritmo de resolución de problemas de programación lineal que busca optimizar una función objetivo, de forma que esta función está sujeta a ciertas condiciones.</p>
