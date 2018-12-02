@@ -36,6 +36,9 @@ public class HogarController extends Controller {
         viewModel.put("dispositivosEstandar", dispositivosEstandar);
         viewModel.put("consumoUltimoMes", cliente.getConsumoUltimoMes());
         viewModel.put("consumoMesActual", cliente.getConsumoMesActual());
+        viewModel.put("consumoPromedio", cliente.consumoPromedioPorDispositivo());
+        viewModel.put("estimadoDiario", cliente.consumoTotalEstimadoDiario());
+        viewModel.put("usoOptimo", cliente.consultarUsoOptimo());
 
         return new ModelAndView(viewModel, ruta);
     }

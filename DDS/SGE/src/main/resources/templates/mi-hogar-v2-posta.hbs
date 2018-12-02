@@ -1,5 +1,5 @@
 {{#partial "contenido"}}
-  
+
 <div class="container tools-padding">
 	<div class="card-deck mb-2 text-left">
 		<div class="card">
@@ -11,19 +11,23 @@
 					{{#dispositivosEstandar}}
 					<li>
 						<h5>{{this.nombre}}</h5>
-						<p class="small-letter">	
+						<p class="small-letter">
+							Estándar	
 							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
-							Uso mensual máximo: {{this.usoMensualMaximo}}
+							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
+
 						</p>
 					</li>
 					{{/dispositivosEstandar}}
 
 					{{#dispositivosInteligente}}
 					<li>
-						<p>	
-							{{this.nombre}} <br>
-							{{this.usoMensualMinimo}} <br>
-							{{this.usoMensualMaximo}}
+						<h5>{{this.nombre}}</h5>
+						<p class="small-letter">
+							Inteligente	
+							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
+							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
+							Estado: {{this.estado}}
 						</p>
 					</li>
 					{{/dispositivosInteligente}}
@@ -45,7 +49,11 @@
 					<h4 class="my-0 font-weight-normal">Ultimas mediciones</h4>
 				</div>
 				<div class="card-body">
-					<p></p>
+					<p>
+						Consumo promedio: {{consumoPromedio}} <br> 
+						Consumo diario estimado: {{estimadoDiario}} <br>
+						Consumo óptimo: {{usoOptimo}}
+					</p>
 				</div>
 			</div>
 		</div>
