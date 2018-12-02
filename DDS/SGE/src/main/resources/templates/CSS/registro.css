@@ -1,0 +1,10 @@
+.user-no-disponible {
+	position: absolute;
+	display: block;
+	color: #999;
+	font-size: 14px;
+	margin: 0;
+	margin-top: 7px;
+	left: 0;
+	color: red;
+}

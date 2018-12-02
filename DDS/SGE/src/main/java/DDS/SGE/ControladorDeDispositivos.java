@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import DDS.SGE.Repositorios.RepositorioClientes;
+
 public class ControladorDeDispositivos {
 	public static void main(String args[]) {
 		Optimizador optimizador = new Optimizador();
@@ -14,7 +16,7 @@ public class ControladorDeDispositivos {
 			@Override
 			public void run() {
 				System.out.println("Controlando dispositivos...");
-				List<Cliente> clientes = RepositorioClientes.instancia.getClientes();
+				List<Cliente> clientes = RepositorioClientes.getAllClients();
 				clientes.forEach(c -> {
 					optimizador.simplex(c);
 					optimizador.accionarSobreDispositivos(

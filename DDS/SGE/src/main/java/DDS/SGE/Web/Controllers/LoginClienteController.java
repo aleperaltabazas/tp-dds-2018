@@ -1,70 +1,47 @@
 package DDS.SGE.Web.Controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import DDS.SGE.Administrador;
 import DDS.SGE.Cliente;
-import DDS.SGE.RepositorioAdministradores;
-import DDS.SGE.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-public class LoginClienteController {
-	
-	private static final String SESSION_NAME = "id";
-	
+public class LoginClienteController extends LoginController {
 	public static ModelAndView mostrar(Request req, Response res) {
-		
-		//Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
+		// Obtener la direccion correspondiente del hbs, ruta comienza en
+		// main/resources/templates/
 		return new ModelAndView(null, "login.hbs");
 	}
-	
-	public static ModelAndView login(Request req, Response res) {
 
+	public static ModelAndView loginCliente(Request req, Response res) {
 		String username = req.queryParams("username");
 		String password = req.queryParams("password");
-		
-		Cliente usuario = RepositorioClientes.instancia.findByUsername(username);
-		
-		req.session().attribute(SESSION_NAME);
-		
-		if(usuario.getPassword().equals(password)) {
-			String id = Long.toString(usuario.getId());
-			res.redirect("/user/" + id);
-			req.session().attribute(SESSION_NAME, id);			
-		} 
-		
-		else {
-			Map<String, Object> viewmodel = new HashMap<String, Object>();
-			viewmodel.put("username", username);
-			viewmodel.put("password", password);
-			return new ModelAndView(viewmodel, "loginError.hbs");
+
+		System.out.println(username);
+		System.out.println("Hash ingresado:" + HashProvider.hash(password));
+
+		try {
+			// No sé que les parezca mejor, dejar el get en el try catch o envolver el
+			// optional con un if isEmpty()
+			Cliente usuario = RepositorioClientes.findByUsername(username).get();
+			System.out.println("Hash persistido: " + usuario.getPassword());
+
+			req.session().attribute(SESSION_NAME);
+
+			if (!usuario.getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
+				return error(req, res);
+			} else {
+				String id = Long.toString(usuario.getId());
+				System.out.println(id);
+				res.redirect("/");
+				req.session().attribute(SESSION_NAME, id);
+			}
+		} catch (Exception e) {
+			return error(req, res);
 		}
-	
-		return new ModelAndView(null, "login.hbs");
-	}	
-	
-	public static ModelAndView loginAdmin(Request req, Response res) {
-		String username = req.queryParams("username");
-		String password = req.queryParams("password");
-		
-		Administrador admin = RepositorioAdministradores.instancia.findByUsername(username);
-		
-		req.session().attribute(SESSION_NAME);
-		
-		if(admin.getPassword()!= password) {
-			Map<String, Object> viewmodel = new HashMap<String, Object>();
-			viewmodel.put("username", username);
-			viewmodel.put("password", password);
-			return new ModelAndView(viewmodel, "loginError.hbs");
-		} else {
-			String id = Long.toString(admin.getId());
-			res.redirect("/administrador/" + id);
-			req.session().attribute(SESSION_NAME, id);
-		}
-		
+
 		return new ModelAndView(null, "login.hbs");
 	}
+
 }

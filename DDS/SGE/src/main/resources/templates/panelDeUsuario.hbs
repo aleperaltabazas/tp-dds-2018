@@ -1,0 +1,30 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="mb-4">
+			<div>
+				<h3 class="my-0 font-weight-normal">Panel de usuario</h3>
+				<h2> {{resultado}} </h2>
+			</div>
+			<div class="card-body">
+				<p>
+					Nombre de usuario: {{ username }}<br>
+					Nombre: {{ nombre }}<br>
+					Apellido: {{ apellido }}<br>
+					Dirección: {{ domicilio }}<br>
+					Número de teléfono: {{ telefono }}<br>
+					Número y tipo de documento: {{ numeroDni }}, {{ tipoDni }}<br>
+				</p>
+
+				<form action="/me/edit" method="GET">
+					<button type="submit" class="btn btn-lg btn-block btn-primary">Actualizar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}

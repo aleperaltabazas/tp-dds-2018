@@ -58,6 +58,23 @@ public class Cliente {
 
 	}
 
+	protected Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono,
+			String domicilio, LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos, String username,
+			String password) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDni = tipoDni;
+		this.numeroDni = numeroDni;
+		this.telefono = telefono;
+		this.domicilio = domicilio;
+		this.fechaAltaServicio = fechaAltaServicio;
+		this.categoria = Categoria.R1;
+		this.dispositivos = new ArrayList<Dispositivo>();
+		this.setDispositivos(dispositivos);
+		this.username = username;
+		this.password = password;
+	}
+
 	public Cliente(String nombre, String apellido, TipoDni tipoDni, String numeroDni, String telefono, String domicilio,
 			LocalDateTime fechaAltaServicio, List<Dispositivo> dispositivos) {
 		this.nombre = nombre;
@@ -70,6 +87,11 @@ public class Cliente {
 		this.categoria = Categoria.R1;
 		this.dispositivos = new ArrayList<Dispositivo>();
 		this.setDispositivos(dispositivos);
+	}
+
+	public Cliente(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
 
 	public enum TipoDni {
@@ -86,6 +108,10 @@ public class Cliente {
 
 	public String getNombre() {
 		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Categoria getCategoria() {
@@ -216,6 +242,10 @@ public class Cliente {
 		return apellido;
 	}
 
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 	public String getNumeroDni() {
 		return numeroDni;
 	}
@@ -230,6 +260,14 @@ public class Cliente {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setNumeroDni(String numeroDni) {
+		this.numeroDni = numeroDni;
 	}
 
 }
