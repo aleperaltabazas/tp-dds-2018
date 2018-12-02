@@ -5,14 +5,17 @@ import spark.Request;
 import spark.Response;
 
 public class HomeController {
-	protected static final String SESSION_NAME = "id";
+    protected static final String SESSION_NAME = "id";
 
-	public static ModelAndView mostrar(Request req, Response res) {
-		if (req.session().attribute(SESSION_NAME) == null) {
-			return new ModelAndView(null, "home.hbs");
-		}
+    public static ModelAndView mostrar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            return new ModelAndView(null, "home.hbs");
+        }
 
-		return new ModelAndView(null, "principal.hbs");
-	}
+        return homeLogeado(req, res);
+    }
 
+    private static ModelAndView homeLogeado(Request req, Response res) {
+        return new ModelAndView(null, "principal.hbs");
+    }
 }

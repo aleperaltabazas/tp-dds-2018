@@ -44,13 +44,6 @@ public class Service {
         get("/login", LoginClienteController::mostrar, engine);
         post("/login", LoginClienteController::loginCliente, engine);
 
-        get("/principal", PrincipalController::mostrar, engine);
-
-        get("/user", UserController::mostrar, engine);
-        get("/user/:id", UserController::mostrar, engine);
-        // Tanto el hogar como el optimizador deberian saber de que usuario sacar la
-        // informacion
-
         get("/hogar", HogarController::mostrar, engine);
         // get("/hogar/:username", HogarController::mostrar, engine);
 

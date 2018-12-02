@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioDispositivos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,156 +28,155 @@ import Geoposicionamiento.Transformador;
 
 public class TestDispositivo {
 
-	Cliente clienteSinDispositivos;
-	Cliente clienteConUnDispositivoEstandar;
-	Cliente clienteConUnDispositivoInteligente;
-	Dispositivo dispositivoSencillo;
-	Dispositivo dispositivoInteligente;
-	DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
-	DispositivoInteligente inteligente;
-	Transformador unTransformador = new Transformador(200);
-	
-	LocalDateTime fechaDeReferencia = LocalDateTime.now();
-	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
-	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5),
-			fechaDeReferencia.minusHours(3));
-	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
-	RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
-	
-	@Before
-	public void Inicializar() {
+    Cliente clienteSinDispositivos;
+    Cliente clienteConUnDispositivoEstandar;
+    Cliente clienteConUnDispositivoInteligente;
+    Dispositivo dispositivoSencillo;
+    Dispositivo dispositivoInteligente;
+    DispositivoEstandar estandar = new DispositivoEstandar(10, 20);
+    DispositivoInteligente inteligente;
+    Transformador unTransformador = new Transformador(200);
 
-		inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(3800));
-		dispositivoSencillo = new Dispositivo(estandar);
-		dispositivoSencillo.setNombre("Sencillo");
+    LocalDateTime fechaDeReferencia = LocalDateTime.now();
+    IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
+    IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5),
+            fechaDeReferencia.minusHours(3));
+    List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
+    RepositorioDeTiempoEncendidoTest repositorioDePrueba = new RepositorioDeTiempoEncendidoTest(intervalosDeActividad);
 
-		dispositivoInteligente = new Dispositivo(inteligente);
+    @Before
+    public void Inicializar() {
 
-		clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
+        inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(3800));
+        dispositivoSencillo = new Dispositivo(estandar);
+        dispositivoSencillo.setNombre("Sencillo");
 
-		clienteConUnDispositivoEstandar = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
+        dispositivoInteligente = new Dispositivo(inteligente);
 
-		clienteConUnDispositivoInteligente = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
-				"Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoInteligente));
-		
-		unTransformador.agregarCliente(clienteConUnDispositivoInteligente);
+        clienteSinDispositivos = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
+                "Av siempre viva 742", LocalDateTime.now(), Arrays.asList());
 
-		EntityManagerHelper.beginTransaction();
-	}
-	
-	@After
-	public void after() {
-		EntityManagerHelper.rollback();
-	}
+        clienteConUnDispositivoEstandar = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
+                "Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
 
-	@Test
-	public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
-		EntityManager em = EntityManagerHelper.entityManager();
+        clienteConUnDispositivoInteligente = new Cliente("Alejandro", "Peralta", TipoDni.DNI, "123456789", "1144448888",
+                "Av siempre viva 742", LocalDateTime.now(), Arrays.asList(dispositivoInteligente));
 
-		em.persist(clienteSinDispositivos);
+        unTransformador.agregarCliente(clienteConUnDispositivoInteligente);
 
-		Cliente clientePersistido = em.find(Cliente.class, clienteSinDispositivos.getId());
+        EntityManagerHelper.beginTransaction();
+    }
 
-		clientePersistido.setDomicilio("calle x");
+    @After
+    public void after() {
+        EntityManagerHelper.rollback();
+    }
 
-		em.persist(clientePersistido);
+    @Test
+    public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
+        EntityManager em = EntityManagerHelper.entityManager();
 
-		Cliente clienteActualizado = em.find(Cliente.class, clienteSinDispositivos.getId());
+        em.persist(clienteSinDispositivos);
 
-		assertEquals("calle x", clienteActualizado.getDomicilio());
-	}
+        Cliente clientePersistido = em.find(Cliente.class, clienteSinDispositivos.getId());
 
-	@Test
-	public void PersistirUnDispositivoEstandarYLuegoLevantarlo() {
-		EntityManager em = EntityManagerHelper.entityManager();
+        clientePersistido.setDomicilio("calle x");
 
-		em.persist(clienteConUnDispositivoEstandar);
-		em.persist(dispositivoSencillo);
-		em.persist(estandar);
+        em.persist(clientePersistido);
 
-		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoSencillo.getId());
-		dispositivoPersistido.setNombre("Sencillamente actualizado");
-		em.persist(dispositivoPersistido);
+        Cliente clienteActualizado = em.find(Cliente.class, clienteSinDispositivos.getId());
 
-		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoSencillo.getId());
-		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
-	}
+        assertEquals("calle x", clienteActualizado.getDomicilio());
+    }
 
-	@Test
-	public void PersistirUnDispositivoInteligenteYLuegoLevantarlo() {
+    @Test
+    public void PersistirUnDispositivoEstandarYLuegoLevantarlo() {
+        EntityManager em = EntityManagerHelper.entityManager();
 
-		EntityManager em = EntityManagerHelper.entityManager();
+        em.persist(clienteConUnDispositivoEstandar);
+        em.persist(dispositivoSencillo);
+        em.persist(estandar);
 
-		em.persist(clienteConUnDispositivoInteligente);
-		em.persist(dispositivoInteligente);
-		em.persist(inteligente);
+        Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoSencillo.getId());
+        dispositivoPersistido.setNombre("Sencillamente actualizado");
+        em.persist(dispositivoPersistido);
 
-		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
-		dispositivoPersistido.setNombre("Sencillamente actualizado");
-		em.persist(dispositivoPersistido);
+        Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoSencillo.getId());
+        assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
+    }
 
-		Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoPersistido.getId());
-		assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
-	}
+    @Test
+    public void PersistirUnDispositivoInteligenteYLuegoLevantarlo() {
 
-	@Test
-	public void PersistirUnDispositivoInteligenteYLuegoLevantarloConSuRepositorioDeIntervalosActualizado() {
+        EntityManager em = EntityManagerHelper.entityManager();
 
-		EntityManager em = EntityManagerHelper.entityManager();
+        em.persist(clienteConUnDispositivoInteligente);
+        em.persist(dispositivoInteligente);
+        em.persist(inteligente);
 
-		em.persist(clienteConUnDispositivoInteligente);
-		em.persist(inteligente);
-		em.persist(dispositivoInteligente);
-				
-		Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
+        Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
+        dispositivoPersistido.setNombre("Sencillamente actualizado");
+        em.persist(dispositivoPersistido);
 
-		DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido
-				.getTipoDispositivo();
+        Dispositivo dispositivoActualizado = em.find(Dispositivo.class, dispositivoPersistido.getId());
+        assertEquals("Sencillamente actualizado", dispositivoActualizado.getNombre());
+    }
 
-		assertEquals(0, dispositivoPersistido.consumoTotalHaceNHoras(100), 0);
+    @Test
+    public void PersistirUnDispositivoInteligenteYLuegoLevantarloConSuRepositorioDeIntervalosActualizado() {
 
-		dispositivoInteligentePersistido.setRepositorio(repositorioDePrueba);
+        EntityManager em = EntityManagerHelper.entityManager();
 
-		Dispositivo dispositivoPersistidoActual = em.find(Dispositivo.class, dispositivoPersistido.getId());
+        em.persist(clienteConUnDispositivoInteligente);
+        em.persist(inteligente);
+        em.persist(dispositivoInteligente);
 
-		DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistidoActual
-				.getTipoDispositivo();
+        Dispositivo dispositivoPersistido = em.find(Dispositivo.class, dispositivoInteligente.getId());
 
-		dispositivoInteligentePersistidoActual.getRepositorioTiempoEncendido().getIntervalosDeActividad()
-				.forEach(intervalo -> System.out.println(intervalo.getIntervaloEncendidoEnMinutos()));
+        DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido
+                .getTipoDispositivo();
 
-		assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100),
-				0);
-	}
-	
-	@Test
-	public void RecuperarDispositivoAsociadoAUnHogarEIncrementarConsumo() {
-		EntityManager em = EntityManagerHelper.entityManager();
+        assertEquals(0, dispositivoPersistido.consumoTotalHaceNHoras(100), 0);
 
-		em.persist(clienteConUnDispositivoInteligente);
-		em.persist(dispositivoInteligente);
-		em.persist(inteligente);
-		em.persist(unTransformador);
+        dispositivoInteligentePersistido.setRepositorio(repositorioDePrueba);
 
-		assertEquals(10, unTransformador.suministra(), 0.0);
+        Dispositivo dispositivoPersistidoActual = em.find(Dispositivo.class, dispositivoPersistido.getId());
 
-		Transformador t = em.find(Transformador.class, unTransformador.getId());
-		List<Cliente> usuarios = t.getUsuarios();
-		Cliente unCliente = usuarios.get(0);
-		List<Dispositivo> dispositivos = (List<Dispositivo>) unCliente.getDispositivos();
-		Dispositivo unDisp = dispositivos.get(0);
+        DispositivoInteligente dispositivoInteligentePersistidoActual = (DispositivoInteligente) dispositivoPersistidoActual
+                .getTipoDispositivo();
 
-		Dispositivo dispPersistido = em.find(Dispositivo.class, unDisp.getId());
-		// TODO Aca habria que aumentar el consumo
+        dispositivoInteligentePersistidoActual.getRepositorioTiempoEncendido().getIntervalosDeActividad()
+                .forEach(intervalo -> System.out.println(intervalo.getIntervaloEncendidoEnMinutos()));
 
-		em.persist(dispPersistido);
+        assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100),
+                0);
+    }
 
-		// TODO: Habria que ver si se modifica el consumo?
-		assertEquals(20, unTransformador.suministra(), 0.0);
+    @Test
+    public void RecuperarDispositivoAsociadoAUnHogarEIncrementarConsumo() {
+        EntityManager em = EntityManagerHelper.entityManager();
 
-		EntityManagerHelper.rollback();
-	}
+        em.persist(clienteConUnDispositivoInteligente);
+        em.persist(dispositivoInteligente);
+        em.persist(inteligente);
+        em.persist(unTransformador);
 
+        assertEquals(10, unTransformador.suministra(), 0.0);
+
+        Transformador t = em.find(Transformador.class, unTransformador.getId());
+        List<Cliente> usuarios = t.getUsuarios();
+        Cliente unCliente = usuarios.get(0);
+        List<Dispositivo> dispositivos = (List<Dispositivo>) unCliente.getDispositivos();
+        Dispositivo unDisp = dispositivos.get(0);
+
+        Dispositivo dispPersistido = em.find(Dispositivo.class, unDisp.getId());
+        // TODO Aca habria que aumentar el consumo
+
+        em.persist(dispPersistido);
+
+        // TODO: Habria que ver si se modifica el consumo?
+        assertEquals(20, unTransformador.suministra(), 0.0);
+
+        EntityManagerHelper.rollback();
+    }
 }
