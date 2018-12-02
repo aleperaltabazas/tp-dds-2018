@@ -3,16 +3,17 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 
 import DDS.SGE.Cliente;
-import DDS.SGE.Repositorios.Repositorio;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Response;
 import spark.Request;
 
+import static DDS.SGE.Web.Controllers.Routes.*;
+
 public class PanelDeUsuarioController extends Controller {
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect("/");
+            res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
 
@@ -61,7 +62,7 @@ public class PanelDeUsuarioController extends Controller {
 
         RepositorioClientes.actualizarCliente(cliente);
 
-        res.redirect("/me");
+        res.redirect(USER);
 
         return mostrar(req, res);
     }

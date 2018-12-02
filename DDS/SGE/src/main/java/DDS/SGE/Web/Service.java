@@ -1,5 +1,6 @@
 package DDS.SGE.Web;
 
+import static DDS.SGE.Web.Controllers.Routes.*;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -50,32 +51,33 @@ public class Service {
             e.printStackTrace();
         }
 
-        get("/", HomeController::mostrar, engine);
+        get(HOME, HomeController::mostrar, engine);
 
-        get("/login", LoginClienteController::mostrar, engine);
-        post("/login", LoginClienteController::loginCliente, engine);
+        get(LOGIN, LoginClienteController::mostrar, engine);
+        post(LOGIN, LoginClienteController::loginCliente, engine);
 
-        get("/hogar", HogarController::mostrar, engine);
-        // get("/hogar/:username", HogarController::mostrar, engine);
+        get(HOGAR, HogarController::mostrar, engine);
 
-        get("/optimizador", OptimizadorController::mostrar, engine);
+        get(OPTIMIZADOR, OptimizadorController::mostrar, engine);
 
-        get("/administrador/login", LoginAdminController::loginAdmin, engine);
-        get("/administrador", PanelAdministradorController::mostrar, engine);
-        get("/administrador/new", PanelAdministradorController::nuevoDispositivo, engine);
-        get("/administrador/hogares", PanelAdministradorController::verTodosLosHogares, engine);
+        get(ADMINISTRADOR_LOGIN, LoginAdminController::loginAdmin, engine);
 
-        get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
+        get(ADMINISTRADOR, PanelAdministradorController::mostrar, engine);
+        get(ADMINISTRADOR_HOGARES, PanelAdministradorController::verTodosLosHogares, engine);
+
+        get(DISPOSITIVOS_NEW, CatalogoController::mostrar, engine);
+
+        get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
         // get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
 
-        get("/transformador", TransformadorController::mostrar, engine);
+        get(TRANSFORMADOR, TransformadorController::mostrar, engine);
 
-        get("/me", PanelDeUsuarioController::mostrar, engine);
-        get("/me/edit", PanelDeUsuarioController::editar, engine);
-        post("/me/edit", PanelDeUsuarioController::actualizar);
+        get(USER, PanelDeUsuarioController::mostrar, engine);
+        get(USER_EDIT, PanelDeUsuarioController::editar, engine);
+        post(USER_EDIT, PanelDeUsuarioController::actualizar);
 
-        get("/signup", RegistrarController::mostrar, engine);
-        post("/signup", RegistrarController::registrar, engine);
+        get(SIGNUP, RegistrarController::mostrar, engine);
+        post(SIGNUP, RegistrarController::registrar, engine);
 
     }
 }

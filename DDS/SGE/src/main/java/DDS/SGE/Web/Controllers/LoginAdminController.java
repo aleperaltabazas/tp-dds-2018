@@ -7,6 +7,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import static DDS.SGE.Web.Controllers.Routes.*;
+
 public class LoginAdminController extends LoginController {
 	public static ModelAndView mostrar(Request req, Response res) {
 		// Tal vez estaría bueno tener una pantalla
@@ -29,7 +31,8 @@ public class LoginAdminController extends LoginController {
 				return error(req, res);
 			} else {
 				String id = Long.toString(admin.getId());
-				res.redirect("/administrador/" + id);
+				res.redirect(ADMINISTRADOR);
+				//TODO: redirigirlo a HOME y chequear si es admin o cliente?
 				req.session().attribute(SESSION_NAME, id);
 			}
 		} catch (Exception e) {

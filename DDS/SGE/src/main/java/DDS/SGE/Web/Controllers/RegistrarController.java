@@ -1,7 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
 import java.util.HashMap;
-import java.util.Optional;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.ClienteBuilder;
@@ -10,6 +9,8 @@ import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+
+import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class RegistrarController {
 	public static ModelAndView mostrar(Request req, Response res) {
@@ -47,7 +48,7 @@ public class RegistrarController {
 			return usernameNoDisponible(req, res);
 		}
 
-		res.redirect("/login");
+		res.redirect(LOGIN);
 		return new ModelAndView(null, "registro.hbs");
 
 	}

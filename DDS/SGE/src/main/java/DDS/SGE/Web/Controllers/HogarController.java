@@ -7,9 +7,10 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class HogarController extends Controller {
     //TODO: cambiar las rutas con nombres finales
@@ -17,7 +18,7 @@ public class HogarController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect("/");
+            res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
 
