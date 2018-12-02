@@ -15,52 +15,63 @@ import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Service {
-	public static void main(String[] args) {
-		Spark.port(9000);
-		Spark.staticFiles.location("/templates");
-		DebugScreen.enableDebugScreen();
+    public static void main(String[] args) {
+        Spark.port(9000);
+        Spark.staticFiles.location("/templates");
+        DebugScreen.enableDebugScreen();
 
-		HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
-		HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
+        HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
+        HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
 
-		Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788", "Calle verdadera 321",
-				LocalDateTime.now(), Arrays.asList());
-		RepositorioClientes.agregarCliente(cliente);
+        Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788", "Calle verdadera 321",
+                LocalDateTime.now(), Arrays.asList());
+        RepositorioClientes.agregarCliente(cliente);
 
-		ClienteBuilder cb = new ClienteBuilder();
+        ClienteBuilder cb = new ClienteBuilder();
 
-		Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
-		Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
+        Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
+        Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
 
-		try {
-			RepositorioClientes.registrarCliente(c1);
-			RepositorioClientes.registrarCliente(c2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            RepositorioClientes.registrarCliente(c1);
+            RepositorioClientes.registrarCliente(c2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		get("/", HomeController::mostrar, engine);	
-		get("/login", LoginClienteController::mostrar, engine);
-		post("/login", LoginClienteController::loginCliente, engine);
-		get("/administrador/login", LoginAdminController::loginAdmin, engine);
-		get("/principal", PrincipalController::mostrar, engine);
-		get("/user", UserController::mostrar, engine);
-		get("/user/:id", UserController::mostrar, engine);
-		// Tanto el hogar como el optimizador deberian saber de que usuario sacar la
-		// informacion
-		get("/hogar", HogarController::mostrar, engine);
-		// get("/hogar/:username", HogarController::mostrar, engine);
-		get("/optimizador", OptimizadorController::mostrar, engine);
-		get("/administrador", PanelAdministradorController::mostrar, engine);
-		get("/administrador/new", PanelAdministradorController::nuevoDispositivo, engine);
-		get("/administrador/hogares", PanelAdministradorController::verTodosLosHogares, engine);
-		get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
-		// get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
-		get("/transformador", TransformadorController::mostrar, engine);
-		get("/me", PanelDeUsuarioController::mostrar, engine);
-		get("/signup", RegistrarController::mostrar, engine);
-		post("/signup", RegistrarController::registrar, engine);
-		get("/me/edit", PanelDeUsuarioController::editar, engine);
-		post("/me/edit", PanelDeUsuarioController::actualizar);
-	}
+        get("/", HomeController::mostrar, engine);
+
+        get("/login", LoginClienteController::mostrar, engine);
+        post("/login", LoginClienteController::loginCliente, engine);
+
+        get("/principal", PrincipalController::mostrar, engine);
+
+        get("/user", UserController::mostrar, engine);
+        get("/user/:id", UserController::mostrar, engine);
+        // Tanto el hogar como el optimizador deberian saber de que usuario sacar la
+        // informacion
+
+        get("/hogar", HogarController::mostrar, engine);
+        // get("/hogar/:username", HogarController::mostrar, engine);
+
+        get("/optimizador", OptimizadorController::mostrar, engine);
+
+        get("/administrador/login", LoginAdminController::loginAdmin, engine);
+        get("/administrador", PanelAdministradorController::mostrar, engine);
+        get("/administrador/new", PanelAdministradorController::nuevoDispositivo, engine);
+        get("/administrador/hogares", PanelAdministradorController::verTodosLosHogares, engine);
+
+        get("/consumo", ConsumoPorPeriodoController::mostrar, engine);
+        // get("/consumo/:id",ConsumoPorPeriodoController::obtener, engine);
+
+        get("/transformador", TransformadorController::mostrar, engine);
+
+        get("/me", PanelDeUsuarioController::mostrar, engine);
+        get("/me/edit", PanelDeUsuarioController::editar, engine);
+        post("/me/edit", PanelDeUsuarioController::actualizar);
+
+        get("/signup", RegistrarController::mostrar, engine);
+        post("/signup", RegistrarController::registrar, engine);
+
+    }
 }
