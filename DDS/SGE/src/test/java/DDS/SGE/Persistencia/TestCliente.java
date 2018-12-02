@@ -3,6 +3,8 @@ package DDS.SGE.Persistencia;
 import DDS.SGE.*;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 
@@ -12,10 +14,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
 import DDS.SGE.Repositorios.RepositorioDispositivos;
+import Fabricante.AireAcondicionado;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +27,8 @@ import org.junit.Test;
 public class TestCliente {
     Cliente cliente;
     Dispositivo dispositivoSencillo;
+    Dispositivo noSencillo;
+    DispositivoInteligente inteligente;
     DispositivoEstandar estandar;
     EntityManager em;
 
@@ -30,6 +36,9 @@ public class TestCliente {
     public void initialize() {
         estandar = new DispositivoEstandar(10, 20);
         dispositivoSencillo = new Dispositivo(estandar);
+        inteligente = new DispositivoInteligente(new Apagado(), new AireAcondicionado(20));
+        noSencillo = new Dispositivo(inteligente);
+
         cliente = new Cliente("Un nombre", "Un apellido", Cliente.TipoDni.DNI, "1111", "4444", "Un domicilio",
                 LocalDateTime.now(), new ArrayList<Dispositivo>());
         em = EntityManagerHelper.entityManager();
@@ -69,11 +78,11 @@ public class TestCliente {
 
     @Test
     public void testPersistirUnClienteYLevantarSusDispositivos() {
-        Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo));
+        Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
         RepositorioClientes.agregarCliente(otroCliente);
 
-        List<Dispositivo> dispositivos = RepositorioDispositivos.dispositivosDe(otroCliente);
-        assertEquals(dispositivos, Arrays.asList(dispositivoSencillo));
+        List<Dispositivo> dispositivos = RepositorioClientes.findByID(otroCliente.getId()).getDispositivos().collect(Collectors.toList());
+        assertEquals(Arrays.asList(dispositivoSencillo, noSencillo), dispositivos);
     }
 
 }

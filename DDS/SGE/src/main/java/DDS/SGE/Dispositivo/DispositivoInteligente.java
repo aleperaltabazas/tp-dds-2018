@@ -2,11 +2,7 @@ package DDS.SGE.Dispositivo;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
@@ -17,124 +13,125 @@ import Fabricante.*;
 @Entity
 public class DispositivoInteligente extends TipoDispositivo {
 
-	@ManyToOne()
-	Fabricante fabricante;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    Fabricante fabricante;
 
-	@OneToOne()
-	EstadoDelDispositivo estado;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    EstadoDelDispositivo estado;
 
-	@Embedded
-	RepositorioDeTiempoEncendido repositorio;
-	
-	protected DispositivoInteligente() {}
+    @Embedded
+    RepositorioDeTiempoEncendido repositorio;
 
-	public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {
-		this.estado = estado;
-		this.fabricante = fabricante;
-		repositorio = new RepositorioDeTiempoEncendido();
-	}
+    protected DispositivoInteligente() {
+    }
 
-	public EstadoDelDispositivo getEstado() {
-		return estado;
-	}
+    public DispositivoInteligente(EstadoDelDispositivo estado, Fabricante fabricante) {
+        this.estado = estado;
+        this.fabricante = fabricante;
+        repositorio = new RepositorioDeTiempoEncendido();
+    }
 
-	public RepositorioDeTiempoEncendido getRepositorioTiempoEncendido() {
-		return this.repositorio;
-	}
+    public EstadoDelDispositivo getEstado() {
+        return estado;
+    }
 
-	@Override
-	public double getConsumoKWPorHora() {
-		return this.fabricante.getConsumoKWPorHora();
-	}
+    public RepositorioDeTiempoEncendido getRepositorioTiempoEncendido() {
+        return this.repositorio;
+    }
 
-	public void setFabricante(Fabricante unFabricante) {
-		this.fabricante = unFabricante;
-	}
+    @Override
+    public double getConsumoKWPorHora() {
+        return this.fabricante.getConsumoKWPorHora();
+    }
 
-	public void setRepositorio(RepositorioDeTiempoEncendido repositorio) {
-		this.repositorio = repositorio;
-	}
+    public void setFabricante(Fabricante unFabricante) {
+        this.fabricante = unFabricante;
+    }
 
-	@Override
-	public long usoEstimadoDiario() {
-		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(24);
-	}
+    public void setRepositorio(RepositorioDeTiempoEncendido repositorio) {
+        this.repositorio = repositorio;
+    }
 
-	@Override
-	public boolean estaEncendido() {
-		return estado.estaEncendido();
-	}
+    @Override
+    public long usoEstimadoDiario() {
+        return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(24);
+    }
 
-	boolean estaApagado() {
-		return !this.estaEncendido();
-	}
+    @Override
+    public boolean estaEncendido() {
+        return estado.estaEncendido();
+    }
 
-	@Override
-	public void encender() {
-		this.estado.encender(this);
-	}
+    boolean estaApagado() {
+        return !this.estaEncendido();
+    }
 
-	@Override
-	public void apagar() {
-		this.estado.apagar(this);
-	}
+    @Override
+    public void encender() {
+        this.estado.encender(this);
+    }
 
-	public void ahorraEnergia() {
-		this.estado.ahorraEnergia(this);
-	}
+    @Override
+    public void apagar() {
+        this.estado.apagar(this);
+    }
 
-	public double getIntensidad() {
-		return this.estado.getIntensidad();
-	}
+    public void ahorraEnergia() {
+        this.estado.ahorraEnergia(this);
+    }
 
-	public Fabricante getFabricante() {
-		return this.fabricante;
-	}
+    public double getIntensidad() {
+        return this.estado.getIntensidad();
+    }
 
-	public void setIntensidad(double nuevoValor) {
-		this.estado.setIntensidad(nuevoValor);
-	}
+    public Fabricante getFabricante() {
+        return this.fabricante;
+    }
 
-	public void setEstado(EstadoDelDispositivo unEstado) {
-		this.estado = unEstado;
-	}
+    public void setIntensidad(double nuevoValor) {
+        this.estado.setIntensidad(nuevoValor);
+    }
 
-	@Override
-	public double tiempoTotalEncendidoHaceNHoras(int horas) {
-		return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(horas);
-	}
+    public void setEstado(EstadoDelDispositivo unEstado) {
+        this.estado = unEstado;
+    }
 
-	@Override
-	public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
-		return repositorio.tiempoTotalEnUnPeriodoEnMinutos(principioPeriodo, finPeriodo);
-	}
+    @Override
+    public double tiempoTotalEncendidoHaceNHoras(int horas) {
+        return repositorio.tiempoTotalEncendidoHaceNHorasEnMinutos(horas);
+    }
 
-	public TipoDispositivo adaptar(Fabricante unFabricante) {
-		return this;
-	}
+    @Override
+    public double tiempoTotalEncendidoEnUnPeriodo(LocalDateTime principioPeriodo, LocalDateTime finPeriodo) {
+        return repositorio.tiempoTotalEnUnPeriodoEnMinutos(principioPeriodo, finPeriodo);
+    }
 
-	@Override
-	public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
-		interesadoEnNuevosDispositivos.sumarPuntos();
-	}
+    public TipoDispositivo adaptar(Fabricante unFabricante) {
+        return this;
+    }
 
-	@Override
-	public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
-		interesadoEnAdaptaciones.sumarPuntos();
-	}
+    @Override
+    public void seAgregoNuevoDispositivo(InteresadoEnNuevosDispositivos interesadoEnNuevosDispositivos) {
+        interesadoEnNuevosDispositivos.sumarPuntos();
+    }
 
-	@Override
-	public TipoDispositivo adaptar() {
-		return this;
-	}
+    @Override
+    public void seAdaptoUnDispositivo(InteresadoEnAdaptaciones interesadoEnAdaptaciones) {
+        interesadoEnAdaptaciones.sumarPuntos();
+    }
 
-	@Override
-	public double usoMensualMinimo() {
-		return fabricante.usoMensualMinimo();
-	}
+    @Override
+    public TipoDispositivo adaptar() {
+        return this;
+    }
 
-	@Override
-	public double usoMensualMaximo() {
-		return fabricante.usoMensualMaximo();
-	}
+    @Override
+    public double usoMensualMinimo() {
+        return fabricante.usoMensualMinimo();
+    }
+
+    @Override
+    public double usoMensualMaximo() {
+        return fabricante.usoMensualMaximo();
+    }
 }

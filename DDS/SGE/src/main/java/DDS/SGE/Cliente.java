@@ -28,8 +28,9 @@ public class Cliente {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cliente_id")
+    @OrderColumn
     private List<Dispositivo> dispositivos;
 
     private String nombre;
