@@ -39,7 +39,7 @@ public class Service {
 			e.printStackTrace();
 		}
 
-		get("/", HomeController::mostrar, engine);
+		get("/", HomeController::mostrar, engine);	
 		get("/login", LoginClienteController::mostrar, engine);
 		post("/login", LoginClienteController::loginCliente, engine);
 		get("/administrador/login", LoginAdminController::loginAdmin, engine);

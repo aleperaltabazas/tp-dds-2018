@@ -3,6 +3,7 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 
 import DDS.SGE.Cliente;
+import DDS.SGE.Repositorios.Repositorio;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Response;
@@ -60,6 +61,8 @@ public class PanelDeUsuarioController {
 		cliente.setTelefono(telefono);
 		cliente.setDomicilio(direccion);
 		cliente.setNumeroDni(numeroDni);
+
+		RepositorioClientes.actualizarCliente(cliente);
 
 		res.redirect("/me");
 
