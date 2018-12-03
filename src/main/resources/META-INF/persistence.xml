@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-	version="2.0">
+             version="2.0">
 
-	<persistence-unit name="db"
-		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <persistence-unit name="db"
+                      transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>Geoposicionamiento.Zona</class>
-		<class>Geoposicionamiento.Transformador</class>
-		<class>Geoposicionamiento.ActualizadorDeTransformadores</class>
+        <class>Geoposicionamiento.Zona</class>
+        <class>Geoposicionamiento.Transformador</class>
+        <class>Geoposicionamiento.ActualizadorDeTransformadores</class>
 
-		<class>DDS.SGE.Cliente</class>
+        <class>DDS.SGE.Cliente</class>
 
-		<class>DDS.SGE.Dispositivo.Dispositivo</class>
-		<class>DDS.SGE.Dispositivo.TipoDispositivo</class>
-		<class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
-		<class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
-		<class>DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido</class>
-
-
-		<class>Fabricante.Fabricante</class>
-
-		<class>DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo</class>
-		<class>DDS.SGE.Dispositivo.Estado.Apagado</class>
-		<class>DDS.SGE.Dispositivo.Estado.AhorroDeEnergia</class>
-		<class>DDS.SGE.Dispositivo.Estado.Encendido</class>
-		<class>DDS.SGE.Dispositivo.IntervaloActivo</class>
-
-		<class>DDS.SGE.Regla.Regla</class>
-		<class>DDS.SGE.Sensor.Consumo</class>
-		<class>DDS.SGE.Sensor.Humedad</class>
-		<class>DDS.SGE.Sensor.Luz</class>
-		<class>DDS.SGE.Sensor.Movimiento</class>
-		<class>DDS.SGE.Sensor.Sensor</class>
-		<class>DDS.SGE.Sensor.Temperatura</class>
-
-		<class>DDS.SGE.Actuador.Actuador</class>
-		<class>DDS.SGE.Actuador.Apagar</class>
-		<class>DDS.SGE.Actuador.Bajar_Intensidad</class>
-		<class>DDS.SGE.Actuador.CambiarACalor</class>
-		<class>DDS.SGE.Actuador.CambiarAFrio</class>
-		<class>DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado</class>
-		<class>DDS.SGE.Actuador.Subir_Intensidad</class>
-		<class>DDS.SGE.Administrador</class>
-		<class>DDS.SGE.Usuario</class>
-
-		<properties>
-			<property name="hibernate.archive.autodetection"
-				value="class" />
-
-			<!-- property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"
-				/> <property name="hibernate.connection.url" value="jdbc:mysql://vvfv20el7sb2enn3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qvvqseqp1op5ohyg"
-				/> <property name="hibernate.connection.username" value="wpwvn60ctxclsrbu" /> <property
-				name="hibernate.connection.password" value="mqri8ko68bw1hcqd" /-->
-
-			<property name="hibernate.connection.driver_class"
-				value="org.hsqldb.jdbcDriver" />
-			<property name="hibernate.connection.url"
-				value="jdbc:hsqldb:mem:app-db" />
-			<property name="hibernate.connection.username" value="sa" />
-			<property name="hibernate.connection.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.HSQLDialect" />
+        <class>DDS.SGE.Dispositivo.Dispositivo</class>
+        <class>DDS.SGE.Dispositivo.TipoDispositivo</class>
+        <class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
+        <class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
+        <class>DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido</class>
 
 
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="use_sql_comments" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+        <class>Fabricante.Fabricante</class>
 
-		</properties>
+        <class>DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo</class>
+        <class>DDS.SGE.Dispositivo.Estado.Apagado</class>
+        <class>DDS.SGE.Dispositivo.Estado.AhorroDeEnergia</class>
+        <class>DDS.SGE.Dispositivo.Estado.Encendido</class>
+        <class>DDS.SGE.Dispositivo.IntervaloActivo</class>
 
-	</persistence-unit>
+        <class>DDS.SGE.Regla.Regla</class>
+        <class>DDS.SGE.Sensor.Consumo</class>
+        <class>DDS.SGE.Sensor.Humedad</class>
+        <class>DDS.SGE.Sensor.Luz</class>
+        <class>DDS.SGE.Sensor.Movimiento</class>
+        <class>DDS.SGE.Sensor.Sensor</class>
+        <class>DDS.SGE.Sensor.Temperatura</class>
+
+        <class>DDS.SGE.Actuador.Actuador</class>
+        <class>DDS.SGE.Actuador.Apagar</class>
+        <class>DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado</class>
+        <class>DDS.SGE.Administrador</class>
+
+        <properties>
+            <property name="hibernate.archive.autodetection"
+                      value="class"/>
+
+            <!--
+            ESTA ES LA BASE DE DATOS POSTA DE HEROKU
+            -->
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"
+            />
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/b87nnklu41yn6ha2"
+            />
+            <property name="hibernate.connection.username" value="soiy1v0powf5baf0"/>
+            <property
+                    name="hibernate.connection.password" value="w8g5t54tsomir95k"/>
+
+            <!--
+            ESTE DE ACÁ SE USA PARA TESTEAR CON LA BASE DE DATOS LOCAL EN MEMORIA
+            -->
+
+            <!--property name="hibernate.connection.driver_class"
+                      value="org.hsqldb.jdbcDriver"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:hsqldb:mem:app-db"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value=""/-->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.HSQLDialect"/>
+
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+        </properties>
+
+    </persistence-unit>
 
 </persistence> 
