@@ -21,6 +21,10 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView adquirir(Request request, Response response) {
+        return new ModelAndView(null, "dispositivos-adquirir.hbs"); 
+    }
+
+    public static ModelAndView crear(Request request, Response response) {
         return null;
     }
 }

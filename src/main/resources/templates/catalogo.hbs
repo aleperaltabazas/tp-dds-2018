@@ -12,7 +12,6 @@
           <div class="card mb-4 shadow-sm">
             <div class="card-body">
               <h5>{{this.nombre}}</h5>
-              <h6>{{this.detalle}}</h6>
               <ul>
                 <li>Inteligente: {{this.inteligente}}</li>
                 <li>Bajo consumo: {{this.bajoConsumo}}</li>
@@ -21,7 +20,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Adquirir</button>
+                <form action="/dispositivos/acquire" method="GET">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Adquirir</button>
+                </form>
               </div>
             </div>
           </div>

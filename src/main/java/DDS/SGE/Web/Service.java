@@ -76,7 +76,8 @@ public class Service {
         get(ADMINISTRADOR_HOGARES, PanelAdministradorController::verTodosLosHogares, engine);
 
         get(DISPOSITIVOS, CatalogoController::mostrar, engine);
-        post(DISPOSITIVOS_NEW, CatalogoController::adquirir, engine);
+        get(DISPOSITIVOS_ACQUIRE, CatalogoController::adquirir);
+        post(DISPOSITIVOS_NEW, CatalogoController::crear, engine);
 
         get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
