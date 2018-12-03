@@ -7,15 +7,22 @@ import static spark.Spark.post;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import DDS.SGE.*;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.IntervaloActivo;
+import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
 import DDS.SGE.Dispositivo.TablaDispositivos;
+import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Web.Controllers.*;
+import Fabricante.Computadora;
+import Fabricante.Fabricante;
 import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -50,6 +57,25 @@ public class Service {
 
         c1.agregarDispositivo(d);
         c1.agregarDispositivo(d2);
+        
+        TablaDispositivos td = new TablaDispositivos();
+        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
+        
+    	Fabricante unFabricante = new Computadora(true);
+    	LocalDateTime fechaDeReferencia = LocalDateTime.now();
+    	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
+    	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
+    	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
+    	RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
+    	repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
+    	DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
+    	
+    	Dispositivo di = td.getDispositivos().get(0);
+    	tipo.setRepositorio(repositorioDePrueba);
+    	di.setTipoDispositvo(tipo);
+        
+		c2.agregarDispositivo(di);
+		c2.agregarDispositivo(td.getDispositivos().get(5));
 
         try {
             RepositorioClientes.registrarCliente(c1);
@@ -57,9 +83,6 @@ public class Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        TablaDispositivos td = new TablaDispositivos();
-        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
 
         get(HOME, HomeController::mostrar, engine);
 

@@ -6,14 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Embeddable
 public class RepositorioDeTiempoEncendido {
 	
 	private LocalDateTime ultimaFechaDeEncendido;
-	@OneToMany()
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<IntervaloActivo> intervalosDeActividad;
 	
 	public RepositorioDeTiempoEncendido() {

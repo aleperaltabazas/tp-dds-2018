@@ -13,9 +13,6 @@ public class PersistirMain {
 		Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
 		
 		TablaDispositivos t = new TablaDispositivos();
-		
-		c2.agregarDispositivo(t.getDispositivos().get(0));
-		c2.agregarDispositivo(t.getDispositivos().get(5));
 
 		try {
 			RepositorioClientes.registrarCliente(c1);

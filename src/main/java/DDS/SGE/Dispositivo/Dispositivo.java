@@ -24,7 +24,7 @@ public class Dispositivo {
     private boolean esDeCatalogo;
     private boolean bajoConsumo;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     private TipoDispositivo tipo;
 
     protected Dispositivo() {

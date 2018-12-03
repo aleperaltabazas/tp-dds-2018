@@ -35,7 +35,7 @@ public class Repositorio {
     protected static void persistir(Object o) {
         em.getTransaction().begin();
         em.persist(o);
-        em.flush();
+        //em.flush();
         em.getTransaction().commit();
     }
 

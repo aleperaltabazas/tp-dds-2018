@@ -13,10 +13,10 @@ import Fabricante.*;
 @Entity
 public class DispositivoInteligente extends TipoDispositivo {
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     Fabricante fabricante;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     EstadoDelDispositivo estado;
 
     @Embedded
