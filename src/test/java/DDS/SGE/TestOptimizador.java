@@ -3,6 +3,7 @@ package DDS.SGE;
 import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class TestOptimizador {
 
 	LocalDateTime fechaDeReferencia = LocalDateTime.now();
 	IntervaloActivo intervaloDe600Horas = new IntervaloActivo(fechaDeReferencia.minusHours(600), fechaDeReferencia);
-	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe600Horas);
+	List<IntervaloActivo> intervalosDeActividad = new ArrayList<IntervaloActivo>(Arrays.asList(intervaloDe600Horas));
 	RepositorioDeTiempoEncendidoTest repositorioDeMuchoTiempoEncendido = new RepositorioDeTiempoEncendidoTest(
 			intervalosDeActividad);
 

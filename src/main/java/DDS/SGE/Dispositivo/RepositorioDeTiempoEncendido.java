@@ -12,9 +12,9 @@ import javax.persistence.OneToMany;
 @Embeddable
 public class RepositorioDeTiempoEncendido {
 	
-	public LocalDateTime ultimaFechaDeEncendido;
+	private LocalDateTime ultimaFechaDeEncendido;
 	@OneToMany()
-	public List<IntervaloActivo> intervalosDeActividad;
+	private List<IntervaloActivo> intervalosDeActividad;
 	
 	public RepositorioDeTiempoEncendido() {
 		ultimaFechaDeEncendido = LocalDateTime.now();
@@ -23,6 +23,14 @@ public class RepositorioDeTiempoEncendido {
 	
 	public Stream<IntervaloActivo> getIntervalosDeActividad(){
 		return intervalosDeActividad.stream();
+	}
+	
+	public void setIntervalosDeActividad(List<IntervaloActivo> intervalosDeActividad){
+		this.intervalosDeActividad = intervalosDeActividad;
+	}
+	
+	public void setUltimaFechaDeEncendido(LocalDateTime fecha){
+		this.ultimaFechaDeEncendido = fecha;
 	}
 
 	public void encender(LocalDateTime fechaEncendido) {

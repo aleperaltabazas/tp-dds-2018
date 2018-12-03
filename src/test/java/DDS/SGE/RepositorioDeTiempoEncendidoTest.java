@@ -10,8 +10,7 @@ import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
 
 public class RepositorioDeTiempoEncendidoTest extends RepositorioDeTiempoEncendido{
 	public RepositorioDeTiempoEncendidoTest(List<IntervaloActivo> intervalosDeActividad) {
-		this.intervalosDeActividad = new ArrayList<IntervaloActivo>(Arrays.asList());
-		this.intervalosDeActividad.addAll(intervalosDeActividad);
-		this.ultimaFechaDeEncendido = LocalDateTime.now();
+		this.setIntervalosDeActividad(intervalosDeActividad);
+		this.setUltimaFechaDeEncendido(LocalDateTime.now());
 	}
 }
