@@ -13,6 +13,7 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class ConsumoPorPeriodoController extends Controller {
+    protected static final String ERROR = "ERROR";
 
     public static ModelAndView obtener(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
@@ -45,6 +46,8 @@ public class ConsumoPorPeriodoController extends Controller {
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         } catch (NullPointerException e) {
             e.printStackTrace();
+            req.session().attribute("ERROR", true);
+            res.redirect(CONSUMO);
             return new ModelAndView(null, "consumo-error-fecha.hbs");
         }
     }
@@ -55,6 +58,13 @@ public class ConsumoPorPeriodoController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
-        return new ModelAndView(null, "consumo.hbs");
+        if (req.session().attribute(ERROR) != null &&
+                req.session().attribute(ERROR).equals(true)) {
+            //QUE ASCO JAVA DE MIERDA
+            return new ModelAndView(null, "consumo-error-fecha.hbs");
+        } else {
+            return new ModelAndView(null, "consumo.hbs");
+        }
+
     }
 }
