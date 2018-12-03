@@ -20,18 +20,33 @@ public class ConsumoPorPeriodoController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
-        LocalDateTime fechaInicio = LocalDateTime.parse(req.queryParams("fechaInicio"), formatter);
-        LocalDateTime fechaFin = LocalDateTime.parse(req.queryParams("fechaFin"), formatter);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
 
-        Cliente cliente = RepositorioClientes.findByID(req.session().attribute(SESSION_NAME));
+            LocalDateTime fechaInicio = LocalDateTime.parse(req.queryParams("fechaInicio"), formatter);
+            LocalDateTime fechaFin = LocalDateTime.parse(req.queryParams("fechaFin"), formatter);
 
-        double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
+            if (fechaInicio.isAfter(fechaFin)) {
+                throw new NullPointerException("La fecha fin es después de la fecha inicio");
+            }
 
-        HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("consumo", consumo);
+            Cliente cliente = RepositorioClientes.findByID(req.session().attribute(SESSION_NAME));
 
-        return new ModelAndView(viewModel, "home.hbs");
+            double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
+
+            String periodo = fechaInicio.format(formatter) + " - " + fechaFin.format(formatter);
+
+            HashMap<String, Object> viewModel = new HashMap<>();
+            viewModel.put("fechaInicio", fechaInicio.format(formatter));
+            viewModel.put("fechaFin", fechaFin.format(formatter));
+            viewModel.put("consumo", consumo);
+            viewModel.put("periodo", periodo);
+
+            return new ModelAndView(viewModel, "consumo-obtener.hbs");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return new ModelAndView(null, "consumo-error-fecha.hbs");
+        }
     }
 
     public static ModelAndView mostrar(Request req, Response res) {

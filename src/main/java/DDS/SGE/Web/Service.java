@@ -20,8 +20,11 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Service {
     public static void main(String[] args) {
-        //Spark.port(9000);
-        port(getHerokuAssignedPort());
+        //Para debuggear localhost
+        Spark.port(9000);
+
+        //Para el deploy en heroku
+        //port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 

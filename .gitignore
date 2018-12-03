@@ -4,6 +4,7 @@
 /target/
 /target/*.jar
 
+.idea/*
 .idea/compiler.xml
 .idea/vcs.xml
 SGE.iml

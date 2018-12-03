@@ -101,9 +101,7 @@ public class Cliente {
     }
 
     public double consumoTotalEnUnPeriodo(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-
-
-        return 0;
+        return this.getDispositivos().mapToDouble(d -> d.consumoTotalEnUnPeriodo(fechaInicio, fechaFin)).sum();
     }
 
     public enum TipoDni {
