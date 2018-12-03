@@ -20,8 +20,8 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Service {
     public static void main(String[] args) {
-        Spark.port(9000);
-        //port(getHerokuAssignedPort());
+        //Spark.port(9000);
+        port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
