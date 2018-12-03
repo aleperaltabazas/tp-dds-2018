@@ -21,15 +21,24 @@ public class Dispositivo {
     private String nombre;
     private double tiempoQueSePuedeUtilizar;
 
+    private boolean esDeCatalogo;
+
     @OneToOne(cascade = CascadeType.PERSIST)
     private TipoDispositivo tipo;
 
     protected Dispositivo() {
     }
 
+    public Dispositivo(String nombre, TipoDispositivo tipo, boolean esDeCatalogo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.esDeCatalogo = esDeCatalogo;
+    }
+
     public Dispositivo(String nombre, TipoDispositivo tipo) {
         this.nombre = nombre;
         this.tipo = tipo;
+        this.esDeCatalogo = false;
     }
 
     public Dispositivo(TipoDispositivo tipo) {
@@ -123,4 +132,7 @@ public class Dispositivo {
         this.id = id;
     }
 
+    public void setEsDeCatalogo(boolean esDeCatalogo) {
+        this.esDeCatalogo = esDeCatalogo;
+    }
 }

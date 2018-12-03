@@ -12,7 +12,9 @@ import DDS.SGE.*;
 import DDS.SGE.Cliente.TipoDni;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.TablaDispositivos;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Web.Controllers.*;
 import spark.Spark;
 import spark.debug.DebugScreen;
@@ -55,6 +57,9 @@ public class Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        TablaDispositivos td = new TablaDispositivos();
+        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
 
         get(HOME, HomeController::mostrar, engine);
 

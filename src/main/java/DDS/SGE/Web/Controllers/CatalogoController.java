@@ -1,20 +1,23 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.Dispositivo.Estado.TablaDispositivos;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.TablaDispositivos;
+import DDS.SGE.Repositorios.RepositorioDispositivos;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CatalogoController extends Controller {
     public static ModelAndView mostrar(Request req, Response res) {
         HashMap<String, Object> viewModel = new HashMap<>();
 
-        TablaDispositivos td = new TablaDispositivos();
-        viewModel.put("dispositivos", td.getDispositivos());
+        List<Dispositivo> dispos = RepositorioDispositivos.catalogoDeDispositivos();
+        viewModel.put("dispositivos", dispos);
 
-        td.getDispositivos().forEach(d -> System.out.println(d.getNombre()));
+        dispos.forEach(d -> System.out.println(d.getNombre()));
 
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
