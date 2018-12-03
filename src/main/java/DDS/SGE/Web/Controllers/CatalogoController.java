@@ -17,8 +17,6 @@ public class CatalogoController extends Controller {
         List<Dispositivo> dispos = RepositorioDispositivos.catalogoDeDispositivos();
         viewModel.put("dispositivos", dispos);
 
-        dispos.forEach(d -> System.out.println(d.getNombre()));
-
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 

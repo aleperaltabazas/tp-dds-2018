@@ -22,6 +22,7 @@ public class Dispositivo {
     private double tiempoQueSePuedeUtilizar;
 
     private boolean esDeCatalogo;
+    private boolean bajoConsumo;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private TipoDispositivo tipo;
@@ -29,9 +30,10 @@ public class Dispositivo {
     protected Dispositivo() {
     }
 
-    public Dispositivo(String nombre, TipoDispositivo tipo, boolean esDeCatalogo) {
+    public Dispositivo(String nombre, TipoDispositivo tipo, boolean bajoConsumo, boolean esDeCatalogo) {
         this.nombre = nombre;
         this.tipo = tipo;
+        this.bajoConsumo = bajoConsumo;
         this.esDeCatalogo = esDeCatalogo;
     }
 
@@ -43,6 +45,8 @@ public class Dispositivo {
 
     public Dispositivo(TipoDispositivo tipo) {
         this.tipo = tipo;
+        this.esDeCatalogo = false;
+        this.nombre = tipo.toString();
     }
 
     public TipoDispositivo getTipoDispositivo() {
@@ -134,5 +138,23 @@ public class Dispositivo {
 
     public void setEsDeCatalogo(boolean esDeCatalogo) {
         this.esDeCatalogo = esDeCatalogo;
+    }
+
+    public String getInteligente() {
+        if (this.tipo instanceof DispositivoInteligente)
+            return "sí";
+        else
+            return "no";
+    }
+
+    public double getConsumokWh() {
+        return this.obtenerConsumoKWPorHora();
+    }
+
+    public String getBajoConsumo() {
+        if (this.bajoConsumo)
+            return "sí";
+        else
+            return "no";
     }
 }
