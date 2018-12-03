@@ -42,11 +42,11 @@ public class PanelDeUsuarioController extends Controller {
         String numeroDni = req.queryParams("numeroDni");
 
         if (nombre == null || apellido == null || telefono == null || direccion == null || numeroDni == null) {
-            System.out.println(nombre);
+            /*System.out.println(nombre);
             System.out.println(apellido);
             System.out.println(telefono);
             System.out.println(direccion);
-            System.out.println(numeroDni);
+            System.out.println(numeroDni);*/
 
             return llenarTodosLosCampos(req, res);
         }

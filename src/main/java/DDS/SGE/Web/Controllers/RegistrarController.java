@@ -41,8 +41,8 @@ public class RegistrarController {
 			Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
 			RepositorioClientes.registrarCliente(cliente);
 
-			System.out.println(username);
-			System.out.println(HashProvider.hash(password));
+			//System.out.println(username);
+			//System.out.println(HashProvider.hash(password));
 		} catch (Exception ex) {
 			// TODO: devolver pantalla de que complete todos los campos
 			return usernameNoDisponible(req, res);

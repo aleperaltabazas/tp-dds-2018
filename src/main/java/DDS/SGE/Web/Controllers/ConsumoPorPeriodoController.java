@@ -1,5 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -22,22 +23,22 @@ public class ConsumoPorPeriodoController extends Controller {
         }
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
-
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            
             String inicio = req.queryParams("fechaInicio");
             String fin = req.queryParams("fechaFin");
 
-            System.out.println(inicio);
-            System.out.println(fin);
-
-            LocalDateTime fechaInicio = LocalDateTime.parse(req.queryParams("fechaInicio"), formatter);
-            LocalDateTime fechaFin = LocalDateTime.parse(req.queryParams("fechaFin"), formatter);
+            //TODO - Aparentemente se debe poner hora también, por default puse 00:00
+            LocalDateTime fechaInicio = LocalDate.parse(inicio, formatter).atStartOfDay();
+            LocalDateTime fechaFin = LocalDate.parse(fin, formatter).atStartOfDay();
 
             if (fechaInicio.isAfter(fechaFin)) {
                 throw new NullPointerException("La fecha fin es después de la fecha inicio");
             }
+            
+            System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
-            Cliente cliente = RepositorioClientes.findByID(req.session().attribute(SESSION_NAME));
+            Cliente cliente = RepositorioClientes.findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
             double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
 

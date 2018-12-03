@@ -29,7 +29,7 @@ public class LoginClienteController extends LoginController {
                 return error(req, res);
             } else {
                 String id = Long.toString(usuario.getId());
-                System.out.println(id);
+                //System.out.println(id);
                 res.redirect(HOME);
                 req.session().attribute(SESSION_NAME, id);
             }

@@ -7,7 +7,7 @@
 
 	<persistence-unit name="db"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<class>Geoposicionamiento.Zona</class>
 		<class>Geoposicionamiento.Transformador</class>
@@ -42,7 +42,6 @@
 		<class>DDS.SGE.Actuador.Apagar</class>
 		<class>DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado</class>
 		<class>DDS.SGE.Administrador</class>
-		<class>DDS.SGE.Usuario</class>
 
 		<properties>
 			<property name="hibernate.archive.autodetection"

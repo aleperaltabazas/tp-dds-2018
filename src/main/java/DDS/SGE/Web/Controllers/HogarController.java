@@ -30,8 +30,8 @@ public class HogarController extends Controller {
         List<Dispositivo> dispositivosInteligentes = cliente.getDispositivosInteligente();
         List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();
 
-        dispositivosInteligentes.forEach(d -> System.out.println(d.getNombre()));
-        dispositivosEstandar.forEach(d -> System.out.println(d.getNombre()));
+        /*dispositivosInteligentes.forEach(d -> System.out.println(d.getNombre()));
+        dispositivosEstandar.forEach(d -> System.out.println(d.getNombre()));*/
 
         viewModel.put("dispositivosInteligente", dispositivosInteligentes);
         viewModel.put("dispositivosEstandar", dispositivosEstandar);

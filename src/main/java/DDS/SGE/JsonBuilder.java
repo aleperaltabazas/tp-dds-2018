@@ -54,7 +54,7 @@ public class JsonBuilder {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			Zona zona = gson.fromJson(reader, Zona.class);
-			System.out.println("Zona creada correctamente");
+			//System.out.println("Zona creada correctamente");
 			return zona;
 		} catch (IOException e) {
 			throw new RuntimeException("No se pudo crear la Zona", e);
@@ -65,7 +65,7 @@ public class JsonBuilder {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			Transformador transformador = gson.fromJson(reader, Transformador.class);
-			System.out.println("Transformador creado correctamente");
+			//System.out.println("Transformador creado correctamente");
 			return transformador;
 		} catch (IOException e) {
 			throw new RuntimeException("No se pudo crear el Transformador", e);
