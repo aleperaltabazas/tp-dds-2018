@@ -22,7 +22,13 @@ public class ConsumoPorPeriodoController extends Controller {
         }
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+
+            String inicio = req.queryParams("fechaInicio");
+            String fin = req.queryParams("fechaFin");
+
+            System.out.println(inicio);
+            System.out.println(fin);
 
             LocalDateTime fechaInicio = LocalDateTime.parse(req.queryParams("fechaInicio"), formatter);
             LocalDateTime fechaFin = LocalDateTime.parse(req.queryParams("fechaFin"), formatter);
