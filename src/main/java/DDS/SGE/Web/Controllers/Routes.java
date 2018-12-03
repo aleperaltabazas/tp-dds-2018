@@ -16,6 +16,8 @@ public class Routes {
     public static final String DISPOSITIVOS = "/dispositivos";
     public static final String DISPOSITIVOS_NEW = DISPOSITIVOS + "/new";
     public static final String DISPOSITIVOS_ACQUIRE = DISPOSITIVOS + "/acquire";
+    public static final String DISPOSITIVOS_NEW_INTELIGENTE = DISPOSITIVOS_NEW + "/inteligente";
+    public static final String DISPOSITIVOS_NEW_ESTANDAR = DISPOSITIVOS_NEW + "/estandar";
 
     public static final String TRANSFORMADOR = "/transformador";
 

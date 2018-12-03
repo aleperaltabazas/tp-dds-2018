@@ -77,7 +77,9 @@ public class Service {
 
         get(DISPOSITIVOS, CatalogoController::mostrar, engine);
         get(DISPOSITIVOS_ACQUIRE, CatalogoController::adquirir);
-        post(DISPOSITIVOS_NEW, CatalogoController::crear, engine);
+        get(DISPOSITIVOS_NEW, CatalogoController::mostrarFormaDeCreacion, engine);
+        get(DISPOSITIVOS_NEW_INTELIGENTE, CatalogoController::crearInteligente, engine);
+        get(DISPOSITIVOS_NEW_ESTANDAR, CatalogoController::crearEstandar, engine);
 
         get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
