@@ -27,6 +27,11 @@ public class Dispositivo {
     protected Dispositivo() {
     }
 
+    public Dispositivo(String nombre, TipoDispositivo tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+
     public Dispositivo(TipoDispositivo tipo) {
         this.tipo = tipo;
     }

@@ -20,16 +20,10 @@ public class LoginClienteController extends LoginController {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        System.out.println(username);
-        System.out.println("Hash ingresado:" + HashProvider.hash(password));
-
         try {
             // No sé que les parezca mejor, dejar el get en el try catch o envolver el
             // optional con un if isEmpty()
             Cliente usuario = RepositorioClientes.findByUsername(username).get();
-            System.out.println("Hash persistido: " + usuario.getPassword());
-
-            req.session().attribute(SESSION_NAME);
 
             if (!usuario.getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
                 return error(req, res);

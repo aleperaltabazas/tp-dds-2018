@@ -2,6 +2,7 @@ package DDS.SGE.Repositorios;
 
 import DDS.SGE.Cliente;
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.Estado.TablaDispositivos;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public class RepositorioDispositivos extends Repositorio implements WithGlobalEn
         return em.createQuery("from Dispositivo d where d.id = " + cliente.getId()).getResultList();
     }
 
+    public static List<Dispositivo> tablaDeDispositivos() {
+        return null;
+    }
 }
