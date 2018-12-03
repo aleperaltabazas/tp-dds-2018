@@ -7,7 +7,7 @@
 
     <persistence-unit name="db"
                       transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>Geoposicionamiento.Zona</class>
         <class>Geoposicionamiento.Transformador</class>
@@ -20,7 +20,6 @@
         <class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
         <class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
         <class>DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido</class>
-
 
         <class>Fabricante.Fabricante</class>
 
@@ -59,6 +58,7 @@
             <property name="hibernate.connection.username" value="soiy1v0powf5baf0"/>
             <property
                     name="hibernate.connection.password" value="w8g5t54tsomir95k"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 
             <!--
             ESTE DE ACÁ SE USA PARA TESTEAR CON LA BASE DE DATOS LOCAL EN MEMORIA
@@ -69,9 +69,9 @@
             <property name="hibernate.connection.url"
                       value="jdbc:hsqldb:mem:app-db"/>
             <property name="hibernate.connection.username" value="sa"/>
-            <property name="hibernate.connection.password" value=""/-->
+            <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.HSQLDialect"/>
+                      value="org.hibernate.dialect.HSQLDialect"/-->
 
 
             <property name="hibernate.show_sql" value="true"/>
