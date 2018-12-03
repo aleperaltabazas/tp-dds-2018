@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c0fcb2d-4517-4725-9c81-b0068103091d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.mylyn/.taskListIndex/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.mylyn/.taskListIndex/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.mylyn/repositories.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.mylyn/tasks.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/11/90f92ee7984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/22/c0bf6410994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/3f/007f6ffc984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/5d/50906810994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/77/d0c9377d994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/9e/50678eae994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/ae/b0ec397d994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/b2/d0952fe7984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/b7/70bcc962994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/e1/300f2ee7984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/f/10432c3e994100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/f1/b0d62ce7984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.history/f2/60f530e7984100181f1eb45fbd4656db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.indexes/af/history.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.indexes/e4/92/22/d3/71/history.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.indexes/e4/b9/22/d3/71/history.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.indexes/history.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.indexes/properties.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.markers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.markers.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.projects/SGE/.syncinfo.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.root/1.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.resources/1.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.egit.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.epp.logging.aeri.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.junit.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.m2e.discovery.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.context.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.monitor.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.tasks.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.team.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.editors.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.wst.sse.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.wst.xml.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/http-cache.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/http-cache.lucene60/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/server-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1055679481.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1230538165.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1329257546.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1580166048.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/1860642593.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2011927346.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2429332019.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2589955883.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2692035760.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2715900126.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2916426105.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/2956378016.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/315890579.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3637040476.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3693261185.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3808123788.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/3947521672.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/421022922.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/4232500288.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/453867262.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/592600685.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/index.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.launching/.install.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.launching/libraryInfos.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2018/4/16/refactorings.history" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2018/4/16/refactorings.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/SGE/2018/4/16/refactorings.history" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/SGE/2018/4/16/refactorings.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ltk.ui.refactoring/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core.ui/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/SGE.lifecyclemapping" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/_0.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/segments.gen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/segments_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/05b0fe8524860bd73cbb07ef30fb34cc/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_0.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_1.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_1_2.del" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_2.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_2_1.del" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_3.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_4.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_4_1.del" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_5.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_6.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/_7.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/segments.gen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/segments_9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/_28.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/_28_1.del" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/_29.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/_2a.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/_2b.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/segments.gen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/segments_25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/nexus/d1d974c81c30638feb0099924ef18970/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.core/workspacestate.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.jdt/SGE.container" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.8.3.20180227-2137.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.recommenders.news.impl/downloads/http%3A%2F%2Fwww.eclipse.org%2Fhome%2Feclipsenews.rss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.recommenders.news.impl/downloads/http%3A%2F%2Fwww.eclipse.org%2Frecommenders%2Ffeeds%2Fide.rss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ui.intro/introstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.wst.internet.cache/cache.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.wst.sse.core/task-tags.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.wst.sse.ui/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.wst.xml.core/default_catalog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/.plugins/org.eclipse.wst.xml.core/system_catalog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.metadata/version.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jpt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/CSS/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/CSS/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/CSS/optimizer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/CSS/user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/consumo-por-periodo-v2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/consumo-por-periodo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/listado.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/mi hogar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/mi-hogar-v2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/optimizer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/panelAdministrador.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/principal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/transformador.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/HTML/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/handlebars-v4.0.12.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/jquery-1.8.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/holder.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/home_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/home_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/home_files/cover.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/home_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/bootstrap/home_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/casa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/ditto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/equation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/logo-invert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/tv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/resources/imgs/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Actuador/Actuador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Actuador/Apagar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Actuador/CambiarTemperaturaAireAcondicionado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Categoria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/ClienteBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/ControladorDeDispositivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Dispositivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoEstandar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoInteligente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Estado/AhorroDeEnergia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Estado/Apagado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Estado/Encendido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Estado/EstadoDelDispositivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Estado/ModoFrio_Calor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/IntervaloActivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/RepositorioDeTiempoEncendido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/TipoDispositivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/EntityManagerHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/EspecialistaEnReportes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Exceptions/UserNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/JsonBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Notificaciones/Interesado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Notificaciones/InteresadoEnAdaptaciones.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Notificaciones/InteresadoEnNuevosDispositivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Optimizador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/PersistirMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Regla/Regla.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/Repositorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioAdministradores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioClientes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioDispositivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Consumo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Humedad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Luz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Movimiento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Sensor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Sensor/Temperatura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/CatalogoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/ConsumoPorPeriodoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HogarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginAdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginClienteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/OptimizadorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelAdministradorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelDeUsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/RegistrarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Routes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/TransformadorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/HandlebarsTemplateEngineBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/HashProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/ReflectionUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Service.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/AireAcondicionado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Computadora.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Fabricante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Heladera.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Lampara.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Lavarropas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Microondas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Plancha.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Televisor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fabricante/Ventilador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Geoposicionamiento/ActualizadorDeTransformadores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Geoposicionamiento/RepositorioTransformadores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Geoposicionamiento/Transformador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Geoposicionamiento/Zona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/admin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cliente.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dispositivo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/CSS/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/CSS/user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/consumo-por-periodo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/listado.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/mi hogar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/mi-hogar-v2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/optimizer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/panelAdministrador.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/principal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/transformador.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/HTML/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/handlebars-v4.0.12.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/jquery-1.8.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/holder.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/home_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/home_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/home_files/cover.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/home_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/bootstrap/home_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/imgs/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/imgs/ditto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/resources/imgs/equation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/catalogo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/hogar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/main.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/registro.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/CSS/user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/catalogo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/consumo-por-periodo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/js/global.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/listado.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/loginError.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/mi hogar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/mi-hogar-v2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/optimizer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/principal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/registro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/registro_userNoDisponible.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/transformador.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/HTML/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/catalogo.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/consumo.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editarUsuario.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editarUsuario_rellenar.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/js/global.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/listado.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginError.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mi hogar.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mi-hogar-v2-posta.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mi-hogar-v2.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/optimizer.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/panelAdministrador.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/panelDeUsuario.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registro.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registro_userNoDisponible.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registro_userNoDisponible.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/holder.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/album.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/holder.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/catalogo_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/home_files/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/home_files/bootstrap.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/home_files/cover.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/home_files/jquery-3.3.1.slim.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/bootstrap/home_files/popper.min.js.descarga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/casa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/ditto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/equation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/logo-invert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/tv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resources/imgs/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformador.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/datepicker/daterangepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/datepicker/daterangepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/datepicker/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/HELP-US-OUT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/jquery/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/css/material-design-iconic-font.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/css/material-design-iconic-font.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/fonts/Material-Design-Iconic-Font.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/fonts/Material-Design-Iconic-Font.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/fonts/Material-Design-Iconic-Font.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/select2/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/vendor/select2/select2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/FabricanteTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestCliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestDispositivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestHash.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestRegla.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestTransformador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/Reportes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/RepositorioDeTiempoEncendidoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestAgregarModuloAdaptador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestCalcularConsumoEstimado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestCalcularConsumosEnDispositivosInteligentes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestCalcularDispositivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestCambiarEstadosDeDispositivosInteligentes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestCrearObjetos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestObtenerTiempoComoAdministrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestOptimizador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestRecategorizar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestSensores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestTranformadores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/TestZona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/admin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/cliente.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/dispositivo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/transformador.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DDS/SGE/zona.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/db/ContextTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/admin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/cliente.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/dispositivo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Simplex-Solucion" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SGE/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SGE/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SGE/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SGE/src/main/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SGE/src/test/ClienteTest.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-262065137">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.69" value="1" />
+          <entry key="project.open.time.77" value="1" />
+          <entry key="project.open.time.86" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="109" />
+          <entry key="xml" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="109" />
+          <entry key="XML" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="9588" />
+          <entry key="xml" value="164" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="9588" />
+          <entry key="XML" value="164" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>schema</find>
+      <find>property</find>
+      <find>connect</find>
+      <find>casc</find>
+      <find>public Dispo</find>
+      <find>Esta</find>
+      <find>System.out</find>
+      <find>consumo</find>
+      <find>5800</find>
+      <find>get</find>
+      <find>red</find>
+      <find>redi</find>
+      <find>redir</find>
+      <find>mysq</find>
+      <find>my</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestHash.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/PersistirMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/RepositorioClientes.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/Repositorio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestDispositivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioClientes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioDispositivos.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Controller.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestCliente.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Notificaciones/InteresadoEnAdaptaciones.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Dispositivo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoInteligente.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelAdministradorController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/CatalogoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginClienteController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HogarController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginAdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelDeUsuarioController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/RegistrarController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/OptimizadorController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DDS/SGE/TestOptimizador.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Routes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/ConsumoPorPeriodoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Cliente.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Service.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="672" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SpellCheckingInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SGE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SGE" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543797020137" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Service">
+    <configuration name="Service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DDS.SGE.Web.Service" />
+      <module name="SGE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DDS.SGE.Web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCliente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SGE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DDS.SGE.Persistencia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DDS.SGE.Persistencia" />
+      <option name="MAIN_CLASS_NAME" value="DDS.SGE.Persistencia.TestCliente" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCliente.testPersistirUnClienteYLevantarSusDispositivos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SGE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DDS.SGE.Persistencia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DDS.SGE.Persistencia" />
+      <option name="MAIN_CLASS_NAME" value="DDS.SGE.Persistencia.TestCliente" />
+      <option name="METHOD_NAME" value="testPersistirUnClienteYLevantarSusDispositivos" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SGE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DDS.SGE.Persistencia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DDS.SGE.Persistencia" />
+      <option name="MAIN_CLASS_NAME" value="DDS.SGE.Persistencia.TestCliente" />
+      <option name="METHOD_NAME" value="testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDispositivo.testPersistirUnClienteYLevantarSusDispositivos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SGE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DDS.SGE.Persistencia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DDS.SGE.Persistencia" />
+      <option name="MAIN_CLASS_NAME" value="DDS.SGE.Persistencia.TestDispositivo" />
+      <option name="METHOD_NAME" value="testPersistirUnClienteYLevantarSusDispositivos" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="SGE" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="SGE" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Service" />
+      <item itemvalue="JUnit.TestCliente" />
+      <item itemvalue="JUnit.TestDispositivo.testPersistirUnClienteYLevantarSusDispositivos" />
+      <item itemvalue="JUnit.TestCliente.testPersistirUnClienteYLevantarSusDispositivos" />
+      <item itemvalue="JUnit.TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Service" />
+        <item itemvalue="JUnit.TestCliente" />
+        <item itemvalue="JUnit.TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" />
+        <item itemvalue="JUnit.TestCliente.testPersistirUnClienteYLevantarSusDispositivos" />
+        <item itemvalue="JUnit.TestDispositivo.testPersistirUnClienteYLevantarSusDispositivos" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../../TADP/grupo5-2018-2c/scala" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c0fcb2d-4517-4725-9c81-b0068103091d" name="Default Changelist" comment="" />
+      <created>1543622162339</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543622162339</updated>
+      <workItem from="1543622171859" duration="2745000" />
+      <workItem from="1543723646792" duration="10103000" />
+      <workItem from="1543759337297" duration="2500000" />
+      <workItem from="1543765621017" duration="1173000" />
+      <workItem from="1543766850654" duration="15490000" />
+      <workItem from="1543795439803" duration="695000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestCliente - 2018.12.02 at 12h 09m 56s.xml">
+      <configuration name="TestCliente" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente - 2018.12.02 at 12h 10m 56s.xml">
+      <configuration name="TestCliente" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente - 2018.12.02 at 12h 11m 10s.xml">
+      <configuration name="TestCliente" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente - 2018.12.02 at 12h 12m 09s.xml">
+      <configuration name="TestCliente" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente_testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos - 2018.12.02 at 12h 12m 55s.xml">
+      <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente_testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos - 2018.12.02 at 12h 14m 09s.xml">
+      <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente_testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos - 2018.12.02 at 12h 15m 42s.xml">
+      <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente_testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos - 2018.12.02 at 12h 16m 48s.xml">
+      <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente_testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos - 2018.12.02 at 12h 17m 39s.xml">
+      <configuration name="TestCliente.testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestCliente - 2018.12.02 at 12h 21m 01s.xml">
+      <configuration name="TestCliente" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="32706000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.55151516" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Persistence" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.32954547" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007576" side_tool="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49848485" weight="0.32954547" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/Repositorio.java</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestHash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/PersistirMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/RepositorioClientes.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PrincipalController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/UserController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioAdministradores.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestDispositivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="35" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/TypedQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioDispositivos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Fabricante/AireAcondicionado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/JoinColumn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/Repositorio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DDS/SGE/Persistencia/TestCliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="104" column="87" selection-start-line="104" selection-start-column="87" selection-end-line="104" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Notificaciones/InteresadoEnAdaptaciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/time/LocalDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1111">
+          <caret line="467" column="12" selection-start-line="467" selection-start-column="12" selection-end-line="467" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/time/LocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4261">
+          <caret line="501" column="12" selection-start-line="501" selection-start-column="12" selection-end-line="501" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/EspecialistaEnReportes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/IntervaloActivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/Dispositivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/RepositorioDeTiempoEncendido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/TipoDispositivo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoInteligente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Dispositivo/DispositivoEstandar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginClienteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/LoginAdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="34" column="76" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelAdministradorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/CatalogoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/TransformadorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/RegistrarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/PanelDeUsuarioController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="64" column="17" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="4419" column="36" selection-start-line="4419" selection-start-column="36" selection-end-line="4419" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="3777" column="11" lean-forward="true" selection-start-line="3777" selection-start-column="11" selection-end-line="3777" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Optimizador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/HogarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DDS/SGE/TestOptimizador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/Routes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/ConsumoPorPeriodoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="226" column="5" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="156" column="29" selection-start-line="156" selection-start-column="29" selection-end-line="156" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Web/Controllers/OptimizadorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/ControladorDeDispositivos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DDS/SGE/Repositorios/RepositorioClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/time/format/DateTimeFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="534" column="36" selection-start-line="534" selection-start-column="36" selection-end-line="534" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>JPA</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>scala-sdk-2.12.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SGE</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
