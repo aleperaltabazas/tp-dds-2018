@@ -67,7 +67,7 @@
 								</div>
 								<div style="border:3px;padding-left:30px;padding-top:10px;">
 									<form action="/action_page.php">									  
-									  <input type="date" name="bday">
+									  <input type="date" name="fechaInicio">
 									</form>
 								</div>
 								<div style="border:3px;padding-left:30px;padding-top:10px;">									
@@ -75,20 +75,15 @@
 								</div>
 								<div style="border:3px;padding-left:30px;padding-top:10px;">
 									<form action="/action_page.php">									  
-									  <input type="date" name="bday">
+									  <input type="date" name="fechaFin">
 									</form>
 								</div>
-								<form action="/consumo-por-periodo" method="GET">
+								<form action="/consumo/Obtener" method="GET">
 									<div style="border:3px;padding-left:30px;padding-top:100px;">
 										<button type="button" class="btn btn-lg btn-block btn-primary">Obtener Consumo</button>
 									</div>
 								</form>
-							</div>
-							<div class="col-sm-6" style="padding-top:10px;">
-								<div style="border:3px;padding-left:30px;">
-									<h2>Tu consumo fue de {{cliente.consumo}} kW  </h2>
-								</div>
-							</div>
+							</div>>
 						</div>
 					</div>
 				</div>
