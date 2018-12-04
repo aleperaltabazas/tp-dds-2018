@@ -21,6 +21,10 @@ public abstract class Fabricante {
         return this.consumoKWPorHora;
     }
 
+    public void setConsumoKWPorHora(double consumoKWPorHora) {
+        this.consumoKWPorHora = consumoKWPorHora;
+    }
+
     public double usoMensualMinimo() {
         return this.usoMensualMinimo;
     }

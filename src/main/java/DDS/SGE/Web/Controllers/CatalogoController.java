@@ -71,8 +71,29 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoEstandar(Request req, Response res) {
-        //TODO: la lógica de persistencia
-        res.redirect(ADMINISTRADOR);
-        return PanelAdministradorController.mostrar(req, res);
+        try {
+            String nombre = req.queryParams("nombre");
+            double consumo = Double.parseDouble(req.queryParams("consumo"));
+            long usoEstimadoDiario = Long.parseLong(req.queryParams("uso"));
+            boolean bajoConsumo;
+
+            if (req.queryParams("bajoConsumo") == "Sí") {
+                bajoConsumo = true;
+            } else {
+                bajoConsumo = false;
+            }
+
+            DispositivoBuilder db = new DispositivoBuilder();
+            Dispositivo dispositivo = db.construirEstandar(nombre, consumo, usoEstimadoDiario, bajoConsumo);
+            RepositorioDispositivos.agregarDispositivoAlCatalogo(dispositivo);
+
+            res.redirect(ADMINISTRADOR);
+            return PanelAdministradorController.mostrar(req, res);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+
+            return new ModelAndView(null, "crear-estandar-completar.hbs");
+        }
+
     }
 }

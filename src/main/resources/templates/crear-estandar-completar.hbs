@@ -1,0 +1,69 @@
+{{#partial "contenido"}}
+
+<html lang="en"><style type="text/css" id="night-mode-pro-style"></style><link type="text/css" rel="stylesheet" id="night-mode-pro-link"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" type="text/css" href="../../CSS/user.css">
+	<link rel="stylesheet" type="text/css" href="../../CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="../../CSS/hogar.css">
+	<link rel="stylesheet" type="text/css" href="../../CSS/misc.css">
+
+	<!-- Bootstrap core CSS -->
+	<link href="../../resources/bootstrap/Pricing example for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="../../resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" rel="stylesheet">
+
+	<title>Sistema de Gestión Energética</title>
+	<link rel="icon" href="resources/imgs/ditto.png">
+</head>
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="mb-4">
+			<div>
+				<h3 class="my-0 font-weight-normal">Agregar dispositivo inteligente al catálogo</h3>
+			</div>
+			<div class="card-body">
+				<form action="/dispositivos/new/estandar" method="POST">
+					<div>
+						<label for="nombre">Nombre</label>
+						<input type="text" name="nombre" required/>
+					</div>
+					<div>
+						<label for="consumo">Consumo en kWh</label>
+						<input type="text" name="consumo" required/>
+					</div>
+					<div>
+						<label for="uso">Uso estimado diario</label>
+						<input type="text" name="uso" required/>
+					</div>
+					<div class="d-block my-3">
+						<p>Bajo consumo?</p>
+						<div class="custom-control custom-radio">
+							<input id="credit" name="bajoConsumo" type="radio" class="custom-control-input" value="Sí" required="">
+							<label class="custom-control-label" for="credit">Sí</label>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="debit" name="bajoConsumo" type="radio" class="custom-control-input" checked="" value="No" required="">
+							<label class="custom-control-label" for="debit">No</label>
+						</div>
+					</div>
+					<div>
+						<p class="error">Por favor, complete todos los campos</p>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}
+
