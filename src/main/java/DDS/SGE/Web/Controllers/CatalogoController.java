@@ -15,9 +15,12 @@ import java.util.List;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class CatalogoController extends Controller {
-    public static final String TIPO_DISPOSITIVO = "TIPO_DISPOSITIVO";
-
     public static ModelAndView mostrar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
         HashMap<String, Object> viewModel = new HashMap<>();
 
         List<Dispositivo> dispos = RepositorioDispositivos.catalogoDeDispositivos();
@@ -26,19 +29,51 @@ public class CatalogoController extends Controller {
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 
-    public static ModelAndView adquirir(Request request, Response response) {
+    public static ModelAndView adquirir(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
         return new ModelAndView(null, "dispositivos-adquirir.hbs");
     }
 
-    public static ModelAndView mostrarInteligente(Request request, Response response) {
+    public static ModelAndView mostrarInteligente(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
+        if (req.session().attribute(ADMIN).equals(false)) {
+            return new ModelAndView(null, "not-admin.hbs");
+        }
+
         return new ModelAndView(null, "crear-inteligente.hbs");
     }
 
     public static ModelAndView mostrarEstandar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
+        if (req.session().attribute(ADMIN).equals(false)) {
+            return new ModelAndView(null, "not-admin.hbs");
+        }
+
         return new ModelAndView(null, "crear-estandar.hbs");
     }
 
     public static ModelAndView nuevoInteligente(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
+        if (req.session().attribute(ADMIN).equals(false)) {
+            return new ModelAndView(null, "not-admin.hbs");
+        }
+
         try {
             String nombre = req.queryParams("nombre");
             System.out.println(nombre);
@@ -71,6 +106,15 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoEstandar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(HOME);
+            return HomeController.mostrar(req, res);
+        }
+
+        if (req.session().attribute(ADMIN).equals(false)) {
+            return new ModelAndView(null, "not-admin.hbs");
+        }
+
         try {
             String nombre = req.queryParams("nombre");
             double consumo = Double.parseDouble(req.queryParams("consumo"));

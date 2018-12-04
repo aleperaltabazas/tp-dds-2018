@@ -61,21 +61,21 @@ public class Service {
         TablaDispositivos td = new TablaDispositivos();
         td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
 
-    	Fabricante unFabricante = new Computadora(true);
-    	LocalDateTime fechaDeReferencia = LocalDateTime.now();
-    	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
-    	IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
-    	List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
-    	RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
-    	repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
-    	DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
+        Fabricante unFabricante = new Computadora(true);
+        LocalDateTime fechaDeReferencia = LocalDateTime.now();
+        IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
+        IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
+        List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
+        RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
+        repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
+        DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
 
-    	Dispositivo di = td.getDispositivos().get(0);
-    	tipo.setRepositorio(repositorioDePrueba);
-    	di.setTipoDispositvo(tipo);
+        Dispositivo di = td.getDispositivos().get(0);
+        tipo.setRepositorio(repositorioDePrueba);
+        di.setTipoDispositvo(tipo);
 
-		c2.agregarDispositivo(di);
-		c2.agregarDispositivo(td.getDispositivos().get(5));
+        c2.agregarDispositivo(di);
+        c2.agregarDispositivo(td.getDispositivos().get(5));
 
         try {
             RepositorioClientes.registrarCliente(c1);
@@ -118,6 +118,9 @@ public class Service {
         post(SIGNUP, RegistrarController::registrar, engine);
 
         get(LOGOUT, LoginController::logout, engine);
+
+        get(LIFE, Controller::fortyTwo, engine);
+        get(GLITCH, GlitchController::somethingBroke, engine);
 
     }
 

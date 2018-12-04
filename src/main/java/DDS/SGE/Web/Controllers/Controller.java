@@ -1,6 +1,9 @@
 package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Cliente;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
 
 import java.util.HashMap;
 
@@ -21,5 +24,9 @@ public abstract class Controller {
         viewModel.put("username", cliente.getUsername());
 
         return viewModel;
+    }
+
+    public static ModelAndView fortyTwo(Request request, Response response) {
+        return new ModelAndView(null, "meaning-of-life.hbs");
     }
 }

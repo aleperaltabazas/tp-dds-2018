@@ -30,4 +30,8 @@ public class Routes {
     public static final String CONSUMO_OBTENER = CONSUMO + "/obtener";
 
     public static final String LOGOUT = "/logout";
+
+    public static final String LIFE = "/42";
+
+    public static final String GLITCH = "*";
 }
