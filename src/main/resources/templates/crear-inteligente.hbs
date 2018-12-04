@@ -1,0 +1,47 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="mb-4">
+			<div>
+				<h3 class="my-0 font-weight-normal">Panel de usuario</h3>
+				<h2> {{resultado}} </h2>
+			</div>
+			<div class="card-body">
+				<form action="/dispositivos/edit" method="POST">
+					<div>
+						<label for="nombre">Nombre</label>
+						<input type="text" placeholder="nombre" name="nombre" required/>
+					</div>
+					<div>
+						<label for="consumokWh">Consumo en kWh</label>
+						<input type="text" placeholder="apellido" name="consumokWh" required/>
+					</div>
+					<div>
+						<label for="fabricante">Fabricante</label>
+						<input type="text" placeholder="Fabricante" name="fabricante" required/>
+					</div>
+					<div class="d-block my-3">
+						<p>Bajo consumo?</p>
+						<div class="custom-control custom-radio">
+							<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+							<label class="custom-control-label" for="credit">Sí</label>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="debit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+							<label class="custom-control-label" for="debit">No</label>
+						</div>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}
+

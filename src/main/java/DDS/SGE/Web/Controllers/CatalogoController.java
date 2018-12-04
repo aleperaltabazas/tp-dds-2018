@@ -10,6 +10,8 @@ import spark.Response;
 import java.util.HashMap;
 import java.util.List;
 
+import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
+
 public class CatalogoController extends Controller {
     public static final String TIPO_DISPOSITIVO = "TIPO_DISPOSITIVO";
 
@@ -26,23 +28,23 @@ public class CatalogoController extends Controller {
         return new ModelAndView(null, "dispositivos-adquirir.hbs");
     }
 
-    public static ModelAndView crearInteligente(Request request, Response response) {
-        return null;
+    public static ModelAndView mostrarInteligente(Request request, Response response) {
+        return new ModelAndView(null, "crear-inteligente.hbs");
     }
 
-    public static ModelAndView crearEstandar(Request req, Response res) {
-        return null;
-    }
-
-    public static ModelAndView mostrarFormaDeCreacion(Request request, Response response) {
-        return new ModelAndView(null, "dispositivos-crear,hbs");
+    public static ModelAndView mostrarEstandar(Request req, Response res) {
+        return new ModelAndView(null, "crear-estandar.hbs");
     }
 
     public static ModelAndView nuevoInteligente(Request req, Response res) {
-        return null;
+        //TODO: la lógica de persistencia
+        res.redirect(ADMINISTRADOR);
+        return PanelAdministradorController.mostrar(req, res);
     }
 
     public static ModelAndView nuevoEstandar(Request req, Response res) {
-        return null;
+        //TODO: la lógica de persistencia
+        res.redirect(ADMINISTRADOR);
+        return PanelAdministradorController.mostrar(req, res);
     }
 }

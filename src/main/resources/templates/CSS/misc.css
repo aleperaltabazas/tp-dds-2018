@@ -23,3 +23,8 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.admin-button {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}

@@ -7,9 +7,11 @@
         <h4 class="my-0 font-weight-normal">Hogares   <i class="fas fa-home"></i></h4>
       </div>
       <div class="card-body">
-      <form action="/administrador/hogares" method="GET">
-        <button type="submit" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
-      </form>
+        <div class="admin-button">
+          <form action="/administrador/hogares" method="GET">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Ver Todos</button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -17,15 +19,21 @@
         <h4 class="my-0 font-weight-normal">Reportes   <i class="fas fa-clipboard-list"></i></h4>
       </div>
       <div class="card-body">
-      <form action="/hogar" method="GET">     
-        <button type="submit" class="btn btn-lg btn-block btn-primary">De Hogar</button>
-      </form>
-      <form action="/" method="GET">     
-        <button type="submit" class="btn btn-lg btn-block btn-primary">De Usuario</button>
-      </form>
-      <form action="/transformador" method="GET">     
-        <button type="submit" class="btn btn-lg btn-block btn-primary">De Transformador</button>
-      </form>
+        <div class="admin-button">
+          <form action="/hogar" method="GET">     
+            <button type="submit" class="btn btn-lg btn-block btn-primary">De Hogar</button>
+          </form>
+        </div>
+        <div class="admin-button">
+          <form action="/" method="GET">     
+            <button type="submit" class="btn btn-lg btn-block btn-primary">De Usuario</button>
+          </form>
+        </div>
+        <div class="admin-button">
+          <form action="/transformador" method="GET">     
+            <button type="submit" class="btn btn-lg btn-block btn-primary">De Transformador</button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -33,9 +41,16 @@
         <h4 class="my-0 font-weight-normal">Dispositivos   <i class="fas fa-tv"></i></h4>
       </div>
       <div class="card-body">
-      <form action="/administrador/new" method="GET">
-        <button type="submit" class="btn btn-lg btn-block btn-primary">Nuevo Dispositivo</button>
-      </form>              
+        <div class="admin-button">          
+          <form action="/dispositivos/new/inteligente" method="GET">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Nuevo Inteligente</button>
+          </form>
+        </div>
+        <div class="admin-button">
+          <form action="/dispositivos/new/estandar" method="GET">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Nuevo Estándar</button>    
+          </form>              
+        </div>
       </div>
     </div>
   </div>

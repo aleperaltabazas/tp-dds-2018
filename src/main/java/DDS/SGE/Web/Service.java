@@ -57,10 +57,10 @@ public class Service {
 
         c1.agregarDispositivo(d);
         c1.agregarDispositivo(d2);
-        
+
         TablaDispositivos td = new TablaDispositivos();
         td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
-        
+
     	Fabricante unFabricante = new Computadora(true);
     	LocalDateTime fechaDeReferencia = LocalDateTime.now();
     	IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
@@ -69,11 +69,11 @@ public class Service {
     	RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
     	repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
     	DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
-    	
+
     	Dispositivo di = td.getDispositivos().get(0);
     	tipo.setRepositorio(repositorioDePrueba);
     	di.setTipoDispositvo(tipo);
-        
+
 		c2.agregarDispositivo(di);
 		c2.agregarDispositivo(td.getDispositivos().get(5));
 
@@ -100,9 +100,9 @@ public class Service {
 
         get(DISPOSITIVOS, CatalogoController::mostrar, engine);
         get(DISPOSITIVOS_ACQUIRE, CatalogoController::adquirir);
-        get(DISPOSITIVOS_NEW, CatalogoController::mostrarFormaDeCreacion, engine);
-        get(DISPOSITIVOS_NEW_INTELIGENTE, CatalogoController::crearInteligente, engine);
-        get(DISPOSITIVOS_NEW_ESTANDAR, CatalogoController::crearEstandar, engine);
+
+        get(DISPOSITIVOS_NEW_INTELIGENTE, CatalogoController::mostrarInteligente, engine);
+        get(DISPOSITIVOS_NEW_ESTANDAR, CatalogoController::mostrarEstandar, engine);
 
         get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
