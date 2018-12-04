@@ -50,7 +50,7 @@
             ESTA ES LA BASE DE DATOS POSTA DE HEROKU
             -->
 
-            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"
+            <!--property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"
             />
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/b87nnklu41yn6ha2"
@@ -58,21 +58,20 @@
             <property name="hibernate.connection.username" value="soiy1v0powf5baf0"/>
             <property
                     name="hibernate.connection.password" value="w8g5t54tsomir95k"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/-->
 
             <!--
             ESTE DE ACÁ SE USA PARA TESTEAR CON LA BASE DE DATOS LOCAL EN MEMORIA
             -->
 
-            <!--property name="hibernate.connection.driver_class"
+            <property name="hibernate.connection.driver_class"
                       value="org.hsqldb.jdbcDriver"/>
             <property name="hibernate.connection.url"
                       value="jdbc:hsqldb:mem:app-db"/>
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.HSQLDialect"/-->
-
+                      value="org.hibernate.dialect.HSQLDialect"/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

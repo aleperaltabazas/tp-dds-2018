@@ -23,6 +23,7 @@ import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Web.Controllers.*;
 import Fabricante.Computadora;
 import Fabricante.Fabricante;
+import org.hibernate.exception.ConstraintViolationException;
 import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -30,10 +31,10 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
     public static void main(String[] args) {
         //Para debuggear localhost
-        //Spark.port(9000);
+        Spark.port(9000);
 
         //Para el deploy en heroku
-        port(getHerokuAssignedPort());
+        //port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
@@ -59,7 +60,11 @@ public class Service {
         c1.agregarDispositivo(d2);
 
         TablaDispositivos td = new TablaDispositivos();
-        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
+        try {
+            td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
         Fabricante unFabricante = new Computadora(true);
         LocalDateTime fechaDeReferencia = LocalDateTime.now();
