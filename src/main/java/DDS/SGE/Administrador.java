@@ -38,6 +38,15 @@ public class Administrador implements Usuario {
         this.password = password;
     }
 
+    public Administrador(String nombre, String apellido, String domicilio, String username, String password) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.username = username;
+        this.password = password;
+        this.fechaAltaSistema = LocalDateTime.now();
+    }
+
     public String getNombre() {
         return this.nombre;
     }

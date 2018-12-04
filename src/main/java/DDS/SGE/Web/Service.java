@@ -18,12 +18,12 @@ import DDS.SGE.Dispositivo.IntervaloActivo;
 import DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido;
 import DDS.SGE.Dispositivo.TablaDispositivos;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Web.Controllers.*;
 import Fabricante.Computadora;
 import Fabricante.Fabricante;
-import org.hibernate.exception.ConstraintViolationException;
 import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -59,12 +59,12 @@ public class Service {
         c1.agregarDispositivo(d);
         c1.agregarDispositivo(d2);
 
+
+        AdministradorBuilder ab = new AdministradorBuilder();
+        Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
+
         TablaDispositivos td = new TablaDispositivos();
-        try {
-            td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
 
         Fabricante unFabricante = new Computadora(true);
         LocalDateTime fechaDeReferencia = LocalDateTime.now();
@@ -85,6 +85,7 @@ public class Service {
         try {
             RepositorioClientes.registrarCliente(c1);
             RepositorioClientes.registrarCliente(c2);
+            RepositorioAdministradores.registrarAdministrador(admin);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,7 +99,8 @@ public class Service {
 
         get(OPTIMIZADOR, OptimizadorController::mostrar, engine);
 
-        get(ADMINISTRADOR_LOGIN, LoginAdminController::loginAdmin, engine);
+        get(ADMINISTRADOR_LOGIN, LoginAdminController::mostrar, engine);
+        post(ADMINISTRADOR_LOGIN, LoginAdminController::loginAdmin, engine);
 
         get(ADMINISTRADOR, PanelAdministradorController::mostrar, engine);
         get(ADMINISTRADOR_HOGARES, PanelAdministradorController::verTodosLosHogares, engine);

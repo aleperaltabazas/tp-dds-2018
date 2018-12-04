@@ -28,7 +28,7 @@ public class LoginClienteController extends LoginController {
             res.redirect(HOME);
 
             req.session().attribute(SESSION_NAME, id);
-            req.session().attribute(ADMIN, false);
+            req.session().attribute(ADMIN, "no");
 
             return new ModelAndView(null, "login.hbs");
         } catch (Exception e) {

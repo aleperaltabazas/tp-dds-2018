@@ -22,7 +22,7 @@ public class HogarController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
-        if (req.session().attribute(ADMIN)) {
+        if (req.session().attribute(ADMIN) == "si") {
             res.redirect(ADMINISTRADOR);
             return HomeController.mostrar(req, res);
         }

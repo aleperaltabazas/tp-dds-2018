@@ -13,7 +13,7 @@ public class LoginAdminController extends LoginController {
     public static ModelAndView mostrar(Request req, Response res) {
         // Tal vez estaría bueno tener una pantalla
         // de login distinta
-        return new ModelAndView(null, "login.hbs");
+        return new ModelAndView(null, "login-admin.hbs");
     }
 
     public static ModelAndView loginAdmin(Request req, Response res) {
@@ -31,9 +31,9 @@ public class LoginAdminController extends LoginController {
             res.redirect(ADMINISTRADOR);
 
             req.session().attribute(SESSION_NAME, id);
-            req.session().attribute(ADMIN, true);
+            req.session().attribute(ADMIN, "si");
 
-            return new ModelAndView(null, "login.hbs");
+            return PanelAdministradorController.mostrar(req, res);
         } catch (Exception e) {
             return error(req, res);
         }

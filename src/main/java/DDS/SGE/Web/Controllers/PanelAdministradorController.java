@@ -7,7 +7,7 @@ import spark.Response;
 public class PanelAdministradorController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(ADMIN).equals(false)) {
+        if (req.session().attribute(ADMIN) == "no") {
             return new ModelAndView(null, "404.hbs");
         }
         //Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
@@ -15,7 +15,6 @@ public class PanelAdministradorController extends Controller {
     }
 
     public static ModelAndView verTodosLosHogares(Request req, Response res) {
-
         return new ModelAndView(null, "listado.hbs");
     }
 

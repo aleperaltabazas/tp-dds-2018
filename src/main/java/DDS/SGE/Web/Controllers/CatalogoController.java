@@ -44,7 +44,7 @@ public class CatalogoController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
-        if (req.session().attribute(ADMIN).equals(false)) {
+        if (req.session().attribute(ADMIN) != "si") {
             return new ModelAndView(null, "404.hbs");
         }
 
@@ -52,7 +52,7 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView mostrarEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
+        if (req.session().attribute(SESSION_NAME) != "si") {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
@@ -65,7 +65,7 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoInteligente(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
+        if (req.session().attribute(SESSION_NAME) != "si") {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
@@ -106,7 +106,7 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
+        if (req.session().attribute(SESSION_NAME) != "si") {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }

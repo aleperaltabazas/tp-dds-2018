@@ -2,7 +2,9 @@ package DDS.SGE.Web.Controllers;
 
 import java.util.HashMap;
 
+import DDS.SGE.Administrador;
 import DDS.SGE.Cliente;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Response;
@@ -17,12 +19,29 @@ public class PanelDeUsuarioController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
-        String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        HashMap<String, Object> viewModel = new HashMap<>();
+        String pantalla;
 
-        HashMap<String, Object> viewModel = rellenarCliente(cliente);
+        if (req.session().attribute(ADMIN) == "si") {
+            String id = req.session().attribute(SESSION_NAME);
+            Administrador admin = RepositorioAdministradores.findByID(Long.parseLong(id));
 
-        return new ModelAndView(viewModel, "panelDeUsuario.hbs");
+            viewModel.put("nombre", admin.getNombre());
+            viewModel.put("apellido", admin.getApellido());
+            viewModel.put("direccion", admin.getDomicilio());
+            viewModel.put("username", admin.getUsername());
+            viewModel.put("fechaDeAlta", admin.getFechaAltaSistema().toString());
+
+            pantalla = "administrador-profile.hbs";
+        } else {
+            String id = req.session().attribute(SESSION_NAME);
+            Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+
+            viewModel = rellenarCliente(cliente);
+            pantalla = "panelDeUsuario.hbs";
+        }
+
+        return new ModelAndView(viewModel, pantalla);
     }
 
     public static ModelAndView editar(Request req, Response res) {
