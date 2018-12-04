@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public abstract class Controller {
     protected static final String SESSION_NAME = "id";
+    protected static final String ADMIN = "admin";
 
     protected static HashMap<String, Object> rellenarCliente(Cliente cliente) {
         HashMap<String, Object> viewModel = new HashMap<>();

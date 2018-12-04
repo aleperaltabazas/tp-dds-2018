@@ -8,69 +8,60 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Administrador {
-	private String username;
-	private String password;
+public class Administrador extends Usuario {
 
-	private String nombre;
-	private String apellido;
-	private String domicilio;
-	private LocalDateTime fechaAltaSistema;
+    private String nombre;
+    private String apellido;
+    private String domicilio;
+    private LocalDateTime fechaAltaSistema;
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	protected Administrador() {
+    protected Administrador() {
 
-	}
+    }
 
-	public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.domicilio = domicilio;
-		this.fechaAltaSistema = fechaAltaSistema;
-	}
-	
-	public Administrador(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
+    public Administrador(String nombre, String apellido, String domicilio, LocalDateTime fechaAltaSistema) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.fechaAltaSistema = fechaAltaSistema;
+    }
 
-	public String getNombre() {
-		return this.nombre;
-	}
+    public Administrador(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
-	public String getApellido() {
-		return this.apellido;
-	}
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public String getDomicilio() {
-		return this.domicilio;
-	}
+    public String getApellido() {
+        return this.apellido;
+    }
 
-	public Long getId() {
-		return this.id;
-	}
+    public String getDomicilio() {
+        return this.domicilio;
+    }
 
-	public LocalDateTime getFechaAltaSistema() {
-		return this.fechaAltaSistema;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setFechaAltaSistema(int anio, int mes, int dia) {
-		this.fechaAltaSistema = this.fechaAltaSistema.withDayOfMonth(dia).withMonth(mes).withYear(anio);
-	}
+    public LocalDateTime getFechaAltaSistema() {
+        return this.fechaAltaSistema;
+    }
 
-	public long cantidadDeMesesComoAdmin() {
-		LocalDateTime localDate = LocalDateTime.now();
-		return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
-	}
+    public void setFechaAltaSistema(int anio, int mes, int dia) {
+        this.fechaAltaSistema = this.fechaAltaSistema.withDayOfMonth(dia).withMonth(mes).withYear(anio);
+    }
 
-	public String getUsername() {
-		return this.username;
-	}
+    public long cantidadDeMesesComoAdmin() {
+        LocalDateTime localDate = LocalDateTime.now();
+        return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
+    }
 
-	public String getPassword() {
-		return this.password;
-	}
 }

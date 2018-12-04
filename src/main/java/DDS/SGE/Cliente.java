@@ -24,9 +24,7 @@ import Geoposicionamiento.Zona;
 import org.hibernate.annotations.Cascade;
 
 @Entity
-public class Cliente {
-    private String username;
-    private String password;
+public class Cliente extends Usuario {
 
     @Id
     @GeneratedValue
@@ -262,14 +260,6 @@ public class Cliente {
 
     public String getTelefono() {
         return telefono;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setTelefono(String telefono) {
