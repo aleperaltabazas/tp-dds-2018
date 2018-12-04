@@ -37,6 +37,12 @@ public class Dispositivo {
         this.esDeCatalogo = esDeCatalogo;
     }
 
+    public Dispositivo(String nombre, TipoDispositivo tipo, boolean bajoConsumo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.bajoConsumo = bajoConsumo;
+    }
+
     public Dispositivo(String nombre, TipoDispositivo tipo) {
         this.nombre = nombre;
         this.tipo = tipo;
