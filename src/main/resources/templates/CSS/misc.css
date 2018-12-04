@@ -5,3 +5,21 @@
 .inline {
 	display: inline-block;
 }
+
+.hogar-button {
+	padding: 15px;
+	width: 100px;
+	height: 100px;	
+	padding-left: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.user-button {
+	padding: 15px;
+	width: 100px;
+	height: 100px;
+	padding-left: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
