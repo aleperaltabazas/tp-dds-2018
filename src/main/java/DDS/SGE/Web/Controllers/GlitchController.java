@@ -8,7 +8,6 @@ import static DDS.SGE.Web.Controllers.Routes.HOME;
 
 public class GlitchController extends Controller {
     public static ModelAndView somethingBroke(Request req, Response res) {
-        res.redirect(HOME);
-        return new ModelAndView(null, "glitch.hbs");
+        return new ModelAndView(null, "404.hbs");
     }
 }

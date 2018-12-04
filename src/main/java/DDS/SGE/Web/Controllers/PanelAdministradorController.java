@@ -8,7 +8,7 @@ public class PanelAdministradorController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(ADMIN).equals(false)) {
-            return new ModelAndView(null, "not-admin.hbs");
+            return new ModelAndView(null, "404.hbs");
         }
         //Obtener la direccion correspondiente del hbs, ruta comienza en main/resources/templates/
         return new ModelAndView(null, "panelAdministrador.hbs");

@@ -24,7 +24,7 @@ import Geoposicionamiento.Zona;
 import org.hibernate.annotations.Cascade;
 
 @Entity
-public class Cliente extends Usuario {
+public class Cliente implements Usuario {
 
     @Id
     @GeneratedValue
@@ -42,6 +42,9 @@ public class Cliente extends Usuario {
     private String telefono;
     private String domicilio;
     private LocalDateTime fechaAltaServicio;
+
+    private String username;
+    private String password;
 
     // @OneToOne //DESNORMALIZAMOS LA ZONA
     @Transient
@@ -100,6 +103,16 @@ public class Cliente extends Usuario {
 
     public double consumoTotalEnUnPeriodo(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         return this.getDispositivos().mapToDouble(d -> d.consumoTotalEnUnPeriodo(fechaInicio, fechaFin)).sum();
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     public enum TipoDni {

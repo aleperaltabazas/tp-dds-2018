@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Administrador extends Usuario {
+public class Administrador implements Usuario {
+
+    private String username;
+    private String password;
 
     private String nombre;
     private String apellido;
@@ -64,4 +67,11 @@ public class Administrador extends Usuario {
         return ChronoUnit.MONTHS.between(this.fechaAltaSistema, localDate);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
