@@ -52,12 +52,12 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView mostrarEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) != "si") {
+        if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
 
-        if (req.session().attribute(ADMIN).equals(false)) {
+        if (req.session().attribute(ADMIN) != "si") {
             return new ModelAndView(null, "404.hbs");
         }
 
