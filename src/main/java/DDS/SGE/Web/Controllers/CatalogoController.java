@@ -45,7 +45,7 @@ public class CatalogoController extends Controller {
         }
 
         if (req.session().attribute(ADMIN).equals(false)) {
-            return new ModelAndView(null, "not-admin.hbs");
+            return new ModelAndView(null, "404.hbs");
         }
 
         return new ModelAndView(null, "crear-inteligente.hbs");
@@ -58,7 +58,7 @@ public class CatalogoController extends Controller {
         }
 
         if (req.session().attribute(ADMIN).equals(false)) {
-            return new ModelAndView(null, "not-admin.hbs");
+            return new ModelAndView(null, "404.hbs");
         }
 
         return new ModelAndView(null, "crear-estandar.hbs");
@@ -71,7 +71,7 @@ public class CatalogoController extends Controller {
         }
 
         if (req.session().attribute(ADMIN).equals(false)) {
-            return new ModelAndView(null, "not-admin.hbs");
+            return new ModelAndView(null, "404.hbs");
         }
 
         try {
@@ -112,7 +112,7 @@ public class CatalogoController extends Controller {
         }
 
         if (req.session().attribute(ADMIN).equals(false)) {
-            return new ModelAndView(null, "not-admin.hbs");
+            return new ModelAndView(null, "404.hbs");
         }
 
         try {

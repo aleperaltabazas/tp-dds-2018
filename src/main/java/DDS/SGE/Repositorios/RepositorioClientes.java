@@ -28,7 +28,6 @@ public class RepositorioClientes extends Repositorio implements WithGlobalEntity
     }
 
     public static void registrarCliente(Cliente cliente) throws Exception {
-        cliente.getDispositivos().forEach(d -> RepositorioDispositivos.persistir(d));
         registrar(cliente, cliente.getUsername());
     }
 

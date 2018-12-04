@@ -43,7 +43,6 @@ public class Repositorio {
         try {
             findByUsername(o.getClass(), username).get();
             throw new Exception("Ese nombre de usuario no se encuentra disponible");
-            // TODO: implementar una excepción propia
         } catch (NoSuchElementException e) {
             persistir(o);
         }

@@ -20,7 +20,6 @@ public abstract class Controller {
         viewModel.put("numeroDni", cliente.getNumeroDni());
         viewModel.put("tipoDni", cliente.getTipoDni());
         viewModel.put("domicilio", cliente.getDomicilio());
-        viewModel.put("categoria", cliente.getCategoria().toString());
         viewModel.put("username", cliente.getUsername());
 
         return viewModel;

@@ -30,10 +30,10 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
     public static void main(String[] args) {
         //Para debuggear localhost
-        Spark.port(9000);
+        //Spark.port(9000);
 
         //Para el deploy en heroku
-        //port(getHerokuAssignedPort());
+        port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
@@ -120,7 +120,7 @@ public class Service {
         get(LOGOUT, LoginController::logout, engine);
 
         get(LIFE, Controller::fortyTwo, engine);
-        get(GLITCH, GlitchController::somethingBroke, engine);
+        get(GLITCH, ErrorController::somethingBroke, engine);
 
     }
 

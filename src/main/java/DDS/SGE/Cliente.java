@@ -27,11 +27,11 @@ import org.hibernate.annotations.Cascade;
 public class Cliente implements Usuario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "id")
     @OrderColumn
     private List<Dispositivo> dispositivos;
 

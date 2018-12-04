@@ -22,6 +22,11 @@ public class HogarController extends Controller {
             return HomeController.mostrar(req, res);
         }
 
+        if (req.session().attribute(ADMIN)) {
+            res.redirect(ADMINISTRADOR);
+            return HomeController.mostrar(req, res);
+        }
+
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
 
