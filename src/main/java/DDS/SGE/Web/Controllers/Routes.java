@@ -28,4 +28,6 @@ public class Routes {
 
     public static final String CONSUMO = "/consumo";
     public static final String CONSUMO_OBTENER = CONSUMO + "/obtener";
+
+    public static final String LOGOUT = "/logout";
 }

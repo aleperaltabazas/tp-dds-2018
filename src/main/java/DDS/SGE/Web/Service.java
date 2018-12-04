@@ -116,6 +116,8 @@ public class Service {
         get(SIGNUP, RegistrarController::mostrar, engine);
         post(SIGNUP, RegistrarController::registrar, engine);
 
+        get(LOGOUT, LoginController::logout, engine);
+
     }
 
     static int getHerokuAssignedPort() {
