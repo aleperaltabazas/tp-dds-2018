@@ -55,7 +55,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     @Test
     public void testPersistirUnClienteYTraerloPorUsername() {
         Cliente otroCliente = new Cliente("Usuario", "pass");
-        RepositorioClientes.getInstance().agregarCliente(otroCliente);
+        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(otroCliente));
 
         Cliente persistido = RepositorioClientes.getInstance().findByUsername(otroCliente.getUsername()).get();
         assertEquals(persistido, otroCliente);
@@ -65,7 +65,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     @Test
     public void testPersistirUnAdministrador() {
         Administrador administrador = new Administrador("Admin", "admin");
-        RepositorioAdministradores.getInstance().agregarAdministrador(administrador);
+        withTransaction(() -> RepositorioAdministradores.getInstance().agregarAdministrador(administrador));
         Administrador persistido = RepositorioAdministradores.getInstance().findByID(administrador.getId());
 
         assertEquals(administrador, persistido);
@@ -74,7 +74,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     @Test
     public void testPersistirUnClienteYLevantarSusDispositivos() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        RepositorioClientes.getInstance().agregarCliente(otroCliente);
+        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(otroCliente));
 
         List<Dispositivo> dispositivos = RepositorioClientes.getInstance().findByID(otroCliente.getId()).getDispositivos().collect(Collectors.toList());
         assertEquals(Arrays.asList(dispositivoSencillo, noSencillo), dispositivos);
@@ -83,7 +83,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     @Test
     public void testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        RepositorioClientes.getInstance().agregarCliente(otroCliente);
+        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(otroCliente));
 
         Cliente persistido = RepositorioClientes.getInstance().findByID(otroCliente.getId());
         assertEquals(persistido.getDispositivos().collect(Collectors.toList()), otroCliente.getDispositivos().collect(Collectors.toList()));
@@ -92,7 +92,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     @Test
     public void testPersistoUnClienteYMeTraigoSusDispositivosPorSeparado() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        RepositorioClientes.getInstance().agregarCliente(otroCliente);
+        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(otroCliente));
 
         Cliente persistido = RepositorioClientes.getInstance().findByID(otroCliente.getId());
 
