@@ -13,11 +13,11 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class RegistrarController extends Controller {
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         return new ModelAndView(null, "registro.hbs");
     }
 
-    public static ModelAndView registrar(Request req, Response res) {
+    public ModelAndView registrar(Request req, Response res) {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
@@ -52,7 +52,7 @@ public class RegistrarController extends Controller {
 
     }
 
-    private static ModelAndView usernameNoDisponible(Request req, Response res) {
+    private ModelAndView usernameNoDisponible(Request req, Response res) {
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("username", req.queryParams("username"));
         viewModel.put("password", req.queryParams("password"));

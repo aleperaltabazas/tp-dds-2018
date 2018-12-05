@@ -9,13 +9,13 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class LoginClienteController extends LoginController {
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         // Obtener la direccion correspondiente del hbs, ruta comienza en
         // main/resources/templates/
         return new ModelAndView(null, "login.hbs");
     }
 
-    public static ModelAndView loginCliente(Request req, Response res) {
+    public ModelAndView loginCliente(Request req, Response res) {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 

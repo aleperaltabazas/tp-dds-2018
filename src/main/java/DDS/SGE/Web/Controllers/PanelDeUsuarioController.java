@@ -13,10 +13,10 @@ import spark.Request;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class PanelDeUsuarioController extends Controller {
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -44,7 +44,7 @@ public class PanelDeUsuarioController extends Controller {
         return new ModelAndView(viewModel, pantalla);
     }
 
-    public static ModelAndView editar(Request req, Response res) {
+    public ModelAndView editar(Request req, Response res) {
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
@@ -53,7 +53,7 @@ public class PanelDeUsuarioController extends Controller {
         return new ModelAndView(viewModel, "editarUsuario.hbs");
     }
 
-    public static ModelAndView actualizar(Request req, Response res) {
+    public ModelAndView actualizar(Request req, Response res) {
         String nombre = req.queryParams("nombre");
         String apellido = req.queryParams("apellido");
         String telefono = req.queryParams("telefono");
@@ -86,7 +86,7 @@ public class PanelDeUsuarioController extends Controller {
         return mostrar(req, res);
     }
 
-    private static ModelAndView llenarTodosLosCampos(Request req, Response res) {
+    private ModelAndView llenarTodosLosCampos(Request req, Response res) {
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 

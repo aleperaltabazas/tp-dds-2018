@@ -15,6 +15,7 @@ public class Service {
     private CatalogoController catalogoController;
     private ErrorController errorController;
     private MiHogarController miHogarController;
+    private LoginController loginController;
     private LoginAdminController loginAdminController;
     private LoginClienteController loginClienteController;
     private OptimizadorController optimizadorController;
@@ -39,6 +40,7 @@ public class Service {
         homeController = new HomeController();
         catalogoController = new CatalogoController();
         errorController = new ErrorController();
+        loginController = new LoginController();
         loginAdminController = new LoginAdminController();
         loginClienteController = new LoginClienteController();
         miHogarController = new MiHogarController();
@@ -53,44 +55,44 @@ public class Service {
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
         HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
 
-        get(HOME, HomeController::mostrar, engine);
+        get(HOME, homeController::mostrar, engine);
 
-        get(LOGIN, LoginClienteController::mostrar, engine);
-        post(LOGIN, LoginClienteController::loginCliente, engine);
+        get(LOGIN, loginClienteController::mostrar, engine);
+        post(LOGIN, loginClienteController::loginCliente, engine);
 
-        get(HOGAR, MiHogarController::mostrar, engine);
+        get(HOGAR, miHogarController::mostrar, engine);
 
-        get(OPTIMIZADOR, OptimizadorController::mostrar, engine);
+        get(OPTIMIZADOR, optimizadorController::mostrar, engine);
 
-        get(ADMINISTRADOR_LOGIN, LoginAdminController::mostrar, engine);
-        post(ADMINISTRADOR_LOGIN, LoginAdminController::loginAdmin, engine);
+        get(ADMINISTRADOR_LOGIN, loginAdminController::mostrar, engine);
+        post(ADMINISTRADOR_LOGIN, loginAdminController::loginAdmin, engine);
 
-        get(ADMINISTRADOR, PanelDeAdministradorController::mostrar, engine);
-        get(ADMINISTRADOR_HOGARES, PanelDeAdministradorController::verTodosLosHogares, engine);
+        get(ADMINISTRADOR, panelDeAdministradorController::mostrar, engine);
+        get(ADMINISTRADOR_HOGARES, panelDeAdministradorController::verTodosLosHogares, engine);
 
-        get(DISPOSITIVOS, CatalogoController::mostrar, engine);
-        get(DISPOSITIVOS_ACQUIRE, CatalogoController::adquirir);
-        get(DISPOSITIVOS_NEW_INTELIGENTE, CatalogoController::mostrarInteligente, engine);
-        get(DISPOSITIVOS_NEW_ESTANDAR, CatalogoController::mostrarEstandar, engine);
-        post(DISPOSITIVOS_NEW_INTELIGENTE, CatalogoController::nuevoInteligente, engine);
-        post(DISPOSITIVOS_NEW_ESTANDAR, CatalogoController::nuevoEstandar, engine);
+        get(DISPOSITIVOS, catalogoController::mostrar, engine);
+        get(DISPOSITIVOS_ACQUIRE, catalogoController::adquirir);
+        get(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::mostrarInteligente, engine);
+        get(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::mostrarEstandar, engine);
+        post(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::nuevoInteligente, engine);
+        post(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::nuevoEstandar, engine);
 
         get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
 
-        get(TRANSFORMADOR, TransformadorController::mostrar, engine);
+        get(TRANSFORMADOR, transformadorController::mostrar, engine);
 
-        get(USER, PanelDeUsuarioController::mostrar, engine);
-        get(USER_EDIT, PanelDeUsuarioController::editar, engine);
-        post(USER_EDIT, PanelDeUsuarioController::actualizar);
+        get(USER, panelDeUsuarioController::mostrar, engine);
+        get(USER_EDIT, panelDeUsuarioController::editar, engine);
+        post(USER_EDIT, panelDeUsuarioController::actualizar);
 
-        get(SIGNUP, RegistrarController::mostrar, engine);
-        post(SIGNUP, RegistrarController::registrar, engine);
+        get(SIGNUP, registrarController::mostrar, engine);
+        post(SIGNUP, registrarController::registrar, engine);
 
-        get(LOGOUT, LoginController::logout, engine);
+        get(LOGOUT, loginController::logout, engine);
 
-        get(LIFE, Controller::fortyTwo, engine);
-        get(GLITCH, ErrorController::somethingBroke, engine);
+        //TODO: get(LIFE, controller::fortyTwo, engine);
+        get(GLITCH, errorController::somethingBroke, engine);
     }
 
     public void run() {

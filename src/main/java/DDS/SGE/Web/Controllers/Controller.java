@@ -9,9 +9,9 @@ import java.util.HashMap;
 
 public abstract class Controller {
     protected static final String SESSION_NAME = "id";
-    protected static final String ADMIN = "admin";
+    static final String ADMIN = "admin";
 
-    protected static HashMap<String, Object> rellenarCliente(Cliente cliente) {
+    HashMap<String, Object> rellenarCliente(Cliente cliente) {
         HashMap<String, Object> viewModel = new HashMap<>();
 
         viewModel.put("nombre", cliente.getNombre());
@@ -25,7 +25,7 @@ public abstract class Controller {
         return viewModel;
     }
 
-    public static ModelAndView fortyTwo(Request request, Response response) {
+    public ModelAndView fortyTwo(Request request, Response response) {
         return new ModelAndView(null, "meaning-of-life.hbs");
     }
 }

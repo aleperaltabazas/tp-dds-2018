@@ -13,10 +13,10 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class OptimizadorController extends Controller {
 
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         String id = req.session().attribute(SESSION_NAME);
@@ -34,7 +34,7 @@ public class OptimizadorController extends Controller {
         return new ModelAndView(viewModel, "optimizer.hbs");
     }
 
-    private static List<Double> generarLista(double[] resultado) {
+    private List<Double> generarLista(double[] resultado) {
         List<Double> lista = new ArrayList<>();
 
         for (double aResultado : resultado) {

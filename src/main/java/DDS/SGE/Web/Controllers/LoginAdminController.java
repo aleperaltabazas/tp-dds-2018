@@ -9,13 +9,13 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
 
 public class LoginAdminController extends LoginController {
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         // Tal vez estaría bueno tener una pantalla
         // de login distinta
         return new ModelAndView(null, "login-admin.hbs");
     }
 
-    public static ModelAndView loginAdmin(Request req, Response res) {
+    public ModelAndView loginAdmin(Request req, Response res) {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
@@ -32,7 +32,7 @@ public class LoginAdminController extends LoginController {
             req.session().attribute(SESSION_NAME, id);
             req.session().attribute(ADMIN, "si");
 
-            return PanelDeAdministradorController.mostrar(req, res);
+            return new PanelDeAdministradorController().mostrar(req, res);
         } catch (Exception e) {
             return error(req, res);
         }

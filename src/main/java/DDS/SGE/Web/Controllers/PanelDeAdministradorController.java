@@ -6,7 +6,7 @@ import spark.Response;
 
 public class PanelDeAdministradorController extends Controller {
 
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(ADMIN) == "no") {
             return new ModelAndView(null, "404.hbs");
         }
@@ -14,7 +14,7 @@ public class PanelDeAdministradorController extends Controller {
         return new ModelAndView(null, "panelAdministrador.hbs");
     }
 
-    public static ModelAndView verTodosLosHogares(Request req, Response res) {
+    public ModelAndView verTodosLosHogares(Request req, Response res) {
         return new ModelAndView(null, "listado.hbs");
     }
 

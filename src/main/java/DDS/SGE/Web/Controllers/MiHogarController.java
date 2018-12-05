@@ -14,21 +14,21 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class MiHogarController extends Controller {
 
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) == "si") {
             res.redirect(ADMINISTRADOR);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
-        HashMap<String, Object> viewModel = rellenarCliente(cliente);
+        HashMap<String, Object> viewModel = this.rellenarCliente(cliente);
 
         List<Dispositivo> dispositivosInteligentes = cliente.getDispositivosInteligente();
         List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();

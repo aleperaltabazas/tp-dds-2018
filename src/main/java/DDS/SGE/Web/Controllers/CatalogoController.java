@@ -14,10 +14,10 @@ import java.util.List;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class CatalogoController extends Controller {
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -28,19 +28,19 @@ public class CatalogoController extends Controller {
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 
-    public static ModelAndView adquirir(Request req, Response res) {
+    public ModelAndView adquirir(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         return new ModelAndView(null, "dispositivos-adquirir.hbs");
     }
 
-    public static ModelAndView mostrarInteligente(Request req, Response res) {
+    public ModelAndView mostrarInteligente(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) != "si") {
@@ -50,10 +50,10 @@ public class CatalogoController extends Controller {
         return new ModelAndView(null, "crear-inteligente.hbs");
     }
 
-    public static ModelAndView mostrarEstandar(Request req, Response res) {
+    public ModelAndView mostrarEstandar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) != "si") {
@@ -63,10 +63,10 @@ public class CatalogoController extends Controller {
         return new ModelAndView(null, "crear-estandar.hbs");
     }
 
-    public static ModelAndView nuevoInteligente(Request req, Response res) {
+    public ModelAndView nuevoInteligente(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) != "si") {
@@ -91,7 +91,7 @@ public class CatalogoController extends Controller {
             RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
 
             res.redirect(DISPOSITIVOS);
-            return CatalogoController.mostrar(req, res);
+            return new CatalogoController().mostrar(req, res);
         } catch (RuntimeException e) {
             e.printStackTrace();
 
@@ -100,10 +100,10 @@ public class CatalogoController extends Controller {
 
     }
 
-    public static ModelAndView nuevoEstandar(Request req, Response res) {
+    public ModelAndView nuevoEstandar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
-            return HomeController.mostrar(req, res);
+            return new HomeController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) != "si") {
@@ -123,7 +123,7 @@ public class CatalogoController extends Controller {
             RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
 
             res.redirect(DISPOSITIVOS);
-            return PanelDeAdministradorController.mostrar(req, res);
+            return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
             e.printStackTrace();
 
