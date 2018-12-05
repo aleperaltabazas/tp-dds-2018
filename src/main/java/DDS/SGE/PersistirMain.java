@@ -12,8 +12,11 @@ import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.*;
 
 public class PersistirMain implements WithGlobalEntityManager, TransactionalOps {
+    private static final Logger logger = Logger.getLogger(PersistirMain.class.getName());
+
     public void initialize() {
         ClienteBuilder cb = new ClienteBuilder();
 
@@ -57,7 +60,7 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 
