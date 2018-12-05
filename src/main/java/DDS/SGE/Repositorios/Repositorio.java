@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import DDS.SGE.EntityManagerHelper;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
-public class Repositorio implements WithGlobalEntityManager {
+public abstract class Repositorio implements WithGlobalEntityManager {
     protected <T> T findByID(Class<T> entityClass, Long id) {
         return entityManager().find(entityClass, id);
     }

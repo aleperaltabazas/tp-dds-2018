@@ -26,7 +26,7 @@ public class HogarController extends Controller {
         }
 
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
+        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 

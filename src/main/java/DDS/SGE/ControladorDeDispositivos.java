@@ -11,14 +11,12 @@ public class ControladorDeDispositivos {
         Optimizador optimizador = new Optimizador();
         Timer timer = new Timer();
 
-        RepositorioClientes repositorioClientes = new RepositorioClientes();
-
         TimerTask tarea = new TimerTask() {
 
             @Override
             public void run() {
                 System.out.println("Controlando dispositivos...");
-                List<Cliente> clientes = repositorioClientes.getAllClients();
+                List<Cliente> clientes = RepositorioClientes.getInstance().getAllClients();
                 clientes.forEach(c -> {
                     optimizador.simplex(c);
                     optimizador.accionarSobreDispositivos(

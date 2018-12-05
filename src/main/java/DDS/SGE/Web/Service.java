@@ -31,10 +31,10 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
     public static void main(String[] args) {
         //Para debuggear localhost
-        //Spark.port(9000);
+        Spark.port(9000);
 
         //Para el deploy en heroku
-        port(getHerokuAssignedPort());
+        //port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
@@ -93,13 +93,9 @@ public class Service {
     }
 
     private static void initialize() {
-        RepositorioClientes repositorioClientes = new RepositorioClientes();
-        RepositorioAdministradores repositorioAdministradores = new RepositorioAdministradores();
-        RepositorioDispositivos repositorioDispositivos = new RepositorioDispositivos();
-
         Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788", "Calle verdadera 321",
                 LocalDateTime.now(), Arrays.asList());
-        repositorioClientes.agregarCliente(cliente);
+        RepositorioClientes.getInstance().agregarCliente(cliente);
 
         ClienteBuilder cb = new ClienteBuilder();
 
@@ -119,7 +115,7 @@ public class Service {
         Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
 
         TablaDispositivos td = new TablaDispositivos();
-        td.getDispositivos().forEach(dispo -> repositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
+        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispo));
 
         Fabricante unFabricante = new Computadora(true);
         LocalDateTime fechaDeReferencia = LocalDateTime.now();
@@ -139,9 +135,9 @@ public class Service {
 
 
         try {
-            repositorioClientes.registrarCliente(c1);
-            repositorioClientes.registrarCliente(c2);
-            repositorioAdministradores.registrarAdministrador(admin);
+            RepositorioClientes.getInstance().registrarCliente(c1);
+            RepositorioClientes.getInstance().registrarCliente(c2);
+            RepositorioAdministradores.getInstance().registrarAdministrador(admin);
         } catch (Exception e) {
             e.printStackTrace();
         }

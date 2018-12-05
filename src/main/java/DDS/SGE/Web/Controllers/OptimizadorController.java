@@ -20,7 +20,7 @@ public class OptimizadorController extends Controller {
         }
 
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
+        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
         Optimizador optimizador = new Optimizador();
         double[] resultado = optimizador.tiempoRecomendadoPorDispositivo(cliente);

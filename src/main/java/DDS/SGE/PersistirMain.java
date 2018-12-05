@@ -15,13 +15,13 @@ public class PersistirMain {
         TablaDispositivos t = new TablaDispositivos();
 
         try {
-            new RepositorioClientes().registrarCliente(c1);
-            new RepositorioClientes().registrarCliente(c2);
+            RepositorioClientes.getInstance().registrarCliente(c1);
+            RepositorioClientes.getInstance().registrarCliente(c2);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Cliente p = new RepositorioClientes().findByUsername(c1.getUsername()).get();
+        Cliente p = RepositorioClientes.getInstance().findByUsername(c1.getUsername()).get();
         //System.out.println(p.getUsername());
         //System.out.println(p.getNombre());
         System.exit(0);

@@ -21,7 +21,7 @@ public class RegistrarController extends Controller {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        if (new RepositorioClientes().findByUsername(username).isPresent()) {
+        if (RepositorioClientes.getInstance().findByUsername(username).isPresent()) {
             return usernameNoDisponible(req, res);
         }
 
@@ -39,7 +39,7 @@ public class RegistrarController extends Controller {
 
         try {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
-            new RepositorioClientes().registrarCliente(cliente);
+            RepositorioClientes.getInstance().registrarCliente(cliente);
         } catch (Exception ex) {
             ex.printStackTrace();
 

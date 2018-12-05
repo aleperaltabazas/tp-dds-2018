@@ -22,7 +22,7 @@ public class LoginAdminController extends LoginController {
         try {
             // No sé que les parezca mejor, dejar el get en el try catch o envolver el
             // optional con un if isEmpty()
-            Administrador admin = new RepositorioAdministradores().findByUsername(username).get();
+            Administrador admin = RepositorioAdministradores.getInstance().findByUsername(username).get();
 
             revisarUsuario(admin, password);
 

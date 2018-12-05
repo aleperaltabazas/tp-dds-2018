@@ -22,7 +22,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
 
-        List<Dispositivo> dispos = new RepositorioDispositivos().catalogoDeDispositivos();
+        List<Dispositivo> dispos = RepositorioDispositivos.getInstance().catalogoDeDispositivos();
         viewModel.put("dispositivos", dispos);
 
         return new ModelAndView(viewModel, "catalogo.hbs");
@@ -88,7 +88,7 @@ public class CatalogoController extends Controller {
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirInteligente(nombre, consumo, fabricante, bajoConsumo);
-            new RepositorioDispositivos().agregarDispositivoAlCatalogo(dispositivo);
+            RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
 
             res.redirect(DISPOSITIVOS);
             return CatalogoController.mostrar(req, res);
@@ -120,7 +120,7 @@ public class CatalogoController extends Controller {
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirEstandar(nombre, consumo, usoEstimadoDiario, bajoConsumo);
-            new RepositorioDispositivos().agregarDispositivoAlCatalogo(dispositivo);
+            RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
 
             res.redirect(DISPOSITIVOS);
             return PanelAdministradorController.mostrar(req, res);

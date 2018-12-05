@@ -23,14 +23,15 @@ import Fabricante.AireAcondicionado;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
-public class TestCliente {
+public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
     private Cliente cliente;
     private Dispositivo dispositivoSencillo;
     private Dispositivo noSencillo;
     private DispositivoInteligente inteligente;
     private DispositivoEstandar estandar;
-    private EntityManager em;
 
     @Before
     public void initialize() {
@@ -41,18 +42,12 @@ public class TestCliente {
 
         cliente = new Cliente("Un nombre", "Un apellido", Cliente.TipoDni.DNI, "1111", "4444", "Un domicilio",
                 LocalDateTime.now(), new ArrayList<Dispositivo>());
-        em = EntityManagerHelper.entityManager();
-    }
-
-    @After
-    public void after() {
-        EntityManagerHelper.rollback();
     }
 
     @Test
     public void testPersistirAUnClienteDesdeElRepositorioYDespuesTraerlo() {
-        new RepositorioClientes().agregarCliente(cliente);
-        Cliente persistido = em.find(Cliente.class, cliente.getId());
+        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(cliente));
+        Cliente persistido = RepositorioClientes.getInstance().findByID(cliente.getId());
 
         assertEquals(persistido, cliente);
     }
@@ -60,9 +55,9 @@ public class TestCliente {
     @Test
     public void testPersistirUnClienteYTraerloPorUsername() {
         Cliente otroCliente = new Cliente("Usuario", "pass");
-        new RepositorioClientes().agregarCliente(otroCliente);
+        RepositorioClientes.getInstance().agregarCliente(otroCliente);
 
-        Cliente persistido = new RepositorioClientes().findByUsername(otroCliente.getUsername()).get();
+        Cliente persistido = RepositorioClientes.getInstance().findByUsername(otroCliente.getUsername()).get();
         assertEquals(persistido, otroCliente);
 
     }
@@ -70,8 +65,8 @@ public class TestCliente {
     @Test
     public void testPersistirUnAdministrador() {
         Administrador administrador = new Administrador("Admin", "admin");
-        new RepositorioAdministradores().agregarAdministrador(administrador);
-        Administrador persistido = new RepositorioAdministradores().findByID(administrador.getId());
+        RepositorioAdministradores.getInstance().agregarAdministrador(administrador);
+        Administrador persistido = RepositorioAdministradores.getInstance().findByID(administrador.getId());
 
         assertEquals(administrador, persistido);
     }
@@ -79,27 +74,27 @@ public class TestCliente {
     @Test
     public void testPersistirUnClienteYLevantarSusDispositivos() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        new RepositorioClientes().agregarCliente(otroCliente);
+        RepositorioClientes.getInstance().agregarCliente(otroCliente);
 
-        List<Dispositivo> dispositivos = new RepositorioClientes().findByID(otroCliente.getId()).getDispositivos().collect(Collectors.toList());
+        List<Dispositivo> dispositivos = RepositorioClientes.getInstance().findByID(otroCliente.getId()).getDispositivos().collect(Collectors.toList());
         assertEquals(Arrays.asList(dispositivoSencillo, noSencillo), dispositivos);
     }
 
     @Test
     public void testPersistoUnClienteConDispositivosYAlTraerloMeTraeSusDispositivos() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        new RepositorioClientes().agregarCliente(otroCliente);
+        RepositorioClientes.getInstance().agregarCliente(otroCliente);
 
-        Cliente persistido = new RepositorioClientes().findByID(otroCliente.getId());
+        Cliente persistido = RepositorioClientes.getInstance().findByID(otroCliente.getId());
         assertEquals(persistido.getDispositivos().collect(Collectors.toList()), otroCliente.getDispositivos().collect(Collectors.toList()));
     }
 
     @Test
     public void testPersistoUnClienteYMeTraigoSusDispositivosPorSeparado() {
         Cliente otroCliente = new Cliente("Mati", "Cash", Cliente.TipoDni.DNI, "121", "1212", "121", LocalDateTime.now(), Arrays.asList(dispositivoSencillo, noSencillo));
-        new RepositorioClientes().agregarCliente(otroCliente);
+        RepositorioClientes.getInstance().agregarCliente(otroCliente);
 
-        Cliente persistido = new RepositorioClientes().findByID(otroCliente.getId());
+        Cliente persistido = RepositorioClientes.getInstance().findByID(otroCliente.getId());
 
         assertEquals(Arrays.asList(dispositivoSencillo), persistido.getDispositivosEstandar());
         assertEquals(Arrays.asList(noSencillo), persistido.getDispositivosInteligente());

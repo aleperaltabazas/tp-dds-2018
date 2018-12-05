@@ -38,7 +38,7 @@ public class ConsumoPorPeriodoController extends Controller {
 
             System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
-            Cliente cliente = new RepositorioClientes().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
+            Cliente cliente = RepositorioClientes.getInstance().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
             double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
 

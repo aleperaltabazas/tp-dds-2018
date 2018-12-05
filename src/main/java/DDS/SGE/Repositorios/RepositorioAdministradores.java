@@ -6,8 +6,10 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import DDS.SGE.Administrador;
 
 public class RepositorioAdministradores extends Repositorio {
-    // private static RepositorioAdministradores instancia = new
-    // RepositorioAdministradores();
+    private static final RepositorioAdministradores instance = new RepositorioAdministradores();
+
+    private RepositorioAdministradores() {
+    }
 
     public void agregarAdministrador(Administrador administrador) {
         this.persistir(administrador);
@@ -23,5 +25,9 @@ public class RepositorioAdministradores extends Repositorio {
 
     public void registrarAdministrador(Administrador administrador) throws Exception {
         this.registrar(administrador, administrador.getUsername());
+    }
+
+    public static RepositorioAdministradores getInstance() {
+        return instance;
     }
 }

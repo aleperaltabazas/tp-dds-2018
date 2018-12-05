@@ -8,8 +8,10 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import DDS.SGE.Cliente;
 
 public class RepositorioClientes extends Repositorio {
+    private static final RepositorioClientes instance = new RepositorioClientes();
 
-    // private static RepositorioClientes instancia = new RepositorioClientes();
+    private RepositorioClientes() {
+    }
 
     public List<Cliente> getAllClients() {
         return entityManager().createQuery("from Cliente", Cliente.class).getResultList();
@@ -35,4 +37,7 @@ public class RepositorioClientes extends Repositorio {
         this.persistir(cliente);
     }
 
+    public static RepositorioClientes getInstance() {
+        return instance;
+    }
 }
