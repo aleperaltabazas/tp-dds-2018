@@ -5,7 +5,6 @@ import java.util.HashMap;
 import DDS.SGE.Cliente;
 import DDS.SGE.ClienteBuilder;
 import DDS.SGE.Repositorios.RepositorioClientes;
-import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -21,10 +20,6 @@ public class RegistrarController extends Controller {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        if (RepositorioClientes.getInstance().findByUsername(username).isPresent()) {
-            return usernameNoDisponible(req, res);
-        }
-
         String nombre = req.queryParams("nombre");
         String apellido = req.queryParams("apellido");
         String codigoArea = req.queryParams("codigoTelefono");
@@ -39,7 +34,8 @@ public class RegistrarController extends Controller {
 
         try {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
-            RepositorioClientes.getInstance().registrarCliente(cliente);
+
+            withTransaction(() -> RepositorioClientes.getInstance().registrarCliente(cliente));
         } catch (Exception ex) {
             ex.printStackTrace();
 

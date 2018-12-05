@@ -28,16 +28,16 @@ public class CatalogoController extends Controller {
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 
-    public ModelAndView adquirir(Request req, Response res) {
+    public ModelAndView mostrarAdquirir(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return new HomeController().mostrar(req, res);
         }
 
-        return new ModelAndView(null, "dispositivos-adquirir.hbs");
+        return new ModelAndView(null, "dispositivos-mostrarAdquirir.hbs");
     }
 
-    public ModelAndView mostrarInteligente(Request req, Response res) {
+    public ModelAndView mostrarFormularioInteligente(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return new HomeController().mostrar(req, res);
@@ -50,7 +50,7 @@ public class CatalogoController extends Controller {
         return new ModelAndView(null, "crear-inteligente.hbs");
     }
 
-    public ModelAndView mostrarEstandar(Request req, Response res) {
+    public ModelAndView mostrarFormularioEstandar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return new HomeController().mostrar(req, res);
@@ -75,10 +75,6 @@ public class CatalogoController extends Controller {
 
         try {
             String nombre = req.queryParams("nombre");
-            System.out.println(nombre);
-            System.out.println(req.queryParams("consumo"));
-            System.out.println(req.queryParams("fabricante"));
-            System.out.println(req.queryParams("bajoConsumo"));
 
             double consumo = Double.parseDouble(req.queryParams("consumo"));
             Fabricante fabricante = Fabricante.parse(req.queryParams("fabricante"));
@@ -88,13 +84,11 @@ public class CatalogoController extends Controller {
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirInteligente(nombre, consumo, fabricante, bajoConsumo);
-            RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
+            withTransaction(() -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new CatalogoController().mostrar(req, res);
         } catch (RuntimeException e) {
-            e.printStackTrace();
-
             return new ModelAndView(null, "crear-inteligente-completar.hbs");
         }
 
@@ -120,13 +114,12 @@ public class CatalogoController extends Controller {
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirEstandar(nombre, consumo, usoEstimadoDiario, bajoConsumo);
-            RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
+
+            withTransaction(() -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
-            e.printStackTrace();
-
             return new ModelAndView(null, "crear-estandar-completar.hbs");
         }
 

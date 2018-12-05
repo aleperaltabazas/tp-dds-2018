@@ -61,12 +61,6 @@ public class PanelDeUsuarioController extends Controller {
         String numeroDni = req.queryParams("numeroDni");
 
         if (nombre == null || apellido == null || telefono == null || direccion == null || numeroDni == null) {
-            /*System.out.println(nombre);
-            System.out.println(apellido);
-            System.out.println(telefono);
-            System.out.println(direccion);
-            System.out.println(numeroDni);*/
-
             return llenarTodosLosCampos(req, res);
         }
 
@@ -79,7 +73,11 @@ public class PanelDeUsuarioController extends Controller {
         cliente.setDomicilio(direccion);
         cliente.setNumeroDni(numeroDni);
 
-        RepositorioClientes.getInstance().actualizarCliente(cliente);
+        try {
+            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
+        } catch (Exception e) {
+            return new ErrorController().somethingBroke(req, res);
+        }
 
         res.redirect(USER);
 

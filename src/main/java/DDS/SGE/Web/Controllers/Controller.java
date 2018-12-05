@@ -1,13 +1,15 @@
 package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Cliente;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
 
-public abstract class Controller {
+public abstract class Controller implements WithGlobalEntityManager, TransactionalOps {
     protected static final String SESSION_NAME = "id";
     static final String ADMIN = "admin";
 
