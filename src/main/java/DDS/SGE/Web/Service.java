@@ -36,7 +36,7 @@ public class Service {
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 
-    private void inicialiarControladores() {
+    private void inicializarControladores() {
         homeController = new HomeController();
         catalogoController = new CatalogoController();
         errorController = new ErrorController();
@@ -51,7 +51,7 @@ public class Service {
         transformadorController = new TransformadorController();
     }
 
-    private void router() {
+    private void inicializarRutas() {
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
         HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
 
@@ -96,18 +96,23 @@ public class Service {
     }
 
     public void run() {
+        this.sparkSetup();
+
+        new PersistirMain().initialize();
+
+        this.inicializarControladores();
+        this.inicializarRutas();
+    }
+
+    public void sparkSetup() {
         //Para debuggear localhost
         Spark.port(9000);
 
         //Para el deploy en heroku
-        //port(getHerokuAssignedPort());
+        //Spark.port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
-        new PersistirMain().initialize();
-
-        this.inicialiarControladores();
-        this.router();
     }
 
 }
