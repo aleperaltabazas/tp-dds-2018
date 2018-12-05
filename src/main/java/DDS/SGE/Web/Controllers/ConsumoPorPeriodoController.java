@@ -14,7 +14,7 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class ConsumoPorPeriodoController extends Controller {
-    protected static final String ERROR = "ERROR";
+    private static final String ERROR = "ERROR";
 
     public static ModelAndView obtener(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
@@ -24,7 +24,7 @@ public class ConsumoPorPeriodoController extends Controller {
 
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            
+
             String inicio = req.queryParams("fechaInicio");
             String fin = req.queryParams("fechaFin");
 
@@ -35,10 +35,10 @@ public class ConsumoPorPeriodoController extends Controller {
             if (fechaInicio.isAfter(fechaFin)) {
                 throw new NullPointerException("La fecha fin es después de la fecha inicio");
             }
-            
+
             System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
-            Cliente cliente = RepositorioClientes.findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
+            Cliente cliente = new RepositorioClientes().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
             double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
 

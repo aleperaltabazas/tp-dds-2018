@@ -2,12 +2,11 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Administrador;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
-import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import static DDS.SGE.Web.Controllers.Routes.*;
+import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
 
 public class LoginAdminController extends LoginController {
     public static ModelAndView mostrar(Request req, Response res) {
@@ -23,7 +22,7 @@ public class LoginAdminController extends LoginController {
         try {
             // No sé que les parezca mejor, dejar el get en el try catch o envolver el
             // optional con un if isEmpty()
-            Administrador admin = RepositorioAdministradores.findByUsername(username).get();
+            Administrador admin = new RepositorioAdministradores().findByUsername(username).get();
 
             revisarUsuario(admin, password);
 

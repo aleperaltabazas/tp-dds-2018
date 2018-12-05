@@ -31,64 +31,17 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 public class Service {
     public static void main(String[] args) {
         //Para debuggear localhost
-        Spark.port(9000);
+        //Spark.port(9000);
 
         //Para el deploy en heroku
-        //port(getHerokuAssignedPort());
+        port(getHerokuAssignedPort());
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
         HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
 
-        Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788", "Calle verdadera 321",
-                LocalDateTime.now(), Arrays.asList());
-        RepositorioClientes.agregarCliente(cliente);
-
-        ClienteBuilder cb = new ClienteBuilder();
-
-        Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
-        Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
-
-        Dispositivo d = new Dispositivo(new DispositivoEstandar(20, 40));
-        d.setNombre("Dispositivo cualunca");
-
-        Dispositivo d2 = new Dispositivo(new DispositivoEstandar(50, 100));
-        d2.setNombre("Otro dispositivo");
-
-        c1.agregarDispositivo(d);
-        c1.agregarDispositivo(d2);
-
-
-        AdministradorBuilder ab = new AdministradorBuilder();
-        Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
-
-        TablaDispositivos td = new TablaDispositivos();
-        td.getDispositivos().forEach(dispo -> RepositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
-
-        Fabricante unFabricante = new Computadora(true);
-        LocalDateTime fechaDeReferencia = LocalDateTime.now();
-        IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
-        IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
-        List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
-        RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
-        repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
-        DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
-
-        Dispositivo di = td.getDispositivos().get(0);
-        tipo.setRepositorio(repositorioDePrueba);
-        di.setTipoDispositvo(tipo);
-
-        c2.agregarDispositivo(di);
-        c2.agregarDispositivo(td.getDispositivos().get(5));
-
-        try {
-            RepositorioClientes.registrarCliente(c1);
-            RepositorioClientes.registrarCliente(c2);
-            RepositorioAdministradores.registrarAdministrador(admin);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        initialize();
 
         get(HOME, HomeController::mostrar, engine);
 
@@ -137,5 +90,60 @@ public class Service {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
+
+    private static void initialize() {
+        RepositorioClientes repositorioClientes = new RepositorioClientes();
+        RepositorioAdministradores repositorioAdministradores = new RepositorioAdministradores();
+        RepositorioDispositivos repositorioDispositivos = new RepositorioDispositivos();
+
+        Cliente cliente = new Cliente("Matias", "Giorda", TipoDni.DNI, "123454321", "1155667788", "Calle verdadera 321",
+                LocalDateTime.now(), Arrays.asList());
+        repositorioClientes.agregarCliente(cliente);
+
+        ClienteBuilder cb = new ClienteBuilder();
+
+        Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
+        Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
+
+        Dispositivo d = new Dispositivo(new DispositivoEstandar(20, 40));
+        d.setNombre("Dispositivo cualunca");
+
+        Dispositivo d2 = new Dispositivo(new DispositivoEstandar(50, 100));
+        d2.setNombre("Otro dispositivo");
+
+        c1.agregarDispositivo(d);
+        c1.agregarDispositivo(d2);
+
+        AdministradorBuilder ab = new AdministradorBuilder();
+        Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
+
+        TablaDispositivos td = new TablaDispositivos();
+        td.getDispositivos().forEach(dispo -> repositorioDispositivos.agregarDispositivoAlCatalogo(dispo));
+
+        Fabricante unFabricante = new Computadora(true);
+        LocalDateTime fechaDeReferencia = LocalDateTime.now();
+        IntervaloActivo intervaloDe1Hora = new IntervaloActivo(fechaDeReferencia.minusHours(1), fechaDeReferencia);
+        IntervaloActivo intervaloDe2Horas = new IntervaloActivo(fechaDeReferencia.minusHours(5), fechaDeReferencia.minusHours(3));
+        List<IntervaloActivo> intervalosDeActividad = Arrays.asList(intervaloDe1Hora, intervaloDe2Horas);
+        RepositorioDeTiempoEncendido repositorioDePrueba = new RepositorioDeTiempoEncendido();
+        repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
+        DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
+
+        Dispositivo di = td.getDispositivos().get(0);
+        tipo.setRepositorio(repositorioDePrueba);
+        di.setTipoDispositvo(tipo);
+
+        c2.agregarDispositivo(di);
+        c2.agregarDispositivo(td.getDispositivos().get(5));
+
+
+        try {
+            repositorioClientes.registrarCliente(c1);
+            repositorioClientes.registrarCliente(c2);
+            repositorioAdministradores.registrarAdministrador(admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

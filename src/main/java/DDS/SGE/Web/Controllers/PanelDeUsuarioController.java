@@ -24,7 +24,7 @@ public class PanelDeUsuarioController extends Controller {
 
         if (req.session().attribute(ADMIN) == "si") {
             String id = req.session().attribute(SESSION_NAME);
-            Administrador admin = RepositorioAdministradores.findByID(Long.parseLong(id));
+            Administrador admin = new RepositorioAdministradores().findByID(Long.parseLong(id));
 
             viewModel.put("nombre", admin.getNombre());
             viewModel.put("apellido", admin.getApellido());
@@ -35,7 +35,7 @@ public class PanelDeUsuarioController extends Controller {
             pantalla = "administrador-profile.hbs";
         } else {
             String id = req.session().attribute(SESSION_NAME);
-            Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+            Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
             viewModel = rellenarCliente(cliente);
             pantalla = "panelDeUsuario.hbs";
@@ -46,7 +46,7 @@ public class PanelDeUsuarioController extends Controller {
 
     public static ModelAndView editar(Request req, Response res) {
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 
@@ -71,7 +71,7 @@ public class PanelDeUsuarioController extends Controller {
         }
 
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
         cliente.setNombre(nombre);
         cliente.setApellido(apellido);
@@ -79,16 +79,16 @@ public class PanelDeUsuarioController extends Controller {
         cliente.setDomicilio(direccion);
         cliente.setNumeroDni(numeroDni);
 
-        RepositorioClientes.actualizarCliente(cliente);
+        new RepositorioClientes().actualizarCliente(cliente);
 
         res.redirect(USER);
 
         return mostrar(req, res);
     }
 
-    public static ModelAndView llenarTodosLosCampos(Request req, Response res) {
+    private static ModelAndView llenarTodosLosCampos(Request req, Response res) {
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 

@@ -7,32 +7,32 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import DDS.SGE.Cliente;
 
-public class RepositorioClientes extends Repositorio implements WithGlobalEntityManager {
+public class RepositorioClientes extends Repositorio {
 
     // private static RepositorioClientes instancia = new RepositorioClientes();
 
-    public static List<Cliente> getAllClients() {
-        return em.createQuery("from Cliente", Cliente.class).getResultList();
+    public List<Cliente> getAllClients() {
+        return entityManager().createQuery("from Cliente", Cliente.class).getResultList();
     }
 
-    public static Cliente findByID(Long id) {
-        return findByID(Cliente.class, id);
+    public Cliente findByID(Long id) {
+        return this.findByID(Cliente.class, id);
     }
 
-    public static Optional<Cliente> findByUsername(String username) {
-        return findByUsername(Cliente.class, username);
+    public Optional<Cliente> findByUsername(String username) {
+        return this.findByUsername(Cliente.class, username);
     }
 
-    public static void agregarCliente(Cliente cliente) {
-        persistir(cliente);
+    public void agregarCliente(Cliente cliente) {
+        this.persistir(cliente);
     }
 
-    public static void registrarCliente(Cliente cliente) throws Exception {
-        registrar(cliente, cliente.getUsername());
+    public void registrarCliente(Cliente cliente) {
+        this.registrar(cliente, cliente.getUsername());
     }
 
-    public static void actualizarCliente(Cliente cliente) {
-        persistir(cliente);
+    public void actualizarCliente(Cliente cliente) {
+        this.persistir(cliente);
     }
 
 }

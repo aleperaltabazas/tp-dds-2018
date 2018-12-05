@@ -13,8 +13,6 @@ import java.util.List;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class HogarController extends Controller {
-    //TODO: cambiar las rutas con nombres finales
-    private static String ruta = "mi-hogar-v2-posta.hbs";
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
@@ -28,15 +26,12 @@ public class HogarController extends Controller {
         }
 
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
 
         List<Dispositivo> dispositivosInteligentes = cliente.getDispositivosInteligente();
         List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();
-
-        /*dispositivosInteligentes.forEach(d -> System.out.println(d.getNombre()));
-        dispositivosEstandar.forEach(d -> System.out.println(d.getNombre()));*/
 
         viewModel.put("dispositivosInteligente", dispositivosInteligentes);
         viewModel.put("dispositivosEstandar", dispositivosEstandar);
@@ -46,6 +41,6 @@ public class HogarController extends Controller {
         viewModel.put("estimadoDiario", cliente.consumoTotalEstimadoDiario());
         viewModel.put("usoOptimo", cliente.consultarUsoOptimo());
 
-        return new ModelAndView(viewModel, ruta);
+        return new ModelAndView(viewModel, "mi-hogar-v2-posta.hbs");
     }
 }

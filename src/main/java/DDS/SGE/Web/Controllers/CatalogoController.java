@@ -2,7 +2,6 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoBuilder;
-import DDS.SGE.Dispositivo.TablaDispositivos;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import Fabricante.Fabricante;
 import spark.ModelAndView;
@@ -23,7 +22,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
 
-        List<Dispositivo> dispos = RepositorioDispositivos.catalogoDeDispositivos();
+        List<Dispositivo> dispos = new RepositorioDispositivos().catalogoDeDispositivos();
         viewModel.put("dispositivos", dispos);
 
         return new ModelAndView(viewModel, "catalogo.hbs");
@@ -65,12 +64,12 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoInteligente(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) != "si") {
+        if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
 
-        if (req.session().attribute(ADMIN).equals(false)) {
+        if (req.session().attribute(ADMIN) != "si") {
             return new ModelAndView(null, "404.hbs");
         }
 
@@ -85,18 +84,14 @@ public class CatalogoController extends Controller {
             Fabricante fabricante = Fabricante.parse(req.queryParams("fabricante"));
             boolean bajoConsumo;
 
-            if (req.queryParams("bajoConsumo") == "Sí") {
-                bajoConsumo = true;
-            } else {
-                bajoConsumo = false;
-            }
+            bajoConsumo = req.queryParams("bajoConsumo").equals("Sí");
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirInteligente(nombre, consumo, fabricante, bajoConsumo);
-            RepositorioDispositivos.agregarDispositivoAlCatalogo(dispositivo);
+            new RepositorioDispositivos().agregarDispositivoAlCatalogo(dispositivo);
 
-            res.redirect(ADMINISTRADOR);
-            return PanelAdministradorController.mostrar(req, res);
+            res.redirect(DISPOSITIVOS);
+            return CatalogoController.mostrar(req, res);
         } catch (RuntimeException e) {
             e.printStackTrace();
 
@@ -106,12 +101,12 @@ public class CatalogoController extends Controller {
     }
 
     public static ModelAndView nuevoEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) != "si") {
+        if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
             return HomeController.mostrar(req, res);
         }
 
-        if (req.session().attribute(ADMIN).equals(false)) {
+        if (req.session().attribute(ADMIN) != "si") {
             return new ModelAndView(null, "404.hbs");
         }
 
@@ -121,17 +116,13 @@ public class CatalogoController extends Controller {
             long usoEstimadoDiario = Long.parseLong(req.queryParams("uso"));
             boolean bajoConsumo;
 
-            if (req.queryParams("bajoConsumo") == "Sí") {
-                bajoConsumo = true;
-            } else {
-                bajoConsumo = false;
-            }
+            bajoConsumo = req.queryParams("bajoConsumo").equals("Sí");
 
             DispositivoBuilder db = new DispositivoBuilder();
             Dispositivo dispositivo = db.construirEstandar(nombre, consumo, usoEstimadoDiario, bajoConsumo);
-            RepositorioDispositivos.agregarDispositivoAlCatalogo(dispositivo);
+            new RepositorioDispositivos().agregarDispositivoAlCatalogo(dispositivo);
 
-            res.redirect(ADMINISTRADOR);
+            res.redirect(DISPOSITIVOS);
             return PanelAdministradorController.mostrar(req, res);
         } catch (RuntimeException e) {
             e.printStackTrace();

@@ -4,8 +4,6 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.awt.*;
-
 public class HomeController extends Controller {
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {

@@ -20,7 +20,7 @@ public class OptimizadorController extends Controller {
         }
 
         String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.findByID(Long.parseLong(id));
+        Cliente cliente = new RepositorioClientes().findByID(Long.parseLong(id));
 
         Optimizador optimizador = new Optimizador();
         double[] resultado = optimizador.tiempoRecomendadoPorDispositivo(cliente);
@@ -37,8 +37,8 @@ public class OptimizadorController extends Controller {
     private static List<Double> generarLista(double[] resultado) {
         List<Double> lista = new ArrayList<>();
 
-        for (int i = 0; i < resultado.length; i++) {
-            lista.add(new Double(resultado[i]));
+        for (double aResultado : resultado) {
+            lista.add(new Double(aResultado));
         }
 
         return lista;

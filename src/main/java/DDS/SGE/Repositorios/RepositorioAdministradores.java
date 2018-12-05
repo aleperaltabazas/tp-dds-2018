@@ -5,23 +5,23 @@ import java.util.Optional;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import DDS.SGE.Administrador;
 
-public class RepositorioAdministradores extends Repositorio implements WithGlobalEntityManager {
-	// private static RepositorioAdministradores instancia = new
-	// RepositorioAdministradores();
+public class RepositorioAdministradores extends Repositorio {
+    // private static RepositorioAdministradores instancia = new
+    // RepositorioAdministradores();
 
-	public static void agregarAdministrador(Administrador administrador) {
-		persistir(administrador);
-	}
+    public void agregarAdministrador(Administrador administrador) {
+        this.persistir(administrador);
+    }
 
-	public static Optional<Administrador> findByUsername(String username) {
-		return findByUsername(Administrador.class, username);
-	}
+    public Optional<Administrador> findByUsername(String username) {
+        return this.findByUsername(Administrador.class, username);
+    }
 
-	public static Administrador findByID(Long id) {
-		return findByID(Administrador.class, id);
-	}
+    public Administrador findByID(Long id) {
+        return this.findByID(Administrador.class, id);
+    }
 
-	public static void registrarAdministrador(Administrador administrador) throws Exception {
-		registrar(administrador, administrador.getUsername());
-	}
+    public void registrarAdministrador(Administrador administrador) throws Exception {
+        this.registrar(administrador, administrador.getUsername());
+    }
 }

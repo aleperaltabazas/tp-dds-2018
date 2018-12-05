@@ -20,7 +20,7 @@ public class LoginClienteController extends LoginController {
         String password = req.queryParams("password");
 
         try {
-            Cliente usuario = RepositorioClientes.findByUsername(username).get();
+            Cliente usuario = new RepositorioClientes().findByUsername(username).get();
 
             revisarUsuario(usuario, password);
 

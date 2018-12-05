@@ -7,19 +7,18 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 
 import DDS.SGE.EntityManagerHelper;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
-public class Repositorio {
-    protected static EntityManager em = EntityManagerHelper.entityManager();
-
-    protected static <T> T findByID(Class<T> entityClass, Long id) {
-        return em.find(entityClass, id);
+public class Repositorio implements WithGlobalEntityManager {
+    protected <T> T findByID(Class<T> entityClass, Long id) {
+        return entityManager().find(entityClass, id);
     }
 
-    protected static <T> Optional<T> findByUsername(Class<T> entityClass, String username) {
+    protected <T> Optional<T> findByUsername(Class<T> entityClass, String username) {
         String table = entityClass.getSimpleName();
         String letter = "" + table.charAt(0);
 
-        List<T> objects = em
+        List<T> objects = entityManager()
                 .createQuery("from " + table + " " + letter + " where " + letter + ".username LIKE :username",
                         entityClass)
                 .setParameter("username", username).getResultList();
@@ -32,19 +31,16 @@ public class Repositorio {
 
     }
 
-    protected static void persistir(Object o) {
-        em.getTransaction().begin();
-        em.persist(o);
-        //em.flush();
-        em.getTransaction().commit();
+    protected void persistir(Object o) {
+        entityManager().persist(o);
     }
 
-    protected static void registrar(Object o, String username) throws Exception {
+    protected void registrar(Object o, String username) {
         try {
             findByUsername(o.getClass(), username).get();
-            throw new Exception("Ese nombre de usuario no se encuentra disponible");
+            throw new RuntimeException("Ese nombre de usuario no se encuentra disponible");
         } catch (NoSuchElementException e) {
-            persistir(o);
+            this.persistir(o);
         }
     }
 }
