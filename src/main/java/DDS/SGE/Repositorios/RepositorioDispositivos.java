@@ -8,15 +8,15 @@ import java.util.List;
 
 public class RepositorioDispositivos extends Repositorio implements WithGlobalEntityManager {
     public static List<Dispositivo> listar() {
-        return em.createQuery("from Dispositivo", Dispositivo.class).getResultList();
+        return entityManager().createQuery("from Dispositivo", Dispositivo.class).getResultList();
     }
 
     public static List<Dispositivo> dispositivosDe(Cliente cliente) {
-        return em.createQuery("from Dispositivo d where d.id = " + cliente.getId()).getResultList();
+        return entityManager().createQuery("from Dispositivo d where d.id = " + cliente.getId()).getResultList();
     }
 
     public static List<Dispositivo> catalogoDeDispositivos() {
-        return em.createQuery("from Dispositivo d where d.esDeCatalogo = true", Dispositivo.class).getResultList();
+        return entityManager().createQuery("from Dispositivo d where d.esDeCatalogo = true", Dispositivo.class).getResultList();
     }
 
     public static void agregarDispositivoAlCatalogo(Dispositivo dispositivo) {

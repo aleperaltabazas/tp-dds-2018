@@ -2,6 +2,9 @@ package DDS.SGE.Web.Controllers;
 
 import java.util.HashMap;
 
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
+
 import DDS.SGE.Cliente;
 import DDS.SGE.ClienteBuilder;
 import DDS.SGE.Repositorios.RepositorioClientes;
@@ -12,12 +15,12 @@ import spark.Response;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
-public class RegistrarController extends Controller {
+public class RegistrarController extends Controller implements WithGlobalEntityManager, TransactionalOps {
     public static ModelAndView mostrar(Request req, Response res) {
         return new ModelAndView(null, "registro.hbs");
     }
 
-    public static ModelAndView registrar(Request req, Response res) {
+    public ModelAndView registrar(Request req, Response res) {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
@@ -38,11 +41,13 @@ public class RegistrarController extends Controller {
         cb.especificarDireccion(direccion);
 
         try {
-            Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
-            RepositorioClientes.registrarCliente(cliente);
+        	Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
+        	withTransaction(() -> {
+                RepositorioClientes.registrarCliente(cliente);
+                
+        	});
+            
         } catch (Exception ex) {
-            ex.printStackTrace();
-
             // TODO: devolver pantalla de que complete todos los campos
             return usernameNoDisponible(req, res);
         }
