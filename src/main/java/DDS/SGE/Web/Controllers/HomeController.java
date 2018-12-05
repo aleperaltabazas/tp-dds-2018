@@ -15,7 +15,7 @@ public class HomeController extends Controller {
 
     private static ModelAndView homeLogeado(Request req, Response res) {
         if (req.session().attribute(ADMIN) == "si") {
-            return PanelAdministradorController.mostrar(req, res);
+            return PanelDeAdministradorController.mostrar(req, res);
         } else {
             return new ModelAndView(null, "principal.hbs");
         }

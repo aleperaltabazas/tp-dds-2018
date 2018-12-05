@@ -123,7 +123,7 @@ public class CatalogoController extends Controller {
             RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo);
 
             res.redirect(DISPOSITIVOS);
-            return PanelAdministradorController.mostrar(req, res);
+            return PanelDeAdministradorController.mostrar(req, res);
         } catch (RuntimeException e) {
             e.printStackTrace();
 

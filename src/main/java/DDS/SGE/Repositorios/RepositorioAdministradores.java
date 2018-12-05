@@ -23,7 +23,7 @@ public class RepositorioAdministradores extends Repositorio {
         return this.findByID(Administrador.class, id);
     }
 
-    public void registrarAdministrador(Administrador administrador) throws Exception {
+    public void registrarAdministrador(Administrador administrador) {
         this.registrar(administrador, administrador.getUsername());
     }
 

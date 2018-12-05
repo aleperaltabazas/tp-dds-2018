@@ -4,7 +4,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-public class PanelAdministradorController extends Controller {
+public class PanelDeAdministradorController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(ADMIN) == "no") {

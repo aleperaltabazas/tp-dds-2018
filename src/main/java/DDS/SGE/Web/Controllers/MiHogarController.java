@@ -12,7 +12,7 @@ import java.util.List;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
-public class HogarController extends Controller {
+public class MiHogarController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {

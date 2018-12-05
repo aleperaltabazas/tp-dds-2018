@@ -32,7 +32,7 @@ public class LoginAdminController extends LoginController {
             req.session().attribute(SESSION_NAME, id);
             req.session().attribute(ADMIN, "si");
 
-            return PanelAdministradorController.mostrar(req, res);
+            return PanelDeAdministradorController.mostrar(req, res);
         } catch (Exception e) {
             return error(req, res);
         }
