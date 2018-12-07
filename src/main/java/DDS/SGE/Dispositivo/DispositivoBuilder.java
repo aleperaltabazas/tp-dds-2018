@@ -21,8 +21,8 @@ public class DispositivoBuilder {
         return new Dispositivo(nombre, new DispositivoEstandar(usoEstimadoDiario, consumoKWPorHora), bajoConsumo);
     }
 
-    public DispositivoDeCatalogo crearDispositivoDeCatalogo(String nombre, double consumo, Fabricante fabricante, boolean bajoConsumo, boolean inteligente, MetodoDeCreacion metodoDeCreacion) {
-        if (nombre == null || fabricante == null || metodoDeCreacion == null) {
+    public DispositivoDeCatalogo construirDispositivoDeCatalogo(String nombre, double consumo, boolean bajoConsumo, boolean inteligente, MetodoDeCreacion metodoDeCreacion) {
+        if (nombre == null || metodoDeCreacion == null) {
             throw new RuntimeException("Faltan parámetros para poder construir");
         }
 

@@ -15,23 +15,6 @@ public class RepositorioDispositivos extends Repositorio {
         return entityManager().createQuery("from Dispositivo", Dispositivo.class).getResultList();
     }
 
-    public List<Dispositivo> catalogoDeDispositivos() {
-        return entityManager().createQuery("from Dispositivo d where d.esDeCatalogo = true", Dispositivo.class).getResultList();
-    }
-
-    public void agregarDispositivoAlCatalogo(Dispositivo dispositivo) {
-        dispositivo.setEsDeCatalogo(true);
-        persistir(dispositivo);
-    }
-
-    public void foo(DispositivoDeCatalogo dispositivoDeCatalogo) {
-        persistir(dispositivoDeCatalogo);
-    }
-
-    public DispositivoDeCatalogo buscarEnElCatalogoPorID(Long id) {
-        return this.findByID(DispositivoDeCatalogo.class, id);
-    }
-
     public Dispositivo findByID(Long id) {
         return this.findByID(Dispositivo.class, id);
     }

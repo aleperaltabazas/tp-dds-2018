@@ -120,9 +120,9 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
     public void testPersistirUnDispositivoDeCatalogoYTraerloDeVuelta() {
         DispositivoDeCatalogo dispositivo = new DispositivoDeCatalogo("Un dispositivo", 100, false, true, MetodoDeCreacion.AIRE);
 
-        withTransaction(() -> RepositorioDispositivos.getInstance().foo(dispositivo));
+        withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
 
-        DispositivoDeCatalogo persistido = RepositorioDispositivos.getInstance().buscarEnElCatalogoPorID(dispositivo.getId());
+        DispositivoDeCatalogo persistido = RepositorioCatalogo.getInstance().findByID(dispositivo.getId());
         assertEquals(persistido, dispositivo);
 
     }

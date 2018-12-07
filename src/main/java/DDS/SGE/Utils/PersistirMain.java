@@ -1,8 +1,10 @@
 package DDS.SGE.Utils;
 
 import DDS.SGE.Dispositivo.*;
+import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Usuarie.Administrador;
@@ -48,17 +50,15 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
         repositorioDePrueba.setIntervalosDeActividad(intervalosDeActividad);
         DispositivoInteligente tipo = new DispositivoInteligente(new Encendido(), unFabricante);
 
-        Dispositivo di = td.getDispositivos().get(0);
+        Dispositivo di = new Dispositivo("Inteligente", new DispositivoInteligente(new Apagado(), new AireAcondicionado(3500, 60)));
         tipo.setRepositorio(repositorioDePrueba);
         di.setTipoDispositvo(tipo);
 
         c2.agregarDispositivo(di);
-        c2.agregarDispositivo(td.getDispositivos().get(5));
-
 
         try {
             withTransaction(() -> {
-                td.getDispositivos().forEach(dispo -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispo));
+                td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispo));
                 RepositorioClientes.getInstance().registrarCliente(c1);
                 RepositorioClientes.getInstance().registrarCliente(c2);
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);

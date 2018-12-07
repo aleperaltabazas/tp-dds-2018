@@ -2,6 +2,9 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoBuilder;
+import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
+import DDS.SGE.Dispositivo.MetodoDeCreacion;
+import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Fabricante.Fabricante;
 import spark.ModelAndView;
@@ -22,7 +25,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
 
-        List<Dispositivo> dispos = RepositorioDispositivos.getInstance().catalogoDeDispositivos();
+        List<DispositivoDeCatalogo> dispos = RepositorioCatalogo.getInstance().listar();
         viewModel.put("dispositivos", dispos);
 
         return new ModelAndView(viewModel, "catalogo.hbs");
@@ -62,14 +65,14 @@ public class CatalogoController extends Controller {
             String nombre = req.queryParams("nombre");
 
             double consumo = Double.parseDouble(req.queryParams("consumo"));
-            Fabricante fabricante = Fabricante.parse(req.queryParams("fabricante"));
+            MetodoDeCreacion metodoDeCreacion = MetodoDeCreacion.parse(req.queryParams("fabricante"));
             boolean bajoConsumo;
 
             bajoConsumo = req.queryParams("bajoConsumo").equals("Sí");
 
             DispositivoBuilder db = new DispositivoBuilder();
-            Dispositivo dispositivo = db.construirInteligente(nombre, consumo, fabricante, bajoConsumo);
-            withTransaction(() -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo));
+            DispositivoDeCatalogo dispositivo = db.construirDispositivoDeCatalogo(nombre, consumo, bajoConsumo, true, metodoDeCreacion);
+            withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new CatalogoController().mostrar(req, res);
@@ -86,6 +89,7 @@ public class CatalogoController extends Controller {
 
         try {
             String nombre = req.queryParams("nombre");
+            MetodoDeCreacion metodoDeCreacion = MetodoDeCreacion.parse(nombre);
             double consumo = Double.parseDouble(req.queryParams("consumo"));
             long usoEstimadoDiario = Long.parseLong(req.queryParams("uso"));
             boolean bajoConsumo;
@@ -93,9 +97,9 @@ public class CatalogoController extends Controller {
             bajoConsumo = req.queryParams("bajoConsumo").equals("Sí");
 
             DispositivoBuilder db = new DispositivoBuilder();
-            Dispositivo dispositivo = db.construirEstandar(nombre, consumo, usoEstimadoDiario, bajoConsumo);
+            DispositivoDeCatalogo dispositivo = db.construirDispositivoDeCatalogo(nombre, consumo, bajoConsumo, false, metodoDeCreacion);
 
-            withTransaction(() -> RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(dispositivo));
+            withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);

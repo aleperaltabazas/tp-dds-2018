@@ -103,5 +103,27 @@ public enum MetodoDeCreacion {
         this.bajoConsumo = bajoConsumo;
         this.inteligente = inteligente;
     }
+
+    public static MetodoDeCreacion parse(String metodo) {
+        String ignoreCase = metodo.toLowerCase();
+
+        if (ignoreCase.contains("aire") || ignoreCase.contains("acondicionado")) {
+            return AIRE;
+        } else if (ignoreCase.contains("tele") || ignoreCase.contains("tv") || ignoreCase.contains("led") || ignoreCase.contains("led") || ignoreCase.contains("ctr")) {
+            return TELE;
+        } else if (ignoreCase.contains("heladera") || ignoreCase.contains("refrigerador")) {
+            return HELADERA;
+        } else if (ignoreCase.contains("lavarropas")) {
+            return LAVARROPAS;
+        } else if (ignoreCase.contains("lamp")) {
+            return LAMPARA;
+        } else if (ignoreCase.contains("pc") || ignoreCase.contains("compu")) {
+            return COMPUTADORA;
+        } else if (ignoreCase.contains("plancha")) {
+            return PLANCHA;
+        }
+
+        throw new RuntimeException("Método de creación no especificado correctamente");
+    }
 }
 

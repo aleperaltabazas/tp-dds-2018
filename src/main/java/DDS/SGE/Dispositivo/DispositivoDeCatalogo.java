@@ -38,4 +38,20 @@ public class DispositivoDeCatalogo {
         metodoDeCreacion.fill(nombre, consumo, bajoConsumo, inteligente);
         return metodoDeCreacion.construir();
     }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public double getConsumo() {
+        return this.consumo;
+    }
+
+    public String getBajoConsumo() {
+        return bajoConsumo ? "sí" : "no";
+    }
+
+    public String getInteligente() {
+        return inteligente ? "sí" : "no";
+    }
 }
