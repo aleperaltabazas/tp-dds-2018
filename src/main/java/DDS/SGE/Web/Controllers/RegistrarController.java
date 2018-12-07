@@ -36,29 +36,23 @@ public class RegistrarController extends Controller {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
 
             withTransaction(() -> RepositorioClientes.getInstance().registrarCliente(cliente));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (RuntimeException ex) {
+            HashMap<String, Object> viewModel = new HashMap<>();
+            viewModel.put("username", req.queryParams("username"));
+            viewModel.put("password", req.queryParams("password"));
+            viewModel.put("nombre", req.queryParams("nombre"));
+            viewModel.put("apellido", req.queryParams("apellido"));
+            viewModel.put("codigoTelefono", req.queryParams("codigoTelefono"));
+            viewModel.put("telefono", req.queryParams("telefono"));
+            viewModel.put("numeroDni", req.queryParams("numeroDni"));
+            viewModel.put("direccion", req.queryParams("direccion"));
+            viewModel.put("errorMessage", ex.getMessage());
 
-            // TODO: devolver pantalla de que complete todos los campos
-            return usernameNoDisponible(req, res);
+            return new ModelAndView(viewModel, "registro.hbs");
         }
 
         res.redirect(LOGIN);
         return new ModelAndView(null, "registro.hbs");
 
-    }
-
-    private ModelAndView usernameNoDisponible(Request req, Response res) {
-        HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("username", req.queryParams("username"));
-        viewModel.put("password", req.queryParams("password"));
-        viewModel.put("nombre", req.queryParams("nombre"));
-        viewModel.put("apellido", req.queryParams("apellido"));
-        viewModel.put("codigoTelefono", req.queryParams("codigoTelefono"));
-        viewModel.put("telefono", req.queryParams("telefono"));
-        viewModel.put("numeroDni", req.queryParams("numeroDni"));
-        viewModel.put("direccion", req.queryParams("direccion"));
-
-        return new ModelAndView(viewModel, "registro_userNoDisponible.hbs");
     }
 }

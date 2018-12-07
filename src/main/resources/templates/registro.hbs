@@ -24,6 +24,7 @@
 
     <!-- Main CSS-->
     <link href="CSS/main.css" rel="stylesheet" media="all">
+    <link href="CSS/misc.css" rel="stylesheet" media="all">
     <link rel="icon" href="resources/imgs/ditto.png">
 </head>
 
@@ -70,13 +71,13 @@
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="codigoTelefono" required/>
+                                            <input class="input--style-5" type="tel" name="codigoTelefono" required/>
                                             <label class="label--desc">Código de área</label>
                                         </div>
                                     </div>
                                     <div class="col-9">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="telefono" required/>
+                                            <input class="input--style-5" type="tel" name="telefono" required/>
                                             <label class="label--desc">Número</label>
                                         </div>
                                     </div>
@@ -102,13 +103,16 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="numeroDni" required/>
+                                        <input class="input--style-5" type="number" name="numeroDni" required/>
                                         <label class="label--desc">Número</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                    <div>
+                        <h6 class="username-unavailable">{{errorMessage}}</h6>
                     </div>
                     <div class="form-row">
                         <div class="name">Nombre de usuario</div>

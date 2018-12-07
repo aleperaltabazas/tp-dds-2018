@@ -1,3 +1,9 @@
+.username-unavailable {
+  font-size: 15px;
+  font-weight: 700;
+  color: red;
+}
+
 .error{
 	color: red;
 }
