@@ -1,9 +1,10 @@
-package DDS.SGE;
+package DDS.SGE.Utils;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import DDS.SGE.Optimizador.Optimizador;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Usuarie.Cliente;
 

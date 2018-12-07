@@ -2,7 +2,7 @@ package MiscTest;
 
 import java.io.File;
 
-import DDS.SGE.JsonBuilder;
+import DDS.SGE.Utils.JsonBuilder;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.Cliente;
 import org.junit.Test;

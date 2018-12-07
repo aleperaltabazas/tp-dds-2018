@@ -9,7 +9,7 @@ import java.util.List;
 
 import DDS.SGE.Dispositivos.FabricanteTest;
 import DDS.SGE.Dispositivos.RepositorioDeTiempoEncendidoTest;
-import DDS.SGE.Optimizador;
+import DDS.SGE.Optimizador.Optimizador;
 import DDS.SGE.Usuarie.Cliente;
 import org.junit.Before;
 import org.junit.Test;

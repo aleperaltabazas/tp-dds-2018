@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
-import DDS.SGE.EspecialistaEnReportes;
+import DDS.SGE.Utils.EspecialistaEnReportes;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Usuarie.Cliente;
 import org.junit.After;

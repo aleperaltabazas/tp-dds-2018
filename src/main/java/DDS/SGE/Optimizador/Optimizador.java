@@ -1,4 +1,4 @@
-package DDS.SGE;
+package DDS.SGE.Optimizador;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package DDS.SGE;
+package DDS.SGE.Utils;
 
 import DDS.SGE.Dispositivo.*;
 import DDS.SGE.Dispositivo.Estado.Encendido;

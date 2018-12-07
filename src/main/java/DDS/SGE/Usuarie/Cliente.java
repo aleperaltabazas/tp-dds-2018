@@ -18,7 +18,7 @@ import DDS.SGE.Dispositivo.DispositivoInteligente;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 
-import DDS.SGE.Optimizador;
+import DDS.SGE.Optimizador.Optimizador;
 import DDS.SGE.Geoposicionamiento.Transformador;
 import DDS.SGE.Geoposicionamiento.Zona;
 
