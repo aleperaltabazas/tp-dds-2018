@@ -16,11 +16,11 @@
 					Consumo en kWh: {{this.consumo}} <br>
 					Bajo consumo: {{this.bajoConsumo}} <br>
 					Inteligente: {{this.inteligente}} <br>
-					{{/dispositivo}}
 				</p>
-				<form action="/dispositivo/{{id}}acquire" method="POST">
+				<form action="/dispositivos/{{this.id}}/acquire" method="POST">
 					<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
 				</form>
+				{{/dispositivo}}
 			</div>
 		</div>
 	</div>

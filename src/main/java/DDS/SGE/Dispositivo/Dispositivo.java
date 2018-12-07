@@ -163,4 +163,8 @@ public class Dispositivo {
         else
             return "no";
     }
+
+    public String getEstado() {
+        return this.tipo.estadoAsString();
+    }
 }

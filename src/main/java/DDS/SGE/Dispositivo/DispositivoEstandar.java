@@ -82,4 +82,8 @@ public class DispositivoEstandar extends TipoDispositivo {
 		// No hace nada
 	}
 
+	public String estadoAsString() {
+		throw new RuntimeException("Should not be asking here");
+	}
+
 }

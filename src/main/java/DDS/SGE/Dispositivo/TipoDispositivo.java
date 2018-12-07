@@ -36,4 +36,6 @@ public abstract class TipoDispositivo {
 
 	public abstract double usoMensualMinimo();
 	public abstract double usoMensualMaximo();
+
+    public abstract String estadoAsString();
 }

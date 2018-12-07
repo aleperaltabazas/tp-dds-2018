@@ -81,7 +81,7 @@ public class PanelDeUsuarioController extends Controller {
         try {
             withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
         } catch (Exception e) {
-            return new ErrorController().somethingBroke(req, res);
+            return new ErrorController().notFound(req, res);
         }
 
         res.redirect(USER);

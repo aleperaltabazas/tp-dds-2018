@@ -5,6 +5,8 @@ import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
+import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Usuarie.Cliente;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -12,9 +14,7 @@ import spark.Response;
 import java.util.HashMap;
 import java.util.List;
 
-import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
-import static DDS.SGE.Web.Controllers.Routes.DISPOSITIVOS;
-import static DDS.SGE.Web.Controllers.Routes.LOGIN;
+import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class CatalogoController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
@@ -42,11 +42,26 @@ public class CatalogoController extends Controller {
         }
 
         if (req.session().attribute(ADMIN) == "si") {
-            res.redirect(ADMINISTRADOR);
-            return new PanelDeAdministradorController().mostrar(req, res);
+            return new ErrorController().notFound(req, res);
         }
 
-        return new ModelAndView(null, "dispositivos-adquirir.hbs");
+        String id_dispositivo = req.params(":id");
+        Long id_dispositivo_posta = Long.parseLong(id_dispositivo);
+
+        String id_cliente = req.session().attribute(SESSION_NAME);
+        Long id_cliente_posta = Long.parseLong(id_cliente);
+
+        Cliente cliente = RepositorioClientes.getInstance().findByID(id_cliente_posta);
+        Dispositivo dispositivoNuevo = RepositorioCatalogo.getInstance().findByID(id_dispositivo_posta).construir();
+
+        try {
+            cliente.agregarDispositivo(dispositivoNuevo);
+            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
+            res.redirect(HOGAR);
+            return new ModelAndView(null, "mi-hogar-v2-posta.hbs");
+        } catch (Exception e) {
+            return new ErrorController().somethingBroke(req, res);
+        }
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {

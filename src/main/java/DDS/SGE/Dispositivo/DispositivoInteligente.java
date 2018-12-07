@@ -134,4 +134,8 @@ public class DispositivoInteligente extends TipoDispositivo {
     public double usoMensualMaximo() {
         return fabricante.usoMensualMaximo();
     }
+
+    public String estadoAsString() {
+        return getEstado().getClass().getSimpleName();
+    }
 }

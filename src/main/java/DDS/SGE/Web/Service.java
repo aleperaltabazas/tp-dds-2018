@@ -96,7 +96,7 @@ public class Service {
         get(LOGOUT, loginController::logout, engine);
 
         //TODO: get(LIFE, controller::fortyTwo, engine);
-        get(GLITCH, errorController::somethingBroke, engine);
+        get(GLITCH, errorController::notFound, engine);
     }
 
     public void run() {

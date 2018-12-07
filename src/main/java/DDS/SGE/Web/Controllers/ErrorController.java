@@ -11,7 +11,7 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 public class ErrorController extends Controller {
     private static final Logger logger = Logger.getLogger(ErrorController.class.getName());
 
-    public ModelAndView somethingBroke(Request req, Response res) {
+    public ModelAndView notFound(Request req, Response res) {
         res.status(404);
         return new ModelAndView(null, "404.hbs");
     }
@@ -23,6 +23,13 @@ public class ErrorController extends Controller {
 
         res.status(401);
         //TODO: pantalla de unauthorized access
+        return null;
+    }
+
+    public ModelAndView somethingBroke(Request req, Response res) {
+        //TODO: pantalla de error 500
+
+        res.status(500);
         return null;
     }
 }
