@@ -4,13 +4,17 @@ import javax.persistence.*;
 
 public enum MetodoDeCreacion {
     AIRE() {
+        public String toString() {
+            return "Aire acondicionado";
+        }
+
         private int frigorias = 2000;
 
         public TipoDispositivo construirPorTipo() {
             return factory.crearAire(frigorias, this.getConsumo());
         }
     },
-    TELE() {
+    TELEVISION() {
         private int pulgadas = 30;
 
         public TipoDispositivo construirPorTipo() {
@@ -110,7 +114,7 @@ public enum MetodoDeCreacion {
         if (ignoreCase.contains("aire") || ignoreCase.contains("acondicionado")) {
             return AIRE;
         } else if (ignoreCase.contains("tele") || ignoreCase.contains("tv") || ignoreCase.contains("led") || ignoreCase.contains("led") || ignoreCase.contains("ctr")) {
-            return TELE;
+            return TELEVISION;
         } else if (ignoreCase.contains("heladera") || ignoreCase.contains("refrigerador")) {
             return HELADERA;
         } else if (ignoreCase.contains("lavarropas")) {
@@ -124,6 +128,11 @@ public enum MetodoDeCreacion {
         }
 
         throw new RuntimeException("Por favor, ingrese un fabricante válido");
+    }
+
+    public String toString() {
+        String input = super.toString().toLowerCase();
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 }
 

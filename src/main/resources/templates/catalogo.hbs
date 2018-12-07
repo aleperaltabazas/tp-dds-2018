@@ -11,19 +11,19 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <div class="card-body">
-              <h5>{{this.nombre}}</h5>
-              <ul>
-                <li>Inteligente: {{this.inteligente}}</li>
-                <li>Bajo consumo: {{this.bajoConsumo}}</li>
-                <li>Consumo (kWh): {{this.consumokWh}}</li>
-              </ul>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+              <form action="/dispositivos/{{this.id}}/info" method="GET">
+                <h5>{{this.nombre}}</h5>
+                <ul>
+                  <li>Inteligente: {{this.inteligente}}</li>
+                  <li>Bajo consumo: {{this.bajoConsumo}}</li>
+                  <li>Consumo (kWh): {{this.consumokWh}}</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Adquirir</button>
                 </div>
-                <form action="/dispositivos/acquire" method="GET">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Adquirir</button>
-                </form>
-              </div>
+              </form>
             </div>
           </div>
         </div>

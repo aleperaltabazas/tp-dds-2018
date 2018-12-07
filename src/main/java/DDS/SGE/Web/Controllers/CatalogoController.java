@@ -5,18 +5,15 @@ import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
-import DDS.SGE.Repositorios.RepositorioDispositivos;
-import DDS.SGE.Fabricante.Fabricante;
-import com.github.jknack.handlebars.Handlebars;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static DDS.SGE.Web.Controllers.Routes.*;
+import static DDS.SGE.Web.Controllers.Routes.DISPOSITIVOS;
+import static DDS.SGE.Web.Controllers.Routes.LOGIN;
 
 public class CatalogoController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
@@ -39,7 +36,7 @@ public class CatalogoController extends Controller {
             return new LoginClienteController().mostrar(req, res);
         }
 
-        if(req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) == "si") {
             //TODO: devolver mostrar la ficha del producto
 
             return null;
@@ -118,5 +115,17 @@ public class CatalogoController extends Controller {
         } catch (RuntimeException e) {
             return new ModelAndView(this.fillError(e), "crear-estandar.hbs");
         }
+    }
+
+    public ModelAndView mostrarFichaTecnica(Request req, Response res) {
+        String id = req.params(":id");
+        Long id_posta = Long.parseLong(id);
+
+        DispositivoDeCatalogo dispositivo = RepositorioCatalogo.getInstance().findByID(id_posta);
+
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("dispositivo", dispositivo);
+
+        return new ModelAndView(viewModel, "ficha-tecnica.hbs");
     }
 }

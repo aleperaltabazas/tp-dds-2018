@@ -8,7 +8,6 @@ import DDS.SGE.Dispositivos.RepositorioDeTiempoEncendidoTest;
 import DDS.SGE.Repositorios.*;
 import DDS.SGE.Usuarie.*;
 import DDS.SGE.Usuarie.Cliente.TipoDni;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;

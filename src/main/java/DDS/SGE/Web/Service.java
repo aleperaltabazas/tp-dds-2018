@@ -73,10 +73,13 @@ public class Service {
         get(ADMINISTRADOR_HOGARES, panelDeAdministradorController::verTodosLosHogares, engine);
 
         get(DISPOSITIVOS, catalogoController::mostrar, engine);
-        get(DISPOSITIVOS_ACQUIRE, catalogoController::mostrarAdquirir);
+        get(DISPOSITIVOS_ACQUIRE, catalogoController::mostrarAdquirir, engine);
+
+        get(DISPOSITIVOS_ID_INFO, catalogoController::mostrarFichaTecnica, engine);
+
         get(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
-        get(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
         post(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::nuevoInteligente, engine);
+        get(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
         post(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::nuevoEstandar, engine);
 
         get(CONSUMO, consumoPorPeriodoController::mostrar, engine);

@@ -8,9 +8,11 @@ public class DispositivoDeCatalogo {
     @GeneratedValue
     private Long id;
     private String nombre;
+    private String detalle = "TODO";
     private double consumo;
     private boolean bajoConsumo;
     private boolean inteligente;
+    private String marca = "TODO";
 
     @Enumerated(EnumType.STRING)
     private MetodoDeCreacion metodoDeCreacion;
@@ -53,5 +55,17 @@ public class DispositivoDeCatalogo {
 
     public String getInteligente() {
         return inteligente ? "sí" : "no";
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getTipo() {
+        return metodoDeCreacion.toString();
     }
 }
