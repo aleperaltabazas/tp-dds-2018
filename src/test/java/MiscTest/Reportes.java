@@ -53,11 +53,6 @@ public class Reportes implements TransactionalOps, WithGlobalEntityManager {
         especialistaEnReportes = new EspecialistaEnReportes();
     }
 
-    @After
-    public void after() {
-        rollbackTransaction();
-    }
-
     @Test
     public void esPosibleObtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo() {
         assertEquals(10000, new EspecialistaEnReportes().obtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo(50), 0.0);

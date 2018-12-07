@@ -42,11 +42,6 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
                 LocalDateTime.now(), new ArrayList<Dispositivo>());
     }
 
-    @After
-    public void after() {
-        rollbackTransaction();
-    }
-
     @Test
     public void testPersistirAUnClienteDesdeElRepositorioYDespuesTraerlo() {
         withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(cliente));

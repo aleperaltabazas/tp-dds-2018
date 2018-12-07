@@ -59,11 +59,6 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
 
     }
 
-    @After
-    public void after() {
-        rollbackTransaction();
-    }
-
     @Test
     public void PersistirUnUsuarioYLuegoCambiarleGeolocalizacion() {
         withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(clienteSinDispositivos));
