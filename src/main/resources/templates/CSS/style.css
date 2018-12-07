@@ -6,6 +6,15 @@
   margin-right: auto;
 }
 
+.sge-logo-home{
+  padding-top: 30px;
+  display: block;
+  max-width: 35%;
+  max-height: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .username-unavailable {
   font-size: 15px;
   font-weight: 700;
@@ -45,4 +54,9 @@
 
 .volver-button {
   padding-top: 30px;
+}
+
+.register-link{
+  color: lightblue;
+  text-decoration: underline;
 }
