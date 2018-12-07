@@ -1,0 +1,40 @@
+{{#partial "contenido"}}
+
+<main role="main">
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        {{#dispositivos}}
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <form action="/dispositivos/{{this.id}}/info" method="GET">
+                <h5>{{this.nombre}}</h5>
+                <ul>
+                  <li>Inteligente: {{this.inteligente}}</li>
+                  <li>Bajo consumo: {{this.bajoConsumo}}</li>
+                  <li>Consumo (kWh): {{this.consumokWh}}</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {{/dispositivos}}
+
+      </div>
+    </div>
+  </div>
+
+</main>
+{{/partial}}
+
+{{>layout.hbs}}

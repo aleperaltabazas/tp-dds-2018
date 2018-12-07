@@ -7,14 +7,13 @@ import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
 import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR_LOGIN;
 
 public class LoginAdminController extends LoginController {
     public ModelAndView mostrar(Request req, Response res) {
-        // Tal vez estaría bueno tener una pantalla
-        // de login distinta
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("loginRoute", ADMINISTRADOR_LOGIN);
 
@@ -28,19 +27,24 @@ public class LoginAdminController extends LoginController {
         try {
             // No sé que les parezca mejor, dejar el get en el try catch o envolver el
             // optional con un if isEmpty()
-            Administrador admin = RepositorioAdministradores.getInstance().findByUsername(username).get();
+            Optional<Administrador> admin = RepositorioAdministradores.getInstance().findByUsername(username);
 
-            revisarUsuario(admin, password);
+            if (admin.isPresent()) {
+                revisarUsuario(admin.get(), password);
 
-            String id = Long.toString(admin.getId());
-            res.redirect(ADMINISTRADOR);
+                String id = Long.toString(admin.get().getId());
+                res.redirect(ADMINISTRADOR);
 
-            req.session().attribute(SESSION_NAME, id);
-            req.session().attribute(ADMIN, "si");
+                req.session().attribute(SESSION_NAME, id);
+                req.session().attribute(ADMIN, "si");
 
-            return new PanelDeAdministradorController().mostrar(req, res);
+                return new PanelDeAdministradorController().mostrar(req, res);
+            } else {
+                throw new RuntimeException("No se encontró esa combinación de usuario y contraseña.");
+            }
         } catch (Exception e) {
-            return error(req, res);
+            HashMap<String, Object> viewModel = this.fillError(e);
+            return new ModelAndView(viewModel, "login.hbs");
         }
     }
 

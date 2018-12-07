@@ -3,6 +3,7 @@
 <head><title>Iniciar sesión</title>
   <link rel="icon" href="/resources/imgs/ditto.png"></head>
   <link rel="stylesheet" type="text/css" href="/CSS/login.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/style.css">
   <body>
    <div class="login-page">
      <div class="form">
@@ -14,6 +15,9 @@
         <p class="message">Ya estar registrado? <a href="https://www.google.com.ar/search?q=the+answer+to+life+the+universe+and+everything&oq=the&aqs=chrome.0.69i59j69i61l2j69i59j69i65l2.966j0j7&sourceid=chrome&ie=UTF-8">Ingresar</a></p>
       </form>
       <form class="login-form" action="{{loginRoute}}" method="POST">
+        <div>
+          <p class="error">{{errorMessage}}</p>
+        </div>
         <input type="text" placeholder="username" name="username" required/>
         <input type="password" placeholder="password" name="password" required/>
         <button type="submit">login</button>

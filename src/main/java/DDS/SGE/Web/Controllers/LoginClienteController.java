@@ -7,6 +7,7 @@ import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
@@ -23,19 +24,25 @@ public class LoginClienteController extends LoginController {
         String password = req.queryParams("password");
 
         try {
-            Cliente usuario = RepositorioClientes.getInstance().findByUsername(username).get();
+            Optional<Cliente> usuario = RepositorioClientes.getInstance().findByUsername(username);
+            if (usuario.isPresent()) {
 
-            revisarUsuario(usuario, password);
+                revisarUsuario(usuario.get(), password);
 
-            String id = Long.toString(usuario.getId());
-            res.redirect(HOME);
+                String id = Long.toString(usuario.get().getId());
+                res.redirect(HOME);
 
-            req.session().attribute(SESSION_NAME, id);
-            req.session().attribute(ADMIN, "no");
+                req.session().attribute(SESSION_NAME, id);
+                req.session().attribute(ADMIN, "no");
 
-            return new ModelAndView(null, "login.hbs");
+                return new ModelAndView(null, "login.hbs");
+            } else {
+                throw new RuntimeException("No se encontró esa combinación de usuario y contraseña");
+            }
+
         } catch (Exception e) {
-            return error(req, res);
+            HashMap<String, Object> viewModel = this.fillError(e);
+            return new ModelAndView(viewModel, "login.hbs");
         }
 
     }

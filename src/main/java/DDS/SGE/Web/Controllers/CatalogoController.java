@@ -12,6 +12,7 @@ import spark.Response;
 import java.util.HashMap;
 import java.util.List;
 
+import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
 import static DDS.SGE.Web.Controllers.Routes.DISPOSITIVOS;
 import static DDS.SGE.Web.Controllers.Routes.LOGIN;
 
@@ -27,22 +28,25 @@ public class CatalogoController extends Controller {
         List<DispositivoDeCatalogo> dispos = RepositorioCatalogo.getInstance().listar();
         viewModel.put("dispositivos", dispos);
 
+        if (req.session().attribute(ADMIN) == "si") {
+            return new ModelAndView(viewModel, "catalogo-administrador.hbs");
+        }
+
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 
-    public ModelAndView mostrarAdquirir(Request req, Response res) {
+    public ModelAndView adquirir(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(LOGIN);
             return new LoginClienteController().mostrar(req, res);
         }
 
         if (req.session().attribute(ADMIN) == "si") {
-            //TODO: devolver mostrar la ficha del producto
-
-            return null;
+            res.redirect(ADMINISTRADOR);
+            return new PanelDeAdministradorController().mostrar(req, res);
         }
 
-        return new ModelAndView(null, "dispositivos-mostrarAdquirir.hbs");
+        return new ModelAndView(null, "dispositivos-adquirir.hbs");
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {
@@ -118,6 +122,11 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView mostrarFichaTecnica(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            res.redirect(LOGIN);
+            return new LoginClienteController().mostrar(req, res);
+        }
+
         String id = req.params(":id");
         Long id_posta = Long.parseLong(id);
 
@@ -125,6 +134,10 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("dispositivo", dispositivo);
+
+        if (req.session().attribute(ADMIN) == "si") {
+            return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");
+        }
 
         return new ModelAndView(viewModel, "ficha-tecnica.hbs");
     }

@@ -12,16 +12,6 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.HOME;
 
 public class LoginController extends Controller {
-    protected ModelAndView error(Request req, Response res) {
-        String username = req.queryParams("username");
-        String password = req.queryParams("password");
-
-        Map<String, Object> viewmodel = new HashMap<>();
-        viewmodel.put("username", username);
-        viewmodel.put("password", password);
-        return new ModelAndView(viewmodel, "loginError.hbs");
-    }
-
     public ModelAndView logout(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(HOME);
@@ -35,7 +25,7 @@ public class LoginController extends Controller {
 
     static void revisarUsuario(Usuario user, String password) {
         if (!user.getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
-            throw new RuntimeException("No matcheó usuario y contraseña");
+            throw new RuntimeException("No se encontró esa combinación de usuario y contraseña");
         }
     }
 }
