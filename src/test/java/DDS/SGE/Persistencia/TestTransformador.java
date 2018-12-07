@@ -1,23 +1,16 @@
 package DDS.SGE.Persistencia;
 
-import static org.junit.Assert.*;
+import DDS.SGE.Dispositivo.IntervaloActivo;
+import DDS.SGE.Dispositivos.RepositorioDeTiempoEncendidoTest;
+import DDS.SGE.Geoposicionamiento.Transformador;
+import DDS.SGE.Usuarie.Cliente;
+import DDS.SGE.Usuarie.Cliente.TipoDni;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.persistence.TypedQuery;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import DDS.SGE.Usuarie.Cliente;
-import DDS.SGE.EntityManagerHelper;
-import DDS.SGE.Dispositivos.RepositorioDeTiempoEncendidoTest;
-import DDS.SGE.Usuarie.Cliente.TipoDni;
-import DDS.SGE.Dispositivo.IntervaloActivo;
-import DDS.SGE.Geoposicionamiento.Transformador;
 
 public class TestTransformador {
 

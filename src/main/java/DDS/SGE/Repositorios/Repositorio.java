@@ -1,17 +1,18 @@
 package DDS.SGE.Repositorios;
 
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-
-import DDS.SGE.EntityManagerHelper;
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-
-public abstract class Repositorio implements WithGlobalEntityManager {
+abstract class Repositorio implements WithGlobalEntityManager {
     protected <T> T findByID(Class<T> entityClass, Long id) {
         return entityManager().find(entityClass, id);
+    }
+
+    protected <T> List<T> findAll(Class<T> entityClass) {
+        return entityManager().createQuery("from " + entityClass.getName(), entityClass).getResultList();
     }
 
     protected <T> Optional<T> findByUsername(Class<T> entityClass, String username) {

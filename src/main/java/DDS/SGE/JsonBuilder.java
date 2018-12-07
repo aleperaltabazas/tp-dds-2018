@@ -23,7 +23,7 @@ public class JsonBuilder {
 					.parse(json.getAsJsonPrimitive().getAsString()).toLocalDateTime())
 			.create();
 
-	DispositivoEstandar crearDispositivoEstandar(String path) {
+	public DispositivoEstandar crearDispositivoEstandar(String path) {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, DispositivoEstandar.class);
@@ -32,7 +32,7 @@ public class JsonBuilder {
 		}
 	}
 
-	Cliente crearCliente(String path) {
+	public Cliente crearCliente(String path) {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, Cliente.class);
@@ -41,7 +41,7 @@ public class JsonBuilder {
 		}
 	}
 
-	Administrador crearAdministrador(String path) {
+	public Administrador crearAdministrador(String path) {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			return gson.fromJson(reader, Administrador.class);
@@ -50,7 +50,7 @@ public class JsonBuilder {
 		}
 	}
 
-	Zona crearZona(String path) {
+	public Zona crearZona(String path) {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			Zona zona = gson.fromJson(reader, Zona.class);
@@ -61,7 +61,7 @@ public class JsonBuilder {
 		}
 	}
 
-	Transformador crearTransformador(String path) {
+	public Transformador crearTransformador(String path) {
 		try {
 			JsonReader reader = new JsonReader(new FileReader(path));
 			Transformador transformador = gson.fromJson(reader, Transformador.class);
