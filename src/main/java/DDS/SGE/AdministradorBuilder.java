@@ -14,6 +14,6 @@ public class AdministradorBuilder {
             throw new RuntimeException("Need more parameters to build");
         }
 
-        return new Administrador(nombre, apellido, direccion, username, HashProvider.hash(password));
+        return new Administrador(nombre, apellido, direccion, username, HashProvider.hash(password).toLowerCase());
     }
 }
