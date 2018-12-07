@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;
 import spark.Request;

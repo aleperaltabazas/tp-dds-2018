@@ -2,29 +2,18 @@ package DDS.SGE.Persistencia;
 
 import DDS.SGE.Dispositivo.*;
 import DDS.SGE.Dispositivo.Estado.Apagado;
-import DDS.SGE.Regla.Regla;
-import DDS.SGE.Sensor.Consumo;
-import DDS.SGE.Sensor.Sensor;
-import DDS.SGE.Sensor.Temperatura;
-import Fabricante.AireAcondicionado;
-import Geoposicionamiento.Transformador;
-
-import static org.junit.Assert.*;
+import DDS.SGE.Fabricante.AireAcondicionado;
+import DDS.SGE.Geoposicionamiento.Transformador;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import DDS.SGE.EntityManagerHelper;
-import DDS.SGE.RepositorioDeTiempoEncendidoTest;
-import DDS.SGE.Actuador.Actuador;
-import DDS.SGE.Actuador.Apagar;
+import DDS.SGE.Dispositivos.RepositorioDeTiempoEncendidoTest;
 
 public class TestRegla {
 
@@ -47,13 +36,11 @@ public class TestRegla {
         //dispositivoSencillo.setNombre("Sencillo");
 
         dispositivoInteligente = new Dispositivo(inteligente);
-
-        EntityManagerHelper.beginTransaction();
     }
 
     @After
     public void after() {
-        EntityManagerHelper.rollback();
+
     }
 
     @Test

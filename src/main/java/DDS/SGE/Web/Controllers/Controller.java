@@ -1,6 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Cliente;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 import spark.ModelAndView;

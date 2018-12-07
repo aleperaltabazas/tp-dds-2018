@@ -1,6 +1,5 @@
 package DDS.SGE.Persistencia;
 
-import DDS.SGE.*;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
 import DDS.SGE.Dispositivo.DispositivoInteligente;
@@ -16,10 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-
-import DDS.SGE.Repositorios.RepositorioDispositivos;
-import Fabricante.AireAcondicionado;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
+import DDS.SGE.Fabricante.AireAcondicionado;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

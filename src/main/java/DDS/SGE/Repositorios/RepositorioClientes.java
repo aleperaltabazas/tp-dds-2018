@@ -3,9 +3,7 @@ package DDS.SGE.Repositorios;
 import java.util.List;
 import java.util.Optional;
 
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Cliente;
 
 public class RepositorioClientes extends Repositorio {
     private static final RepositorioClientes instance = new RepositorioClientes();

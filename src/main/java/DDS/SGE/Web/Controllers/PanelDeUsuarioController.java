@@ -2,8 +2,8 @@ package DDS.SGE.Web.Controllers;
 
 import java.util.HashMap;
 
-import DDS.SGE.Administrador;
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;

@@ -1,6 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.Administrador;
+import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import spark.ModelAndView;
 import spark.Request;

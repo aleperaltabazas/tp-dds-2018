@@ -3,7 +3,7 @@ package DDS.SGE.Web.Controllers;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
-import Fabricante.Fabricante;
+import DDS.SGE.Fabricante.Fabricante;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

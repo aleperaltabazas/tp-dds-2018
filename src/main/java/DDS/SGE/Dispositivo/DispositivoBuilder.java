@@ -1,7 +1,7 @@
 package DDS.SGE.Dispositivo;
 
 import DDS.SGE.Dispositivo.Estado.Apagado;
-import Fabricante.*;
+import DDS.SGE.Fabricante.*;
 
 public class DispositivoBuilder {
     public Dispositivo construirInteligente(String nombre, double consumo, Fabricante fabricante, boolean bajoConsumo) {

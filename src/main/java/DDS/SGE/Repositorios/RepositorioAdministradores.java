@@ -2,8 +2,7 @@ package DDS.SGE.Repositorios;
 
 import java.util.Optional;
 
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-import DDS.SGE.Administrador;
+import DDS.SGE.Usuarie.Administrador;
 
 public class RepositorioAdministradores extends Repositorio {
     private static final RepositorioAdministradores instance = new RepositorioAdministradores();

@@ -8,7 +8,7 @@ import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 //import DDS.SGE.Dispositivo.Estado.EstadoDelDispositivo;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-import Fabricante.*;
+import DDS.SGE.Fabricante.*;
 
 @Entity
 public class DispositivoInteligente extends TipoDispositivo {

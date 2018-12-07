@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.stream.JsonReader;
 
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoEstandar;
-import DDS.SGE.Dispositivo.TipoDispositivo;
-import Geoposicionamiento.Transformador;
-import Geoposicionamiento.Zona;
+import DDS.SGE.Geoposicionamiento.Transformador;
+import DDS.SGE.Geoposicionamiento.Zona;
 
 public class JsonBuilder {
 

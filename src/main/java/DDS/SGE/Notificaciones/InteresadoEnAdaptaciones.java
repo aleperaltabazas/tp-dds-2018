@@ -1,6 +1,6 @@
 package DDS.SGE.Notificaciones;
 
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Dispositivo.Dispositivo;
 
 public class InteresadoEnAdaptaciones extends Interesado{

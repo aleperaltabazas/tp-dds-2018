@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-import Fabricante.Computadora;
+import DDS.SGE.Fabricante.Computadora;
 
 @Entity
 public class DispositivoEstandar extends TipoDispositivo {

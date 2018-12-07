@@ -1,6 +1,6 @@
 Categoría: considerando que ya tenemos la categoría hecha como un enum, podemos aprovecharlo para persistirlo con @Enumerated y ahorrarnos ese problema.
 Dispositivo: Joined porque queremos poder tratarlo polimórficamente, pero tienen pocos atributos en común como para usar una Single. El estado en el inteligente podemos persistirlo como varchar porque cada estado no tiene atributos propios, y los atributos de la clase Estado lo podemos desnormalizar a la tabla del Dispositivo para no agregar otra tabla intermedia.
-Fabricante: no estoy muy seguro con esta, puse una TablePerClass pero no estoy del todo seguro. No creo que se vaya a consultar el Fabricante en específico, sino que cuando se levante el Dispositivo y se necesite al Fabricante ahí se va a consultar. Se podría usar una Joined, pero una Single no creo porque tienen muchos atributos diferentes.
+DDS.SGE.Fabricante: no estoy muy seguro con esta, puse una TablePerClass pero no estoy del todo seguro. No creo que se vaya a consultar el DDS.SGE.Fabricante en específico, sino que cuando se levante el Dispositivo y se necesite al DDS.SGE.Fabricante ahí se va a consultar. Se podría usar una Joined, pero una Single no creo porque tienen muchos atributos diferentes.
 Repositorio: @OneToMany para la lisat de intervalos.
 
 Actuador: Single porque todos los actuadores tienen un dispositivo, y los atributos intensidadASubir e intensidadABajar son propios de dos actuadores diferentes, pero al ser pocos atributos no en común, aprovechamos la simpleza de la Single.

@@ -1,11 +1,10 @@
 package DDS.SGE.Sensor;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import DDS.SGE.Dispositivo.DispositivoInteligente;
-import Fabricante.AireAcondicionado;
+import DDS.SGE.Fabricante.AireAcondicionado;
 
 @Entity
 public class Temperatura extends Sensor {

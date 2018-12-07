@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Usuarie.Cliente;
 
 public class ControladorDeDispositivos {
     public static void main(String args[]) {

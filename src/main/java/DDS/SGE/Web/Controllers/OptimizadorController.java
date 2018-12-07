@@ -1,6 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.Cliente;
+import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Optimizador;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import spark.ModelAndView;

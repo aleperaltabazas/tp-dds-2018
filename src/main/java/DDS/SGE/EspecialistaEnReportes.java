@@ -5,8 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import DDS.SGE.Repositorios.RepositorioClientes;
-import Geoposicionamiento.RepositorioTransformadores;
-import Geoposicionamiento.Transformador;
+import DDS.SGE.Usuarie.Cliente;
+import DDS.SGE.Geoposicionamiento.RepositorioTransformadores;
+import DDS.SGE.Geoposicionamiento.Transformador;
 
 public class EspecialistaEnReportes {
 	private List<Cliente> clientes = new ArrayList<Cliente>(Arrays.asList());
@@ -18,7 +19,7 @@ public class EspecialistaEnReportes {
 	}
 
 	public double obtenerElConsumoTotalDeTodosLosClientesEnUnPeriodo(int periodoEnDias) {
-		return clientes.stream().mapToDouble(x -> x.consumoFinalEstimado(periodoEnDias)).sum();
+		return clientes.stream().mapToDouble(cliente -> cliente.consumoFinalEstimado(periodoEnDias)).sum();
 	}
 
 	public double obtenerElConsumoPromedioPorDispositivoDeUnCliente(long idCliente) {

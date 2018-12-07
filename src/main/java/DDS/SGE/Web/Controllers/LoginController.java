@@ -3,7 +3,7 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import DDS.SGE.Usuario;
+import DDS.SGE.Usuarie.Usuario;
 import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;

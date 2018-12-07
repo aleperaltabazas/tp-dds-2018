@@ -1,7 +1,7 @@
 package DDS.SGE.Dispositivo;
 
 import DDS.SGE.Dispositivo.Estado.*;
-import Fabricante.*;
+import DDS.SGE.Fabricante.*;
 
 public class DispositivoFactory {
     public DispositivoInteligente crearAire(int frigorias, double consumo) {
