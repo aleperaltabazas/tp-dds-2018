@@ -39,6 +39,12 @@ public class CatalogoController extends Controller {
             return new LoginClienteController().mostrar(req, res);
         }
 
+        if(req.session().attribute(ADMIN) == "si") {
+            //TODO: devolver mostrar la ficha del producto
+
+            return null;
+        }
+
         return new ModelAndView(null, "dispositivos-mostrarAdquirir.hbs");
     }
 
@@ -110,11 +116,7 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
-            HashMap<String, Object> viewModel = new HashMap<>();
-            viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
-            viewModel.put("errorMessage", e.getMessage());
-
-            return new ModelAndView(viewModel, "crear-estandar.hbs");
+            return new ModelAndView(this.fillError(e), "crear-estandar.hbs");
         }
     }
 }

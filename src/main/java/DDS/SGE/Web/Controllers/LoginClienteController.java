@@ -6,13 +6,16 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.HashMap;
+
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class LoginClienteController extends LoginController {
     public ModelAndView mostrar(Request req, Response res) {
-        // Obtener la direccion correspondiente del hbs, ruta comienza en
-        // main/resources/templates/
-        return new ModelAndView(null, "login.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("loginRoute", LOGIN);
+
+        return new ModelAndView(viewModel, "login.hbs");
     }
 
     public ModelAndView loginCliente(Request req, Response res) {

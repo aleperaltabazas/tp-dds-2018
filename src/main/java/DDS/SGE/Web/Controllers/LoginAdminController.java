@@ -6,13 +6,19 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.HashMap;
+
 import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR;
+import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR_LOGIN;
 
 public class LoginAdminController extends LoginController {
     public ModelAndView mostrar(Request req, Response res) {
         // Tal vez estaría bueno tener una pantalla
         // de login distinta
-        return new ModelAndView(null, "login-admin.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("loginRoute", ADMINISTRADOR_LOGIN);
+
+        return new ModelAndView(viewModel, "login.hbs");
     }
 
     public ModelAndView loginAdmin(Request req, Response res) {

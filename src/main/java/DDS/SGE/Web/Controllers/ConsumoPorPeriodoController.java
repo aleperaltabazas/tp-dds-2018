@@ -16,7 +16,7 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 public class ConsumoPorPeriodoController extends Controller {
     private static final String ERROR = "ERROR";
 
-    public static ModelAndView obtener(Request req, Response res) {
+    public ModelAndView obtener(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(LOGIN);
             return new LoginClienteController().mostrar(req, res);
@@ -33,7 +33,7 @@ public class ConsumoPorPeriodoController extends Controller {
             LocalDate fechaFin = LocalDate.parse(fin, formatter);
 
             if (fechaInicio.isAfter(fechaFin)) {
-                throw new NullPointerException("La fecha fin es después de la fecha inicio");
+                throw new RuntimeException("La fecha fin es después de la fecha inicio");
             }
 
             System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
@@ -51,15 +51,16 @@ public class ConsumoPorPeriodoController extends Controller {
             viewModel.put("periodo", periodo);
 
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
-        } catch (NullPointerException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             req.session().attribute("ERROR", true);
             res.redirect(CONSUMO);
-            return new ModelAndView(null, "consumo-obtener.hbs");
+
+            return new ModelAndView(this.fillError(e), "consumo-obtener.hbs");
         }
     }
 
-    public static ModelAndView mostrar(Request req, Response res) {
+    public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(LOGIN);
             return new LoginClienteController().mostrar(req, res);

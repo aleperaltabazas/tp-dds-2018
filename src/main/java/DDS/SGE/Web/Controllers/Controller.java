@@ -30,4 +30,11 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
     public ModelAndView fortyTwo(Request request, Response response) {
         return new ModelAndView(null, "meaning-of-life.hbs");
     }
+
+    protected HashMap fillError(Exception e) {
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("errorMessage", e.getMessage());
+
+        return viewModel;
+    }
 }

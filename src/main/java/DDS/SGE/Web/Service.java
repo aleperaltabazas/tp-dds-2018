@@ -12,6 +12,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Service {
     private HomeController homeController;
+    private ConsumoPorPeriodoController consumoPorPeriodoController;
     private CatalogoController catalogoController;
     private ErrorController errorController;
     private MiHogarController miHogarController;
@@ -38,6 +39,7 @@ public class Service {
 
     private void inicializarControladores() {
         homeController = new HomeController();
+        consumoPorPeriodoController = new ConsumoPorPeriodoController();
         catalogoController = new CatalogoController();
         errorController = new ErrorController();
         loginController = new LoginController();
@@ -77,8 +79,8 @@ public class Service {
         post(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::nuevoInteligente, engine);
         post(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::nuevoEstandar, engine);
 
-        get(CONSUMO, ConsumoPorPeriodoController::mostrar, engine);
-        get(CONSUMO_OBTENER, ConsumoPorPeriodoController::obtener, engine);
+        get(CONSUMO, consumoPorPeriodoController::mostrar, engine);
+        get(CONSUMO_OBTENER, consumoPorPeriodoController::obtener, engine);
 
         get(TRANSFORMADOR, transformadorController::mostrar, engine);
 
