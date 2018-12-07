@@ -18,8 +18,8 @@ public class ConsumoPorPeriodoController extends Controller {
 
     public static ModelAndView obtener(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
+            res.redirect(LOGIN);
+            return new LoginClienteController().mostrar(req, res);
         }
 
         try {
@@ -61,8 +61,8 @@ public class ConsumoPorPeriodoController extends Controller {
 
     public static ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
+            res.redirect(LOGIN);
+            return new LoginClienteController().mostrar(req, res);
         }
 
         if (req.session().attribute(ERROR) != null &&

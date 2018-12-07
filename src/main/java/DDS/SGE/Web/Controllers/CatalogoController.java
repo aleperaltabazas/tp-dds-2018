@@ -16,8 +16,8 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 public class CatalogoController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
+            res.redirect(LOGIN);
+            return new LoginClienteController().mostrar(req, res);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -30,47 +30,32 @@ public class CatalogoController extends Controller {
 
     public ModelAndView mostrarAdquirir(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
+            res.redirect(LOGIN);
+            return new LoginClienteController().mostrar(req, res);
         }
 
         return new ModelAndView(null, "dispositivos-mostrarAdquirir.hbs");
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ModelAndView(null, "404.hbs");
+        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
+            return new ErrorController().unauthorizedAccess(req, res);
         }
 
         return new ModelAndView(null, "crear-inteligente.hbs");
     }
 
     public ModelAndView mostrarFormularioEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ModelAndView(null, "404.hbs");
+        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
+            return new ErrorController().unauthorizedAccess(req, res);
         }
 
         return new ModelAndView(null, "crear-estandar.hbs");
     }
 
     public ModelAndView nuevoInteligente(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ModelAndView(null, "404.hbs");
+        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
+            return new ErrorController().unauthorizedAccess(req, res);
         }
 
         try {
@@ -95,13 +80,8 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView nuevoEstandar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ModelAndView(null, "404.hbs");
+        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
+            return new ErrorController().unauthorizedAccess(req, res);
         }
 
         try {

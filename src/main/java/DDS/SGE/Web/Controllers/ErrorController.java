@@ -12,6 +12,7 @@ public class ErrorController extends Controller {
     private static final Logger logger = Logger.getLogger(ErrorController.class.getName());
 
     public ModelAndView somethingBroke(Request req, Response res) {
+        res.status(404);
         return new ModelAndView(null, "404.hbs");
     }
 
@@ -20,6 +21,7 @@ public class ErrorController extends Controller {
         logger.log(Level.WARNING, req.requestMethod());
         logger.log(Level.WARNING, req.body());
 
+        res.status(401);
         //TODO: pantalla de unauthorized access
         return null;
     }

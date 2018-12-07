@@ -12,7 +12,6 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.HOME;
 
 public class LoginController extends Controller {
-
     protected ModelAndView error(Request req, Response res) {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
