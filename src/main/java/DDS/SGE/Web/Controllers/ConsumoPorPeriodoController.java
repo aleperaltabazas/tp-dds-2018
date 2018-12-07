@@ -23,14 +23,14 @@ public class ConsumoPorPeriodoController extends Controller {
         }
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
             String inicio = req.queryParams("fechaInicio");
             String fin = req.queryParams("fechaFin");
 
             //TODO - Aparentemente se debe poner hora también, por default puse 00:00
-            LocalDateTime fechaInicio = LocalDate.parse(inicio, formatter).atStartOfDay();
-            LocalDateTime fechaFin = LocalDate.parse(fin, formatter).atStartOfDay();
+            LocalDate fechaInicio = LocalDate.parse(inicio, formatter);
+            LocalDate fechaFin = LocalDate.parse(fin, formatter);
 
             if (fechaInicio.isAfter(fechaFin)) {
                 throw new NullPointerException("La fecha fin es después de la fecha inicio");
@@ -40,7 +40,7 @@ public class ConsumoPorPeriodoController extends Controller {
 
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
-            double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio, fechaFin);
+            double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio.atStartOfDay(), fechaFin.atStartOfDay());
 
             String periodo = fechaInicio.format(formatter) + " - " + fechaFin.format(formatter);
 
@@ -55,7 +55,7 @@ public class ConsumoPorPeriodoController extends Controller {
             e.printStackTrace();
             req.session().attribute("ERROR", true);
             res.redirect(CONSUMO);
-            return new ModelAndView(null, "consumo-error-fecha.hbs");
+            return new ModelAndView(null, "consumo-obtener.hbs");
         }
     }
 

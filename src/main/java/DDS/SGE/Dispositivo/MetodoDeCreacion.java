@@ -123,7 +123,7 @@ public enum MetodoDeCreacion {
             return PLANCHA;
         }
 
-        throw new RuntimeException("Método de creación no especificado correctamente");
+        throw new RuntimeException("Por favor, ingrese un fabricante válido");
     }
 }
 

@@ -7,9 +7,11 @@ import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Fabricante.Fabricante;
+import com.github.jknack.handlebars.Handlebars;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +79,11 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new CatalogoController().mostrar(req, res);
         } catch (RuntimeException e) {
-            return new ModelAndView(null, "crear-inteligente-completar.hbs");
+            HashMap<String, Object> viewModel = new HashMap<>();
+            viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
+            viewModel.put("errorMessage", e.getMessage());
+
+            return new ModelAndView(viewModel, "crear-inteligente.hbs");
         }
 
     }
@@ -104,8 +110,11 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
-            return new ModelAndView(null, "crear-estandar-completar.hbs");
-        }
+            HashMap<String, Object> viewModel = new HashMap<>();
+            viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
+            viewModel.put("errorMessage", e.getMessage());
 
+            return new ModelAndView(viewModel, "crear-estandar.hbs");
+        }
     }
 }
