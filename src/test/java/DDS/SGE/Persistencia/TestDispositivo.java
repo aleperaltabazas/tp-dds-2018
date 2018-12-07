@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class TestDispositivo implements TransactionalOps, WithGlobalEntityManager {
 
@@ -113,5 +114,16 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
 
         assertEquals(180 * inteligente.getConsumoKWPorHora(), dispositivoPersistidoActual.consumoTotalHaceNHoras(100),
                 0);
+    }
+
+    @Test
+    public void testPersistirUnDispositivoDeCatalogoYTraerloDeVuelta() {
+        DispositivoDeCatalogo dispositivo = new DispositivoDeCatalogo("Un dispositivo", 100, false, true, MetodoDeCreacion.AIRE);
+
+        withTransaction(() -> RepositorioDispositivos.getInstance().foo(dispositivo));
+
+        DispositivoDeCatalogo persistido = RepositorioDispositivos.getInstance().buscarEnElCatalogoPorID(dispositivo.getId());
+        assertEquals(persistido, dispositivo);
+
     }
 }

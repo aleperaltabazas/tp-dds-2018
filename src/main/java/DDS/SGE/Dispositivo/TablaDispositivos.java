@@ -1,12 +1,5 @@
 package DDS.SGE.Dispositivo;
 
-import DDS.SGE.Dispositivo.Dispositivo;
-import DDS.SGE.Dispositivo.DispositivoFactory;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +25,7 @@ public class TablaDispositivos {
 
         Dispositivo lavarropasAutoCalentamiento = new Dispositivo("Lavarropas automático - con calentamiento de agua", df.crearLavarropasBobo(0.875), false, true);
         Dispositivo lavarropasAuto = new Dispositivo("Lavarropas automático - 5kg", df.crearLavarropasBobo(0.175), true, true);
-        Dispositivo lavarropasSemi = new Dispositivo("Lavarropas semiautomático - 5kg", df.crearLavarropsInteligente(), true, true);
+        Dispositivo lavarropasSemi = new Dispositivo("Lavarropas semiautomático - 5kg", df.crearLavarropasInteligente(), true, true);
 
         this.dispositivos = Arrays.asList(aire3500, aire2200, ctr21, ctr29, ctr34, lcd40, led24, led32, led40, heladeraConFreezer, heladeraSinFreezer, lavarropasAutoCalentamiento, lavarropasAuto, lavarropasSemi);
     }

@@ -24,7 +24,7 @@ public class DispositivoFactory {
         return new DispositivoEstandar(0, consumo);
     }
 
-    public DispositivoInteligente crearLavarropsInteligente() {
+    public DispositivoInteligente crearLavarropasInteligente() {
         return new DispositivoInteligente(new Apagado(), new Lavarropas(5, true, false));
     }
 

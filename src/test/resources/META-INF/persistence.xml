@@ -20,7 +20,7 @@
         <class>DDS.SGE.Dispositivo.DispositivoEstandar</class>
         <class>DDS.SGE.Dispositivo.DispositivoInteligente</class>
         <class>DDS.SGE.Dispositivo.RepositorioDeTiempoEncendido</class>
-
+        <class>DDS.SGE.Dispositivo.DispositivoDeCatalogo</class>
 
         <class>DDS.SGE.Fabricante.Fabricante</class>
 

@@ -1,6 +1,7 @@
 package DDS.SGE.Repositorios;
 
 import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 
 import java.util.List;
 
@@ -21,6 +22,14 @@ public class RepositorioDispositivos extends Repositorio {
     public void agregarDispositivoAlCatalogo(Dispositivo dispositivo) {
         dispositivo.setEsDeCatalogo(true);
         persistir(dispositivo);
+    }
+
+    public void foo(DispositivoDeCatalogo dispositivoDeCatalogo) {
+        persistir(dispositivoDeCatalogo);
+    }
+
+    public DispositivoDeCatalogo buscarEnElCatalogoPorID(Long id) {
+        return this.findByID(DispositivoDeCatalogo.class, id);
     }
 
     public Dispositivo findByID(Long id) {
