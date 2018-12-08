@@ -1,29 +1,38 @@
-<html>
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.1/examples/sign-in/ -->
+<html lang="en"><style type="text/css" id="night-mode-pro-style"></style><link type="text/css" rel="stylesheet" id="night-mode-pro-link"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<head><title>Iniciar sesión</title>
-  <link rel="icon" href="/resources/imgs/ditto.png"></head>
-  <link rel="stylesheet" type="text/css" href="/CSS/login.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/style.css">
-  <body>
-   <div class="login-page">
-     <div class="form">
-      <form class="register-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
-        <p class="message">Ya estar registrado? <a href="https://www.google.com.ar/search?q=the+answer+to+life+the+universe+and+everything&oq=the&aqs=chrome.0.69i59j69i61l2j69i59j69i65l2.966j0j7&sourceid=chrome&ie=UTF-8">Ingresar</a></p>
-      </form>
-      <form class="login-form" action="{{loginRoute}}" method="POST">
-        <div>
-          <p class="error">{{errorMessage}}</p>
-        </div>
-        <input type="text" placeholder="username" name="username" required/>
-        <input type="password" placeholder="password" name="password" required/>
-        <button type="submit">login</button>
-        <p class="message">No estas registrado? <a href="/signup">Crea una cuenta</a></p>
-      </form>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/resources/imgs/ditto.png">
+
+  <title>Iniciar sesión</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/resources/bootstrap/login_files/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/resources/bootstrap/login_files/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  <form class="form-signin" action="{{loginRoute}}" method="POST" _lpchecked="1" >
+    <img class="mb-4" src="resources/imgs/logo.png" alt="" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
+    <p class="error">{{errorMessage}}</p>
+    <label for="username" class="sr-only">Nombre de usuario</label>
+    <input type="email" name="username" class="form-control" placeholder="Nombre de usuario" required="" autofocus="" autocomplete="off" style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+    <label for="password" class="sr-only">Contraseña</label>
+    <input type="password" name="password" class="form-control" placeholder="Contraseña" required="" autocomplete="off" style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+    <div class="checkbox mb-3">
+      <label>
+        <p class="message">No estas registrado? <a href="/signup">Create una cuenta!</a></p>
+      </label>
     </div>
-  </div>
-</body>
-</html>
+    <p class="mt-5 mb-3 text-muted">© 2018-2019</p>
+  </form>
+  
+
+</body></html>
