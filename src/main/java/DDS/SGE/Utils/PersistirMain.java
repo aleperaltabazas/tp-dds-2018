@@ -3,22 +3,24 @@ package DDS.SGE.Utils;
 import DDS.SGE.Dispositivo.*;
 import DDS.SGE.Dispositivo.Estado.Apagado;
 import DDS.SGE.Dispositivo.Estado.Encendido;
+import DDS.SGE.Fabricante.AireAcondicionado;
+import DDS.SGE.Fabricante.Computadora;
+import DDS.SGE.Fabricante.Fabricante;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
-import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.AdministradorBuilder;
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Usuarie.ClienteBuilder;
-import DDS.SGE.Fabricante.*;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersistirMain implements WithGlobalEntityManager, TransactionalOps {
     private static final Logger logger = Logger.getLogger(PersistirMain.class.getName());
