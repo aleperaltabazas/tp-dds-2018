@@ -1,37 +1,74 @@
 {{#partial "contenido"}}
 
 <div class="container tools-padding">
-	<div class="card-deck mb-2 text-left">
+	<div class="py-5 text-left">
+		<h2>Panel de usuario</h2>
+	</div>
+
+	<div class="row">
 		<div class="mb-4">
-			<div>
-				<h3 class="my-0 font-weight-normal">Panel de usuario</h3>
-				<h2> {{resultado}} </h2>
-			</div>
 			<div class="card-body">
 				<form action="/me/edit" method="POST">
-					<div>
-						<label for="nombre">Nombre</label>
-						<input type="text" placeholder="nombre" name="nombre" value="{{ nombre }}" required/>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="nombre">Nombre</label>
+							<input type="text" class="form-control" name="nombre" placeholder="Cosme" value="{{nombre}}" required="" style=" background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+							<div class="invalid-feedback">
+								Ingrese un nombre válido.
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="lastName">Apellido</label>
+							<input type="text" class="form-control" name="apellido" placeholder="Fulanito" value="{{apellido}}" required="">
+							<div class="invalid-feedback">
+								Ingrese un nombre válido.
+							</div>
+						</div>
 					</div>
-					<div>
-						<label for="apellido">Apellido</label>
-						<input type="text" placeholder="apellido" name="apellido" value="{{ apellido }}" required/>
+
+					<div class="mb-3">
+						<label for="address">Teléfono</label>
+						<input type="text" class="form-control" name="telefono" placeholder="12 3456 7890" value="{{telefono}}" required="">
+						<div class="invalid-feedback">
+							Ingrese un número de teléfono válido.
+						</div>
 					</div>
-					<div>
-						<label for="telefono">Telefono</label>
-						<input type="text" placeholder="telefono" name="telefono" value="{{ telefono }}" required/>
+
+					<div class="mb-3">
+						<label for="address">Domicilio</label>
+						<input type="text" class="form-control" name="direccion" placeholder="Av. Medrano 951" value="{{direccion}}" required="">
+						<div class="invalid-feedback">
+							Ingrese una dirección válida.
+						</div>
 					</div>
-					<div>
-						<label for="direccion">Direccion</label>
-						<input type="text" placeholder="direccion" name="direccion" value="{{ domicilio }}" required/>
+
+					<div class="row">
+						<div class="col-md-5 mb-3">
+							<label for="tipoDni">Tipo de documento</label>
+							<select class="custom-select d-block w-100" name="tipoDni" required="">
+								<option value="">Elegir...</option>
+								<option>DNI</option>
+								<option>LE</option>
+								<option>LC</option>
+								<option>CI</option>
+							</select>
+							<div class="invalid-feedback">
+								Elija un tipo válido de documento.
+							</div>
+						</div>
+						<div class="col-md-5 mb-3">
+							<label for="numeroDni">Número de documento</label>
+							<input type="text" class="form-control" name="numeroDni" value="{{numeroDni}}" placeholder="" required="">
+							<div class="invalid-feedback">
+								Ingrese un número válido de documento.
+							</div>
+						</div>
 					</div>
-					<div>
-						<label for="numeroDni">Numero de documento</label>
-						<input type="text" placeholder="numeroDni" name="numeroDni" value="{{ numeroDni }}" required/>
-					</div>
+					
 					<div>
 						<p class="error">{{errorMessage}}</p>
 					</div>
+
 					<div>
 						<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
 					</div>
