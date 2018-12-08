@@ -23,7 +23,7 @@ public class ErrorController extends Controller {
 
         res.status(401);
         //TODO: pantalla de unauthorized access
-        return null;
+        return new ModelAndView(null, "401.hbs");
     }
 
     public ModelAndView somethingBroke(Request req, Response res) {
