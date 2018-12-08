@@ -37,10 +37,15 @@
             <input type="image" src="/resources/imgs/casa.png" alt="Mi Hogar" class="p-2 hogar-button">
           </form>
         </div>
-        <div class="p-2 text-dark">
+        <div class="dropdown">
           <form action="/me" method="GET">
-            <input type="image" src="/resources/imgs/user.png" alt="Perfil de {{username}}" class="p-2 user-button">
+            <input type="image" src="/resources/imgs/user.png" alt="Perfil de {{username}}" class="p-2 user-button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </form>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -57,7 +62,7 @@
         <small class="d-block mb-3 text-muted">© 2018 Diseño de Sistemas</small>
       </div>
       <div>
-        
+
       </div>
       <form action="/logout" method="GET">
         <button type="submit" class="btn btn-outline-primary">Cerrar sesión</button>

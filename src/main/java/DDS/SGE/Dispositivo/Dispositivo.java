@@ -147,10 +147,7 @@ public class Dispositivo {
     }
 
     public String getInteligente() {
-        if (this.tipo instanceof DispositivoInteligente)
-            return "sí";
-        else
-            return "no";
+        return this.tipo instanceof DispositivoInteligente ? "sí" : "no";
     }
 
     public double getConsumokWh() {
@@ -158,10 +155,7 @@ public class Dispositivo {
     }
 
     public String getBajoConsumo() {
-        if (this.bajoConsumo)
-            return "sí";
-        else
-            return "no";
+        return this.bajoConsumo ? "sí" : "no";
     }
 
     public String getEstado() {
