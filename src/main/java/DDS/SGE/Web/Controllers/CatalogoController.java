@@ -117,7 +117,7 @@ public class CatalogoController extends Controller {
 
         try {
             String nombre = req.queryParams("nombre");
-            MetodoDeCreacion metodoDeCreacion = MetodoDeCreacion.parse(nombre);
+            MetodoDeCreacion metodoDeCreacion = MetodoDeCreacion.parse(req.queryParams("fabricante"));
             double consumo = Double.parseDouble(req.queryParams("consumo"));
             long usoEstimadoDiario = Long.parseLong(req.queryParams("uso"));
             boolean bajoConsumo;

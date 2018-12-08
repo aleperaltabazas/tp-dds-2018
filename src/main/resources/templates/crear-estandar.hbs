@@ -1,25 +1,57 @@
 {{#partial "contenido"}}
 
 <div class="container tools-padding">
-	<div class="card-deck mb-2 text-left">
+	<div class="py-5 text-left">
+		<h2>Agregar dispositivo estándar al catálogo</h2>
+	</div>
+
+	<div class="row text-left">
 		<div class="mb-4">
-			<div>
-				<h3 class="my-0 font-weight-normal">Agregar dispositivo inteligente al catálogo</h3>
-			</div>
 			<div class="card-body">
-				<form action="/dispositivos/new/estandar" method="POST">
-					<div>
+				<form action="/dispositivos/new/inteligente" method="POST">
+					<div class="mb-3">
 						<label for="nombre">Nombre</label>
-						<input type="text" name="nombre" required/>
+						<input type="text" class="form-control" name="nombre" placeholder="PC Razer Neon" required="">
+						<div class="invalid-feedback">
+							Ingrese un nombre válido.
+						</div>
 					</div>
-					<div>
+
+					<div class="mb-3">
 						<label for="consumo">Consumo en kWh</label>
-						<input type="text" name="consumo" required/>
+						<input type="text" class="form-control" name="consumo" placeholder="420" required="">
+						<div class="invalid-feedback">
+							Ingrese un número de consumo válido.
+						</div>
 					</div>
-					<div>
+
+					<div class="mb-3">
 						<label for="uso">Uso estimado diario</label>
-						<input type="text" name="uso" required/>
+						<input type="text" class="form-control" name="uso" placeholder="11" required="">
+						<div class="invalid-feedback">
+							Ingrese un número de uso válido.
+						</div>
 					</div>
+
+					<div class="mb-3">
+						<label for="fabricante">Fabricante</label>
+						<select class="custom-select d-block w-100" name="fabricante" required="">
+							<option value="Elija un fabricante">Elija un fabricante</option>
+							<option>Aire acondicionado</option>
+							<option>Computadora</option>
+							<option>Heladera</option>
+							<option>Lámpara</option>
+							<option>Lavarropas</option>
+							<option>Microondas</option>
+							<option>Plancha</option>
+							<option>Televisor</option>
+							<option>Ventilador</option>
+						</select>
+						<div class="invalid-feedback">
+							Elija un tipo válido de documento.
+						</div>
+					</div>
+
 					<div class="d-block my-3">
 						<p>Bajo consumo?</p>
 						<div class="custom-control custom-radio">
@@ -32,7 +64,7 @@
 						</div>
 					</div>
 					<div>
-						<p class="error">{{errorMessage}}</p>
+						<p class="error"> {{errorMessage}} </p>
 					</div>
 					<div>
 						<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>

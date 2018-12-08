@@ -45,7 +45,7 @@ public class PanelDeUsuarioController extends Controller {
     }
 
     public ModelAndView editar(Request req, Response res) {
-        if(req.session().attribute(SESSION_NAME) == null) {
+        if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(LOGIN);
             return new LoginClienteController().mostrar(req, res);
         }
