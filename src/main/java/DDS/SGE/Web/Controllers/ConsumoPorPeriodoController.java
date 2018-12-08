@@ -36,7 +36,7 @@ public class ConsumoPorPeriodoController extends Controller {
                 throw new RuntimeException("La fecha fin es después de la fecha inicio");
             }
 
-            System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
+            //System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 

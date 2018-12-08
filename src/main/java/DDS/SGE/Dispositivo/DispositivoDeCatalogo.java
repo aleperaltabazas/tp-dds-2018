@@ -68,4 +68,8 @@ public class DispositivoDeCatalogo {
     public String getTipo() {
         return metodoDeCreacion.toString();
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

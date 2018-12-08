@@ -14,6 +14,8 @@ public class Routes {
     public static final String ADMINISTRADOR_HOGARES = ADMINISTRADOR + "/hogares";
 
     public static final String DISPOSITIVOS = "/dispositivos";
+    public static final String DISPOSITIVOS_PAGE = "/dispositivos/:page";
+
     public static final String DISPOSITIVOS_ID_ACQUIRE = DISPOSITIVOS + "/:id/acquire";
     public static final String DISPOSITIVOS_ID_INFO = DISPOSITIVOS + "/:id/info";
 

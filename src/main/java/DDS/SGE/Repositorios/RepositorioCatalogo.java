@@ -1,8 +1,8 @@
 package DDS.SGE.Repositorios;
 
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class RepositorioCatalogo extends Repositorio {
@@ -19,8 +19,16 @@ public class RepositorioCatalogo extends Repositorio {
         persistir(dispositivoDeCatalogo);
     }
 
+    private TypedQuery<DispositivoDeCatalogo> getAll() {
+        return entityManager().createQuery("from DispositivoDeCatalogo ", DispositivoDeCatalogo.class);
+    }
+
     public List<DispositivoDeCatalogo> listar() {
-        return entityManager().createQuery("from DispositivoDeCatalogo ", DispositivoDeCatalogo.class).getResultList();
+        return this.getAll().getResultList();
+    }
+
+    public List<DispositivoDeCatalogo> listarPagina(int numeroDePagina) {
+        return this.getAll().setFirstResult((numeroDePagina - 1) * 15).setMaxResults(numeroDePagina * 15).getResultList();
     }
 
     public static RepositorioCatalogo getInstance() {

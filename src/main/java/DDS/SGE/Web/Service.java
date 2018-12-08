@@ -73,6 +73,8 @@ public class Service {
         get(ADMINISTRADOR_HOGARES, panelDeAdministradorController::verTodosLosHogares, engine);
 
         get(DISPOSITIVOS, catalogoController::mostrar, engine);
+        get(DISPOSITIVOS_PAGE, catalogoController::mostrar, engine);
+
         post(DISPOSITIVOS_ID_ACQUIRE, catalogoController::adquirir, engine);
         get(DISPOSITIVOS_ID_INFO, catalogoController::mostrarFichaTecnica, engine);
 
@@ -113,7 +115,8 @@ public class Service {
         Spark.port(9000);
 
         //Para el deploy en heroku
-        //Spark.port(getHerokuAssignedPort());
+//        Spark.port(getHerokuAssignedPort());
+
         Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 

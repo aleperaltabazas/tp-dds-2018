@@ -247,7 +247,7 @@ public class Cliente implements Usuario {
     public double consultarUsoOptimo() {
         Optimizador optimizador = new Optimizador();
         double consumoOptimoPorMesEnHoras = optimizador.usoMensualRecomendado(this);
-        System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
+        //System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
         return consumoOptimoPorMesEnHoras;
     }
 

@@ -17,7 +17,7 @@ public class ControladorDeDispositivos {
 
             @Override
             public void run() {
-                System.out.println("Controlando dispositivos...");
+                //System.out.println("Controlando dispositivos...");
                 List<Cliente> clientes = RepositorioClientes.getInstance().getAllClients();
                 clientes.forEach(c -> {
                     optimizador.simplex(c);
@@ -25,8 +25,8 @@ public class ControladorDeDispositivos {
                             optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
                 });
 
-                System.out.println("Dispositivos controlados.");
-                System.out.println("Revisando de nuevo en un minuto.");
+                //System.out.println("Dispositivos controlados.");
+                //System.out.println("Revisando de nuevo en un minuto.");
             }
         };
 

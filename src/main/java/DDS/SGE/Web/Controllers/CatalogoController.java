@@ -13,6 +13,7 @@ import spark.Response;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
@@ -23,10 +24,27 @@ public class CatalogoController extends Controller {
             return new LoginClienteController().mostrar(req, res);
         }
 
+        String page = req.params(":page");
+        int pageNumber;
+
+        if (page == null || Integer.parseInt(page) == 1) {
+            pageNumber = 1;
+        } else {
+            pageNumber = Integer.parseInt(page);
+        }
+
         HashMap<String, Object> viewModel = new HashMap<>();
 
-        List<DispositivoDeCatalogo> dispos = RepositorioCatalogo.getInstance().listar();
+        List<DispositivoDeCatalogo> dispos = RepositorioCatalogo.getInstance().listarPagina(pageNumber);
+        dispos.forEach(d -> {
+            if (d.getNombre().length() > 20) {
+                d.setNombre(d.getNombre().substring(0, 17) + "...");
+            }
+        });
+
         viewModel.put("dispositivos", dispos);
+        viewModel.put("previousPage", pageNumber - 1);
+        viewModel.put("nextPage", pageNumber + 1);
 
         if (req.session().attribute(ADMIN) == "si") {
             return new ModelAndView(viewModel, "catalogo-administrador.hbs");
