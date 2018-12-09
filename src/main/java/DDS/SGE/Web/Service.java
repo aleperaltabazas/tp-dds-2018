@@ -96,6 +96,7 @@ public class Service {
         post(USER_EDIT, panelDeUsuarioController::actualizar);
 
         get(SOLICITUDES, solicitudesController::mostrar, engine);
+        get(SOLICITUDES_ID, solicitudesController::verSolicitud, engine);
 
         get(SIGNUP, registrarController::mostrar, engine);
         post(SIGNUP, registrarController::registrar, engine);

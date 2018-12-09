@@ -123,7 +123,7 @@ public class Cliente implements Usuario {
         return this.tipoDni.toString();
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 

@@ -14,14 +14,31 @@
 				<div class="card-body">
 					<p>
 						Número de solicitud: {{this.idCheto}}<br>
+						Cliente: {{this.cliente.nombre}} {{this.cliente.apellido}}
 						Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
 						Pendiente de revisión<br>
 					</p>
-					<form action="/dispositivos/{{this.dispositivo.id}}/info" method="GET">
-						<div class="btn-group">
-							<button type="submit" class="btn btn-sm btn-outline-secondary">Ver dispositivo</button>
+					<div class="row">
+						<div class="col-sm">
+							<form action="/dispositivos/{{this.dispositivo.id}}/info" method="GET">
+								<div class="btn-group">
+									<button type="submit" class="btn btn-sm btn-outline-secondary">Ver dispositivo</button>
+								</div>
+							</form>
 						</div>
-					</form>
+						<div class="col-sm">		
+							<form action="/hogares/{{this.cliente.id}}" method="GET">
+								<div class="btn-group">
+									<button type="submit" class="btn btn-sm btn-outline-secondary">Ver cliente</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div>
+						<form action="/solicitudes/{{this.id}}" method="GET">
+							<button type="submit" class="btn btn-lg btn-block btn-primary">Ver solicitud</button>
+						</form>
+					</div>
 				</div>
 			</div>
 			{{/pendientes}}
@@ -41,7 +58,6 @@
 						Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
 						Fecha de cierre: {{this.fechaCierreCheta}}<br>
 						Resolución: {{this.estado}}<br>
-						Resuelta por: {{this.administrador.nombre}} {{this.administrador.apellido}}<br>
 					</p>
 					<!--form action="/dispositivos/{{this.idDispositivo}}/info" method="GET">
 						<button type="submit" class="btn btn-lg btn-block btn-primary">Ver dispositivo</button>

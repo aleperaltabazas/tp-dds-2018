@@ -2,6 +2,8 @@ package DDS.SGE.Repositorios;
 
 import DDS.SGE.Solicitud.SolicitudAbierta;
 import DDS.SGE.Solicitud.SolicitudCerrada;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
 
 import java.util.List;
 
@@ -17,6 +19,14 @@ public class RepositorioSolicitudes extends Repositorio {
 
     public List<SolicitudCerrada> solicitudesCerradasDe(Long id) {
         return entityManager().createQuery("from SolicitudCerrada s where s.cliente = " + id.toString()).getResultList();
+    }
+
+    public List<SolicitudAbierta> listaAbiertas() {
+        return entityManager().createQuery("from SolicitudAbierta ", SolicitudAbierta.class).getResultList();
+    }
+
+    public List<SolicitudCerrada> listarCerradasPor(Long id) {
+        return entityManager().createQuery("from SolicitudCerrada s where s.administrador = " + id.toString()).getResultList();
     }
 
     public void saveOrUpdate(SolicitudCerrada solicitud) {
