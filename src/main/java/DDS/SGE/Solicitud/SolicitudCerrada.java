@@ -3,15 +3,32 @@ package DDS.SGE.Solicitud;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Usuarie.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class SolicitudCerrada {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne
     private Cliente cliente;
+
+    @ManyToOne
     private Administrador administrador;
+
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaCierre;
+
+    @Enumerated(EnumType.STRING)
     private EstadoDeSolicitud estado;
+
+    @ManyToOne
     private DispositivoDeCatalogo dispositivo;
+
+    protected SolicitudCerrada() {
+    }
 
     public SolicitudCerrada(Cliente cliente, Administrador administrador, LocalDateTime fechaCreacion, DispositivoDeCatalogo dispositivo, EstadoDeSolicitud estado) {
         this.cliente = cliente;
@@ -44,5 +61,13 @@ public class SolicitudCerrada {
 
     public DispositivoDeCatalogo getDispositivo() {
         return dispositivo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

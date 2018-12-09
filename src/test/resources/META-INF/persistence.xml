@@ -38,6 +38,9 @@
         <class>DDS.SGE.Sensor.Sensor</class>
         <class>DDS.SGE.Sensor.Temperatura</class>
 
+        <class>DDS.SGE.Solicitud.SolicitudAbierta</class>
+        <class>DDS.SGE.Solicitud.SolicitudCerrada</class>
+
         <class>DDS.SGE.Actuador.Actuador</class>
         <class>DDS.SGE.Actuador.Apagar</class>
         <class>DDS.SGE.Actuador.CambiarTemperaturaAireAcondicionado</class>

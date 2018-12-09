@@ -32,6 +32,10 @@ abstract class Repositorio implements WithGlobalEntityManager {
 
     }
 
+    public void delete(Object o) {
+        entityManager().remove(o);
+    }
+
     protected void persistir(Object o) {
         entityManager().persist(o);
     }

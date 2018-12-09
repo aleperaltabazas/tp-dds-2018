@@ -1,13 +1,15 @@
 package DDS.SGE.Solicitud;
 
-import DDS.SGE.Dispositivo.*;
-import DDS.SGE.Usuarie.*;
-import org.junit.*;
-import org.junit.Assert.*;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
+import DDS.SGE.Dispositivo.MetodoDeCreacion;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 

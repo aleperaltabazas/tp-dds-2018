@@ -1,15 +1,29 @@
 package DDS.SGE.Solicitud;
 
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
-import DDS.SGE.Usuarie.*;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
+import org.hibernate.annotations.Cascade;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class SolicitudAbierta {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Cliente cliente;
+
     private LocalDateTime fechaCreacion;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private DispositivoDeCatalogo dispositivo;
+
+    protected SolicitudAbierta() {
+    }
 
     public SolicitudAbierta(Cliente cliente, DispositivoDeCatalogo dispositivo) {
         this.cliente = cliente;
@@ -36,5 +50,13 @@ public class SolicitudAbierta {
 
     public DispositivoDeCatalogo getDispositivo() {
         return this.dispositivo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -7,6 +7,9 @@ import java.util.List;
 public class RepositorioTransformadores extends Repositorio {
     private static final RepositorioTransformadores instance = new RepositorioTransformadores();
 
+    private RepositorioTransformadores() {
+    }
+
     public List<Transformador> listar() {
         return findAll(Transformador.class);
     }
