@@ -24,6 +24,7 @@ public class Service {
     private PanelDeUsuarioController panelDeUsuarioController;
     private RegistrarController registrarController;
     private TransformadorController transformadorController;
+    private SolicitudesController solicitudesController;
 
     public static void main(String[] args) {
         new Service().run();
@@ -51,8 +52,10 @@ public class Service {
         panelDeUsuarioController = new PanelDeUsuarioController();
         registrarController = new RegistrarController();
         transformadorController = new TransformadorController();
+        solicitudesController = new SolicitudesController();
     }
 
+    @SuppressWarnings("Duplicates")
     private void inicializarRutas() {
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
         HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
@@ -91,6 +94,8 @@ public class Service {
         get(USER, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);
         post(USER_EDIT, panelDeUsuarioController::actualizar);
+
+        get(SOLICITUDES, solicitudesController::mostrar, engine);
 
         get(SIGNUP, registrarController::mostrar, engine);
         post(SIGNUP, registrarController::registrar, engine);

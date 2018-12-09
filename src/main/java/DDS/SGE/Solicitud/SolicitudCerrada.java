@@ -7,25 +7,14 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class SolicitudCerrada {
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @ManyToOne
-    private Cliente cliente;
-
+public class SolicitudCerrada extends Solicitud {
     @ManyToOne
     private Administrador administrador;
 
-    private LocalDateTime fechaCreacion;
     private LocalDateTime fechaCierre;
 
     @Enumerated(EnumType.STRING)
     private EstadoDeSolicitud estado;
-
-    @ManyToOne
-    private DispositivoDeCatalogo dispositivo;
 
     protected SolicitudCerrada() {
     }
@@ -39,16 +28,8 @@ public class SolicitudCerrada {
         this.dispositivo = dispositivo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
     public Administrador getAdministrador() {
         return administrador;
-    }
-
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
     }
 
     public LocalDateTime getFechaCierre() {
@@ -59,15 +40,7 @@ public class SolicitudCerrada {
         return estado;
     }
 
-    public DispositivoDeCatalogo getDispositivo() {
-        return dispositivo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public String getFechaCierreCheta() {
+        return this.fechaCheta(fechaCierre);
     }
 }

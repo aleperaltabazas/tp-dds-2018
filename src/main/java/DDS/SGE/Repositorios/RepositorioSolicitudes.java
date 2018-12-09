@@ -11,14 +11,6 @@ public class RepositorioSolicitudes extends Repositorio {
     private RepositorioSolicitudes() {
     }
 
-    public List<SolicitudAbierta> solicitudesAbiertas() {
-        return entityManager().createQuery("from SolicitudAbierta ", SolicitudAbierta.class).getResultList();
-    }
-
-    public List<SolicitudCerrada> solicitudesCerradas() {
-        return entityManager().createQuery("from SolicitudCerrada ", SolicitudCerrada.class).getResultList();
-    }
-
     public List<SolicitudAbierta> solicitudesAbiertasDe(Long id) {
         return entityManager().createQuery("from SolicitudAbierta s where s.cliente = " + id.toString()).getResultList();
     }

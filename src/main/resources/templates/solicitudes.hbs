@@ -1,0 +1,58 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-left">
+		<div class="card">
+			
+			<h3 class="my-0 font-weight-normal">Solicitudes pendientes</h3>
+			
+			{{#pendientes}}
+			<div class="card">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">{{this.dispositivo.nombre}}</h4>
+				</div>
+				<div class="card-body">
+					<p>
+						Número de solicitud: {{this.idCheto}}<br>
+						Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
+						Pendiente de revisión<br>
+					</p>
+					<form action="/dispositivos/{{this.idDispositivo}}/info" method="GET">
+						<button type="submit" class="btn btn-lg btn-block btn-primary">Ver dispositivo</button>
+					</form>
+				</div>
+			</div>
+			{{/pendientes}}
+		</div>
+		<div class="card">
+			
+			<h3 class="my-0 font-weight-normal">Solicitudes resueltas</h3>
+			
+			{{#cerradas}}
+			<div class="card">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">{{this.dispositivo.nombre}}</h4>
+				</div>
+				<div class="card-body">
+					<p>
+						Número de solicitud: {{this.idCheto}}<br>
+						Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
+						Fecha de cierre: {{this.fechaCierreCheta}}<br>
+						Resolución: {{this.estado}}<br>
+						Resuelta por: {{this.administrador.nombre}}<br>
+					</p>
+					<!--form action="/dispositivos/{{this.idDispositivo}}/info" method="GET">
+						<button type="submit" class="btn btn-lg btn-block btn-primary">Ver dispositivo</button>
+					</form-->
+				</div>
+			</div>
+			{{/cerradas}}
+		</div>
+	</div>
+
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}
+

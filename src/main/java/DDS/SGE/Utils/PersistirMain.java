@@ -9,6 +9,10 @@ import DDS.SGE.Fabricante.Fabricante;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioSolicitudes;
+import DDS.SGE.Solicitud.EstadoDeSolicitud;
+import DDS.SGE.Solicitud.SolicitudAbierta;
+import DDS.SGE.Solicitud.SolicitudCerrada;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.AdministradorBuilder;
 import DDS.SGE.Usuarie.Cliente;
@@ -58,12 +62,17 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
 
         c2.agregarDispositivo(di);
 
+        SolicitudAbierta solicitud1 = new SolicitudAbierta(c1, td.getDispositivos().get(0));
+        SolicitudCerrada solicitud2 = new SolicitudCerrada(c1, admin, solicitud1.getFechaCreacion(), td.getDispositivos().get(2), EstadoDeSolicitud.rechazada);
+
         try {
             withTransaction(() -> {
                 td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispo));
                 RepositorioClientes.getInstance().registrarCliente(c1);
                 RepositorioClientes.getInstance().registrarCliente(c2);
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
+                RepositorioSolicitudes.getInstance().saveOrUpdate(solicitud1);
+                RepositorioSolicitudes.getInstance().saveOrUpdate(solicitud2);
             });
         } catch (Exception e) {
             logger.log(Level.INFO, e.getMessage());
