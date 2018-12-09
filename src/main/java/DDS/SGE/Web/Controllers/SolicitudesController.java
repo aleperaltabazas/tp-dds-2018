@@ -1,13 +1,16 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
+import DDS.SGE.Solicitud.SolicitudAbierta;
+import DDS.SGE.Usuarie.Administrador;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
 
-import static DDS.SGE.Web.Controllers.Routes.LOGIN;
+import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class SolicitudesController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
@@ -31,6 +34,42 @@ public class SolicitudesController extends Controller {
         }
 
         return new ModelAndView(viewModel, pantalla);
+    }
+
+    public ModelAndView aceptar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null || req.session().attribute(ADMIN) != "si") {
+            return new ErrorController().unauthorizedAccess(req, res);
+        }
+
+        SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
+        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.queryParams(SESSION_NAME)));
+
+        try {
+            solicitud.aceptar(administrador);
+        } catch (Exception e) {
+            return new ErrorController().somethingBroke(req, res);
+        }
+
+        res.redirect(SOLICITUDES);
+        return this.mostrar(req, res);
+    }
+
+    public ModelAndView rechazar(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null || req.session().attribute(ADMIN) != "si") {
+            return new ErrorController().unauthorizedAccess(req, res);
+        }
+
+        SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
+        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.queryParams(SESSION_NAME)));
+
+        try {
+            solicitud.rechazar(administrador);
+        } catch (Exception e) {
+            return new ErrorController().somethingBroke(req, res);
+        }
+
+        res.redirect(SOLICITUDES);
+        return this.mostrar(req, res);
     }
 
     public ModelAndView verSolicitud(Request req, Response res) {

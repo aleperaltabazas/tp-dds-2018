@@ -78,7 +78,7 @@ public class Service {
         get(DISPOSITIVOS, catalogoController::mostrar, engine);
         get(DISPOSITIVOS_PAGE, catalogoController::mostrar, engine);
 
-        post(DISPOSITIVOS_ID_ACQUIRE, catalogoController::adquirir, engine);
+        post(DISPOSITIVOS_ID_ACQUIRE, catalogoController::solicitar, engine);
         get(DISPOSITIVOS_ID_INFO, catalogoController::mostrarFichaTecnica, engine);
 
         get(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
@@ -97,6 +97,8 @@ public class Service {
 
         get(SOLICITUDES, solicitudesController::mostrar, engine);
         get(SOLICITUDES_ID, solicitudesController::verSolicitud, engine);
+        post(SOLICITUDES_ID_ACCEPT, solicitudesController::aceptar, engine);
+        post(SOLICITUDES_ID_REJECT, solicitudesController::rechazar, engine);
 
         get(SIGNUP, registrarController::mostrar, engine);
         post(SIGNUP, registrarController::registrar, engine);

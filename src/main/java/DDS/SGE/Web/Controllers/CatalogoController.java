@@ -6,6 +6,8 @@ import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Repositorios.RepositorioSolicitudes;
+import DDS.SGE.Solicitud.SolicitudAbierta;
 import DDS.SGE.Usuarie.Cliente;
 import spark.ModelAndView;
 import spark.Request;
@@ -53,7 +55,7 @@ public class CatalogoController extends Controller {
         return new ModelAndView(viewModel, "catalogo.hbs");
     }
 
-    public ModelAndView adquirir(Request req, Response res) {
+    public ModelAndView solicitar(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
             res.redirect(LOGIN);
             return new LoginClienteController().mostrar(req, res);
@@ -70,13 +72,14 @@ public class CatalogoController extends Controller {
         Long id_cliente_posta = Long.parseLong(id_cliente);
 
         Cliente cliente = RepositorioClientes.getInstance().findByID(id_cliente_posta);
-        Dispositivo dispositivoNuevo = RepositorioCatalogo.getInstance().findByID(id_dispositivo_posta).construir();
+        DispositivoDeCatalogo dispositivo = RepositorioCatalogo.getInstance().findByID(id_dispositivo_posta);
+
+        SolicitudAbierta nuevaSolicitud = new SolicitudAbierta(cliente, dispositivo);
 
         try {
-            cliente.agregarDispositivo(dispositivoNuevo);
-            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
-            res.redirect(HOGAR);
-            return new ModelAndView(null, "mi-hogar-v2-posta.hbs");
+            withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud));
+            res.redirect(SOLICITUDES);
+            return new ModelAndView(null, "solicitudes.hbs");
         } catch (Exception e) {
             return new ErrorController().somethingBroke(req, res);
         }
