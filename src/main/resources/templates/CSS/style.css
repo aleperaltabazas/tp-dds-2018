@@ -1,5 +1,14 @@
-.ver-solicitud {
-  padding-top: 15px;
+.smaller-card {
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+.center {
+  margin: auto;
+}
+
+.standard-button {
+  padding-top: 25px;
 }
 
 .sge-logo{

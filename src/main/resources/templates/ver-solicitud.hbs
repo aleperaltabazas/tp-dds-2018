@@ -14,14 +14,14 @@
 					Fecha de solicitación: {{this.fechaCreacion}}
 				</p>
 				<div class="row">
-					<div class="col-sm">
+					<div class="col-sm center">
 						<form action="/solicitudes/{{this.id}}/reject" method="POST">
-							<button type="submit" class="btn--red">Rechazar</button>
+							<button type="submit" class="btn--red btn btn-sm btn-outline-secondary">Rechazar</button>
 						</form>
 					</div>
-					<div class="col-sm">
+					<div class="col-sm center">
 						<form action="/solicitudes/{{this.id}}/accept" method="POST">
-							<button type="submit" class="btn btn-lg btn-block btn-primary">Aceptar</button>
+							<button type="submit" class="btn btn-sm btn-outline-secondary">Aceptar</button>
 						</form>
 					</div>
 				</div>
