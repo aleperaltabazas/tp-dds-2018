@@ -1,5 +1,6 @@
 package DDS.SGE.Repositorios;
 
+import DDS.SGE.Solicitud.Solicitud;
 import DDS.SGE.Solicitud.SolicitudAbierta;
 import DDS.SGE.Solicitud.SolicitudCerrada;
 import DDS.SGE.Usuarie.Administrador;
@@ -40,4 +41,13 @@ public class RepositorioSolicitudes extends Repositorio {
     public static RepositorioSolicitudes getInstance() {
         return instance;
     }
+
+    public SolicitudAbierta findByIDAbierta(Long id) {
+        return this.findByID(SolicitudAbierta.class, id);
+    }
+
+    public SolicitudCerrada findByIDCerrada(Long id) {
+        return this.findByID(SolicitudCerrada.class, id);
+    }
+
 }

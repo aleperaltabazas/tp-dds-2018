@@ -11,7 +11,7 @@ public class SolicitudCerrada extends Solicitud {
     @Id
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Administrador administrador;
 
     private LocalDateTime fechaCierre;

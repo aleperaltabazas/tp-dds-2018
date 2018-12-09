@@ -22,17 +22,12 @@ public class SolicitudAbierta extends Solicitud {
         this.fechaCreacion = LocalDateTime.now();
     }
 
-    private SolicitudCerrada cerrar(Administrador administrador, Resolucion resolucion) {
-        return new SolicitudCerrada(this.cliente, administrador, this.fechaCreacion, this.dispositivo, resolucion, this.id);
+    public void aceptar(Administrador administrador) {
+        new ChabonQueTePersisteCuandoSeCierraUnaSolicitud().aceptar(this, administrador);
     }
 
-    public SolicitudCerrada aceptar(Administrador administrador) {
-        cliente.agregarDispositivo(dispositivo.construir());
-        return this.cerrar(administrador, Resolucion.aceptada);
-    }
-
-    public SolicitudCerrada rechazar(Administrador administrador) {
-        return this.cerrar(administrador, Resolucion.rechazada);
+    public void rechazar(Administrador administrador) {
+        new ChabonQueTePersisteCuandoSeCierraUnaSolicitud().rechazar(this, administrador);
     }
 
     public Long getId() {

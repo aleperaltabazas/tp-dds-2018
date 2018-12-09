@@ -6,6 +6,7 @@ import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
 import DDS.SGE.Solicitud.SolicitudAbierta;
+import DDS.SGE.Solicitud.SolicitudCerrada;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.Cliente;
 import org.junit.Before;
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSolicitud implements TransactionalOps, WithGlobalEntityManager {
+public class TestSolicitudPersistencia implements TransactionalOps, WithGlobalEntityManager {
     Cliente cliente;
     Administrador administrador;
     SolicitudAbierta solicitud;
@@ -49,5 +50,18 @@ public class TestSolicitud implements TransactionalOps, WithGlobalEntityManager 
 
         assertEquals(1, solicitudesDeGaston.size());
         assertEquals(solicitud, solicitudesDeGaston.get(0));
+    }
+
+    @Test
+    public void testPersistirUnaSolicitudYAceptarla() {
+        withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(solicitud));
+
+        SolicitudAbierta persistida = RepositorioSolicitudes.getInstance().findByIDAbierta(solicitud.getId());
+        persistida.rechazar(administrador);
+
+        SolicitudCerrada cerradaPersistida = RepositorioSolicitudes.getInstance().findByIDCerrada(solicitud.getId());
+
+        assertEquals(cerradaPersistida.getDispositivo(), persistida.getDispositivo());
+        assertEquals(null, RepositorioSolicitudes.getInstance().findByIDAbierta(solicitud.getId()));
     }
 }
