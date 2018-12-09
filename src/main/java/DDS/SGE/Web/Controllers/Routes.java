@@ -15,6 +15,7 @@ public class Routes {
 
     public static final String SOLICITUDES = "/solicitudes";
     public static final String SOLICITUDES_ID = SOLICITUDES + "/:id";
+    public static final String SOLICITUDES_ID_INFO = SOLICITUDES_ID + "/info";
     public static final String SOLICITUDES_ID_ACCEPT = SOLICITUDES_ID + "/accept";
     public static final String SOLICITUDES_ID_REJECT = SOLICITUDES_ID + "/reject";
 

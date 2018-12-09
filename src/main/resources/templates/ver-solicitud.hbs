@@ -1,0 +1,41 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="card-deck mb-2 text-center">
+		<div class="card mb-4 shadow-sm">
+			<div class="card-header">
+				{{#solicitud}}
+				<h4 class="my-0 font-weight-normal">Solicitud nº {{this.id}}</h4>
+			</div>
+			<div class="card-body" align="left">
+				<p>
+					Dispositivo: {{this.dispositivo.nombre}}<br>
+					Cliente: {{this.cliente.nombre}} {{this.cliente.apellido}}<br>
+					Fecha de solicitación: {{this.fechaCreacion}}
+				</p>
+				<div class="row">
+					<div class="col-sm">
+						<form action="/solicitudes/{{this.id}}/reject" method="POST">
+							<button type="submit" class="btn--red">Rechazar</button>
+						</form>
+					</div>
+					<div class="col-sm">
+						<form action="/solicitudes/{{this.id}}/accept" method="POST">
+							<button type="submit" class="btn btn-lg btn-block btn-primary">Aceptar</button>
+						</form>
+					</div>
+				</div>
+				{{/solicitud}}
+			</div>
+		</div>
+	</div>
+	<div align="left">
+		<form action="/solicitudes" method="GET">
+			<button type="submit" class="btn--red btn btn--radius-2">Volver</button>
+		</form>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}

@@ -42,7 +42,7 @@ public class SolicitudesController extends Controller {
         }
 
         SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
-        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.queryParams(SESSION_NAME)));
+        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.session().attribute(SESSION_NAME)));
 
         try {
             solicitud.aceptar(administrador);
@@ -60,7 +60,7 @@ public class SolicitudesController extends Controller {
         }
 
         SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
-        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.queryParams(SESSION_NAME)));
+        Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.session().attribute(SESSION_NAME)));
 
         try {
             solicitud.rechazar(administrador);
@@ -73,6 +73,15 @@ public class SolicitudesController extends Controller {
     }
 
     public ModelAndView verSolicitud(Request req, Response res) {
-        return null;
+        if (req.session().attribute(SESSION_NAME) == null || req.session().attribute(ADMIN) != "si") {
+            return new ErrorController().unauthorizedAccess(req, res);
+        }
+
+        SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
+
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("solicitud", solicitud);
+
+        return new ModelAndView(viewModel, "ver-solicitud.hbs");
     }
 }
