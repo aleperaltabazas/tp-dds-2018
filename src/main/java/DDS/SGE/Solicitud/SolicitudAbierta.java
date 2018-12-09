@@ -9,6 +9,10 @@ import java.time.LocalDateTime;
 
 @Entity
 public class SolicitudAbierta extends Solicitud {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     protected SolicitudAbierta() {
     }
 
@@ -18,12 +22,24 @@ public class SolicitudAbierta extends Solicitud {
         this.fechaCreacion = LocalDateTime.now();
     }
 
+    private SolicitudCerrada cerrar(Administrador administrador, Resolucion resolucion) {
+        return new SolicitudCerrada(this.cliente, administrador, this.fechaCreacion, this.dispositivo, resolucion, this.id);
+    }
+
     public SolicitudCerrada aceptar(Administrador administrador) {
         cliente.agregarDispositivo(dispositivo.construir());
-        return new SolicitudCerrada(this.cliente, administrador, this.fechaCreacion, this.dispositivo, EstadoDeSolicitud.aceptada);
+        return this.cerrar(administrador, Resolucion.aceptada);
     }
 
     public SolicitudCerrada rechazar(Administrador administrador) {
-        return new SolicitudCerrada(this.cliente, administrador, this.fechaCreacion, this.dispositivo, EstadoDeSolicitud.rechazada);
+        return this.cerrar(administrador, Resolucion.rechazada);
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

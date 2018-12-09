@@ -32,7 +32,7 @@ public class TestSolicitud {
         SolicitudCerrada aceptada = solicitud.aceptar(administrador);
 
         assertEquals(aceptada.getAdministrador(), administrador);
-        assertEquals(aceptada.getEstado(), EstadoDeSolicitud.aceptada);
+        assertEquals(aceptada.getEstado(), Resolucion.aceptada);
         assertTrue(cliente.getDispositivos().anyMatch(d -> d.getNombre() == dispositivo.getNombre()));
     }
 

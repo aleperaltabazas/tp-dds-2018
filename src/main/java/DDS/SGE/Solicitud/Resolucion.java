@@ -1,6 +1,6 @@
 package DDS.SGE.Solicitud;
 
-public enum EstadoDeSolicitud {
+public enum Resolucion {
     aceptada,
     rechazada;
 }

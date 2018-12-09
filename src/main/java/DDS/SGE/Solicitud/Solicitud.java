@@ -8,13 +8,8 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public abstract class Solicitud {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    protected Long id;
-
     @ManyToOne(cascade = CascadeType.PERSIST)
     protected Cliente cliente;
 
@@ -25,7 +20,7 @@ public abstract class Solicitud {
 
     public String getIdCheto() {
         DecimalFormat df = new DecimalFormat("0000000");
-        return df.format(id);
+        return df.format(this.getId());
     }
 
     protected String fechaCheta(LocalDateTime fecha) {
@@ -49,12 +44,8 @@ public abstract class Solicitud {
         return this.dispositivo;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public abstract Long getId();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public abstract void setId(Long id);
 
 }
