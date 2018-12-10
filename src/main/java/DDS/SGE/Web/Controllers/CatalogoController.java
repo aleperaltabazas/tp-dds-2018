@@ -14,6 +14,7 @@ import spark.Response;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
@@ -36,11 +37,6 @@ public class CatalogoController extends Controller {
         HashMap<String, Object> viewModel = new HashMap<>();
 
         List<DispositivoDeCatalogo> dispos = RepositorioCatalogo.getInstance().listarPagina(pageNumber);
-        dispos.forEach(d -> {
-            if (d.getNombre().length() > 20) {
-                d.setNombre(d.getNombre().substring(0, 17) + "...");
-            }
-        });
 
         viewModel.put("dispositivos", dispos);
         viewModel.put("previousPage", pageNumber - 1);

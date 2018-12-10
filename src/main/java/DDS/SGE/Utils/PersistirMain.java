@@ -73,12 +73,8 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
                 RepositorioClientes.getInstance().registrarCliente(c2);
 
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
-
-                RepositorioSolicitudes.getInstance().saveOrUpdate(solicitud1);
-                RepositorioSolicitudes.getInstance().saveOrUpdate(solicitud2);
             });
         } catch (Exception e) {
-            e.printStackTrace();
             logger.log(Level.INFO, e.getMessage());
         }
     }

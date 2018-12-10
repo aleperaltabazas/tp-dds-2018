@@ -45,6 +45,14 @@ public class DispositivoDeCatalogo {
         return this.nombre;
     }
 
+    public String getNombreCorto() {
+        if (nombre.length() > 20) {
+            return nombre.substring(0, 17) + "...";
+        } else {
+            return nombre;
+        }
+    }
+
     public double getConsumo() {
         return this.consumo;
     }
