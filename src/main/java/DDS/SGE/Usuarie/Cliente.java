@@ -42,6 +42,7 @@ public class Cliente implements Usuario {
     private String telefono;
     private String domicilio;
     private LocalDateTime fechaAltaServicio;
+    private boolean tieneNotificaciones = false;
 
     private String username;
     private String password;
@@ -113,6 +114,14 @@ public class Cliente implements Usuario {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public boolean getTieneNotificaciones() {
+        return tieneNotificaciones;
+    }
+
+    public void setTieneNotificaciones(boolean tieneNotificaciones) {
+        this.tieneNotificaciones = tieneNotificaciones;
     }
 
     public enum TipoDni {

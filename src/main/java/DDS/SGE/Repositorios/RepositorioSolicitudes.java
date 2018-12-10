@@ -51,17 +51,4 @@ public class RepositorioSolicitudes extends Repositorio {
         return this.findByID(SolicitudCerrada.class, id);
     }
 
-    public boolean algunaSolicitudSinLeerDeCliente(Long id) {
-        List<SolicitudAbierta> solicitudesAbiertas = this.solicitudesAbiertasDe(id);
-        List<SolicitudCerrada> solicitudesCerradas = this.solicitudesCerradasDe(id);
-        List<Solicitud> solicitudes = new ArrayList<>(solicitudesAbiertas);
-        solicitudes.addAll(solicitudesCerradas);
-
-        return solicitudes.stream().anyMatch(s -> !s.isLeida());
-    }
-
-    public boolean algunaSolicitudSinLeerDeAdministrador(Long id) {
-        return this.listaAbiertas().stream().anyMatch(s -> !s.isLeida());
-    }
-
 }

@@ -29,4 +29,8 @@ public class RepositorioAdministradores extends Repositorio {
     public static RepositorioAdministradores getInstance() {
         return instance;
     }
+
+    public void actualizarAdministrador(Administrador administrador) {
+        persistir(administrador);
+    }
 }

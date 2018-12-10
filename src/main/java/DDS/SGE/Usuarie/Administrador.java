@@ -18,6 +18,8 @@ public class Administrador implements Usuario {
     private String domicilio;
     private LocalDateTime fechaAltaSistema;
 
+    private boolean tieneNotificaciones;
+
     @Id
     @GeneratedValue
     private Long id;
@@ -82,5 +84,13 @@ public class Administrador implements Usuario {
 
     public String getPassword() {
         return password;
+    }
+
+    public boolean getTieneNotificaciones() {
+        return tieneNotificaciones;
+    }
+
+    public void setTieneNotificaciones(boolean tieneNotificaciones) {
+        this.tieneNotificaciones = tieneNotificaciones;
     }
 }

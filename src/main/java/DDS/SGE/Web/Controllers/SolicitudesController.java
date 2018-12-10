@@ -1,10 +1,12 @@
 package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
 import DDS.SGE.Solicitud.SolicitudAbierta;
 import DDS.SGE.Solicitud.SolicitudCerrada;
 import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -34,10 +36,10 @@ public class SolicitudesController extends Controller {
             viewModel.put("cerradas", RepositorioSolicitudes.getInstance().listarCerradasPor(id));
             viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(id));
 
-            List<SolicitudAbierta> solicitudes = RepositorioSolicitudes.getInstance().listaAbiertas();
-            solicitudes.forEach(s -> s.leer());
+            Administrador administrador = RepositorioAdministradores.getInstance().findByID(id);
+            administrador.setTieneNotificaciones(false);
 
-            withTransaction(() -> solicitudes.forEach(s -> RepositorioSolicitudes.getInstance().saveOrUpdate(s)));
+            withTransaction(() -> RepositorioAdministradores.getInstance().actualizarAdministrador(administrador));
         } else {
             Long id = Long.parseLong(req.session().attribute(SESSION_NAME));
 
@@ -50,13 +52,10 @@ public class SolicitudesController extends Controller {
             viewModel.put("cerradas", solicitudesCerradas);
             viewModel.put("mail-icon", this.iconoNotificacionesCliente(id));
 
-            solicitudesAbiertas.forEach(s -> s.leer());
-            solicitudesCerradas.forEach(s -> s.leer());
+            Cliente cliente = RepositorioClientes.getInstance().findByID(id);
+            cliente.setTieneNotificaciones(false);
 
-            withTransaction(() -> {
-                solicitudesAbiertas.forEach(s -> RepositorioSolicitudes.getInstance().saveOrUpdate(s));
-                solicitudesCerradas.forEach(s -> RepositorioSolicitudes.getInstance().saveOrUpdate(s));
-            });
+            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
         }
 
         return new ModelAndView(viewModel, pantalla);

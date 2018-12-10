@@ -30,7 +30,6 @@ public class SolicitudCerrada extends Solicitud {
         this.estado = estado;
         this.dispositivo = dispositivo;
         this.id = id;
-        this.leida = false;
     }
 
     public Administrador getAdministrador() {

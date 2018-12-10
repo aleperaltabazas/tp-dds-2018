@@ -20,7 +20,6 @@ public class SolicitudAbierta extends Solicitud {
         this.cliente = cliente;
         this.dispositivo = dispositivo;
         this.fechaCreacion = LocalDateTime.now();
-        this.leida = false;
     }
 
     public void aceptar(Administrador administrador) {

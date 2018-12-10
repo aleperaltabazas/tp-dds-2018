@@ -1,7 +1,6 @@
 package DDS.SGE.Solicitud;
 
 import DDS.SGE.Repositorios.RepositorioClientes;
-import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
 import DDS.SGE.Usuarie.Administrador;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
@@ -19,7 +18,9 @@ public class ChabonQueTePersisteCuandoSeCierraUnaSolicitud implements WithGlobal
 
     private void cerrar(SolicitudAbierta solicitudAbierta, Administrador administrador, Resolucion resolucion) {
         SolicitudCerrada solicitudCerrada = new SolicitudCerrada(solicitudAbierta.getCliente(), administrador, solicitudAbierta.getFechaCreacion(), solicitudAbierta.getDispositivo(), resolucion, solicitudAbierta.getId());
+        solicitudAbierta.getCliente().setTieneNotificaciones(true);
 
+        RepositorioClientes.getInstance().actualizarCliente(solicitudAbierta.getCliente());
         RepositorioSolicitudes.getInstance().saveOrUpdate(solicitudCerrada);
         RepositorioSolicitudes.getInstance().delete(solicitudAbierta);
     }
