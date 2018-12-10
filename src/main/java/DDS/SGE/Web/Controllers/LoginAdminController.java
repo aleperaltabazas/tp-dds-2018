@@ -33,7 +33,6 @@ public class LoginAdminController extends LoginController {
                 revisarUsuario(admin.get(), password);
 
                 String id = Long.toString(admin.get().getId());
-                System.out.println(id);
 
                 res.redirect(ADMINISTRADOR);
 

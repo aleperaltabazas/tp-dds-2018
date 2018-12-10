@@ -1,38 +1,31 @@
 package DDS.SGE.Usuarie;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import DDS.SGE.Dispositivo.*;
+import DDS.SGE.Geoposicionamiento.*;
+import DDS.SGE.Notificaciones.*;
+import DDS.SGE.Optimizador.*;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
-import javax.persistence.*;
-
-import DDS.SGE.Dispositivo.Dispositivo;
-
-import DDS.SGE.Dispositivo.DispositivoEstandar;
-import DDS.SGE.Dispositivo.DispositivoInteligente;
-import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
-import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
-
-import DDS.SGE.Optimizador.Optimizador;
-import DDS.SGE.Geoposicionamiento.Transformador;
-import DDS.SGE.Geoposicionamiento.Zona;
-
 @Entity
 public class Cliente implements Usuario {
-
     @Id
     @GeneratedValue
     private Long id;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     @OrderColumn
-    @Column(nullable = true)
+    @Column
     private List<Dispositivo> dispositivos;
 
     private String nombre;
@@ -256,7 +249,6 @@ public class Cliente implements Usuario {
     public double consultarUsoOptimo() {
         Optimizador optimizador = new Optimizador();
         double consumoOptimoPorMesEnHoras = optimizador.usoMensualRecomendado(this);
-        //System.out.format("El consumo optimo por mes en horas es %f\n", consumoOptimoPorMesEnHoras);
         return consumoOptimoPorMesEnHoras;
     }
 

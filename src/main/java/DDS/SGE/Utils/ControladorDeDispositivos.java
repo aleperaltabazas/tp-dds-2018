@@ -1,15 +1,20 @@
 package DDS.SGE.Utils;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import DDS.SGE.Optimizador.Optimizador;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Usuarie.Cliente;
 
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
+
 public class ControladorDeDispositivos {
-    public static void main(String args[]) {
+    private static final Logger LOGGER = Logger.getLogger(ControladorDeDispositivos.class.getName());
+
+    public static void main(String[] args) {
         Optimizador optimizador = new Optimizador();
         Timer timer = new Timer();
 
@@ -17,7 +22,7 @@ public class ControladorDeDispositivos {
 
             @Override
             public void run() {
-                //System.out.println("Controlando dispositivos...");
+                LOGGER.log(INFO, "Controlando dispositivos...");
                 List<Cliente> clientes = RepositorioClientes.getInstance().getAllClients();
                 clientes.forEach(c -> {
                     optimizador.simplex(c);
@@ -25,8 +30,8 @@ public class ControladorDeDispositivos {
                             optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
                 });
 
-                //System.out.println("Dispositivos controlados.");
-                //System.out.println("Revisando de nuevo en un minuto.");
+                LOGGER.log(INFO, "Dispositivos controlados.");
+                LOGGER.log(INFO, "Revisando de nuevo en un minuto.");
             }
         };
 

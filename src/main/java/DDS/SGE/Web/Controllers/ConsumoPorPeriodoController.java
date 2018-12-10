@@ -4,9 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Utils.PersistirMain;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -36,8 +38,6 @@ public class ConsumoPorPeriodoController extends Controller {
                 throw new RuntimeException("La fecha fin es después de la fecha inicio");
             }
 
-            //System.out.println(Long.valueOf(req.session().attribute(SESSION_NAME)));
-
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.valueOf(req.session().attribute(SESSION_NAME)));
 
             double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio.atStartOfDay(), fechaFin.atStartOfDay());
@@ -53,7 +53,6 @@ public class ConsumoPorPeriodoController extends Controller {
 
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         } catch (RuntimeException e) {
-            e.printStackTrace();
             req.session().attribute("ERROR", true);
             res.redirect(CONSUMO);
 

@@ -1,22 +1,10 @@
 package DDS.SGE.Utils;
 
 import DDS.SGE.Dispositivo.*;
-import DDS.SGE.Dispositivo.Estado.Apagado;
-import DDS.SGE.Dispositivo.Estado.Encendido;
-import DDS.SGE.Fabricante.AireAcondicionado;
-import DDS.SGE.Fabricante.Computadora;
-import DDS.SGE.Fabricante.Fabricante;
-import DDS.SGE.Repositorios.RepositorioAdministradores;
-import DDS.SGE.Repositorios.RepositorioCatalogo;
-import DDS.SGE.Repositorios.RepositorioClientes;
-import DDS.SGE.Repositorios.RepositorioSolicitudes;
-import DDS.SGE.Solicitud.Resolucion;
-import DDS.SGE.Solicitud.SolicitudAbierta;
-import DDS.SGE.Solicitud.SolicitudCerrada;
-import DDS.SGE.Usuarie.Administrador;
-import DDS.SGE.Usuarie.AdministradorBuilder;
-import DDS.SGE.Usuarie.Cliente;
-import DDS.SGE.Usuarie.ClienteBuilder;
+import DDS.SGE.Dispositivo.Estado.*;
+import DDS.SGE.Fabricante.*;
+import DDS.SGE.Repositorios.*;
+import DDS.SGE.Usuarie.*;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
@@ -27,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PersistirMain implements WithGlobalEntityManager, TransactionalOps {
-    private static final Logger logger = Logger.getLogger(PersistirMain.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PersistirMain.class.getName());
 
     public void initialize() {
         ClienteBuilder cb = new ClienteBuilder();
@@ -62,9 +50,6 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
 
         c2.agregarDispositivo(di);
 
-        SolicitudAbierta solicitud1 = new SolicitudAbierta(c1, td.getDispositivos().get(0));
-        SolicitudCerrada solicitud2 = new SolicitudCerrada(c1, admin, solicitud1.getFechaCreacion(), td.getDispositivos().get(2), Resolucion.rechazada, new Long(4));
-
         try {
             withTransaction(() -> {
                 td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispo));
@@ -75,7 +60,7 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
             });
         } catch (Exception e) {
-            logger.log(Level.INFO, e.getMessage());
+            LOGGER.log(Level.INFO, e.getMessage());
         }
     }
 
