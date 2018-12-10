@@ -25,6 +25,7 @@ public class Service {
     private RegistrarController registrarController;
     private TransformadorController transformadorController;
     private SolicitudesController solicitudesController;
+    private HogaresController hogaresController;
 
     public static void main(String[] args) {
         new Service().run();
@@ -46,6 +47,7 @@ public class Service {
         loginController = new LoginController();
         loginAdminController = new LoginAdminController();
         loginClienteController = new LoginClienteController();
+        hogaresController = new HogaresController();
         miHogarController = new MiHogarController();
         optimizadorController = new OptimizadorController();
         panelDeAdministradorController = new PanelDeAdministradorController();
@@ -73,7 +75,9 @@ public class Service {
         post(ADMINISTRADOR_LOGIN, loginAdminController::loginAdmin, engine);
 
         get(ADMINISTRADOR, panelDeAdministradorController::mostrar, engine);
-        get(ADMINISTRADOR_HOGARES, panelDeAdministradorController::verTodosLosHogares, engine);
+
+        get(HOGARES, hogaresController::verTodosLosHogares, engine);
+        get(HOGARES_ID, hogaresController::hogarDe, engine);
 
         get(DISPOSITIVOS, catalogoController::mostrar, engine);
         get(DISPOSITIVOS_PAGE, catalogoController::mostrar, engine);

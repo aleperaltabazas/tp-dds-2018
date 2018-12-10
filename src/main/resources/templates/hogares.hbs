@@ -1,0 +1,38 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="row text-left">
+		<div class="col-sm">
+			<h3 class="my-0 font-weight-normal">Hogares</h3>
+
+			{{#clientes}} 
+			<div class="card">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">{{this.username}}</h4>
+				</div>
+				<div class="card-body">
+					<p>
+						Nombre: {{this.nombre}}<br>
+						Apellido: {{this.apellido}}<br>
+						Domicilio: {{this.domicilio}}<br>
+						Zona: {{this.zona}}<br>
+						Consumo del mes: {{this.consumoMesActual}}<br>
+						<div class="col-sm"></div>
+						<div class="col-sm">
+							<form action="/hogares/{{this.id}}" method="GET">
+								<div class="btn-group">
+									<button type="submit" class="btn btn-sm btn-outline-secondary">Ver hogar</button>
+								</div>
+							</form>
+						</div>
+					</p>
+				</div>
+			</div>
+			{{/clientes}}
+		</div>
+	</div>
+</div>
+{{/partial}}
+
+{{>layout.hbs}}
+

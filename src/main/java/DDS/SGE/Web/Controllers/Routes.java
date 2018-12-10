@@ -11,7 +11,9 @@ public class Routes {
 
     public static final String ADMINISTRADOR = "/administrador";
     public static final String ADMINISTRADOR_LOGIN = ADMINISTRADOR + "/login";
-    public static final String ADMINISTRADOR_HOGARES = ADMINISTRADOR + "/hogares";
+
+    public static final String HOGARES = "/hogares";
+    public static final String HOGARES_ID = HOGARES + "/:id";
 
     public static final String SOLICITUDES = "/solicitudes";
     public static final String SOLICITUDES_ID = SOLICITUDES + "/:id";
