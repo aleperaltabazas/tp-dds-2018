@@ -31,6 +31,7 @@ public class PanelDeUsuarioController extends Controller {
             viewModel.put("direccion", admin.getDomicilio());
             viewModel.put("username", admin.getUsername());
             viewModel.put("fechaDeAlta", admin.getFechaAltaSistema().toString());
+            viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(admin.getId()));
 
             pantalla = "administrador-profile.hbs";
         } else {
@@ -38,6 +39,7 @@ public class PanelDeUsuarioController extends Controller {
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
             viewModel = rellenarCliente(cliente);
+            viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
             pantalla = "panelDeUsuario.hbs";
         }
 
@@ -54,6 +56,7 @@ public class PanelDeUsuarioController extends Controller {
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         return new ModelAndView(viewModel, "editarUsuario.hbs");
     }
@@ -94,6 +97,7 @@ public class PanelDeUsuarioController extends Controller {
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         return new ModelAndView(viewModel, "editarUsuario_rellenar.hbs");
     }

@@ -4,6 +4,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.HashMap;
+
 public class PanelDeAdministradorController extends Controller {
 
     public ModelAndView mostrar(Request req, Response res) {
@@ -11,7 +13,10 @@ public class PanelDeAdministradorController extends Controller {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 
-        return new ModelAndView(null, "panelAdministrador.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+        return new ModelAndView(viewModel, "panelAdministrador.hbs");
     }
 
     public ModelAndView verTodosLosHogares(Request req, Response res) {
@@ -19,6 +24,9 @@ public class PanelDeAdministradorController extends Controller {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 
-        return new ModelAndView(null, "listado.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+        return new ModelAndView(viewModel, "listado.hbs");
     }
 }

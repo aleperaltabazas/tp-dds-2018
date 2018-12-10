@@ -1,6 +1,5 @@
 package DDS.SGE.Web.Controllers;
 
-import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
@@ -15,7 +14,6 @@ import spark.Response;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
@@ -47,6 +45,7 @@ public class CatalogoController extends Controller {
         viewModel.put("dispositivos", dispos);
         viewModel.put("previousPage", pageNumber - 1);
         viewModel.put("nextPage", pageNumber + 1);
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {
             return new ModelAndView(viewModel, "catalogo-administrador.hbs");
@@ -90,7 +89,10 @@ public class CatalogoController extends Controller {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 
-        return new ModelAndView(null, "crear-inteligente.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+        return new ModelAndView(viewModel, "crear-inteligente.hbs");
     }
 
     public ModelAndView mostrarFormularioEstandar(Request req, Response res) {
@@ -98,7 +100,10 @@ public class CatalogoController extends Controller {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 
-        return new ModelAndView(null, "crear-estandar.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+        return new ModelAndView(viewModel, "crear-estandar.hbs");
     }
 
     public ModelAndView nuevoInteligente(Request req, Response res) {
@@ -125,6 +130,7 @@ public class CatalogoController extends Controller {
             HashMap<String, Object> viewModel = new HashMap<>();
             viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
             viewModel.put("errorMessage", e.getMessage());
+            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
             return new ModelAndView(viewModel, "crear-inteligente.hbs");
         }
@@ -153,7 +159,12 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
-            return new ModelAndView(this.fillError(e), "crear-estandar.hbs");
+            HashMap<String, Object> viewModel = new HashMap<>();
+            viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
+            viewModel.put("errorMessage", e.getMessage());
+            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+            return new ModelAndView(viewModel, "crear-estandar.hbs");
         }
     }
 
@@ -170,6 +181,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("dispositivo", dispositivo);
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {
             return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");

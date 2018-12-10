@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 @MappedSuperclass
 public abstract class Solicitud {
+    protected boolean leida;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     protected Cliente cliente;
 
@@ -48,4 +50,11 @@ public abstract class Solicitud {
 
     public abstract void setId(Long id);
 
+    public boolean isLeida() {
+        return leida;
+    }
+
+    public void leer() {
+        this.leida = true;
+    }
 }

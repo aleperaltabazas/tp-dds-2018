@@ -6,6 +6,7 @@ import DDS.SGE.Solicitud.SolicitudCerrada;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.Cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioSolicitudes extends Repositorio {
@@ -48,6 +49,19 @@ public class RepositorioSolicitudes extends Repositorio {
 
     public SolicitudCerrada findByIDCerrada(Long id) {
         return this.findByID(SolicitudCerrada.class, id);
+    }
+
+    public boolean algunaSolicitudSinLeerDeCliente(Long id) {
+        List<SolicitudAbierta> solicitudesAbiertas = this.solicitudesAbiertasDe(id);
+        List<SolicitudCerrada> solicitudesCerradas = this.solicitudesCerradasDe(id);
+        List<Solicitud> solicitudes = new ArrayList<>(solicitudesAbiertas);
+        solicitudes.addAll(solicitudesCerradas);
+
+        return solicitudes.stream().anyMatch(s -> !s.isLeida());
+    }
+
+    public boolean algunaSolicitudSinLeerDeAdministrador(Long id) {
+        return this.listaAbiertas().stream().anyMatch(s -> !s.isLeida());
     }
 
 }

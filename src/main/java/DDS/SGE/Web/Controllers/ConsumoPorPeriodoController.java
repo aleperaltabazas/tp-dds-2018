@@ -49,6 +49,7 @@ public class ConsumoPorPeriodoController extends Controller {
             viewModel.put("fechaFin", fechaFin.format(formatter));
             viewModel.put("consumo", consumo);
             viewModel.put("periodo", periodo);
+            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         } catch (RuntimeException e) {
@@ -56,7 +57,10 @@ public class ConsumoPorPeriodoController extends Controller {
             req.session().attribute("ERROR", true);
             res.redirect(CONSUMO);
 
-            return new ModelAndView(this.fillError(e), "consumo-obtener.hbs");
+            HashMap<String, Object> viewModel = this.fillError(e);
+            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+
+            return new ModelAndView(viewModel, "consumo-obtener.hbs");
         }
     }
 
@@ -66,13 +70,9 @@ public class ConsumoPorPeriodoController extends Controller {
             return new LoginClienteController().mostrar(req, res);
         }
 
-        if (req.session().attribute(ERROR) != null &&
-                req.session().attribute(ERROR).equals(true)) {
-            //QUE ASCO JAVA DE MIERDA
-            return new ModelAndView(null, "consumo-error-fecha.hbs");
-        } else {
-            return new ModelAndView(null, "consumo.hbs");
-        }
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
+        return new ModelAndView(viewModel, "consumo-obtener.hbs");
     }
 }

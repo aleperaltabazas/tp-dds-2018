@@ -1,5 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Repositorios.RepositorioSolicitudes;
 import DDS.SGE.Usuarie.Cliente;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
@@ -36,5 +37,21 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
         viewModel.put("errorMessage", e.getMessage());
 
         return viewModel;
+    }
+
+    protected String iconoNotificacionesAdministrador(Long id) {
+        if (RepositorioSolicitudes.getInstance().algunaSolicitudSinLeerDeAdministrador(id)) {
+            return "mail-icon-notification.png";
+        } else {
+            return "mail-icon.png";
+        }
+    }
+
+    protected String iconoNotificacionesCliente(Long id) {
+        if (RepositorioSolicitudes.getInstance().algunaSolicitudSinLeerDeCliente(id)) {
+            return "mail-icon-notification.png";
+        } else {
+            return "mail-icon.png";
+        }
     }
 }
