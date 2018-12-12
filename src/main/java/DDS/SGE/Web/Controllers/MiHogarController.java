@@ -38,12 +38,12 @@ public class MiHogarController extends Controller {
 
     private HashMap<String, Object> armarViewModel(Cliente cliente, List<Dispositivo> dispositivosinteligentes, List<Dispositivo> dispositivosEstandar) {
         HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         if (dispositivosinteligentes.isEmpty() && dispositivosEstandar.isEmpty()) {
             viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");
             viewModel.put("noHayConsumo", "No se registró consumo en el último mes");
             viewModel.put("noHayMediciones", "No se registraron ningunas mediciones recientemente");
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
         } else {
             viewModel.put("dispositivosInteligente", dispositivosinteligentes);
             viewModel.put("dispositivosEstandar", dispositivosEstandar);
@@ -51,7 +51,6 @@ public class MiHogarController extends Controller {
             viewModel.put("consumoMesActual", "Total del mes actual: " + new DecimalFormat("#0.00").format(cliente.getConsumoMesActual()));
             viewModel.put("consumoPromedio", "Consumo promedio: " + new DecimalFormat("#0.00").format(cliente.consumoPromedioPorDispositivo()));
             viewModel.put("estimadoDiario", "Consumo diario estimado: " + new DecimalFormat("#0.00").format(cliente.consumoTotalEstimadoDiario()));
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
         }
 
         return viewModel;
