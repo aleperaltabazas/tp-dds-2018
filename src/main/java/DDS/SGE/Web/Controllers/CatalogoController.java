@@ -44,10 +44,10 @@ public class CatalogoController extends Controller {
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {
-            return new ModelAndView(viewModel, "catalogo-administrador.hbs");
+            return new ModelAndView(viewModel, "catalogo-admin.hbs");
         }
 
-        return new ModelAndView(viewModel, "catalogo.hbs");
+        return new ModelAndView(viewModel, "catalogo-user.hbs");
     }
 
     public ModelAndView solicitar(Request req, Response res) {
