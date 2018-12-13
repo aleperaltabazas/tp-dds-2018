@@ -1,0 +1,76 @@
+{{#partial "contenido"}}
+
+<div class="container tools-padding">
+	<div class="py-5 text-left">
+		<h2>Agregar dispositivo inteligente al catálogo</h2>
+	</div>
+
+	<div class="row text-left">
+		<div class="mb-4">
+			<div class="card-body">
+				<form action="/dispositivos/new/inteligente" method="POST">
+					<div class="mb-3">
+						<label for="nombre">Nombre</label>
+						<input type="text" class="form-control" name="nombre" placeholder="PC Razer Neon" required="">
+						<div class="invalid-feedback">
+							Ingrese un nombre válido.
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="consumo">Consumo en kWh</label>
+						<input type="text" class="form-control" name="consumo" placeholder="420" required="">
+						<div class="invalid-feedback">
+							Ingrese un número de consumo válido.
+						</div>
+					</div>
+
+					{{#block "extraPorTipo"}}
+					{{/block}}
+
+					<div class="mb-3">
+						<label for="fabricante">Fabricante</label>
+						<select class="custom-select d-block w-100" name="fabricante" required="">
+							<option value="Elija un fabricante">Elija un fabricante</option>
+							<option>Aire acondicionado</option>
+							<option>Computadora</option>
+							<option>Heladera</option>
+							<option>Lámpara</option>
+							<option>Lavarropas</option>
+							<option>Microondas</option>
+							<option>Plancha</option>
+							<option>Televisor</option>
+							<option>Ventilador</option>
+						</select>
+						<div class="invalid-feedback">
+							Elija un fabricante válido.
+						</div>
+					</div>
+
+					<div class="d-block my-3">
+						<p>Bajo consumo?</p>
+						<div class="custom-control custom-radio">
+							<input id="credit" name="bajoConsumo" type="radio" class="custom-control-input" value="Sí" required="">
+							<label class="custom-control-label" for="credit">Sí</label>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="debit" name="bajoConsumo" type="radio" class="custom-control-input" checked="" value="No" required="">
+							<label class="custom-control-label" for="debit">No</label>
+						</div>
+					</div>
+					<div>
+						<p class="error"> {{errorMessage}} </p>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/partial}}
+
+{{>layout.hbs}}
+
