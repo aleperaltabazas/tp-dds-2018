@@ -1,33 +1,9 @@
-{{#partial "contenido"}}
+{{#partial "action"}}
 
-<div class="container tools-padding">
-	<div class="card-deck mb-2 text-center">
-		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Ficha técnica del dispositivo</h4>
-			</div>
-			<div class="card-body" align="left">
-				<p>
-					{{#dispositivo}}
-					Nombre: {{this.nombre}}<br>
-					Descripción: {{this.detalle}} <br>
-					Tipo: {{this.tipo}} <br>
-					Marca: {{this.marca}} <br>
-					Consumo en kWh: {{this.consumo}} <br>
-					Bajo consumo: {{this.bajoConsumo}} <br>
-					Inteligente: {{this.inteligente}} <br>
-					{{/dispositivo}}
-				</p>
-			</div>
-		</div>
-	</div>
-	<div align="left">
-		<form action="/dispositivos" method="GET">
-			<button type="submit" class="btn btn--radius-2 btn--red">Volver</button>
-		</form>
-	</div>
-</div>	
+<form action="/dispositivos/{{this.id}}/edit" method="GET">
+	<button type="submit" class="btn btn-lg btn-block btn-primary">Editar dispositivo</button>
+</form>
 
 {{/partial}}
 
-{{>layout.hbs}}
+{{> ficha-tecnica.hbs}}

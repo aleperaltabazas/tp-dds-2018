@@ -183,6 +183,6 @@ public class CatalogoController extends Controller {
             return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");
         }
 
-        return new ModelAndView(viewModel, "ficha-tecnica.hbs");
+        return new ModelAndView(viewModel, "ficha-tecnica-user.hbs");
     }
 }
