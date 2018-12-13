@@ -24,53 +24,14 @@
 
 <body>
 
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <div class="my-0 mr-md-auto font-weight-normal">
-      <form action="/" method="GET">
-        <input type="image" src="/resources/imgs/logo.png" class="sge-logo" alt="SGE">
-      </form>  
-    </div>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <div class="row">
-        <div class="p-2 text-dark">
-          <form action="/solicitudes" method="GET">
-            <input type="image" src="/resources/imgs/{{mail-icon}}" alt="Solicitudes" class="p-2 hogar-button">
-          </form>
-        </div>
-        <div class="p-2 text-dark">
-          <form action="/hogar" method="GET">
-            <input type="image" src="/resources/imgs/casa.png" alt="Mi Hogar" class="p-2 hogar-button">
-          </form>
-        </div>
-        <div class="p-2 text-dark">
-          <form action="/me" method="GET">
-            <input type="image" src="/resources/imgs/user.png" alt="Perfil de {{username}}" class="p-2 user-button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </form>
-        </div>
-      </div>
-    </nav>
-  </div>
+{{> header.hbs}}
 
   <div class="container">
    {{#block "contenido"}}
    {{/block}}
  </div>
- <div class="container">
-   <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
-      <div class="col-12 col-md">
-        <small class="d-block mb-3 text-muted">© 2018 Diseño de Sistemas</small>
-      </div>
-      <div>
 
-      </div>
-      <form action="/logout" method="GET">
-        <button type="submit" class="btn btn-outline-primary">Cerrar sesión</button>
-      </form>
-    </div>
-  </footer>
-</div>
-
+ {{> footer.hbs}}
 
     <!-- Bootstrap core JavaScript
       ================================================== -->
