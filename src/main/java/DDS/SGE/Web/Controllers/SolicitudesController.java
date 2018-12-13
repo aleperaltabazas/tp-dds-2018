@@ -46,7 +46,7 @@ public class SolicitudesController extends Controller {
             List<SolicitudAbierta> solicitudesAbiertas = RepositorioSolicitudes.getInstance().solicitudesAbiertasDe(Long.parseLong(req.session().attribute(SESSION_NAME)));
             List<SolicitudCerrada> solicitudesCerradas = RepositorioSolicitudes.getInstance().solicitudesCerradasDe(Long.parseLong(req.session().attribute(SESSION_NAME)));
 
-            pantalla = "solicitudes.hbs";
+            pantalla = "solicitudes-user.hbs";
 
             viewModel.put("pendientes", solicitudesAbiertas);
             viewModel.put("cerradas", solicitudesCerradas);

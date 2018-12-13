@@ -74,7 +74,7 @@ public class CatalogoController extends Controller {
         try {
             withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud));
             res.redirect(SOLICITUDES);
-            return new ModelAndView(null, "solicitudes.hbs");
+            return new ModelAndView(null, "solicitudes-user.hbs");
         } catch (Exception e) {
             return new ErrorController().somethingBroke(req, res);
         }

@@ -58,7 +58,7 @@ public class PanelDeUsuarioController extends Controller {
         HashMap<String, Object> viewModel = rellenarCliente(cliente);
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
-        return new ModelAndView(viewModel, "editarUsuario.hbs");
+        return new ModelAndView(viewModel, "editar-perfil-user.hbs");
     }
 
     public ModelAndView actualizar(Request req, Response res) {
@@ -67,10 +67,6 @@ public class PanelDeUsuarioController extends Controller {
         String telefono = req.queryParams("telefono");
         String direccion = req.queryParams("direccion");
         String numeroDni = req.queryParams("numeroDni");
-
-        if (nombre == null || apellido == null || telefono == null || direccion == null || numeroDni == null) {
-            return llenarTodosLosCampos(req, res);
-        }
 
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
@@ -91,15 +87,4 @@ public class PanelDeUsuarioController extends Controller {
 
         return mostrar(req, res);
     }
-
-    private ModelAndView llenarTodosLosCampos(Request req, Response res) {
-        String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
-
-        HashMap<String, Object> viewModel = rellenarCliente(cliente);
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
-
-        return new ModelAndView(viewModel, "editarUsuario_rellenar.hbs");
-    }
-
 }

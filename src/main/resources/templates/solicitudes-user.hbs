@@ -1,0 +1,41 @@
+{{#partial "solicitudesPendientes"}}
+
+<div class="card">
+	<div class="card-header">
+		<h4 class="my-0 font-weight-normal">{{this.dispositivo.nombre}}</h4>
+	</div>
+	<div class="card-body">
+		<p>
+			Número de solicitud: {{this.idCheto}}<br>
+			Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
+			Pendiente de revisión<br>
+		</p>
+		<form action="/dispositivos/{{this.dispositivo.id}}/info" method="GET">
+			<div class="btn-group">
+				<button type="submit" class="btn btn-sm btn-outline-secondary">Ver dispositivo</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{{/partial}}
+
+{{#partial "solicitudesCerradas"}}
+<div class="card">
+	<div class="card-header">
+		<h4 class="my-0 font-weight-normal">{{this.dispositivo.nombre}}</h4>
+	</div>
+	<div class="card-body">
+		<p>
+			Número de solicitud: {{this.idCheto}}<br>
+			Fecha de solicitación: {{this.fechaCreacionCheta}}<br>
+			Fecha de cierre: {{this.fechaCierreCheta}}<br>
+			Resolución: {{this.estado}}<br>
+			Resuelta por: {{this.administrador.nombre}} {{this.administrador.apellido}}<br>
+		</p>
+	</div>
+</div>
+
+{{/partial}}
+
+{{> solicitudes.hbs}}
