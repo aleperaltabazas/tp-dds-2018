@@ -1,5 +1,8 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Dispositivo.TipoDispositivo;
+import DDS.SGE.Repositorios.RepositorioDispositivos;
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Dispositivo.Dispositivo;
 import DDS.SGE.Repositorios.RepositorioClientes;
@@ -34,6 +37,37 @@ public class MiHogarController extends Controller {
         HashMap<String, Object> viewModel = this.armarViewModel(cliente, dispositivosInteligente, dispositivosEstandar);
 
         return new ModelAndView(viewModel, "mi-hogar-v2-posta.hbs");
+    }
+
+    public ModelAndView apagar(Request req, Response res) {
+        String id = req.params(":id");
+
+        Dispositivo dispositivo = RepositorioDispositivos.getInstance().findByID(Long.parseLong(id));
+        dispositivo.apagar();
+
+        res.redirect(HOGAR);
+        return mostrar(req, res);
+    }
+
+    public ModelAndView encender(Request req, Response res) {
+        String id = req.params(":id");
+
+        Dispositivo dispositivo = RepositorioDispositivos.getInstance().findByID(Long.parseLong(id));
+        dispositivo.encender();
+
+        res.redirect(HOGAR);
+        return mostrar(req, res);
+    }
+
+    public ModelAndView ahorrarEnergia(Request req, Response res) {
+        String id = req.params(":id");
+
+        Dispositivo dispositivo = RepositorioDispositivos.getInstance().findByID(Long.parseLong(id));
+        TipoDispositivo tipo = (DispositivoInteligente) dispositivo.getTipoDispositivo();
+        ((DispositivoInteligente) tipo).ahorraEnergia();
+
+        res.redirect(HOGAR);
+        return mostrar(req, res);
     }
 
     private HashMap<String, Object> armarViewModel(Cliente cliente, List<Dispositivo> dispositivosinteligentes, List<Dispositivo> dispositivosEstandar) {

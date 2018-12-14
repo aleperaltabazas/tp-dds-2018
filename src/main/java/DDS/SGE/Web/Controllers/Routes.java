@@ -35,6 +35,10 @@ public class Routes {
 
     public static final String USER = "/me";
     public static final String USER_EDIT = USER + "/edit";
+    public static final String USER_DISPOSITIVOS = USER + "/dispositivos";
+    public static final String USER_DISPOSITIVOS_ID_ON = USER_DISPOSITIVOS + "/:id/on";
+    public static final String USER_DISPOSITIVOS_ID_OFF = USER_DISPOSITIVOS + "/:id/off";
+    public static final String USER_DISPOSITIVOS_ID_SAVE = USER_DISPOSITIVOS + "/:id/save";
 
     public static final String SIGNUP = "/signup";
 

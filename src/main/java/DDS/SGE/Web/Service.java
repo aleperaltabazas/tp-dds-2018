@@ -97,7 +97,11 @@ public class Service {
 
         get(USER, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);
-        post(USER_EDIT, panelDeUsuarioController::actualizar);
+        post(USER_EDIT, panelDeUsuarioController::actualizar, engine);
+
+        post(USER_DISPOSITIVOS_ID_ON, miHogarController::encender, engine);
+        post(USER_DISPOSITIVOS_ID_OFF, miHogarController::apagar, engine);
+        post(USER_DISPOSITIVOS_ID_SAVE, miHogarController::ahorrarEnergia, engine);
 
         get(SOLICITUDES, solicitudesController::mostrar, engine);
         get(SOLICITUDES_ID_INFO, solicitudesController::verSolicitud, engine);

@@ -32,6 +32,23 @@
 							Estado: {{this.estado}}
 						</p>
 					</li>
+					<div class="row">
+						<div class="col-md-4">
+							<form action="/me/dispositivos/{{this.id}}/save" method="POST">
+								<button type="submit" class="btn btn-sm btn-outline-secondary">Ahorro</button>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<form action="/me/dispositivos/{{this.id}}/on" method="POST">
+								<button type="submit" class="btn btn-sm btn-outline-secondary">Encender</button>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<form action="/me/dispositivos/{{this.id}}/off" method="POST">
+								<button type="submit" class="btn btn-sm btn-outline-secondary">Apagar</button>
+							</form>
+						</div>
+					</div>
 					{{/dispositivosInteligente}}
 				</ul>
 				<form action="/dispositivos" method="GET">
