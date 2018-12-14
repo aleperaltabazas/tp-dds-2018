@@ -1,74 +1,15 @@
-{{#partial "contenido"}}
-
-<div class="container tools-padding">
-	<div class="card-deck mb-2 text-left">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Dispositivos</h4>
-			</div>
-			<div class="card-body">
-				<ul>
-					<p>
-						{{noHayDispositivos}}
-					</p>
-					{{#each cliente.dispositivosEstandar}}
-					<li>
-						<h5>{{this.nombre}}</h5>
-						<p class="small-letter">
-							Estándar <br>
-							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
-							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
-						</p>
-					</li>
-					{{/each}}
-
-					{{#each cliente.dispositivosInteligente}}
-					<li>
-						<h5>{{this.nombre}}</h5>
-						<p class="small-letter">
-							Inteligente	<br>
-							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
-							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
-							Estado: {{this.estado}}
-						</p>
-					</li>
-					{{/each}}
-				</ul>
-			</div>
-		</div>
-		<div class="card">
-			<div>
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Consumo</h4>
-				</div>
-				<div class="card-body">
-					<p>{{noHayConsumo}}</p>
-					<p>{{consumoUltimoMes}} </p>
-					<p>{{consumoMesActual}} </p>
-				</div>
-			</div>
-			<div>
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Ultimas mediciones</h4>
-				</div>
-				<div class="card-body">
-					<p>{{noHayMediciones}}</p>
-					<p>
-						{{consumoPromedio}} <br> 
-						{{estimadoDiario}} <br>
-						{{usoOptimo}}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div align="left">
-		<form action="/hogares" method="GET">
-			<button type="submit" class="btn btn--radius-2 btn--red">Volver</button>
-		</form>
-	</div>
-</div>	
-
+{{#partial "orders"}}
 {{/partial}}
 
-{{>layout.hbs}}
+{{#partial "action"}}
+{{/partial}}
+
+{{#partial "volver"}}
+<div align="left">
+	<form action="/hogares" method="GET">
+		<button type="submit" class="btn btn--radius-2 btn--red">Volver</button>
+	</form>
+</div>
+{{/partial}}
+
+{{>hogar.hbs}}

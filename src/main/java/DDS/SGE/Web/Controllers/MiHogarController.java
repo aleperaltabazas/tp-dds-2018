@@ -35,6 +35,7 @@ public class MiHogarController extends Controller {
         List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();
 
         HashMap<String, Object> viewModel = this.armarViewModel(cliente, dispositivosInteligente, dispositivosEstandar);
+        viewModel.put("cliente", cliente);
 
         return new ModelAndView(viewModel, "mi-hogar-v2-posta.hbs");
     }
@@ -79,8 +80,6 @@ public class MiHogarController extends Controller {
             viewModel.put("noHayConsumo", "No se registró consumo en el último mes");
             viewModel.put("noHayMediciones", "No se registraron ningunas mediciones recientemente");
         } else {
-            viewModel.put("dispositivosInteligente", dispositivosinteligentes);
-            viewModel.put("dispositivosEstandar", dispositivosEstandar);
             viewModel.put("consumoUltimoMes", "Total del último mes: " + new DecimalFormat("#0.00").format(cliente.getConsumoUltimoMes()));
             viewModel.put("consumoMesActual", "Total del mes actual: " + new DecimalFormat("#0.00").format(cliente.getConsumoMesActual()));
             viewModel.put("consumoPromedio", "Consumo promedio: " + new DecimalFormat("#0.00").format(cliente.consumoPromedioPorDispositivo()));

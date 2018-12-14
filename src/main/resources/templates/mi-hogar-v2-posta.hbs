@@ -1,89 +1,35 @@
-{{#partial "contenido"}}
-
-<div class="container tools-padding">
-	<div class="card-deck mb-2 text-left">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Dispositivos</h4>
-			</div>
-			<div class="card-body">
-				<ul>
-					<p>
-						{{noHayDispositivos}}
-					</p>
-					{{#dispositivosEstandar}}
-					<li>
-						<h5>{{this.nombre}}</h5>
-						<p class="small-letter">
-							Estándar <br>
-							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
-							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
-						</p>
-					</li>
-					{{/dispositivosEstandar}}
-
-					{{#dispositivosInteligente}}
-					<li>
-						<h5>{{this.nombre}}</h5>
-						<p class="small-letter">
-							Inteligente	<br>
-							Uso mensual mínimo: {{this.usoMensualMinimo}} <br>
-							Uso mensual máximo: {{this.usoMensualMaximo}} <br>
-							Estado: {{this.estado}}
-						</p>
-					</li>
-					<div class="row">
-						<div class="col-md-4">
-							<form action="/me/dispositivos/{{this.id}}/save" method="POST">
-								<button type="submit" class="btn btn-sm btn-outline-secondary">Ahorro</button>
-							</form>
-						</div>
-						<div class="col-md-4">
-							<form action="/me/dispositivos/{{this.id}}/on" method="POST">
-								<button type="submit" class="btn btn-sm btn-outline-secondary">Encender</button>
-							</form>
-						</div>
-						<div class="col-md-4">
-							<form action="/me/dispositivos/{{this.id}}/off" method="POST">
-								<button type="submit" class="btn btn-sm btn-outline-secondary">Apagar</button>
-							</form>
-						</div>
-					</div>
-					{{/dispositivosInteligente}}
-				</ul>
-				<form action="/dispositivos" method="GET">
-					<button type="submit" class="btn btn-lg btn-block btn-primary">Adquirir un dispositivo</button>
-				</form>
-			</div>
-		</div>
-		<div class="card">
-			<div>
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Consumo</h4>
-				</div>
-				<div class="card-body">
-					<p>{{noHayConsumo}}</p>
-					<p>{{consumoUltimoMes}} </p>
-					<p>{{consumoMesActual}} </p>
-				</div>
-			</div>
-			<div>
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Ultimas mediciones</h4>
-				</div>
-				<div class="card-body">
-					<p>{{noHayMediciones}}</p>
-					<p>
-						{{consumoPromedio}} <br> 
-						{{estimadoDiario}} <br>
-						{{usoOptimo}}
-					</p>
-				</div>
-			</div>
-		</div>
+{{#partial "orders"}}
+<div class="row">
+	<div class="col-md-4">
+		<form action="/me/dispositivos/{{this.id}}/save" method="POST">
+			<button type="submit" class="btn btn-sm btn-outline-secondary">Ahorro</button>
+		</form>
 	</div>
-</div>	
-
+	<div class="col-md-4">
+		<form action="/me/dispositivos/{{this.id}}/on" method="POST">
+			<button type="submit" class="btn btn-sm btn-outline-secondary">Encender</button>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<form action="/me/dispositivos/{{this.id}}/off" method="POST">
+			<button type="submit" class="btn btn-sm btn-outline-secondary">Apagar</button>
+		</form>
+	</div>
+</div>
 {{/partial}}
 
-{{>layout.hbs}}
+{{#partial "action"}}
+<form action="/dispositivos" method="GET">
+	<button type="submit" class="btn btn-lg btn-block btn-primary">Adquirir un dispositivo</button>
+</form>
+{{/partial}}
+
+{{#partial "volver"}}
+<div align="left">
+	<form action="/" method="GET">
+		<button type="submit" class="btn btn--radius-2 btn--red">Volver</button>
+	</form>
+</div>
+{{/partial}}
+
+{{>hogar.hbs}}
