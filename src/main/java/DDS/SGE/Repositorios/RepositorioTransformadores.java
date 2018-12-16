@@ -11,7 +11,7 @@ public class RepositorioTransformadores extends Repositorio {
     }
 
     public List<Transformador> listar() {
-        return findAll(Transformador.class);
+        return entityManager().createQuery("from Transformador ", Transformador.class).getResultList();
     }
 
     public void agregarTransformador(Transformador transformador) {
@@ -23,6 +23,6 @@ public class RepositorioTransformadores extends Repositorio {
     }
 
     public Transformador findByID(Long id) {
-        return findByID(id);
+        return findByID(Transformador.class, id);
     }
 }

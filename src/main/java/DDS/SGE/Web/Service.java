@@ -94,6 +94,7 @@ public class Service {
         get(CONSUMO_OBTENER, consumoPorPeriodoController::obtener, engine);
 
         get(TRANSFORMADOR, transformadorController::mostrar, engine);
+        get(TRANSFORMADOR_CONSUMO_OBTENER, transformadorController::obtenerConsumo, engine);
 
         get(USER, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);

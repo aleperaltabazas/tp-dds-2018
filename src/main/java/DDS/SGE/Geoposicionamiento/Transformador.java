@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.persistence.*;
 
 import DDS.SGE.Usuarie.Cliente;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Transformador {
@@ -18,10 +19,9 @@ public class Transformador {
 
     private int codigo;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    @Transient
-    List<Cliente> usuarios = new ArrayList<Cliente>();
+    List<Cliente> usuarios = new ArrayList<>();
 
     double energia;
     boolean activo;

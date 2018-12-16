@@ -3,6 +3,7 @@ package DDS.SGE.Utils;
 import DDS.SGE.Dispositivo.*;
 import DDS.SGE.Dispositivo.Estado.*;
 import DDS.SGE.Fabricante.*;
+import DDS.SGE.Geoposicionamiento.Transformador;
 import DDS.SGE.Repositorios.*;
 import DDS.SGE.Usuarie.*;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
@@ -50,18 +51,27 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
 
         c2.agregarDispositivo(di);
 
+        Transformador transformador1 = new Transformador(1);
+        Transformador transformador2 = new Transformador(2);
+
+        transformador1.agregarCliente(c1);
+        transformador2.agregarCliente(c2);
+
         try {
             withTransaction(() -> {
                 td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispo));
 
-                RepositorioClientes.getInstance().registrarCliente(c1);
-                RepositorioClientes.getInstance().registrarCliente(c2);
-
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
+
+                RepositorioTransformadores.getInstance().agregarTransformador(transformador1);
+                RepositorioTransformadores.getInstance().agregarTransformador(transformador2);
             });
         } catch (Exception e) {
             LOGGER.log(Level.INFO, e.getMessage());
         }
+
+        System.out.println(transformador1.getId());
+        System.out.println(transformador2.getId());
     }
 
 }

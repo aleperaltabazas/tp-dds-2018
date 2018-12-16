@@ -1,0 +1,61 @@
+{{#partial "contenido"}}
+
+<form action="/transformador/consumo/obtener" method="GET">
+	<div class="container tools-padding">
+		<div>
+			<h3>El consumo fue de {{consumo}}</h3>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<h4 class="my-0 font-weight-normal">Zona</h4>
+				<div class="input-group-desc">
+					<div class="rs-select2 js-select-simple select--no-search">
+						<select name="transformador" required="">
+							<option value="transformadorId" selected="" disabled="">Transformador</option>
+							{{#transformadores}}
+							<option value="this.id">
+								Transformador {{this.id}}
+							</option>
+							{{/transformadores}}
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="card-deck mb-2 text-center">
+					<div class="card mb-4 shadow-sm">
+						<div class="card-header">
+							<h4 class="my-0 font-weight-normal">Fecha inicio</h4>
+						</div>
+						<div class="card-body">
+							<div style="border:3px;padding-left:30px;padding-top:10px;">
+								<input type="date" name="fechaInicio" required/>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-4 shadow-sm">
+						<div class="card-header">
+							<h4 class="my-0 font-weight-normal">Fecha fin</h4>
+						</div>
+						<div class="card-body">
+							<div style="border:3px;padding-left:30px;padding-top:10px;">					
+								<input type="date" name="fechaFin" required/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p class="error">{{errorMessage}}</p>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+	<div style="border:3px;padding-left:30px;padding-top:100px;">
+		<button type="submit" class="btn btn-lg btn-block btn-primary">Obtener Consumo</button>
+	</div>
+</form>
+
+{{/partial}}
+
+{{>layout.hbs}}

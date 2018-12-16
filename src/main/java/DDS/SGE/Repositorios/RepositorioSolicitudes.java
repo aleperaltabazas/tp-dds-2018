@@ -23,7 +23,7 @@ public class RepositorioSolicitudes extends Repositorio {
         return entityManager().createQuery("from SolicitudCerrada s where s.cliente = " + id.toString()).getResultList();
     }
 
-    public List<SolicitudAbierta> listaAbiertas() {
+    public List<SolicitudAbierta> listarAbiertas() {
         return entityManager().createQuery("from SolicitudAbierta ", SolicitudAbierta.class).getResultList();
     }
 

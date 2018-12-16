@@ -12,7 +12,7 @@ abstract class Repositorio implements WithGlobalEntityManager {
     }
 
     protected <T> List<T> findAll(Class<T> entityClass) {
-        return entityManager().createQuery("from " + entityClass.getName(), entityClass).getResultList();
+        return entityManager().createQuery("from " + entityClass.getSimpleName(), entityClass).getResultList();
     }
 
     protected <T> Optional<T> findByUsername(Class<T> entityClass, String username) {

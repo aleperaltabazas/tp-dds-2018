@@ -32,7 +32,7 @@ public class SolicitudesController extends Controller {
 
             pantalla = "solicitudes-administrador.hbs";
 
-            viewModel.put("pendientes", RepositorioSolicitudes.getInstance().listaAbiertas());
+            viewModel.put("pendientes", RepositorioSolicitudes.getInstance().listarAbiertas());
             viewModel.put("cerradas", RepositorioSolicitudes.getInstance().listarCerradasPor(id));
             viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(id));
 

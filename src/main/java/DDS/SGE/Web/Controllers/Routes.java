@@ -32,6 +32,8 @@ public class Routes {
     public static final String DISPOSITIVOS_NEW_ESTANDAR = DISPOSITIVOS_NEW + "/estandar";
 
     public static final String TRANSFORMADOR = "/transformador";
+    public static final String TRANSFORMADOR_CONSUMO = TRANSFORMADOR + "/consumo";
+    public static final String TRANSFORMADOR_CONSUMO_OBTENER = TRANSFORMADOR_CONSUMO + "/obtener";
 
     public static final String USER = "/me";
     public static final String USER_EDIT = USER + "/edit";
@@ -50,4 +52,5 @@ public class Routes {
     public static final String LIFE = "/42";
 
     public static final String GLITCH = "*";
+
 }
