@@ -26,8 +26,10 @@ public class ControladorDeDispositivos {
                 List<Cliente> clientes = RepositorioClientes.getInstance().getAllClients();
                 clientes.forEach(c -> {
                     optimizador.simplex(c);
-                    optimizador.accionarSobreDispositivos(
-                            optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
+                    if (c.getPermiteApagar()) {
+                        optimizador.accionarSobreDispositivos(
+                                optimizador.obtenerDispositivosInfractores(c.getDispositivos()));
+                    }
                 });
 
                 LOGGER.log(INFO, "Dispositivos controlados.");

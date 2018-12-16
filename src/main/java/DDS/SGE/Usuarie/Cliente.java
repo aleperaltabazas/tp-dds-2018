@@ -37,6 +37,8 @@ public class Cliente implements Usuario {
     private LocalDateTime fechaAltaServicio;
     private boolean tieneNotificaciones = false;
 
+    private boolean permiteApagar = false;
+
     private String username;
     private String password;
 
@@ -308,6 +310,14 @@ public class Cliente implements Usuario {
         LocalDateTime primerDiaDelMes = LocalDateTime.of(now.getYear(), now.getMonthValue(), 1, 0, 0);
 
         return this.getDispositivos().mapToDouble(d -> d.consumoTotalEnUnPeriodo(primerDiaDelMes, now)).sum();
+    }
+
+    public boolean getPermiteApagar() {
+        return this.permiteApagar;
+    }
+
+    public void setPermiteApagar(boolean permiteApagar) {
+        this.permiteApagar = permiteApagar;
     }
 
 }

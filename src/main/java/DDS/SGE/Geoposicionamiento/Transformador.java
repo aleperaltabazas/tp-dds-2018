@@ -1,77 +1,85 @@
 package DDS.SGE.Geoposicionamiento;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.*;
+
 import DDS.SGE.Usuarie.Cliente;
 
 @Entity
 public class Transformador {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	private int codigo;
+    private int codigo;
 
-	@OneToMany()
-	@JoinColumn(name = "id")
-	@Transient
-	List<Cliente> usuarios = new ArrayList<Cliente>();
+    @OneToMany()
+    @JoinColumn(name = "id")
+    @Transient
+    List<Cliente> usuarios = new ArrayList<Cliente>();
 
-	double energia;
-	boolean activo;
-	
-	protected Transformador() {}
+    double energia;
+    boolean activo;
 
-	public Transformador(int i) {
-		codigo = i;
-		activo = true;
-	}
+    protected Transformador() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Transformador(int i) {
+        codigo = i;
+        activo = true;
+    }
 
-	public int getCodigo() {
-		return codigo;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public List<Cliente> getUsuarios() {
-		return usuarios;
-	}
+    public int getCodigo() {
+        return codigo;
+    }
 
-	public boolean estaActivo() {
-		return activo;
-	}
+    public List<Cliente> getUsuarios() {
+        return usuarios;
+    }
 
-	public void agregarCliente(Cliente nuevoUsuario) {
-		this.usuarios.add(nuevoUsuario);
-	}
+    public boolean estaActivo() {
+        return activo;
+    }
 
-	public double suministra() {
-		return usuarios.stream().mapToDouble(cliente -> cliente.consumoTotalEstimadoDiario()).sum();
-	}
+    public void agregarCliente(Cliente nuevoUsuario) {
+        this.usuarios.add(nuevoUsuario);
+    }
 
-	/*
-	 * public boolean perteneceA(Zona unaZona) { return unaZona == this.getZona(); }
-	 */
+    public double suministra() {
+        return usuarios.stream().mapToDouble(cliente -> cliente.consumoTotalEstimadoDiario()).sum();
+    }
 
-	public double getEnergia() {
-		return this.energia;
-	}
+    /*
+     * public boolean perteneceA(Zona unaZona) { return unaZona == this.getZona(); }
+     */
 
-	public void setEnergia(double energia) {
-		this.energia = energia;
-	}
+    public double getEnergia() {
+        return this.energia;
+    }
 
-	public boolean getActivo() {
-		return this.activo;
-	}
+    public void setEnergia(double energia) {
+        this.energia = energia;
+    }
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
+    public boolean getActivo() {
+        return this.activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public double consumoEnElPeriodo(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+        return usuarios.stream().mapToDouble(c -> c.consumoTotalEnUnPeriodo(fechaInicio, fechaFin)).sum();
+    }
 
 }
