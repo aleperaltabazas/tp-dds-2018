@@ -46,7 +46,7 @@ public class Cliente implements Usuario {
     @Transient
     private Zona zona;
 
-    @Transient
+    @Enumerated
     private Categoria categoria;
 
     int puntos;

@@ -69,9 +69,5 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
         } catch (Exception e) {
             LOGGER.log(Level.INFO, e.getMessage());
         }
-
-        System.out.println(transformador1.getId());
-        System.out.println(transformador2.getId());
     }
-
 }

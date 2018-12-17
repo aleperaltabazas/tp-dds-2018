@@ -19,7 +19,7 @@ public class Transformador {
 
     private int codigo;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     List<Cliente> usuarios = new ArrayList<>();
 
