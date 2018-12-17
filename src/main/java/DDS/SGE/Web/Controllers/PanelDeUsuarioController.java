@@ -39,7 +39,7 @@ public class PanelDeUsuarioController extends Controller {
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
             viewModel = rellenarCliente(cliente);
-            viewModel.put("permiso", cliente.getPermiteApagar() ? "sí" : "no"); 
+            viewModel.put("permiso", cliente.getPermiteApagar() ? "sí" : "no");
             viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
             pantalla = "panelDeUsuario.hbs";
         }
