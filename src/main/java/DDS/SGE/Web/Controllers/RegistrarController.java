@@ -1,7 +1,11 @@
 package DDS.SGE.Web.Controllers;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
+import DDS.SGE.Geoposicionamiento.Transformador;
+import DDS.SGE.Repositorios.RepositorioTransformadores;
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Usuarie.ClienteBuilder;
 import DDS.SGE.Repositorios.RepositorioClientes;
@@ -34,8 +38,20 @@ public class RegistrarController extends Controller {
 
         try {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
+            List<Transformador> transformadores = RepositorioTransformadores.getInstance().listar();
+            Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
 
-            withTransaction(() -> RepositorioClientes.getInstance().registrarCliente(cliente));
+            transformador.agregarCliente(cliente);
+
+            withTransaction(() -> {
+                RepositorioClientes.getInstance().registrarCliente(cliente);
+                RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
+            });
+
+            //Transformador transformador = Transformador.parse(direccion)
+            //SE SE Segui soñando pelotudo
+
+
         } catch (RuntimeException ex) {
             HashMap<String, Object> viewModel = new HashMap<>();
             viewModel.put("username", req.queryParams("username"));

@@ -14,7 +14,6 @@ import spark.Response;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
@@ -118,7 +117,7 @@ public class CatalogoController extends Controller {
 
             DispositivoBuilder db = new DispositivoBuilder();
             DispositivoDeCatalogo dispositivo = db.construirDispositivoDeCatalogo(nombre, consumo, bajoConsumo, true, metodoDeCreacion);
-            withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
+            withTransaction(() -> RepositorioCatalogo.getInstance().saveOrUpdate(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new CatalogoController().mostrar(req, res);
@@ -150,7 +149,7 @@ public class CatalogoController extends Controller {
             DispositivoBuilder db = new DispositivoBuilder();
             DispositivoDeCatalogo dispositivo = db.construirDispositivoDeCatalogo(nombre, consumo, bajoConsumo, false, metodoDeCreacion);
 
-            withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
+            withTransaction(() -> RepositorioCatalogo.getInstance().saveOrUpdate(dispositivo));
 
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);

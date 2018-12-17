@@ -30,7 +30,7 @@ public class RepositorioAdministradores extends Repositorio {
         return instance;
     }
 
-    public void actualizarAdministrador(Administrador administrador) {
+    public void saveOrUpdate(Administrador administrador) {
         persistir(administrador);
     }
 }

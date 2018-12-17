@@ -59,12 +59,12 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
 
         try {
             withTransaction(() -> {
-                td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispo));
+                td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().saveOrUpdate(dispo));
 
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
 
-                RepositorioTransformadores.getInstance().agregarTransformador(transformador1);
-                RepositorioTransformadores.getInstance().agregarTransformador(transformador2);
+                RepositorioTransformadores.getInstance().saveOrUpdate(transformador1);
+                RepositorioTransformadores.getInstance().saveOrUpdate(transformador2);
             });
         } catch (Exception e) {
             LOGGER.log(Level.INFO, e.getMessage());

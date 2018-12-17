@@ -78,7 +78,7 @@ public class PanelDeUsuarioController extends Controller {
         cliente.setNumeroDni(numeroDni);
 
         try {
-            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
+            withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
         } catch (Exception e) {
             return new ErrorController().notFound(req, res);
         }

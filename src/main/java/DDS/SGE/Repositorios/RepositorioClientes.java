@@ -27,12 +27,12 @@ public class RepositorioClientes extends Repositorio {
         this.persistir(cliente);
     }
 
-    public void registrarCliente(Cliente cliente) {
-        this.registrar(cliente, cliente.getUsername());
+    public void saveOrUpdate(Cliente cliente) {
+        this.persistir(cliente);
     }
 
-    public void actualizarCliente(Cliente cliente) {
-        this.persistir(cliente);
+    public void registrarCliente(Cliente cliente) {
+        this.registrar(cliente, cliente.getUsername());
     }
 
     public static RepositorioClientes getInstance() {

@@ -45,7 +45,7 @@ public class Reportes implements TransactionalOps, WithGlobalEntityManager {
             RepositorioClientes.getInstance().agregarCliente(clienteConUnDispositivo);
             RepositorioClientes.getInstance().agregarCliente(clienteSinDispositivos);
 
-            //RepositorioDispositivos.getInstance().agregarDispositivoAlCatalogo(estandar);
+            //RepositorioDispositivos.getInstance().saveOrUpdate(estandar);
             //em.persist(dispositivoSencillo);
             //em.persist(unTransformador);
         });

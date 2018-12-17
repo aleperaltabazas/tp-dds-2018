@@ -14,7 +14,7 @@ public class RepositorioTransformadores extends Repositorio {
         return entityManager().createQuery("from Transformador ", Transformador.class).getResultList();
     }
 
-    public void agregarTransformador(Transformador transformador) {
+    public void saveOrUpdate(Transformador transformador) {
         persistir(transformador);
     }
 

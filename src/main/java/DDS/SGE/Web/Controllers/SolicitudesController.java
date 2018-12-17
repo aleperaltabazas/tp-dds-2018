@@ -39,7 +39,7 @@ public class SolicitudesController extends Controller {
             Administrador administrador = RepositorioAdministradores.getInstance().findByID(id);
             administrador.setTieneNotificaciones(false);
 
-            withTransaction(() -> RepositorioAdministradores.getInstance().actualizarAdministrador(administrador));
+            withTransaction(() -> RepositorioAdministradores.getInstance().saveOrUpdate(administrador));
         } else {
             Long id = Long.parseLong(req.session().attribute(SESSION_NAME));
 
@@ -55,7 +55,7 @@ public class SolicitudesController extends Controller {
             Cliente cliente = RepositorioClientes.getInstance().findByID(id);
             cliente.setTieneNotificaciones(false);
 
-            withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(cliente));
+            withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
         }
 
         return new ModelAndView(viewModel, pantalla);

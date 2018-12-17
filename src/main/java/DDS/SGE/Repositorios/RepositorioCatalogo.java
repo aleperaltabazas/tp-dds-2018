@@ -15,7 +15,7 @@ public class RepositorioCatalogo extends Repositorio {
         return findByID(DispositivoDeCatalogo.class, id);
     }
 
-    public void agregarDispositivoAlCatalogo(DispositivoDeCatalogo dispositivoDeCatalogo) {
+    public void saveOrUpdate(DispositivoDeCatalogo dispositivoDeCatalogo) {
         persistir(dispositivoDeCatalogo);
     }
 

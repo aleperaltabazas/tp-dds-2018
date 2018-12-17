@@ -19,7 +19,7 @@ public class RepositorioDispositivos extends Repositorio {
         return this.findByID(Dispositivo.class, id);
     }
 
-    public void guardarDispositivo(Dispositivo dispositivo) {
+    public void saveOrUpdate(Dispositivo dispositivo) {
         persistir(dispositivo);
     }
 

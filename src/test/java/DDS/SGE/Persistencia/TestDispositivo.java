@@ -66,7 +66,7 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
         Cliente clientePersistido = RepositorioClientes.getInstance().findByID(clienteSinDispositivos.getId());
         clientePersistido.setDomicilio("calle x");
 
-        withTransaction(() -> RepositorioClientes.getInstance().actualizarCliente(clientePersistido));
+        withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(clientePersistido));
 
         Cliente clienteActualizado = RepositorioClientes.getInstance().findByID(clienteSinDispositivos.getId());
 
@@ -75,11 +75,11 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
 
     @Test
     public void PersistirUnDispositivoEstandarYLuegoLevantarlo() {
-        withTransaction(() -> RepositorioDispositivos.getInstance().guardarDispositivo(dispositivoSencillo));
+        withTransaction(() -> RepositorioDispositivos.getInstance().saveOrUpdate(dispositivoSencillo));
 
         Dispositivo dispositivoPersistido = RepositorioDispositivos.getInstance().findByID(dispositivoSencillo.getId());
         dispositivoPersistido.setNombre("Sencillamente actualizado");
-        withTransaction(() -> RepositorioDispositivos.getInstance().guardarDispositivo(dispositivoPersistido));
+        withTransaction(() -> RepositorioDispositivos.getInstance().saveOrUpdate(dispositivoPersistido));
 
         Dispositivo dispositivoActualizado = RepositorioDispositivos.getInstance().findByID(dispositivoSencillo.getId());
 
@@ -88,11 +88,11 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
 
     @Test
     public void PersistirUnDispositivoInteligenteYLuegoLevantarlo() {
-        withTransaction(() -> RepositorioDispositivos.getInstance().guardarDispositivo(dispositivoInteligente));
+        withTransaction(() -> RepositorioDispositivos.getInstance().saveOrUpdate(dispositivoInteligente));
 
         Dispositivo dispositivoPersistido = RepositorioDispositivos.getInstance().findByID(dispositivoInteligente.getId());
         dispositivoPersistido.setTiempoQueSePuedeUtilizar(20);
-        withTransaction(() -> RepositorioDispositivos.getInstance().guardarDispositivo(dispositivoPersistido));
+        withTransaction(() -> RepositorioDispositivos.getInstance().saveOrUpdate(dispositivoPersistido));
 
         Dispositivo dispositivoActualizado = RepositorioDispositivos.getInstance().findByID(dispositivoPersistido.getId());
         assertEquals(20, (int) dispositivoActualizado.getTiempoQueSePuedeUtilizar());
@@ -100,7 +100,7 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
 
     @Test
     public void PersistirUnDispositivoInteligenteYLuegoLevantarloConSuRepositorioDeIntervalosActualizado() {
-        withTransaction(() -> RepositorioDispositivos.getInstance().guardarDispositivo(dispositivoInteligente));
+        withTransaction(() -> RepositorioDispositivos.getInstance().saveOrUpdate(dispositivoInteligente));
 
         Dispositivo dispositivoPersistido = RepositorioDispositivos.getInstance().findByID(dispositivoInteligente.getId());
         DispositivoInteligente dispositivoInteligentePersistido = (DispositivoInteligente) dispositivoPersistido
@@ -119,7 +119,7 @@ public class TestDispositivo implements TransactionalOps, WithGlobalEntityManage
     public void testPersistirUnDispositivoDeCatalogoYTraerloDeVuelta() {
         DispositivoDeCatalogo dispositivo = new DispositivoDeCatalogo("Un dispositivo", 100, false, true, MetodoDeCreacion.AIRE);
 
-        withTransaction(() -> RepositorioCatalogo.getInstance().agregarDispositivoAlCatalogo(dispositivo));
+        withTransaction(() -> RepositorioCatalogo.getInstance().saveOrUpdate(dispositivo));
 
         DispositivoDeCatalogo persistido = RepositorioCatalogo.getInstance().findByID(dispositivo.getId());
         assertEquals(persistido, dispositivo);

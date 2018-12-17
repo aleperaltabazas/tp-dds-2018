@@ -12,7 +12,7 @@ public class ChabonQueTePersisteCuandoSeCierraUnaSolicitud implements WithGlobal
 
         withTransaction(() -> {
             this.cerrar(solicitudAbierta, administrador, Resolucion.aceptada);
-            RepositorioClientes.getInstance().actualizarCliente(solicitudAbierta.getCliente());
+            RepositorioClientes.getInstance().saveOrUpdate(solicitudAbierta.getCliente());
         });
     }
 
@@ -20,7 +20,7 @@ public class ChabonQueTePersisteCuandoSeCierraUnaSolicitud implements WithGlobal
         SolicitudCerrada solicitudCerrada = new SolicitudCerrada(solicitudAbierta.getCliente(), administrador, solicitudAbierta.getFechaCreacion(), solicitudAbierta.getDispositivo(), resolucion, solicitudAbierta.getId());
         solicitudAbierta.getCliente().setTieneNotificaciones(true);
 
-        RepositorioClientes.getInstance().actualizarCliente(solicitudAbierta.getCliente());
+        RepositorioClientes.getInstance().saveOrUpdate(solicitudAbierta.getCliente());
         RepositorioSolicitudes.getInstance().saveOrUpdate(solicitudCerrada);
         RepositorioSolicitudes.getInstance().delete(solicitudAbierta);
     }
