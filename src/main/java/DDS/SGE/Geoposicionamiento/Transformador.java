@@ -19,8 +19,8 @@ public class Transformador {
 
     private int codigo;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "transformador_id", nullable = true)
     List<Cliente> usuarios = new ArrayList<>();
 
     double energia;

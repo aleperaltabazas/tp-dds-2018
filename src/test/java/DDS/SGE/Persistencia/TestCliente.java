@@ -44,7 +44,7 @@ public class TestCliente implements WithGlobalEntityManager, TransactionalOps {
 
     @Test
     public void testPersistirAUnClienteDesdeElRepositorioYDespuesTraerlo() {
-        withTransaction(() -> RepositorioClientes.getInstance().agregarCliente(cliente));
+        withTransaction(() -> RepositorioClientes.getInstance().registrarCliente(cliente));
         Cliente persistido = RepositorioClientes.getInstance().findByID(cliente.getId());
 
         assertEquals(persistido, cliente);

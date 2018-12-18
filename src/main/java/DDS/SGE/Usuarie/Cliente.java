@@ -25,7 +25,6 @@ public class Cliente implements Usuario {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     @OrderColumn
-    @Column
     private List<Dispositivo> dispositivos;
 
     private String nombre;
@@ -46,7 +45,7 @@ public class Cliente implements Usuario {
     @Transient
     private Zona zona;
 
-    @Enumerated
+    @Transient
     private Categoria categoria;
 
     int puntos;
@@ -186,13 +185,9 @@ public class Cliente implements Usuario {
         return this.cantidadDispositivos() - this.cantidadDispositivosEncendidos();
     }
 
-    public DoubleStream consumoDispositivosDiarioEstimado() {
-        return getDispositivos().mapToDouble(dispositivo -> dispositivo.consumoDiarioEstimado());
-    }
-
     public double consumoTotalEstimadoDiario() {
         if (!this.dispositivos.isEmpty()) {
-            return this.consumoDispositivosDiarioEstimado().sum();
+            return this.dispositivos.stream().mapToDouble(d -> d.consumoDiarioEstimado()).sum();
         } else {
             return 0;
         }
