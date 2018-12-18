@@ -1,8 +1,7 @@
 package DDS.SGE.Web;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
@@ -98,7 +97,7 @@ public class Service {
 
         get(USER, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);
-        post(USER_EDIT, panelDeUsuarioController::actualizar, engine);
+        put(USER_EDIT, panelDeUsuarioController::actualizar, engine);
 
         post(USER_DISPOSITIVOS_ID_ON, miHogarController::encender, engine);
         post(USER_DISPOSITIVOS_ID_OFF, miHogarController::apagar, engine);
@@ -129,12 +128,12 @@ public class Service {
 
     public void sparkSetup() {
         //Para debuggear localhost
-//        Spark.port(9000);
+        Spark.port(9000);
 
         //Para el deploy en heroku
-        Spark.port(getHerokuAssignedPort());
+//        Spark.port(getHerokuAssignedPort());
 
-//        Spark.staticFiles.location("/templates");
+        Spark.staticFiles.location("/templates");
         DebugScreen.enableDebugScreen();
 
     }

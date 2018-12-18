@@ -28,6 +28,8 @@ public class MiHogarController extends Controller {
             return new HomeController().mostrar(req, res);
         }
 
+        System.out.println("Context path: " + req.contextPath());
+
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 

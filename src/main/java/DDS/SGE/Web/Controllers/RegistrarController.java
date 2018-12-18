@@ -36,9 +36,14 @@ public class RegistrarController extends Controller {
         cb.especificarTipoDocumento(tipoDni);
         cb.especificarDireccion(direccion);
 
+
         try {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
             List<Transformador> transformadores = RepositorioTransformadores.getInstance().listar();
+
+            //Transformador transformador = Transformador.parse(direccion)
+            //SE SE Segui soñando pelotudo
+
             Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
 
             transformador.agregarCliente(cliente);
@@ -47,9 +52,6 @@ public class RegistrarController extends Controller {
                 RepositorioClientes.getInstance().registrarCliente(cliente);
                 RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
             });
-
-            //Transformador transformador = Transformador.parse(direccion)
-            //SE SE Segui soñando pelotudo
 
 
         } catch (RuntimeException ex) {
