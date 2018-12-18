@@ -175,6 +175,17 @@
                     </processTypes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <configuration>
+                    <appName>redistinto</appName>
+                    <processTypes>
+                        <worker>java $JAVA_OPTS -cp target/classes:target/* DDS.SGE.Utils.ControladorDeDispositivos
+                        </worker>
+                    </processTypes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
