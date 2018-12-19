@@ -1,12 +1,15 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Exceptions.UserNotFoundException;
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
@@ -23,28 +26,27 @@ public class LoginClienteController extends LoginController {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        try {
-            Optional<Cliente> usuario = RepositorioClientes.getInstance().findByUsername(username);
-            if (usuario.isPresent()) {
+        Optional<Cliente> cliente = RepositorioClientes.getInstance().findByUsername(username);
+        if (cliente.isPresent()) {
 
-                revisarUsuario(usuario.get(), password);
-
-                String id = Long.toString(usuario.get().getId());
-                res.redirect(HOME);
-
-                req.session().attribute(SESSION_NAME, id);
-                req.session().attribute(ADMIN, "no");
-
-                return new HomeController().home(req, res);
-            } else {
-                throw new RuntimeException("No se encontró esa combinación de usuario y contraseña");
+            if (!cliente.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
+                throw new UserNotFoundException();
             }
 
-        } catch (Exception e) {
-            HashMap<String, Object> viewModel = this.fillError(e);
-            return new ModelAndView(viewModel, "login.hbs");
-        }
+            String id = Long.toString(cliente.get().getId());
+            res.redirect(HOME);
 
+            req.session().attribute(SESSION_NAME, id);
+            req.session().attribute(ADMIN, "no");
+
+            return new HomeController().home(req, res);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
+    public ModelAndView loginError(UserNotFoundException e) {
+        HashMap<String, Object> viewModel = this.fillError(e);
+        return new ModelAndView(viewModel, "login.hbs");
+    }
 }

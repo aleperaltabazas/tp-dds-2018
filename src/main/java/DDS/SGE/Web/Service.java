@@ -3,12 +3,16 @@ package DDS.SGE.Web;
 import static DDS.SGE.Web.Controllers.Routes.*;
 import static spark.Spark.*;
 
+import DDS.SGE.Exceptions.AdminNotFoundException;
 import DDS.SGE.Exceptions.UnauthorizedAccessException;
+import DDS.SGE.Exceptions.UserNotFoundException;
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
 import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import java.util.HashMap;
 
 public class Service {
     private HomeController homeController;
@@ -130,9 +134,9 @@ public class Service {
         //TODO: get(LIFE, controller::fortyTwo, engine);
         get(GLITCH, errorController::notFound, engine);
 
-        exception(UnauthorizedAccessException.class, (e, req, res) -> {
-            errorController.unauthorizedAccess(req, res);
-        });
+        exception(UnauthorizedAccessException.class, (e, req, res) -> errorController.unauthorizedAccess(req, res));
+        exception(UserNotFoundException.class, (e, req, res) -> loginClienteController.loginError(e));
+        exception(AdminNotFoundException.class, (e, req, res) -> loginAdminController.loginError(e));
     }
 
     public void run() {

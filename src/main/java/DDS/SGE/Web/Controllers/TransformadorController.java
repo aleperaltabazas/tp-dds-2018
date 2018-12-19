@@ -1,5 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Geoposicionamiento.Transformador;
 import DDS.SGE.Repositorios.RepositorioTransformadores;
 import spark.ModelAndView;
@@ -12,8 +13,8 @@ import java.util.HashMap;
 
 public class TransformadorController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -23,8 +24,8 @@ public class TransformadorController extends Controller {
     }
 
     public ModelAndView obtenerConsumo(Request req, Response res) {
-        if (req.session().attribute(ADMIN) != "si") {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         String trafoId = req.queryParams("transformador");

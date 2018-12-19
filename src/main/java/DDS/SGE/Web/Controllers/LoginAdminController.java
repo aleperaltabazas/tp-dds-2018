@@ -1,7 +1,10 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Exceptions.AdminNotFoundException;
+import DDS.SGE.Exceptions.UserNotFoundException;
 import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Web.HashProvider;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -24,29 +27,29 @@ public class LoginAdminController extends LoginController {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        try {
-            // No sé que les parezca mejor, dejar el get en el try catch o envolver el
-            // optional con un if isEmpty()
-            Optional<Administrador> admin = RepositorioAdministradores.getInstance().findByUsername(username);
+        Optional<Administrador> admin = RepositorioAdministradores.getInstance().findByUsername(username);
 
-            if (admin.isPresent()) {
-                revisarUsuario(admin.get(), password);
-
-                String id = Long.toString(admin.get().getId());
-
-                res.redirect(ADMINISTRADOR);
-
-                req.session().attribute(SESSION_NAME, id);
-                req.session().attribute(ADMIN, "si");
-
-                return new PanelDeAdministradorController().mostrar(req, res);
-            } else {
-                throw new RuntimeException("No se encontró esa combinación de usuario y contraseña.");
+        if (admin.isPresent()) {
+            if (!admin.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
+                throw new AdminNotFoundException();
             }
-        } catch (Exception e) {
-            HashMap<String, Object> viewModel = this.fillError(e);
-            return new ModelAndView(viewModel, "login.hbs");
+
+            String id = Long.toString(admin.get().getId());
+
+            res.redirect(ADMINISTRADOR);
+
+            req.session().attribute(SESSION_NAME, id);
+            req.session().attribute(ADMIN, "si");
+
+            return new PanelDeAdministradorController().mostrar(req, res);
+        } else {
+            throw new RuntimeException("No se encontró esa combinación de usuario y contraseña.");
         }
     }
 
+    public ModelAndView loginError(Exception e) {
+        HashMap<String, Object> viewModel = this.fillError(e);
+        return new ModelAndView(viewModel, "login.hbs");
+    }
 }
+
