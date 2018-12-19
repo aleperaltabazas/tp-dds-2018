@@ -57,12 +57,20 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
         transformador1.agregarCliente(c1);
         transformador2.agregarCliente(c2);
 
+        DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), new AireAcondicionado(100, 2));
+        Dispositivo dispositivoInfractor = new Dispositivo(dispositivoInfractorInteligente);
+
+        Cliente clienteConDispositivoInfractor = cb.crearCliente("Maximiliano", "Paz", "420", "386", "foo", "bar");
+        clienteConDispositivoInfractor.agregarDispositivo(dispositivoInfractor);
+        clienteConDispositivoInfractor.agregarDispositivo(td.getDispositivos().get(2).construir());
+
         try {
             withTransaction(() -> {
                 td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().saveOrUpdate(dispo));
 
                 RepositorioClientes.getInstance().agregarCliente(c1);
                 RepositorioClientes.getInstance().agregarCliente(c2);
+                RepositorioClientes.getInstance().agregarCliente(clienteConDispositivoInfractor);
 
                 RepositorioAdministradores.getInstance().registrarAdministrador(admin);
 

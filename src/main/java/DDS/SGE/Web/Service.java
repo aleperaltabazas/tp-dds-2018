@@ -128,13 +128,13 @@ public class Service {
 
     public void sparkSetup() {
         //Para debuggear localhost
-        Spark.port(9000);
+//        Spark.port(9000);
 
         //Para el deploy en heroku
-//        Spark.port(getHerokuAssignedPort());
+        Spark.port(getHerokuAssignedPort());
 
         Spark.staticFiles.location("/templates");
-        DebugScreen.enableDebugScreen();
+//        DebugScreen.enableDebugScreen();
 
     }
 
