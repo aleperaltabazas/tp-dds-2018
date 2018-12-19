@@ -16,6 +16,6 @@ public class PanelDeAdministradorController extends Controller {
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
-        return new ModelAndView(viewModel, "panelAdministrador.hbs");
+        return new ModelAndView(viewModel, "panel-administrador.hbs");
     }
 }

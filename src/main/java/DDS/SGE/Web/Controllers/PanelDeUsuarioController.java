@@ -41,7 +41,7 @@ public class PanelDeUsuarioController extends Controller {
             viewModel = rellenarCliente(cliente);
             viewModel.put("permiso", cliente.getPermiteApagar() ? "sí" : "no");
             viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
-            pantalla = "panelDeUsuario.hbs";
+            pantalla = "panel-usuario.hbs";
         }
 
         return new ModelAndView(viewModel, pantalla);
@@ -67,8 +67,6 @@ public class PanelDeUsuarioController extends Controller {
         String apellido = req.queryParams("apellido");
         String telefono = req.queryParams("telefono");
         String direccion = req.queryParams("direccion");
-        String numeroDni = req.queryParams("numeroDni");
-
         String permiso = req.queryParams("permiso");
         boolean permiteApagar = permiso.equals("Sí");
 
@@ -79,12 +77,12 @@ public class PanelDeUsuarioController extends Controller {
         cliente.setApellido(apellido);
         cliente.setTelefono(telefono);
         cliente.setDomicilio(direccion);
-        cliente.setNumeroDni(numeroDni);
         cliente.setPermiteApagar(permiteApagar);
 
         try {
             withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
         } catch (Exception e) {
+            logError(e);
             return new ErrorController().notFound(req, res);
         }
 

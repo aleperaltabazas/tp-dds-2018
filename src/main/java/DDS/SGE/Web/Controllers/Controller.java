@@ -10,9 +10,12 @@ import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class Controller implements WithGlobalEntityManager, TransactionalOps {
     protected static final String SESSION_NAME = "id";
+    protected final Logger LOGGER = Logger.getLogger(this.getClass().getSimpleName());
     static final String ADMIN = "admin";
 
     HashMap<String, Object> rellenarCliente(Cliente cliente) {
@@ -54,5 +57,13 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
         } else {
             return "mail-icon.png";
         }
+    }
+
+    protected void logError(Exception e) {
+        LOGGER.log(Level.INFO, e.getMessage(), e);
+    }
+
+    protected void logInfo(String info) {
+        LOGGER.log(Level.INFO, info);
     }
 }

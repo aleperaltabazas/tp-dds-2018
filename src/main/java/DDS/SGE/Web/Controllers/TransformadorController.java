@@ -50,7 +50,7 @@ public class TransformadorController extends Controller {
         LocalDate fechaInicio = LocalDate.parse(inicio, formatter);
         LocalDate fechaFin = LocalDate.parse(fin, formatter);
 
-        RepositorioTransformadores.getInstance().listar().forEach(t -> System.out.println(t.getId()));
+        RepositorioTransformadores.getInstance().listar().forEach(t -> logInfo(t.getId().toString()));
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("consumo", transformador.consumoEnElPeriodo(fechaInicio.atStartOfDay(), fechaFin.atStartOfDay()));
