@@ -1,8 +1,5 @@
 package DDS.SGE.Web;
 
-import static DDS.SGE.Web.Controllers.Routes.*;
-import static spark.Spark.*;
-
 import DDS.SGE.Exceptions.AdminNotFoundException;
 import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Exceptions.UserNotFoundException;
@@ -12,9 +9,15 @@ import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static DDS.SGE.Web.Controllers.Routes.*;
+import static spark.Spark.*;
 
 public class Service {
+    private static final Logger LOGGER = Logger.getLogger(Service.class.getName());
+
     private HomeController homeController;
     private ConsumoPorPeriodoController consumoPorPeriodoController;
     private CatalogoController catalogoController;
@@ -132,11 +135,18 @@ public class Service {
         get(LOGOUT, loginController::logout, engine);
 
         //TODO: get(LIFE, controller::fortyTwo, engine);
+        get("/500", errorController::somethingBroke, engine);
         get(GLITCH, errorController::notFound, engine);
 
         exception(UnauthorizedAccessException.class, (e, req, res) -> errorController.unauthorizedAccess(req, res));
         exception(UserNotFoundException.class, (e, req, res) -> loginClienteController.loginError(e));
         exception(AdminNotFoundException.class, (e, req, res) -> loginAdminController.loginError(e));
+
+        exception(Exception.class, (e, req, res) -> {
+            LOGGER.log(Level.INFO, e.getMessage());
+            res.redirect("/500");
+            errorController.somethingBroke(req, res);
+        });
     }
 
     public void run() {

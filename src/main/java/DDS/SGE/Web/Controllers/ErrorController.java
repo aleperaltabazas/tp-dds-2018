@@ -30,6 +30,6 @@ public class ErrorController extends Controller {
         //TODO: pantalla de error 500
 
         res.status(500);
-        return null;
+        return new ModelAndView(null, "500.hbs");
     }
 }
