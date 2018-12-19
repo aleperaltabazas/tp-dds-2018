@@ -14,11 +14,6 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class PanelDeUsuarioController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         HashMap<String, Object> viewModel = new HashMap<>();
         String pantalla;
 
@@ -48,11 +43,6 @@ public class PanelDeUsuarioController extends Controller {
     }
 
     public ModelAndView editar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 

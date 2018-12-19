@@ -5,9 +5,14 @@ import static spark.Spark.*;
 
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
+import spark.Filter;
+import spark.Request;
+import spark.Response;
 import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import java.util.Arrays;
 
 public class Service {
     private HomeController homeController;
@@ -60,6 +65,20 @@ public class Service {
     private void inicializarRutas() {
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
         HandlebarsTemplateEngine engine = builder.withDefaultHelpers().build();
+
+        before("/*", (request, response) -> {
+            if (request.splat() == null) {
+                System.out.println("Home");
+                return;
+            } else if (request.splat()[0].equals("login")) {
+                System.out.println("Login");
+                return;
+            } else if (request.session().attribute("id") == null) {
+                response.redirect(LOGIN);
+                loginClienteController.mostrar(request, response);
+                return;
+            }
+        });
 
         get(HOME, homeController::mostrar, engine);
 
