@@ -84,10 +84,10 @@ public class Service {
         post(DISPOSITIVOS_ID_ACQUIRE, catalogoController::solicitar, engine);
         get(DISPOSITIVOS_ID_INFO, catalogoController::mostrarFichaTecnica, engine);
 
-        get(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
-        post(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::nuevoInteligente, engine);
-        get(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
-        post(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::nuevoEstandar, engine);
+        get(DISPOSITIVOS_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
+        post(DISPOSITIVOS_INTELIGENTE, catalogoController::nuevoInteligente, engine);
+        get(DISPOSITIVOS_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
+        post(DISPOSITIVOS_ESTANDAR, catalogoController::nuevoEstandar, engine);
 
         get(CONSUMO, consumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, consumoPorPeriodoController::obtener, engine);
@@ -97,7 +97,7 @@ public class Service {
 
         get(USER, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);
-        post(USER_EDIT, panelDeUsuarioController::actualizar, engine);
+        post(USER, panelDeUsuarioController::actualizar, engine);
 
         post(USER_DISPOSITIVOS_ID_ON, miHogarController::encender, engine);
         post(USER_DISPOSITIVOS_ID_OFF, miHogarController::apagar, engine);
@@ -109,7 +109,7 @@ public class Service {
         post(SOLICITUDES_ID_REJECT, solicitudesController::rechazar, engine);
 
         get(SIGNUP, registrarController::mostrar, engine);
-        post(SIGNUP, registrarController::registrar, engine);
+        post(USERS, registrarController::registrar, engine);
 
         get(LOGOUT, loginController::logout, engine);
 

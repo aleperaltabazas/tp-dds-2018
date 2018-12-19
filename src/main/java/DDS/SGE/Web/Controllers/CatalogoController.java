@@ -86,6 +86,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+        viewModel.put("tipo", "inteligente");
 
         return new ModelAndView(viewModel, "crear-inteligente.hbs");
     }
@@ -97,6 +98,7 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
+        viewModel.put("tipo", "estandar");
 
         return new ModelAndView(viewModel, "crear-estandar.hbs");
     }

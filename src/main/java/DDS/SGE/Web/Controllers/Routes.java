@@ -28,8 +28,8 @@ public class Routes {
     public static final String DISPOSITIVOS_ID_INFO = DISPOSITIVOS + "/:id/info";
 
     private static final String DISPOSITIVOS_NEW = DISPOSITIVOS + "/new";
-    public static final String DISPOSITIVOS_NEW_INTELIGENTE = DISPOSITIVOS_NEW + "/inteligente";
-    public static final String DISPOSITIVOS_NEW_ESTANDAR = DISPOSITIVOS_NEW + "/estandar";
+    public static final String DISPOSITIVOS_INTELIGENTE = DISPOSITIVOS + "/inteligente";
+    public static final String DISPOSITIVOS_ESTANDAR = DISPOSITIVOS + "/estandar";
 
     public static final String TRANSFORMADOR = "/transformador";
     public static final String TRANSFORMADOR_CONSUMO = TRANSFORMADOR + "/consumo";
@@ -41,6 +41,8 @@ public class Routes {
     public static final String USER_DISPOSITIVOS_ID_ON = USER_DISPOSITIVOS + "/:id/on";
     public static final String USER_DISPOSITIVOS_ID_OFF = USER_DISPOSITIVOS + "/:id/off";
     public static final String USER_DISPOSITIVOS_ID_SAVE = USER_DISPOSITIVOS + "/:id/save";
+
+    public static final String USERS = "/users";
 
     public static final String SIGNUP = "/signup";
 
