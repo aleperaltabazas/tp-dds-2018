@@ -18,11 +18,6 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class SolicitudesController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         String pantalla;
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -62,7 +57,7 @@ public class SolicitudesController extends Controller {
     }
 
     public ModelAndView aceptar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null || req.session().attribute(ADMIN) != "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 

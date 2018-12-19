@@ -10,17 +10,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
-import static DDS.SGE.Web.Controllers.Routes.ADMINISTRADOR_LOGIN;
-
 public class TransformadorController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(ADMIN) != "si") {
             return new ErrorController().unauthorizedAccess(req, res);
-        }
-
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(ADMINISTRADOR_LOGIN);
-            return new LoginAdminController().mostrar(req, res);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -32,11 +25,6 @@ public class TransformadorController extends Controller {
     public ModelAndView obtenerConsumo(Request req, Response res) {
         if (req.session().attribute(ADMIN) != "si") {
             return new ErrorController().unauthorizedAccess(req, res);
-        }
-
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(ADMINISTRADOR_LOGIN);
-            return new LoginAdminController().mostrar(req, res);
         }
 
         String trafoId = req.queryParams("transformador");

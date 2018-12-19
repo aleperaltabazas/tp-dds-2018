@@ -7,15 +7,15 @@ import spark.Response;
 import java.util.HashMap;
 
 public class HomeController extends Controller {
-    public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            return new ModelAndView(null, "home.hbs");
-        }
-
-        return homeLogeado(req, res);
+    public ModelAndView home(Request req, Response res) {
+        return new ModelAndView(null, "home.hbs");
     }
 
-    private ModelAndView homeLogeado(Request req, Response res) {
+    public ModelAndView homeLogeado(Request req, Response res) {
+        if (req.session().attribute(SESSION_NAME) == null) {
+            return home(req, res);
+        }
+
         if (req.session().attribute(ADMIN) == "si") {
             return new PanelDeAdministradorController().mostrar(req, res);
         } else {

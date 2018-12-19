@@ -13,11 +13,6 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class LoginClienteController extends LoginController {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) != null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("loginRoute", LOGIN);
 
@@ -40,7 +35,7 @@ public class LoginClienteController extends LoginController {
                 req.session().attribute(SESSION_NAME, id);
                 req.session().attribute(ADMIN, "no");
 
-                return new HomeController().mostrar(req, res);
+                return new HomeController().homeLogeado(req, res);
             } else {
                 throw new RuntimeException("No se encontró esa combinación de usuario y contraseña");
             }

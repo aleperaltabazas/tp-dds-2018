@@ -19,11 +19,6 @@ public class ConsumoPorPeriodoController extends Controller {
     private static final String ERROR = "ERROR";
 
     public ModelAndView obtener(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -64,11 +59,6 @@ public class ConsumoPorPeriodoController extends Controller {
     }
 
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 

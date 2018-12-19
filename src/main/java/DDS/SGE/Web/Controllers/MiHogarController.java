@@ -18,14 +18,9 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class MiHogarController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         if (req.session().attribute(ADMIN) == "si") {
             res.redirect(ADMINISTRADOR);
-            return new HomeController().mostrar(req, res);
+            return new HomeController().homeLogeado(req, res);
         }
 
         logInfo("Context path: " + req.contextPath());

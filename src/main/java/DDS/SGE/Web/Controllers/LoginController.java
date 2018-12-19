@@ -13,11 +13,6 @@ import static DDS.SGE.Web.Controllers.Routes.HOME;
 
 public class LoginController extends Controller {
     public ModelAndView logout(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(HOME);
-            return new HomeController().mostrar(req, res);
-        }
-
         req.session().invalidate();
         res.redirect(HOME);
         return null;

@@ -19,11 +19,6 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class CatalogoController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         String page = req.params(":page");
         int pageNumber;
 
@@ -50,11 +45,6 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView solicitar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         if (req.session().attribute(ADMIN) == "si") {
             return new ErrorController().notFound(req, res);
         }
