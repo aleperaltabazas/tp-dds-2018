@@ -21,7 +21,7 @@ public class ErrorController extends Controller {
         logger.log(Level.WARNING, req.requestMethod());
         logger.log(Level.WARNING, req.body());
 
-        res.status(401);
+        res.status(403);
         //TODO: pantalla de unauthorized access
         return new ModelAndView(null, "401.hbs");
     }

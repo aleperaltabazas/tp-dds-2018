@@ -3,6 +3,7 @@ package DDS.SGE.Web.Controllers;
 import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
+import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
@@ -48,7 +49,7 @@ public class CatalogoController extends Controller {
 
     public ModelAndView solicitar(Request req, Response res) {
         if (req.session().attribute(ADMIN) == "si") {
-            return new ErrorController().notFound(req, res);
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         String id_dispositivo = req.params(":id");
@@ -72,8 +73,8 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {
-        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -84,8 +85,8 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView mostrarFormularioEstandar(Request req, Response res) {
-        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
@@ -96,8 +97,8 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView nuevoInteligente(Request req, Response res) {
-        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         try {
@@ -127,8 +128,8 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView nuevoEstandar(Request req, Response res) {
-        if ((req.session().attribute(ADMIN) != "si") || req.session().attribute(SESSION_NAME) == null) {
-            return new ErrorController().unauthorizedAccess(req, res);
+        if (req.session().attribute(ADMIN) == "si") {
+            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         try {
@@ -158,11 +159,6 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView mostrarFichaTecnica(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) == null) {
-            res.redirect(LOGIN);
-            return new LoginClienteController().mostrar(req, res);
-        }
-
         String id = req.params(":id");
         Long id_posta = Long.parseLong(id);
 

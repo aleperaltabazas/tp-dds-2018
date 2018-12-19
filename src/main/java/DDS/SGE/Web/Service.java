@@ -3,6 +3,7 @@ package DDS.SGE.Web;
 import static DDS.SGE.Web.Controllers.Routes.*;
 import static spark.Spark.*;
 
+import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
 import spark.Spark;
@@ -97,10 +98,10 @@ public class Service {
         post(DISPOSITIVOS_ID_ACQUIRE, catalogoController::solicitar, engine);
         get(DISPOSITIVOS_ID_INFO, catalogoController::mostrarFichaTecnica, engine);
 
-        get(DISPOSITIVOS_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
-        post(DISPOSITIVOS_INTELIGENTE, catalogoController::nuevoInteligente, engine);
-        get(DISPOSITIVOS_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
-        post(DISPOSITIVOS_ESTANDAR, catalogoController::nuevoEstandar, engine);
+        get(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::mostrarFormularioInteligente, engine);
+        post(DISPOSITIVOS_NEW_INTELIGENTE, catalogoController::nuevoInteligente, engine);
+        get(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::mostrarFormularioEstandar, engine);
+        post(DISPOSITIVOS_NEW_ESTANDAR, catalogoController::nuevoEstandar, engine);
 
         get(CONSUMO, consumoPorPeriodoController::mostrar, engine);
         get(CONSUMO_OBTENER, consumoPorPeriodoController::obtener, engine);
@@ -128,6 +129,10 @@ public class Service {
 
         //TODO: get(LIFE, controller::fortyTwo, engine);
         get(GLITCH, errorController::notFound, engine);
+
+        exception(UnauthorizedAccessException.class, (e, req, res) -> {
+            errorController.unauthorizedAccess(req, res);
+        });
     }
 
     public void run() {
