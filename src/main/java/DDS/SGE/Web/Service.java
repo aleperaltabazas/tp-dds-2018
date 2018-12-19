@@ -74,7 +74,7 @@ public class Service {
             }
         });
 
-        get(HOME, homeController::homeLogeado, engine);
+        get(HOME, homeController::home, engine);
 
         get(LOGIN, loginClienteController::mostrar, engine);
         post(LOGIN, loginClienteController::loginCliente, engine);

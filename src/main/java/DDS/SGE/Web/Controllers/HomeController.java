@@ -8,12 +8,8 @@ import java.util.HashMap;
 
 public class HomeController extends Controller {
     public ModelAndView home(Request req, Response res) {
-        return new ModelAndView(null, "home.hbs");
-    }
-
-    public ModelAndView homeLogeado(Request req, Response res) {
         if (req.session().attribute(SESSION_NAME) == null) {
-            return home(req, res);
+            return new ModelAndView(null, "home.hbs");
         }
 
         if (req.session().attribute(ADMIN) == "si") {

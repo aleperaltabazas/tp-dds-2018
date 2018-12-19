@@ -34,7 +34,9 @@ public class CatalogoController extends Controller {
 
         viewModel.put("dispositivos", dispos);
         viewModel.put("previousPage", pageNumber - 1);
+        viewModel.put("hayAnterior", pageNumber > 1);
         viewModel.put("nextPage", pageNumber + 1);
+        viewModel.put("haySiguiente", pageNumber < RepositorioCatalogo.getInstance().cantidadDePaginas());
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {

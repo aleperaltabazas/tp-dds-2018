@@ -35,7 +35,7 @@ public class LoginClienteController extends LoginController {
                 req.session().attribute(SESSION_NAME, id);
                 req.session().attribute(ADMIN, "no");
 
-                return new HomeController().homeLogeado(req, res);
+                return new HomeController().home(req, res);
             } else {
                 throw new RuntimeException("No se encontró esa combinación de usuario y contraseña");
             }

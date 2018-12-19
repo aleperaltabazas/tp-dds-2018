@@ -20,7 +20,7 @@ public class MiHogarController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
         if (req.session().attribute(ADMIN) == "si") {
             res.redirect(ADMINISTRADOR);
-            return new HomeController().homeLogeado(req, res);
+            return new HomeController().home(req, res);
         }
 
         logInfo("Context path: " + req.contextPath());
