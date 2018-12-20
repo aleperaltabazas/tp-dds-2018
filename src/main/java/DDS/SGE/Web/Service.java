@@ -72,13 +72,11 @@ public class Service {
         before("/*", (request, response) -> {
             if (request.splat() == null || request.splat().length == 0) {
                 homeController.home(request, response);
-                return;
             } else if (request.splat()[0].equals("login")) {
-                return;
+            } else if (request.splat()[0].equals("500")) {
             } else if (request.session().attribute("id") == null) {
                 response.redirect(LOGIN);
                 loginClienteController.mostrar(request, response);
-                return;
             }
         });
 
