@@ -136,6 +136,10 @@ public class Service {
         get("/500", errorController::somethingBroke, engine);
         get(GLITCH, errorController::notFound, engine);
 
+        notFound((req, res) -> errorController.notFound(req, res));
+
+        internalServerError((req, res) -> errorController.somethingBroke(req, res));
+
         exception(UnauthorizedAccessException.class, (e, req, res) -> errorController.unauthorizedAccess(req, res));
         exception(UserNotFoundException.class, (e, req, res) -> loginClienteController.loginError(e));
         exception(AdminNotFoundException.class, (e, req, res) -> loginAdminController.loginError(e));

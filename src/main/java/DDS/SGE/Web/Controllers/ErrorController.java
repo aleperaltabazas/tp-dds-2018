@@ -22,13 +22,10 @@ public class ErrorController extends Controller {
         logger.log(Level.WARNING, req.body());
 
         res.status(403);
-        //TODO: pantalla de unauthorized access
         return new ModelAndView(null, "401.hbs");
     }
 
     public ModelAndView somethingBroke(Request req, Response res) {
-        //TODO: pantalla de error 500
-
         res.status(500);
         return new ModelAndView(null, "500.hbs");
     }
