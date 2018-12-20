@@ -63,13 +63,10 @@ public class CatalogoController extends Controller {
 
         SolicitudAbierta nuevaSolicitud = new SolicitudAbierta(cliente, dispositivo);
 
-        try {
-            withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud));
-            res.redirect(SOLICITUDES);
-            return new ModelAndView(null, "solicitudes-user.hbs");
-        } catch (Exception e) {
-            return new ErrorController().somethingBroke(req, res);
-        }
+        withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud));
+        res.redirect(SOLICITUDES);
+        return new ModelAndView(null, "solicitudes-user.hbs");
+
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {

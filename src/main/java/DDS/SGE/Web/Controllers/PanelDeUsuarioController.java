@@ -69,12 +69,7 @@ public class PanelDeUsuarioController extends Controller {
         cliente.setDomicilio(direccion);
         cliente.setPermiteApagar(permiteApagar);
 
-        try {
-            withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
-        } catch (Exception e) {
-            logError(e);
-            return new ErrorController().notFound(req, res);
-        }
+        withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
 
         res.redirect(USER);
 

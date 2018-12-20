@@ -28,28 +28,24 @@ public class HogaresController extends Controller {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
-        try {
-            String id = req.params(":id");
-            Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
-            HashMap<String, Object> viewModel = new HashMap<>();
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
+        String id = req.params(":id");
+        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
+        HashMap<String, Object> viewModel = new HashMap<>();
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
-            if (cliente.getDispositivosEstandar().isEmpty() && cliente.getDispositivosInteligente().isEmpty()) {
-                viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");
-                viewModel.put("noHayConsumo", "No se registró consumo en el último mes");
-                viewModel.put("noHayMediciones", "No se registraron ningunas mediciones recientemente");
-            } else {
-                viewModel.put("consumoUltimoMes", "Total del último mes: " + new DecimalFormat("#0.00").format(cliente.getConsumoUltimoMes()));
-                viewModel.put("consumoMesActual", "Total del mes actual: " + new DecimalFormat("#0.00").format(cliente.getConsumoMesActual()));
-                viewModel.put("consumoPromedio", "Consumo promedio: " + new DecimalFormat("#0.00").format(cliente.consumoPromedioPorDispositivo()));
-                viewModel.put("estimadoDiario", "Consumo diario estimado: " + new DecimalFormat("#0.00").format(cliente.consumoTotalEstimadoDiario()));
-            }
-
-            viewModel.put("cliente", cliente);
-
-            return new ModelAndView(viewModel, "hogar-de.hbs");
-        } catch (Exception ex) {
-            return new ErrorController().somethingBroke(req, res);
+        if (cliente.getDispositivosEstandar().isEmpty() && cliente.getDispositivosInteligente().isEmpty()) {
+            viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");
+            viewModel.put("noHayConsumo", "No se registró consumo en el último mes");
+            viewModel.put("noHayMediciones", "No se registraron ningunas mediciones recientemente");
+        } else {
+            viewModel.put("consumoUltimoMes", "Total del último mes: " + new DecimalFormat("#0.00").format(cliente.getConsumoUltimoMes()));
+            viewModel.put("consumoMesActual", "Total del mes actual: " + new DecimalFormat("#0.00").format(cliente.getConsumoMesActual()));
+            viewModel.put("consumoPromedio", "Consumo promedio: " + new DecimalFormat("#0.00").format(cliente.consumoPromedioPorDispositivo()));
+            viewModel.put("estimadoDiario", "Consumo diario estimado: " + new DecimalFormat("#0.00").format(cliente.consumoTotalEstimadoDiario()));
         }
+
+        viewModel.put("cliente", cliente);
+
+        return new ModelAndView(viewModel, "hogar-de.hbs");
     }
 }

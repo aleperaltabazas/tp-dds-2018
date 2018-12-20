@@ -43,7 +43,7 @@ public class LoginAdminController extends LoginController {
 
             return new PanelDeAdministradorController().mostrar(req, res);
         } else {
-            throw new RuntimeException("No se encontró esa combinación de usuario y contraseña.");
+            throw new AdminNotFoundException();
         }
     }
 

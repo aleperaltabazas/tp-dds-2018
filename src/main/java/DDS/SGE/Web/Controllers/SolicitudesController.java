@@ -83,11 +83,7 @@ public class SolicitudesController extends Controller {
         SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
         Administrador administrador = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.session().attribute(SESSION_NAME)));
 
-        try {
-            solicitud.rechazar(administrador);
-        } catch (Exception e) {
-            return new ErrorController().somethingBroke(req, res);
-        }
+        solicitud.rechazar(administrador);
 
         res.redirect(SOLICITUDES);
         return this.mostrar(req, res);
