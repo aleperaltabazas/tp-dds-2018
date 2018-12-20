@@ -19,22 +19,25 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
     private static final Logger LOGGER = Logger.getLogger(PersistirMain.class.getName());
 
     public void initialize() {
+        TablaDispositivos td = new TablaDispositivos();
+
         ClienteBuilder cb = new ClienteBuilder();
 
         Cliente c1 = cb.crearCliente("Alejandro", "Peralta Bazas", "4012972", "16729076", "Alesaurio", "pass");
         Cliente c2 = cb.crearCliente("Matias", "Giorda", "12927397", "47820726", "maticrash", "otrapass");
 
         Dispositivo d = new Dispositivo("Dispositivo cualunca", new DispositivoEstandar(20, 40));
-
         Dispositivo d2 = new Dispositivo("Otro dispositivo", new DispositivoEstandar(50, 100));
 
         c1.agregarDispositivo(d);
         c1.agregarDispositivo(d2);
 
-        AdministradorBuilder ab = new AdministradorBuilder();
-        Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
+        DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), new AireAcondicionado(100, 2));
+        Dispositivo dispositivoInfractor = new Dispositivo(dispositivoInfractorInteligente);
 
-        TablaDispositivos td = new TablaDispositivos();
+        Cliente clienteConDispositivoInfractor = cb.crearCliente("Maximiliano", "Paz", "420", "386", "foo", "bar");
+        clienteConDispositivoInfractor.agregarDispositivo(dispositivoInfractor);
+        clienteConDispositivoInfractor.agregarDispositivo(td.getDispositivos().get(2).construir());
 
         Fabricante unFabricante = new Computadora(true);
         LocalDateTime fechaDeReferencia = LocalDateTime.now();
@@ -51,31 +54,29 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
 
         c2.agregarDispositivo(di);
 
+        AdministradorBuilder ab = new AdministradorBuilder();
+        Administrador admin = ab.admin("Gastón", "Prieto", "admin", "admin");
+
         Transformador transformador1 = new Transformador(1);
         Transformador transformador2 = new Transformador(2);
+        Transformador transformador3 = new Transformador(3);
+        Transformador transformador4 = new Transformador(4);
+
+        Transformador transformador5 = new Transformador(5);
 
         transformador1.agregarCliente(c1);
         transformador2.agregarCliente(c2);
 
-        DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), new AireAcondicionado(100, 2));
-        Dispositivo dispositivoInfractor = new Dispositivo(dispositivoInfractorInteligente);
-
-        Cliente clienteConDispositivoInfractor = cb.crearCliente("Maximiliano", "Paz", "420", "386", "foo", "bar");
-        clienteConDispositivoInfractor.agregarDispositivo(dispositivoInfractor);
-        clienteConDispositivoInfractor.agregarDispositivo(td.getDispositivos().get(2).construir());
+        List<Transformador> transformadores = Arrays.asList(transformador1, transformador2, transformador3, transformador4, transformador5);
+        List<Cliente> clientes = Arrays.asList(c1, c2, clienteConDispositivoInfractor);
+        List<Administrador> administradores = Arrays.asList(admin);
 
         try {
             withTransaction(() -> {
                 td.getDispositivos().forEach(dispo -> RepositorioCatalogo.getInstance().saveOrUpdate(dispo));
-
-                RepositorioClientes.getInstance().agregarCliente(c1);
-                RepositorioClientes.getInstance().agregarCliente(c2);
-                RepositorioClientes.getInstance().agregarCliente(clienteConDispositivoInfractor);
-
-                RepositorioAdministradores.getInstance().registrarAdministrador(admin);
-
-                RepositorioTransformadores.getInstance().saveOrUpdate(transformador1);
-                RepositorioTransformadores.getInstance().saveOrUpdate(transformador2);
+                clientes.forEach(c -> RepositorioClientes.getInstance().registrarCliente(c));
+                administradores.forEach(a -> RepositorioAdministradores.getInstance().registrarAdministrador(a));
+                transformadores.forEach(t -> RepositorioTransformadores.getInstance().saveOrUpdate(t));
             });
         } catch (Exception e) {
             LOGGER.log(Level.INFO, e.getMessage());
