@@ -39,7 +39,7 @@ public class ConsumoPorPeriodoController extends Controller {
 
             String periodo = fechaInicio.format(formatter) + " - " + fechaFin.format(formatter);
 
-            HashMap<String, Object> viewModel = new HashMap<>();
+            HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
             viewModel.put("fechaInicio", fechaInicio.format(formatter));
             viewModel.put("fechaFin", fechaFin.format(formatter));
             viewModel.put("consumo", consumo);
@@ -50,13 +50,14 @@ public class ConsumoPorPeriodoController extends Controller {
             res.redirect(CONSUMO);
 
             HashMap<String, Object> viewModel = this.fillError(e);
+            viewModel = this.rellenarCliente(viewModel, req.session().attribute(SESSION_NAME));
 
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         }
     }
 
     public ModelAndView mostrar(Request req, Response res) {
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "consumo-obtener.hbs");
     }

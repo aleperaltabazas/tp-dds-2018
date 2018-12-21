@@ -23,8 +23,6 @@ public class MiHogarController extends Controller {
             return new HomeController().home(req, res);
         }
 
-        logInfo("Context path: " + req.contextPath());
-
         String id = req.session().attribute(SESSION_NAME);
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
@@ -32,6 +30,7 @@ public class MiHogarController extends Controller {
         List<Dispositivo> dispositivosEstandar = cliente.getDispositivosEstandar();
 
         HashMap<String, Object> viewModel = this.armarViewModel(cliente, dispositivosInteligente, dispositivosEstandar);
+        viewModel = rellenarCliente(viewModel, req.session().attribute(SESSION_NAME));
         viewModel.put("cliente", cliente);
 
         return new ModelAndView(viewModel, "mi-hogar-v2-posta.hbs");
@@ -52,17 +51,6 @@ public class MiHogarController extends Controller {
 
         Dispositivo dispositivo = RepositorioDispositivos.getInstance().findByID(Long.parseLong(id));
         dispositivo.encender();
-
-        res.redirect(HOGAR);
-        return mostrar(req, res);
-    }
-
-    public ModelAndView ahorrarEnergia(Request req, Response res) {
-        String id = req.params(":id");
-
-        Dispositivo dispositivo = RepositorioDispositivos.getInstance().findByID(Long.parseLong(id));
-        TipoDispositivo tipo = (DispositivoInteligente) dispositivo.getTipoDispositivo();
-        ((DispositivoInteligente) tipo).ahorraEnergia();
 
         res.redirect(HOGAR);
         return mostrar(req, res);

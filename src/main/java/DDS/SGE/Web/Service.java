@@ -3,6 +3,11 @@ package DDS.SGE.Web;
 import DDS.SGE.Exceptions.AdminNotFoundException;
 import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Exceptions.UserNotFoundException;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
+import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Solicitud.ChabonQueTePersisteCuandoSeCierraUnaSolicitud;
+import DDS.SGE.Usuarie.Administrador;
+import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
 import spark.Spark;
@@ -66,7 +71,7 @@ public class Service {
     }
 
     private boolean shouldRedirect(String[] route) {
-        List<String> exceptions = Arrays.asList("login", "500", "signup");
+        List<String> exceptions = Arrays.asList("login", "500", "signup", "administrador/login");
 
         return !exceptions.stream().anyMatch(r -> r.equals(route[0]));
     }
@@ -85,7 +90,13 @@ public class Service {
         });
 
         before(SOLICITUDES, (req, res) -> {
-
+            if (req.session().attribute("admin") == "si") {
+                Administrador admin = RepositorioAdministradores.getInstance().findByID(Long.parseLong(req.session().attribute("id")));
+                new ChabonQueTePersisteCuandoSeCierraUnaSolicitud().leer(admin);
+            } else {
+                Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(req.session().attribute("id")));
+                new ChabonQueTePersisteCuandoSeCierraUnaSolicitud().leer(cliente);
+            }
         });
 
         before(SIGNUP, (req, res) -> {
@@ -137,7 +148,6 @@ public class Service {
 
         post(USER_DISPOSITIVOS_ID_ON, miHogarController::encender, engine);
         post(USER_DISPOSITIVOS_ID_OFF, miHogarController::apagar, engine);
-        post(USER_DISPOSITIVOS_ID_SAVE, miHogarController::ahorrarEnergia, engine);
 
         get(SOLICITUDES, solicitudesController::mostrar, engine);
         get(SOLICITUDES_ID_INFO, solicitudesController::verSolicitud, engine);

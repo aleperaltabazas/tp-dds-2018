@@ -4,6 +4,7 @@ import DDS.SGE.Dispositivo.DispositivoBuilder;
 import DDS.SGE.Dispositivo.DispositivoDeCatalogo;
 import DDS.SGE.Dispositivo.MetodoDeCreacion;
 import DDS.SGE.Exceptions.UnauthorizedAccessException;
+import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioCatalogo;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Repositorios.RepositorioSolicitudes;
@@ -40,17 +41,15 @@ public class CatalogoController extends Controller {
         viewModel.put("haySiguiente", pageNumber < RepositorioCatalogo.getInstance().cantidadDePaginas());
 
         if (req.session().attribute(ADMIN) == "si") {
+            viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
             return new ModelAndView(viewModel, "catalogo-admin.hbs");
         }
 
+        viewModel = this.rellenarCliente(viewModel, req.session().attribute(SESSION_NAME));
         return new ModelAndView(viewModel, "catalogo-user.hbs");
     }
 
     public ModelAndView solicitar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
-            throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
-        }
-
         String id_dispositivo = req.params(":id");
         Long id_dispositivo_posta = Long.parseLong(id_dispositivo);
 
@@ -62,36 +61,40 @@ public class CatalogoController extends Controller {
 
         SolicitudAbierta nuevaSolicitud = new SolicitudAbierta(cliente, dispositivo);
 
-        withTransaction(() -> RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud));
+        withTransaction(() -> {
+            RepositorioSolicitudes.getInstance().saveOrUpdate(nuevaSolicitud);
+            RepositorioAdministradores.getInstance().listar().forEach(a -> a.setTieneNotificaciones(true));
+        });
+
         res.redirect(SOLICITUDES);
-        return new ModelAndView(null, "solicitudes-user.hbs");
+        return new SolicitudesController().mostrar(req, res);
 
     }
 
     public ModelAndView mostrarFormularioInteligente(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
         viewModel.put("tipo", "inteligente");
 
         return new ModelAndView(viewModel, "crear-inteligente.hbs");
     }
 
     public ModelAndView mostrarFormularioEstandar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
         viewModel.put("tipo", "estandar");
 
         return new ModelAndView(viewModel, "crear-estandar.hbs");
     }
 
     public ModelAndView nuevoInteligente(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
@@ -111,7 +114,7 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new CatalogoController().mostrar(req, res);
         } catch (RuntimeException e) {
-            HashMap<String, Object> viewModel = new HashMap<>();
+            HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
             viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
             viewModel.put("errorMessage", e.getMessage());
 
@@ -121,7 +124,7 @@ public class CatalogoController extends Controller {
     }
 
     public ModelAndView nuevoEstandar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
@@ -142,7 +145,7 @@ public class CatalogoController extends Controller {
             res.redirect(DISPOSITIVOS);
             return new PanelDeAdministradorController().mostrar(req, res);
         } catch (RuntimeException e) {
-            HashMap<String, Object> viewModel = new HashMap<>();
+            HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
             viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
             viewModel.put("errorMessage", e.getMessage());
 
@@ -160,8 +163,12 @@ public class CatalogoController extends Controller {
         viewModel.put("dispositivo", dispositivo);
 
         if (req.session().attribute(ADMIN) == "si") {
+            viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
+
             return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");
         }
+
+        viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "ficha-tecnica-user.hbs");
     }

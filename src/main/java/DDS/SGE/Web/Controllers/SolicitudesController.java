@@ -39,13 +39,14 @@ public class SolicitudesController extends Controller {
 
             viewModel.put("pendientes", solicitudesAbiertas);
             viewModel.put("cerradas", solicitudesCerradas);
-}
+            viewModel = this.rellenarCliente(viewModel, req.session().attribute(SESSION_NAME));
+        }
 
         return new ModelAndView(viewModel, pantalla);
     }
 
     public ModelAndView aceptar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
@@ -63,7 +64,7 @@ public class SolicitudesController extends Controller {
     }
 
     public ModelAndView rechazar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
@@ -77,13 +78,13 @@ public class SolicitudesController extends Controller {
     }
 
     public ModelAndView verSolicitud(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         SolicitudAbierta solicitud = RepositorioSolicitudes.getInstance().findByIDAbierta(Long.parseLong(req.params(":id")));
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
         viewModel.put("solicitud", solicitud);
 
         return new ModelAndView(viewModel, "ver-solicitud.hbs");

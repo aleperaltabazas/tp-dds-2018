@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class TransformadorController extends Controller {
     public ModelAndView mostrar(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
@@ -24,7 +24,7 @@ public class TransformadorController extends Controller {
     }
 
     public ModelAndView obtenerConsumo(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 

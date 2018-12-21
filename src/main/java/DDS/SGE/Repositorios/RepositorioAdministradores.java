@@ -1,5 +1,6 @@
 package DDS.SGE.Repositorios;
 
+import java.util.List;
 import java.util.Optional;
 
 import DDS.SGE.Usuarie.Administrador;
@@ -32,5 +33,9 @@ public class RepositorioAdministradores extends Repositorio {
 
     public void saveOrUpdate(Administrador administrador) {
         persistir(administrador);
+    }
+
+    public List<Administrador> listar() {
+        return this.findAll(Administrador.class);
     }
 }

@@ -22,7 +22,7 @@ public class OptimizadorController extends Controller {
 
         List<Double> resultadoEnLista = generarLista(resultado);
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
         viewModel.put("resultado", resultadoEnLista);
         viewModel.put("mensual", optimizador.usoMensualRecomendado(cliente));
 

@@ -60,7 +60,6 @@ public class PanelDeUsuarioController extends Controller {
         withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
 
         res.redirect(USER_PROFILE);
-
         return mostrar(req, res);
     }
 

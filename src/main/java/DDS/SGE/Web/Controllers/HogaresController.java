@@ -30,7 +30,8 @@ public class HogaresController extends Controller {
 
         String id = req.params(":id");
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
+
 
         if (cliente.getDispositivosEstandar().isEmpty() && cliente.getDispositivosInteligente().isEmpty()) {
             viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");
