@@ -19,11 +19,15 @@ public class OptimizadorController extends Controller {
 
         Optimizador optimizador = new Optimizador();
         double[] resultado = optimizador.tiempoRecomendadoPorDispositivo(cliente);
-
         List<Double> resultadoEnLista = generarLista(resultado);
+        List<String> resultadoEnString = new ArrayList<String>();
+        for(int i = 0; i< resultado.length; i++) {
+            if(resultadoEnLista.get(i) != 0) resultadoEnString.add(String.valueOf(resultadoEnLista.get(i)));
+            else resultadoEnString.add("No se encuentran mediciones aquí");
+        }
 
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("resultado", resultadoEnLista);
+        viewModel.put("resultado", resultadoEnString);
         viewModel.put("mensual", optimizador.usoMensualRecomendado(cliente));
         viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
