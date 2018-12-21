@@ -2,12 +2,10 @@ package DDS.SGE.Web.Controllers;
 
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
+import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.Cliente;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
 
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -18,8 +16,11 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
     protected final Logger LOGGER = Logger.getLogger(this.getClass().getSimpleName());
     static final String ADMIN = "admin";
 
-    HashMap<String, Object> rellenarCliente(Cliente cliente) {
-        HashMap<String, Object> viewModel = new HashMap<>();
+    HashMap<String, Object> rellenarCliente(HashMap<String, Object> viewModel, String id) {
+        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
+
+        if (viewModel == null)
+            viewModel = new HashMap<>();
 
         viewModel.put("nombre", cliente.getNombre());
         viewModel.put("apellido", cliente.getApellido());
@@ -28,13 +29,9 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
         viewModel.put("tipoDni", cliente.getTipoDni());
         viewModel.put("domicilio", cliente.getDomicilio());
         viewModel.put("username", cliente.getUsername());
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
+        viewModel.put("user", cliente);
 
         return viewModel;
-    }
-
-    public ModelAndView fortyTwo(Request request, Response response) {
-        return new ModelAndView(null, "meaning-of-life.hbs");
     }
 
     protected HashMap fillError(Exception e) {
@@ -44,20 +41,21 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
         return viewModel;
     }
 
-    protected String iconoNotificacionesAdministrador(Long id) {
-        if (RepositorioAdministradores.getInstance().findByID(id).getTieneNotificaciones()) {
-            return "mail-icon-notification.png";
-        } else {
-            return "mail-icon.png";
+    HashMap<String, Object> rellenarAdministrador(HashMap<String, Object> viewModel, String id) {
+        if (viewModel == null) {
+            viewModel = new HashMap<>();
         }
-    }
 
-    protected String iconoNotificacionesCliente(Long id) {
-        if (RepositorioClientes.getInstance().findByID(id).getTieneNotificaciones()) {
-            return "mail-icon-notification.png";
-        } else {
-            return "mail-icon.png";
-        }
+        Administrador admin = RepositorioAdministradores.getInstance().findByID(Long.parseLong(id));
+
+        viewModel.put("nombre", admin.getNombre());
+        viewModel.put("apellido", admin.getApellido());
+        viewModel.put("direccion", admin.getDomicilio());
+        viewModel.put("username", admin.getUsername());
+        viewModel.put("fechaDeAlta", admin.getFechaAltaSistema().toString());
+        viewModel.put("user", admin);
+
+        return viewModel;
     }
 
     protected void logError(Exception e) {

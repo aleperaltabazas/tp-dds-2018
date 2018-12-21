@@ -9,6 +9,8 @@ import spark.Spark;
 import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,6 +66,12 @@ public class Service {
         solicitudesController = new SolicitudesController();
     }
 
+    private boolean shouldRedirect(String[] route) {
+        List<String> exceptions = Arrays.asList("login", "500", "signup");
+
+        return !exceptions.stream().anyMatch(r -> r.equals(route[0]));
+    }
+
     @SuppressWarnings("Duplicates")
     private void inicializarRutas() {
         HandlebarsTemplateEngineBuilder builder = new HandlebarsTemplateEngineBuilder(new HandlebarsTemplateEngine());
@@ -72,11 +80,19 @@ public class Service {
         before("/*", (request, response) -> {
             if (request.splat() == null || request.splat().length == 0) {
                 homeController.home(request, response);
-            } else if (request.splat()[0].equals("login")) {
-            } else if (request.splat()[0].equals("500")) {
-            } else if (request.session().attribute("id") == null) {
+            } else if (request.session().attribute("id") == null && shouldRedirect(request.splat())) {
                 response.redirect(LOGIN);
-                loginClienteController.mostrar(request, response);
+            }
+        });
+
+        before(SOLICITUDES, (req, res) -> {
+
+        });
+
+        before(SIGNUP, (req, res) -> {
+            if (req.session().attribute("id") != null) {
+                res.redirect(HOME);
+                new HomeController().home(req, res);
             }
         });
 
@@ -139,17 +155,23 @@ public class Service {
         get(GLITCH, errorController::notFound, engine);
 
         notFound((req, res) -> errorController.notFound(req, res));
-
         internalServerError((req, res) -> errorController.somethingBroke(req, res));
 
-        exception(UnauthorizedAccessException.class, (e, req, res) -> errorController.unauthorizedAccess(req, res));
-        exception(UserNotFoundException.class, (e, req, res) -> loginClienteController.loginError(e));
-        exception(AdminNotFoundException.class, (e, req, res) -> loginAdminController.loginError(e));
+        exception(Exception.class, (e, req, res) -> e.printStackTrace());
 
-        exception(Exception.class, (e, req, res) -> {
-            LOGGER.log(Level.INFO, e.getMessage());
+        exception(UnauthorizedAccessException.class, (e, req, res) -> {
             res.redirect("/500");
-            errorController.somethingBroke(req, res);
+            errorController.unauthorizedAccess(req, res);
+        });
+
+        exception(UserNotFoundException.class, (e, req, res) -> {
+            res.redirect(LOGIN);
+            loginClienteController.loginError(e);
+        });
+
+        exception(AdminNotFoundException.class, (e, req, res) -> {
+            res.redirect(LOGIN);
+            loginAdminController.loginError(e);
         });
     }
 

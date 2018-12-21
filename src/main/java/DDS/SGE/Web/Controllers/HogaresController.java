@@ -12,26 +12,25 @@ import java.util.HashMap;
 
 public class HogaresController extends Controller {
     public ModelAndView verTodosLosHogares(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("clientes", RepositorioClientes.getInstance().getAllClients());
-        viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
+        viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "hogares.hbs");
     }
 
     public ModelAndView hogarDe(Request req, Response res) {
-        if (req.session().attribute(ADMIN) == "si") {
+        if (req.session().attribute(ADMIN) != "si") {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
         String id = req.params(":id");
         Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         if (cliente.getDispositivosEstandar().isEmpty() && cliente.getDispositivosInteligente().isEmpty()) {
             viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");

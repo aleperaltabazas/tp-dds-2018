@@ -32,6 +32,8 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
         c1.agregarDispositivo(d);
         c1.agregarDispositivo(d2);
 
+        c1.setTieneNotificaciones(true);
+
         DispositivoInteligente dispositivoInfractorInteligente = new DispositivoInteligente(new Encendido(), new AireAcondicionado(100, 2));
         Dispositivo dispositivoInfractor = new Dispositivo(dispositivoInfractorInteligente);
 

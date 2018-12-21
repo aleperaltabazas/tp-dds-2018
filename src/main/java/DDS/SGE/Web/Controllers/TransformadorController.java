@@ -44,7 +44,7 @@ public class TransformadorController extends Controller {
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("consumo", transformador.consumoEnElPeriodo(fechaInicio.atStartOfDay(), fechaFin.atStartOfDay()));
         viewModel.put("transformadores", RepositorioTransformadores.getInstance().listar());
-        viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
+        viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "consumo-transformador-obtener.hbs");
     }

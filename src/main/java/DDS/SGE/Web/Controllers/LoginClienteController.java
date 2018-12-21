@@ -26,23 +26,31 @@ public class LoginClienteController extends LoginController {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
+        System.out.println("El usuario puso:");
+        System.out.println(username);
+        System.out.println(HashProvider.hash(password));
+
         Optional<Cliente> cliente = RepositorioClientes.getInstance().findByUsername(username);
         if (cliente.isPresent()) {
+            System.out.println(cliente.get().getUsername());
+            System.out.println(cliente.get().getPassword());
 
             if (!cliente.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
                 throw new UserNotFoundException();
             }
 
             String id = Long.toString(cliente.get().getId());
-            res.redirect(HOME);
 
             req.session().attribute(SESSION_NAME, id);
             req.session().attribute(ADMIN, "no");
 
-            return new HomeController().home(req, res);
+            res.redirect(HOME);
+
         } else {
-            throw new UserNotFoundException();
+            return this.loginError(new UserNotFoundException());
         }
+
+        return new HomeController().home(req, res);
     }
 
     public ModelAndView loginError(UserNotFoundException e) {

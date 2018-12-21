@@ -18,24 +18,16 @@ public class PanelDeUsuarioController extends Controller {
         String pantalla;
 
         if (req.session().attribute(ADMIN) == "si") {
-            String id = req.session().attribute(SESSION_NAME);
-            Administrador admin = RepositorioAdministradores.getInstance().findByID(Long.parseLong(id));
-
-            viewModel.put("nombre", admin.getNombre());
-            viewModel.put("apellido", admin.getApellido());
-            viewModel.put("direccion", admin.getDomicilio());
-            viewModel.put("username", admin.getUsername());
-            viewModel.put("fechaDeAlta", admin.getFechaAltaSistema().toString());
-            viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(admin.getId()));
+            viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
 
             pantalla = "administrador-profile.hbs";
         } else {
             String id = req.session().attribute(SESSION_NAME);
             Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
 
-            viewModel = rellenarCliente(cliente);
+            viewModel = rellenarCliente(null, req.session().attribute(SESSION_NAME));
+
             viewModel.put("permiso", cliente.getPermiteApagar() ? "sí" : "no");
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
             pantalla = "panel-usuario.hbs";
         }
 
@@ -43,11 +35,7 @@ public class PanelDeUsuarioController extends Controller {
     }
 
     public ModelAndView editar(Request req, Response res) {
-        String id = req.session().attribute(SESSION_NAME);
-        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(id));
-
-        HashMap<String, Object> viewModel = rellenarCliente(cliente);
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
+        HashMap<String, Object> viewModel = rellenarCliente(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "editar-perfil-user.hbs");
     }
@@ -77,9 +65,7 @@ public class PanelDeUsuarioController extends Controller {
     }
 
     public ModelAndView mostrarSettings(Request req, Response res) {
-        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(req.session().attribute(SESSION_NAME)));
-
-        HashMap<String, Object> viewModel = this.rellenarCliente(cliente);
+        HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "user-settings.hbs");
     }

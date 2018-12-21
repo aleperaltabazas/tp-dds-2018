@@ -30,15 +30,8 @@ public class SolicitudesController extends Controller {
 
             viewModel.put("pendientes", RepositorioSolicitudes.getInstance().listarAbiertas());
             viewModel.put("cerradas", RepositorioSolicitudes.getInstance().listarCerradasPor(id));
-            viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(id));
-
-            Administrador administrador = RepositorioAdministradores.getInstance().findByID(id);
-            administrador.setTieneNotificaciones(false);
-
-            withTransaction(() -> RepositorioAdministradores.getInstance().saveOrUpdate(administrador));
+            viewModel = this.rellenarAdministrador(viewModel, req.session().attribute(SESSION_NAME));
         } else {
-            Long id = Long.parseLong(req.session().attribute(SESSION_NAME));
-
             List<SolicitudAbierta> solicitudesAbiertas = RepositorioSolicitudes.getInstance().solicitudesAbiertasDe(Long.parseLong(req.session().attribute(SESSION_NAME)));
             List<SolicitudCerrada> solicitudesCerradas = RepositorioSolicitudes.getInstance().solicitudesCerradasDe(Long.parseLong(req.session().attribute(SESSION_NAME)));
 
@@ -46,13 +39,7 @@ public class SolicitudesController extends Controller {
 
             viewModel.put("pendientes", solicitudesAbiertas);
             viewModel.put("cerradas", solicitudesCerradas);
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(id));
-
-            Cliente cliente = RepositorioClientes.getInstance().findByID(id);
-            cliente.setTieneNotificaciones(false);
-
-            withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
-        }
+}
 
         return new ModelAndView(viewModel, pantalla);
     }
@@ -98,7 +85,6 @@ public class SolicitudesController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("solicitud", solicitud);
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         return new ModelAndView(viewModel, "ver-solicitud.hbs");
     }

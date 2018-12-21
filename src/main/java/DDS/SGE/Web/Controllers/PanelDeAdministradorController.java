@@ -13,8 +13,7 @@ public class PanelDeAdministradorController extends Controller {
             return new ErrorController().unauthorizedAccess(req, res);
         }
 
-        HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesAdministrador(Long.parseLong(req.session().attribute(SESSION_NAME))));
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "panel-administrador.hbs");
     }

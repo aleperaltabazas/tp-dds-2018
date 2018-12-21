@@ -44,15 +44,12 @@ public class ConsumoPorPeriodoController extends Controller {
             viewModel.put("fechaFin", fechaFin.format(formatter));
             viewModel.put("consumo", consumo);
             viewModel.put("periodo", periodo);
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
-
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         } catch (RuntimeException e) {
             req.session().attribute("ERROR", true);
             res.redirect(CONSUMO);
 
             HashMap<String, Object> viewModel = this.fillError(e);
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
         }
@@ -60,7 +57,6 @@ public class ConsumoPorPeriodoController extends Controller {
 
     public ModelAndView mostrar(Request req, Response res) {
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         return new ModelAndView(viewModel, "consumo-obtener.hbs");
     }

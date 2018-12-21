@@ -8,7 +8,13 @@
     <div class="row">
       <div class="p-2 text-dark">
         <a href="/solicitudes" method="GET">
-          <img src="/resources/imgs/{{mail-icon}}" alt="Solicitudes" class="p-2 hogar-button">
+          {{#user}}
+          {{#if this.tieneNotificaciones}}
+          <img src="/resources/imgs/mail-icon-notification.png" alt="Solicitudes" class="p-2 hogar-button">
+          {{else}}
+          <img src="/resources/imgs/mail-icon.png" alt="Solicitudes" class="p-2 hogar-button">
+          {{/if}}
+          {{/user}}
         </a>
       </div>
       <div class="p-2 text-dark">

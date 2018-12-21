@@ -38,7 +38,6 @@ public class CatalogoController extends Controller {
         viewModel.put("hayAnterior", pageNumber > 1);
         viewModel.put("nextPage", pageNumber + 1);
         viewModel.put("haySiguiente", pageNumber < RepositorioCatalogo.getInstance().cantidadDePaginas());
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {
             return new ModelAndView(viewModel, "catalogo-admin.hbs");
@@ -75,7 +74,6 @@ public class CatalogoController extends Controller {
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
         viewModel.put("tipo", "inteligente");
 
         return new ModelAndView(viewModel, "crear-inteligente.hbs");
@@ -87,7 +85,6 @@ public class CatalogoController extends Controller {
         }
 
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
         viewModel.put("tipo", "estandar");
 
         return new ModelAndView(viewModel, "crear-estandar.hbs");
@@ -117,7 +114,6 @@ public class CatalogoController extends Controller {
             HashMap<String, Object> viewModel = new HashMap<>();
             viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
             viewModel.put("errorMessage", e.getMessage());
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
             return new ModelAndView(viewModel, "crear-inteligente.hbs");
         }
@@ -149,7 +145,6 @@ public class CatalogoController extends Controller {
             HashMap<String, Object> viewModel = new HashMap<>();
             viewModel.put("error", "<div> <p class=\"error\">{{errorMessage}}</p> </div>");
             viewModel.put("errorMessage", e.getMessage());
-            viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
             return new ModelAndView(viewModel, "crear-estandar.hbs");
         }
@@ -163,7 +158,6 @@ public class CatalogoController extends Controller {
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("dispositivo", dispositivo);
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(Long.parseLong(req.session().attribute(SESSION_NAME))));
 
         if (req.session().attribute(ADMIN) == "si") {
             return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");

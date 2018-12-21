@@ -70,7 +70,6 @@ public class MiHogarController extends Controller {
 
     private HashMap<String, Object> armarViewModel(Cliente cliente, List<Dispositivo> dispositivosinteligentes, List<Dispositivo> dispositivosEstandar) {
         HashMap<String, Object> viewModel = new HashMap<>();
-        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         if (dispositivosinteligentes.isEmpty() && dispositivosEstandar.isEmpty()) {
             viewModel.put("noHayDispositivos", "No tenés ningún dispositivo actualmente");

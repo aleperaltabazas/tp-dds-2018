@@ -21,10 +21,6 @@ public class RegistrarController extends Controller {
     }
 
     public ModelAndView registrar(Request req, Response res) {
-        if (req.session().attribute(SESSION_NAME) != null) {
-            res.redirect(HOME);
-            return new HomeController().home(req, res);
-        }
 
         String username = req.queryParams("username");
         String password = req.queryParams("password");
@@ -75,7 +71,7 @@ public class RegistrarController extends Controller {
         }
 
         res.redirect(LOGIN);
-        return new ModelAndView(null, "registro.hbs");
+        return new LoginClienteController().mostrar(req, res);
 
     }
 }

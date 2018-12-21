@@ -25,10 +25,13 @@ public class ControladorDeDispositivos implements TransactionalOps, WithGlobalEn
             public void run() {
                 LOGGER.log(INFO, "Controlando dispositivos...");
 
-                new ControladorDeDispositivos().optimizar();
-
-                LOGGER.log(INFO, "Dispositivos controlados.");
-                LOGGER.log(INFO, "Revisando de nuevo en un minuto.");
+                try {
+                    new ControladorDeDispositivos().optimizar();
+                    LOGGER.log(INFO, "Dispositivos controlados.");
+                    LOGGER.log(INFO, "Revisando de nuevo en un minuto.");
+                } catch (Exception e) {
+                    LOGGER.log(INFO, e.getMessage());
+                }
             }
         };
 

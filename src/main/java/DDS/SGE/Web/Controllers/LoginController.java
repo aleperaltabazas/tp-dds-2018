@@ -10,6 +10,6 @@ public class LoginController extends Controller {
     public ModelAndView logout(Request req, Response res) {
         req.session().invalidate();
         res.redirect(HOME);
-        return null;
+        return new HomeController().home(req, res);
     }
 }
