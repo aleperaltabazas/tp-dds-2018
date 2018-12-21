@@ -1,3 +1,7 @@
+.cursor {
+  cursor: pointer;
+}
+
 .goback {
   padding-top: 50px;
   display: block;

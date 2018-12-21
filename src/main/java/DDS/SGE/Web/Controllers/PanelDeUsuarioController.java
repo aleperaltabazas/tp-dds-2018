@@ -71,8 +71,16 @@ public class PanelDeUsuarioController extends Controller {
 
         withTransaction(() -> RepositorioClientes.getInstance().saveOrUpdate(cliente));
 
-        res.redirect(USER);
+        res.redirect(USER_PROFILE);
 
         return mostrar(req, res);
+    }
+
+    public ModelAndView mostrarSettings(Request req, Response res) {
+        Cliente cliente = RepositorioClientes.getInstance().findByID(Long.parseLong(req.session().attribute(SESSION_NAME)));
+
+        HashMap<String, Object> viewModel = this.rellenarCliente(cliente);
+
+        return new ModelAndView(viewModel, "user-settings.hbs");
     }
 }

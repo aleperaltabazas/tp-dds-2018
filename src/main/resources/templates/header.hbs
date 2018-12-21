@@ -16,24 +16,16 @@
           <img src="/resources/imgs/casa.png" alt="Mi Hogar" class="p-2 hogar-button">
         </a>
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn user-button">
-        </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a class="dropdown-content" href="/me/profile"><i></i>Perfil</a>
-          <a class="dropdown-content" href="/me/settings"><i></i>Configuración</a>
+      <!-- Default dropleft button -->
+      <div class="btn-group dropleft cursor">
+        <span class="p-2 text-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/resources/imgs/user.png" alt="Perfil de {{username}}" class="p-2 user-button">
+        </span>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/me/profile"><i class="fas fa-user"></i>     Perfil</a>
+          <a class="dropdown-item" href="/me/settings"><i class="fas fa-cog"></i>     Configuración</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-content" href="/logout"><i></i>Cerrar sesión</a>
+          <a class="dropdown-item" href="/logout"><i class="fas fa-door-open"></i>    Cerrar sesión</a>
         </div>
       </div>
     </div>

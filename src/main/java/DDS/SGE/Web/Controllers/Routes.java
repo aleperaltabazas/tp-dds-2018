@@ -36,7 +36,12 @@ public class Routes {
     public static final String TRANSFORMADOR_CONSUMO_OBTENER = TRANSFORMADOR_CONSUMO + "/obtener";
 
     public static final String USER = "/me";
-    public static final String USER_EDIT = USER + "/edit";
+    public static final String USER_PROFILE = USER + "/profile";
+    public static final String USER_EDIT = USER_PROFILE + "/edit";
+
+    public static final String USER_SETTINGS = USER + "/settings";
+    public static final String USER_SETTINGS_EDIT = USER_SETTINGS + "/edit";
+
     public static final String USER_DISPOSITIVOS = USER + "/dispositivos";
     public static final String USER_DISPOSITIVOS_ID_ON = USER_DISPOSITIVOS + "/:id/on";
     public static final String USER_DISPOSITIVOS_ID_OFF = USER_DISPOSITIVOS + "/:id/off";

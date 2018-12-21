@@ -114,9 +114,11 @@ public class Service {
         get(TRANSFORMADOR, transformadorController::mostrar, engine);
         get(TRANSFORMADOR_CONSUMO_OBTENER, transformadorController::obtenerConsumo, engine);
 
-        get(USER, panelDeUsuarioController::mostrar, engine);
+        get(USER_PROFILE, panelDeUsuarioController::mostrar, engine);
         get(USER_EDIT, panelDeUsuarioController::editar, engine);
         post(USER, panelDeUsuarioController::actualizar, engine);
+
+        get(USER_SETTINGS, panelDeUsuarioController::mostrarSettings, engine);
 
         post(USER_DISPOSITIVOS_ID_ON, miHogarController::encender, engine);
         post(USER_DISPOSITIVOS_ID_OFF, miHogarController::apagar, engine);

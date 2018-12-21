@@ -28,6 +28,7 @@ public abstract class Controller implements WithGlobalEntityManager, Transaction
         viewModel.put("tipoDni", cliente.getTipoDni());
         viewModel.put("domicilio", cliente.getDomicilio());
         viewModel.put("username", cliente.getUsername());
+        viewModel.put("mail-icon", this.iconoNotificacionesCliente(cliente.getId()));
 
         return viewModel;
     }
