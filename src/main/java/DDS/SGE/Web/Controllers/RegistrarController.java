@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import DDS.SGE.Exceptions.UserUnavailableException;
 import DDS.SGE.Geoposicionamiento.Transformador;
 import DDS.SGE.Repositorios.RepositorioTransformadores;
 import DDS.SGE.Usuarie.Cliente;
@@ -37,10 +38,11 @@ public class RegistrarController extends Controller {
         cb.especificarTipoDocumento(tipoDni);
         cb.especificarDireccion(direccion);
 
-        System.out.println(username);
-        System.out.println(password);
-
         try {
+            if (RepositorioClientes.getInstance().findByUsername(username).isPresent()) {
+                throw new UserUnavailableException(username);
+            }
+
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
             List<Transformador> transformadores = RepositorioTransformadores.getInstance().listar();
 
@@ -49,8 +51,6 @@ public class RegistrarController extends Controller {
 
             Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
             transformador.agregarCliente(cliente);
-
-            System.out.println(transformador.getId());
 
             withTransaction(() -> {
                 RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
