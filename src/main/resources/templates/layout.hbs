@@ -13,6 +13,7 @@
   <link href="/resources/bootstrap/Pricing example for Bootstrap_files/pricing.css" rel="stylesheet">
   <title>Sistema de Gestión Energética</title>
   <link href="/CSS/style.css" rel="stylesheet">
+  <link href="/CSS/dropdown.css" rel="stylesheet">
   <link rel="icon" href="/resources/imgs/ditto.png">
 
   <!-- Bootstrap core CSS -->
@@ -24,7 +25,7 @@
 
 <body>
 
-{{> header.hbs}}
+  {{> header.hbs}}
 
   <div class="container">
    {{#block "contenido"}}
@@ -36,11 +37,11 @@
     <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
-      <script src="./Pricing example for Bootstrap_files/jquery-3.3.1.slim.min.js.descarga" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="/resources/bootstrap/home_files/jquery-3.3.1.slim.min.js.descarga" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-      <script src="./Pricing example for Bootstrap_files/popper.min.js.descarga"></script>
-      <script src="./Pricing example for Bootstrap_files/bootstrap.min.js.descarga"></script>
-      <script src="./Pricing example for Bootstrap_files/holder.min.js.descarga"></script>
+      <script src="/resources/bootstrap/home_files/popper.min.js.descarga"></script>
+      <script src="/resources/bootstrap/home_files/bootstrap.min.js.descarga"></script>
+      <script src="/resources/bootstrap/home_files/holder.min.js.descarga"></script>
       <script>
         Holder.addTheme('thumb', {
           bg: '#55595c',
@@ -49,6 +50,29 @@
         });
       </script>
 
+      <script type="text/javascript">
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }</script>
 
-    </body>
-    </html>
+  <script>
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</body>
+</html>

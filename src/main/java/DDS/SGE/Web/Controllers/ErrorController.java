@@ -8,6 +8,7 @@ import java.util.logging.*;
 
 import static DDS.SGE.Web.Controllers.Routes.*;
 
+
 public class ErrorController extends Controller {
     private static final Logger logger = Logger.getLogger(ErrorController.class.getName());
 
