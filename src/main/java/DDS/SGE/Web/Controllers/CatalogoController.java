@@ -159,7 +159,7 @@ public class CatalogoController extends Controller {
 
         DispositivoDeCatalogo dispositivo = RepositorioCatalogo.getInstance().findByID(id_posta);
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
         viewModel.put("dispositivo", dispositivo);
 
         if (req.session().attribute(ADMIN) == "si") {
@@ -168,7 +168,6 @@ public class CatalogoController extends Controller {
             return new ModelAndView(viewModel, "ficha-tecnica-administrador.hbs");
         }
 
-        viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
 
         return new ModelAndView(viewModel, "ficha-tecnica-user.hbs");
     }
