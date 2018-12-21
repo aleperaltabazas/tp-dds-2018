@@ -81,6 +81,7 @@ public class PersistirMain implements WithGlobalEntityManager, TransactionalOps 
                 transformadores.forEach(t -> RepositorioTransformadores.getInstance().saveOrUpdate(t));
             });
         } catch (Exception e) {
+            e.printStackTrace();
             LOGGER.log(Level.INFO, e.getMessage());
         }
     }

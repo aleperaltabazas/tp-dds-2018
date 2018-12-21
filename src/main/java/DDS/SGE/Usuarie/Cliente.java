@@ -1,9 +1,13 @@
 package DDS.SGE.Usuarie;
 
-import DDS.SGE.Dispositivo.*;
-import DDS.SGE.Geoposicionamiento.*;
-import DDS.SGE.Notificaciones.*;
-import DDS.SGE.Optimizador.*;
+import DDS.SGE.Dispositivo.Dispositivo;
+import DDS.SGE.Dispositivo.DispositivoEstandar;
+import DDS.SGE.Dispositivo.DispositivoInteligente;
+import DDS.SGE.Geoposicionamiento.Transformador;
+import DDS.SGE.Geoposicionamiento.Zona;
+import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
+import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
+import DDS.SGE.Optimizador.Optimizador;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 @Entity

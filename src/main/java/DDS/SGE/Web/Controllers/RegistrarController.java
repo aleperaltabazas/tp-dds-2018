@@ -37,6 +37,8 @@ public class RegistrarController extends Controller {
         cb.especificarTipoDocumento(tipoDni);
         cb.especificarDireccion(direccion);
 
+        System.out.println(username);
+        System.out.println(password);
 
         try {
             Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
@@ -46,16 +48,17 @@ public class RegistrarController extends Controller {
             //SE SE Segui soñando pelotudo
 
             Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
-
             transformador.agregarCliente(cliente);
 
             withTransaction(() -> {
-                RepositorioClientes.getInstance().registrarCliente(cliente);
                 RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
+                RepositorioClientes.getInstance().registrarCliente(cliente);
             });
 
-
+            res.redirect(LOGIN);
+            System.out.println("persisti bien");
         } catch (RuntimeException ex) {
+            ex.printStackTrace();
             HashMap<String, Object> viewModel = new HashMap<>();
             viewModel.put("username", req.queryParams("username"));
             viewModel.put("password", req.queryParams("password"));
@@ -70,7 +73,6 @@ public class RegistrarController extends Controller {
             return new ModelAndView(viewModel, "registro.hbs");
         }
 
-        res.redirect(LOGIN);
         return new LoginClienteController().mostrar(req, res);
 
     }
