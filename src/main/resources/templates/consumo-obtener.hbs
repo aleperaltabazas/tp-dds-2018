@@ -1,6 +1,7 @@
 {{#partial "contenido"}}
 
 <div class="container tools-padding">
+	<form action="/consumo/obtener" method="GET">
 	<div class="card-deck mb-2 text-center">
 		<h3>Tu consumo en el período {{periodo}} fue de {{consumo}}</h3>
 		<div class="card mb-4 shadow-sm">
@@ -24,13 +25,13 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<div style="border:3px;padding-left:30px;padding-top:100px;">
-	<form action="/consumo/obtener" method="GET">
+	<div style="border:3px;padding-left:30px;padding-top:100px;">
 		<button type="submit" class="btn btn-lg btn-block btn-primary">Obtener Consumo</button>
 	</form>
 </div>
+	
+</div>
+
 
 {{/partial}}
 
