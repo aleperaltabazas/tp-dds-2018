@@ -50,9 +50,11 @@ public class RegistrarController extends Controller {
             Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
             transformador.agregarCliente(cliente);
 
+            System.out.println(transformador.getId());
+
             withTransaction(() -> {
                 RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
-                RepositorioClientes.getInstance().registrarCliente(cliente);
+                //RepositorioClientes.getInstance().registrarCliente(cliente);
             });
 
             res.redirect(LOGIN);
@@ -70,6 +72,7 @@ public class RegistrarController extends Controller {
             viewModel.put("direccion", req.queryParams("direccion"));
             viewModel.put("errorMessage", ex.getMessage());
 
+            res.redirect(SIGNUP);
             return new ModelAndView(viewModel, "registro.hbs");
         }
 

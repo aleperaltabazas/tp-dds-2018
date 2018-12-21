@@ -1,5 +1,6 @@
 package DDS.SGE.Repositorios;
 
+import DDS.SGE.Usuarie.Cliente;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import java.util.List;
@@ -41,11 +42,11 @@ abstract class Repositorio implements WithGlobalEntityManager {
     }
 
     protected void registrar(Object o, String username) {
-        try {
-            findByUsername(o.getClass(), username).get();
+        if (findByUsername(o.getClass(), username).isPresent()) {
+            System.out.println(((Cliente) findByUsername(o.getClass(), username).get()).getUsername());
             throw new RuntimeException("Ese nombre de usuario no se encuentra disponible");
-        } catch (NoSuchElementException e) {
-            this.persistir(o);
+        } else {
+            persistir(o);
         }
     }
 }
