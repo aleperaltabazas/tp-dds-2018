@@ -23,12 +23,16 @@ public class OptimizadorController extends Controller {
         List<String> resultadoEnString = new ArrayList<String>();
         for (int i = 0; i < resultado.length; i++) {
             if (resultadoEnLista.get(i) != 0) resultadoEnString.add(String.valueOf(resultadoEnLista.get(i)));
-            else resultadoEnString.add("No se encuentran mediciones aquí");
+            else resultadoEnString.add("No se encuentran mediciones para este dispositivo");
         }
+        double usoMensual = optimizador.usoMensualRecomendado(cliente);
+        String stringUsoMensual;
+        if (usoMensual != 0) stringUsoMensual = String.valueOf(usoMensual);
+        else stringUsoMensual = "No se encuentran mediciones aquí.";
 
         HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("resultado", resultadoEnString);
-        viewModel.put("mensual", optimizador.usoMensualRecomendado(cliente));
+        viewModel.put("mensual", stringUsoMensual);
 
         return new ModelAndView(viewModel, "optimizer.hbs");
     }

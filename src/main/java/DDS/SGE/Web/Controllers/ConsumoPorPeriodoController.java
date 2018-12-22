@@ -28,8 +28,10 @@ public class ConsumoPorPeriodoController extends Controller {
             //TODO - Aparentemente se debe poner hora también, por default puse 00:00
             LocalDate fechaInicio = LocalDate.parse(inicio, formatter);
             LocalDate fechaFin = LocalDate.parse(fin, formatter);
+            String mensaje;
 
             if (fechaInicio.isAfter(fechaFin)) {
+            	mensaje = "La fecha de fin debe ser posterior a la fecha de inicio";
                 throw new RuntimeException("La fecha fin es después de la fecha inicio");
             }
 
@@ -37,11 +39,15 @@ public class ConsumoPorPeriodoController extends Controller {
 
             double consumo = cliente.consumoTotalEnUnPeriodo(fechaInicio.atStartOfDay(), fechaFin.atStartOfDay());
 
-            String periodo = fechaInicio.format(formatter) + " - " + fechaFin.format(formatter);
+            String periodo = fechaInicio.format(formatter) + " - " + fechaFin.format(formatter) + ":";
+            
+            if(consumo != 0) mensaje = "Consumo total en el período";
+            else mensaje = "No tiene consumo registrado en el período";
 
             HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
             viewModel.put("fechaInicio", fechaInicio.format(formatter));
             viewModel.put("fechaFin", fechaFin.format(formatter));
+            viewModel.put("mensaje", mensaje);
             viewModel.put("consumo", consumo);
             viewModel.put("periodo", periodo);
             return new ModelAndView(viewModel, "consumo-obtener.hbs");
