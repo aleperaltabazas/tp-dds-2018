@@ -30,7 +30,7 @@ public class LoginClienteController extends LoginController {
         if (cliente.isPresent()) {
 
             if (!cliente.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
-                throw new UserNotFoundException();
+                return this.loginError(new UserNotFoundException());
             }
 
             String id = Long.toString(cliente.get().getId());

@@ -31,7 +31,7 @@ public class LoginAdminController extends LoginController {
 
         if (admin.isPresent()) {
             if (!admin.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
-                throw new AdminNotFoundException();
+                return this.loginError(new AdminNotFoundException());
             }
 
             String id = Long.toString(admin.get().getId());
@@ -43,7 +43,7 @@ public class LoginAdminController extends LoginController {
 
             return new PanelDeAdministradorController().mostrar(req, res);
         } else {
-            throw new AdminNotFoundException();
+            return this.loginError(new AdminNotFoundException());
         }
     }
 
