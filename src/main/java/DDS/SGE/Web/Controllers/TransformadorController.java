@@ -29,7 +29,6 @@ public class TransformadorController extends Controller {
         }
 
         String trafoId = req.queryParams("transformador");
-        System.out.println(trafoId + "***");
         Transformador transformador = RepositorioTransformadores.getInstance().findByID(Long.parseLong(trafoId));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

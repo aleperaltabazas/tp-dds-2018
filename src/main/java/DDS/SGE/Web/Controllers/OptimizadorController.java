@@ -26,7 +26,7 @@ public class OptimizadorController extends Controller {
             else resultadoEnString.add("No se encuentran mediciones aquí");
         }
 
-        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
+        HashMap<String, Object> viewModel = new HashMap<>();
         viewModel.put("resultado", resultadoEnString);
         viewModel.put("mensual", optimizador.usoMensualRecomendado(cliente));
 
