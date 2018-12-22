@@ -17,7 +17,7 @@ public class TransformadorController extends Controller {
             throw new UnauthorizedAccessException(Long.parseLong(req.session().attribute(SESSION_NAME)), req);
         }
 
-        HashMap<String, Object> viewModel = new HashMap<>();
+        HashMap<String, Object> viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
         viewModel.put("transformadores", RepositorioTransformadores.getInstance().listar());
 
         return new ModelAndView(viewModel, "consumo-transformador.hbs");

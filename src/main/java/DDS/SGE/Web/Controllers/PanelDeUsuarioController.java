@@ -64,7 +64,13 @@ public class PanelDeUsuarioController extends Controller {
     }
 
     public ModelAndView mostrarSettings(Request req, Response res) {
-        HashMap<String, Object> viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
+        HashMap<String, Object> viewModel = new HashMap<>();
+
+        if (req.session().attribute(ADMIN) == "si") {
+            viewModel = this.rellenarAdministrador(null, req.session().attribute(SESSION_NAME));
+        } else {
+            viewModel = this.rellenarCliente(null, req.session().attribute(SESSION_NAME));
+        }
 
         return new ModelAndView(viewModel, "user-settings.hbs");
     }
