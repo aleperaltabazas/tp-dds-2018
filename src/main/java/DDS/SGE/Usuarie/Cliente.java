@@ -8,6 +8,7 @@ import DDS.SGE.Geoposicionamiento.Zona;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import DDS.SGE.Optimizador.Optimizador;
+import javafx.util.Pair;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.ObjDoubleConsumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -215,6 +217,14 @@ public class Cliente implements Usuario {
         return this.consumoTotalEstimadoDiario() / this.cantidadDispositivos(); // El enunciado no está del todo claro,
         // asumo que esta cuenta es la correcta
         // pues no aclara mucho.
+    }
+
+    public List<Pair<Dispositivo, Double>> consumoPromedioDispositivoPosta() {
+        List<Pair<Dispositivo, Double>> tuplasDispositivoConsumo = new ArrayList<>();
+
+        dispositivos.forEach(d -> tuplasDispositivoConsumo.add(new Pair<>(d, d.consumoDiarioEstimado() / this.cantidadDispositivos())));
+
+        return tuplasDispositivoConsumo;
     }
 
     public void recategorizar() {

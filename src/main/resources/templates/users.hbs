@@ -1,0 +1,55 @@
+{{#partial "contenido"}}
+
+<main role="main">
+  <div class="album py-5">
+    <div class="container">
+
+      <h1>Catálogo de dispositivos</h1>
+
+      <div class="row">
+
+        {{#clientes}}
+
+        <div class="col-md-4 ">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <form action="/users/{{this.id}}/consumo" method="GET">
+                <h5>{{this.nombre}} {{this.apellido}}</h5>
+                <ul>
+                  <li>Dirección: {{this.domicilio}}</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">Ver consumo</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {{/clientes}}
+
+      </div>
+    </div>
+  </div>
+  {{#if hayAnterior}}
+  <div align="left">
+    <form action="/users/{{previousPage}}" method="GET">
+      <button type="submit" class="btn btn--radius-2 btn--red">Anterior</button>
+    </form>
+  </div>
+  {{/if}}
+
+  {{#if haySiguiente}}
+  <div align="right">
+    <form action="/users/{{nextPage}}" method="GET">
+      <button type="submit" class="btn btn--radius-2 btn--red">Siguiente</button>
+    </form>
+  </div>
+  {{/if}}
+
+</main>
+{{/partial}}
+
+{{>layout.hbs}}

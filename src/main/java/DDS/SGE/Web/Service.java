@@ -107,6 +107,10 @@ public class Service {
             }
         });
 
+        before(USERS, (req, res) -> {
+            res.redirect(USERS + "/1");
+        });
+
         get(HOME, homeController::home, engine);
 
         get(LOGIN, loginClienteController::mostrar, engine);
@@ -157,6 +161,9 @@ public class Service {
 
         get(SIGNUP, registrarController::mostrar, engine);
         post(USERS, registrarController::registrar, engine);
+
+        get(USERS + "/:page", panelDeAdministradorController::verTodosLosClientes, engine);
+        get(USERS + "/:id" + "/consumo", panelDeAdministradorController::verConsumoPromedioCliente, engine);
 
         get(LOGOUT, loginController::logout, engine);
 

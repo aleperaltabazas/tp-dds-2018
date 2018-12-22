@@ -1,0 +1,27 @@
+{{#partial "contenido"}}
+<main role="main">
+  <div class="album py-5">
+    <div class="container">
+
+      <h1>Consumo promedio</h1>
+      <div class="row">
+        <br>
+        {{#tuplas}}
+        <div class="col-md-4 ">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5>{{this.key.nombre}}</h5>
+              <ul>
+                <li>Consumo: {{this.value}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {{/tuplas}}
+      </div>
+    </div>
+  </div>
+</main>
+{{/partial}}
+
+{{>layout.hbs}}
