@@ -3,6 +3,7 @@ package DDS.SGE.Web;
 import DDS.SGE.Exceptions.AdminNotFoundException;
 import DDS.SGE.Exceptions.UnauthorizedAccessException;
 import DDS.SGE.Exceptions.UserNotFoundException;
+import DDS.SGE.Exceptions.UserUnavailableException;
 import DDS.SGE.Repositorios.RepositorioAdministradores;
 import DDS.SGE.Repositorios.RepositorioClientes;
 import DDS.SGE.Solicitud.ChabonQueTePersisteCuandoSeCierraUnaSolicitud;
@@ -71,7 +72,7 @@ public class Service {
     }
 
     private boolean shouldRedirect(String[] route) {
-        List<String> exceptions = Arrays.asList("login", "500", "signup", "administrador/login");
+        List<String> exceptions = Arrays.asList("login", "500", "signup", "users", "administrador/login");
 
         return !exceptions.stream().anyMatch(r -> r.equals(route[0]));
     }
@@ -166,7 +167,13 @@ public class Service {
         notFound((req, res) -> errorController.notFound(req, res));
         internalServerError((req, res) -> errorController.somethingBroke(req, res));
 
-        exception(Exception.class, (e, req, res) -> e.printStackTrace());
+        exception(Exception.class, (e, req, res) -> LOGGER.info(e.getMessage()));
+
+        exception(UserUnavailableException.class, (e, req, res) -> {
+            req.session().attribute("error", true);
+            req.session().attribute("cliente", e.getCliente());
+            res.redirect(SIGNUP);
+        });
 
         exception(UnauthorizedAccessException.class, (e, req, res) -> {
             res.redirect("/500");

@@ -42,13 +42,13 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="nombre" required/>
+                                            <input class="input--style-5" type="text" name="nombre" value="{{nombre}}" required/>
                                             <label class="label--desc">Nombre</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="apellido" required/>
+                                            <input class="input--style-5" type="text" name="apellido" value="{{apellido}}" required/>
                                             <label class="label--desc">Apellido</label>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                             <div class="name">Dirección</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="direccion" required/>
+                                    <input class="input--style-5" type="text" name="direccion" value="{{domicilio}}" required/>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="tel" name="telefono" required/>
+                                            <input class="input--style-5" type="tel" name="telefono" value="{{telefono}}" required/>
                                             <label class="label--desc">Número</label>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                   </div>
                                   <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="number" name="numeroDni" required/>
+                                        <input class="input--style-5" type="number" name="numeroDni" value={{numeroDni}} required/>
                                         <label class="label--desc">Número</label>
                                     </div>
                                 </div>
@@ -111,14 +111,16 @@
                         </div>
 
                     </div>
-                    <div>
-                        <h6 class="username-unavailable">{{errorMessage}}</h6>
+                    {{#if error}}
+                    <div class="username-unavailable error" style="color: red;">
+                        <h5 >Lo sentimos, ese nombre de usuario no se encuentra disponible</h5>
                     </div>
+                    {{/if}}
                     <div class="form-row">
                         <div class="name">Nombre de usuario</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="username" required/>
+                                <input class="input--style-5" type="text" name="username" value="{{username}}" required/>
                             </div>
                         </div>
                     </div>
@@ -130,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="crear-button">
                         <button class="btn btn--radius-2 btn--green" type="submit">Crear cuenta</button>
                     </div>
                 </form>

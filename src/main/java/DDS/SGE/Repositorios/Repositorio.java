@@ -43,7 +43,6 @@ abstract class Repositorio implements WithGlobalEntityManager {
 
     protected void registrar(Object o, String username) {
         if (findByUsername(o.getClass(), username).isPresent()) {
-            System.out.println(((Cliente) findByUsername(o.getClass(), username).get()).getUsername());
             throw new RuntimeException("Ese nombre de usuario no se encuentra disponible");
         } else {
             persistir(o);

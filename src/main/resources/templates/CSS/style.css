@@ -39,6 +39,7 @@
   font-size: 15px;
   font-weight: 700;
   color: red;
+  padding-bottom: 5px;
 }
 
 .error{
@@ -70,6 +71,10 @@
 .admin-button {
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+.crear-button {
+  padding-bottom: 30px;
 }
 
 .volver-button {

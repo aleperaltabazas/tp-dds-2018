@@ -26,14 +26,8 @@ public class LoginClienteController extends LoginController {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
 
-        System.out.println("El usuario puso:");
-        System.out.println(username);
-        System.out.println(HashProvider.hash(password));
-
         Optional<Cliente> cliente = RepositorioClientes.getInstance().findByUsername(username);
         if (cliente.isPresent()) {
-            System.out.println(cliente.get().getUsername());
-            System.out.println(cliente.get().getPassword());
 
             if (!cliente.get().getPassword().equalsIgnoreCase(HashProvider.hash(password))) {
                 throw new UserNotFoundException();

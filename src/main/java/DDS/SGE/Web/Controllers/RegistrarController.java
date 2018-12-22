@@ -3,6 +3,7 @@ package DDS.SGE.Web.Controllers;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 import DDS.SGE.Exceptions.UserUnavailableException;
 import DDS.SGE.Geoposicionamiento.Transformador;
@@ -17,8 +18,25 @@ import spark.Response;
 import static DDS.SGE.Web.Controllers.Routes.*;
 
 public class RegistrarController extends Controller {
+    private static final String ERROR = "error";
+    private static final String CLIENTE = "cliente";
+
     public ModelAndView mostrar(Request req, Response res) {
-        return new ModelAndView(null, "registro.hbs");
+        HashMap<String, Object> viewModel = new HashMap<>();
+        if (req.session().attribute(ERROR) != null) {
+            Cliente cliente = (Cliente) req.session().attribute(CLIENTE);
+
+            viewModel.put("nombre", cliente.getNombre());
+            viewModel.put("apellido", cliente.getApellido());
+            viewModel.put("domicilio", cliente.getDomicilio());
+            viewModel.put("numeroDni", cliente.getNumeroDni());
+            viewModel.put("telefono", cliente.getTelefono());
+            viewModel.put("username", cliente.getUsername());
+
+            viewModel.put("error", true);
+        }
+
+        return new ModelAndView(viewModel, "registro.hbs");
     }
 
     public ModelAndView registrar(Request req, Response res) {
@@ -37,46 +55,32 @@ public class RegistrarController extends Controller {
         ClienteBuilder cb = new ClienteBuilder();
         cb.especificarTipoDocumento(tipoDni);
         cb.especificarDireccion(direccion);
+        Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
 
-        try {
-            if (RepositorioClientes.getInstance().findByUsername(username).isPresent()) {
-                throw new UserUnavailableException(username);
-            }
-
-            Cliente cliente = cb.crearCliente(nombre, apellido, numeroDni, codigoArea + telefono, username, password);
-            List<Transformador> transformadores = RepositorioTransformadores.getInstance().listar();
-
-            //Transformador transformador = Transformador.parse(direccion)
-            //SE SE Segui soñando pelotudo
-
-            Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
-            transformador.agregarCliente(cliente);
-
-            withTransaction(() -> {
-                RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
-                //RepositorioClientes.getInstance().registrarCliente(cliente);
-            });
-
-            res.redirect(LOGIN);
-            System.out.println("persisti bien");
-        } catch (RuntimeException ex) {
-            ex.printStackTrace();
-            HashMap<String, Object> viewModel = new HashMap<>();
-            viewModel.put("username", req.queryParams("username"));
-            viewModel.put("password", req.queryParams("password"));
-            viewModel.put("nombre", req.queryParams("nombre"));
-            viewModel.put("apellido", req.queryParams("apellido"));
-            viewModel.put("codigoTelefono", req.queryParams("codigoTelefono"));
-            viewModel.put("telefono", req.queryParams("telefono"));
-            viewModel.put("numeroDni", req.queryParams("numeroDni"));
-            viewModel.put("direccion", req.queryParams("direccion"));
-            viewModel.put("errorMessage", ex.getMessage());
-
-            res.redirect(SIGNUP);
-            return new ModelAndView(viewModel, "registro.hbs");
+        if (RepositorioClientes.getInstance().findByUsername(username).isPresent()) {
+            throw new UserUnavailableException(cliente);
         }
 
-        return new LoginClienteController().mostrar(req, res);
+        List<Transformador> transformadores = RepositorioTransformadores.getInstance().listar();
 
+        //Transformador transformador = Transformador.parse(direccion)
+        //SE SE Segui soñando pelotudo
+
+        Transformador transformador = transformadores.get(new Random().nextInt(transformadores.size()));
+        transformador.agregarCliente(cliente);
+
+        withTransaction(() -> {
+            RepositorioTransformadores.getInstance().saveOrUpdate(transformador);
+            //RepositorioClientes.getInstance().registrarCliente(cliente);
+        });
+
+        res.redirect(LOGIN);
+        return new LoginClienteController().mostrar(req, res);
+    }
+
+    public ModelAndView userUnavailabe(Exception ex) {
+        HashMap<String, Object> viewModel = this.fillError(ex);
+
+        return new ModelAndView(viewModel, "registro.hbs");
     }
 }

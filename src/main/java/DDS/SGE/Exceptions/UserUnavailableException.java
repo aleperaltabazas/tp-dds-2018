@@ -1,7 +1,16 @@
 package DDS.SGE.Exceptions;
 
+import DDS.SGE.Usuarie.Cliente;
+
 public class UserUnavailableException extends RuntimeException {
-    public UserUnavailableException(String username) {
-        super("Lo sentimos, el nombre de usuario " + username + " no se encuentra disponible");
+    private Cliente cliente;
+
+    public UserUnavailableException(Cliente cliente) {
+        super("Lo sentimos, el nombre de usuario " + cliente.getUsername() + " no se encuentra disponible");
+        this.cliente = cliente;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 }
