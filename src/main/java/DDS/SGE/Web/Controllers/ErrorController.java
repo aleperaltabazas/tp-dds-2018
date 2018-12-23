@@ -1,5 +1,6 @@
 package DDS.SGE.Web.Controllers;
 
+import DDS.SGE.Web.HandlebarsTemplateEngineBuilder;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -12,9 +13,11 @@ import static DDS.SGE.Web.Controllers.Routes.*;
 public class ErrorController extends Controller {
     private static final Logger logger = Logger.getLogger(ErrorController.class.getName());
 
-    public ModelAndView notFound(Request req, Response res) {
+    public String notFound(Request req, Response res) {
+        String body = HandlebarsTemplateEngineBuilder.create().build().render(new ModelAndView(null, "404.hbs"));
+        res.body(body);
         res.status(404);
-        return new ModelAndView(null, "404.hbs");
+        return body;
     }
 
     public ModelAndView unauthorizedAccess(Request req, Response res) {

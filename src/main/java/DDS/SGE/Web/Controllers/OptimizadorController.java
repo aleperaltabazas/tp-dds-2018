@@ -19,6 +19,7 @@ public class OptimizadorController extends Controller {
 
         Optimizador optimizador = new Optimizador();
         double[] resultado = optimizador.tiempoRecomendadoPorDispositivo(cliente);
+        //Arrays.asList(resultado);
         List<Double> resultadoEnLista = generarLista(resultado);
         List<String> resultadoEnString = new ArrayList<String>();
         for (int i = 0; i < resultado.length; i++) {

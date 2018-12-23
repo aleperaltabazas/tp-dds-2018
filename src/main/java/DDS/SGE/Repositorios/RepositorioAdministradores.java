@@ -9,6 +9,7 @@ public class RepositorioAdministradores extends Repositorio {
     private static final RepositorioAdministradores instance = new RepositorioAdministradores();
 
     private RepositorioAdministradores() {
+
     }
 
     public void agregarAdministrador(Administrador administrador) {

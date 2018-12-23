@@ -11,8 +11,8 @@ import DDS.SGE.Usuarie.Administrador;
 import DDS.SGE.Usuarie.Cliente;
 import DDS.SGE.Utils.PersistirMain;
 import DDS.SGE.Web.Controllers.*;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import spark.Spark;
-import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.Arrays;
@@ -111,6 +111,10 @@ public class Service {
             res.redirect(USERS + "/1");
         });
 
+        after("*", (req, res) -> {
+            PerThreadEntityManagers.closeEntityManager();
+        });
+
         get(HOME, homeController::home, engine);
 
         get(LOGIN, loginClienteController::mostrar, engine);
@@ -169,7 +173,6 @@ public class Service {
 
         //TODO: get(LIFE, controller::fortyTwo, engine);
         get("/500", errorController::somethingBroke, engine);
-        get(GLITCH, errorController::notFound, engine);
 
         notFound((req, res) -> errorController.notFound(req, res));
         internalServerError((req, res) -> errorController.somethingBroke(req, res));
@@ -212,10 +215,10 @@ public class Service {
         Spark.port(9000);
 
         //Para el deploy en heroku
-        //Spark.port(getHerokuAssignedPort());
+//        Spark.port(getHerokuAssignedPort());
 
         Spark.staticFiles.location("/templates");
-        DebugScreen.enableDebugScreen();
+//        DebugScreen.enableDebugScreen();
 
     }
 

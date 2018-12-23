@@ -13,7 +13,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import static DDS.SGE.Web.Controllers.Routes.*;
+import static DDS.SGE.Web.Controllers.Routes.CONSUMO;
+
 
 public class ConsumoPorPeriodoController extends Controller {
     private static final String ERROR = "ERROR";

@@ -8,7 +8,7 @@ import DDS.SGE.Geoposicionamiento.Zona;
 import DDS.SGE.Notificaciones.InteresadoEnAdaptaciones;
 import DDS.SGE.Notificaciones.InteresadoEnNuevosDispositivos;
 import DDS.SGE.Optimizador.Optimizador;
-import javafx.util.Pair;
+import DDS.SGE.Utils.Pair;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.ObjDoubleConsumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
